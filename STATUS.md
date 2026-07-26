@@ -2,9 +2,8 @@
 
 > 更新:2026-07-25。任何 AI 进来先读 本文件 + [CLAUDE.md](CLAUDE.md)。
 >
-> **本文只写「当前状态」,不写历史。** 逐日进度条目滚出后 append 到
-> [`docs/archive/STATUS_chronicle_2026H1.md`](docs/archive/STATUS_chronicle_2026H1.md) 并从本文移除;
-> 归档区的绩效数字**一律不得作为有效性证据**(产自幸存者偏差与 DQ-2026-001 修复之前)。
+> **本文只写「当前状态」,不写历史。** 原仓逐日历史归档不随最精简 fork 发布；
+> 旧绩效数字**一律不得作为有效性证据**(产自幸存者偏差与 DQ-2026-001 修复之前)。
 > 本文行数上限由 `scripts/ci/check_doc_map.py` 机械约束(≤200 行),超限即 CI 红。
 
 ## 台账实况(机械读自 `factor_research/strategy_versions.json`,2026-07-25)
@@ -116,6 +115,5 @@ python3 apps/portfolio_cli.py --analyze   # 组合分析
 
 ## 历史档案
 
-* 逐日进度条目(2026-07-18 及更早)+ 2026-06 专章(核心结论 / 策略库 / 各类审计)
-  → [`docs/archive/STATUS_chronicle_2026H1.md`](docs/archive/STATUS_chronicle_2026H1.md)(冻结,只读,数字不作证据)
+* 原仓逐日进度归档未收入本最精简 fork，历史数字不作证据。
 * 踩坑与教训 → [`LESSONS.md`](LESSONS.md);决策记录 → [`DECISIONS.md`](DECISIONS.md);开放任务 → [`TASKS.md`](TASKS.md)
