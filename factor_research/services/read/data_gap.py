@@ -61,8 +61,6 @@ def data_gap_audit(idea: str) -> dict[str, Any]:
             special.extend(needs)
     missing.extend(special)
 
-    playbook = "factor_research/docs/agent_skills/data_source_onboarding.md"
-
     return {
         "idea_text": text,
         "candidate_terms": terms,
@@ -72,7 +70,7 @@ def data_gap_audit(idea: str) -> dict[str, Any]:
         "dataset_catalog_size": len(datasets),
         "missing": missing,
         "factor_ready": bool(registry_hits) and not special,
-        "onboarding_playbook": playbook,
+        "onboarding_playbook": "source:data_gap_audit",
         "related_precheck": {
             "validation_status": pre.get("validation_status"),
             "can_claim_valid": False,

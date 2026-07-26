@@ -7,7 +7,7 @@ test_cost_single_source 的"单一来源"比对——全部对着 CostModel() �
 
 范式照抄 check_holdout_compliance.py 的 boundary pin:
   sha256(canonical JSON, sort_keys) vs 钉死的 EXPECTED_COST_HASH。
-改费率须先记 DECISIONS(ADR)并同步四处(见 docs/cost_model.md §4)再更新本 pin。
+改费率必须同时更新 EXPECTED_COST 与 EXPECTED_COST_HASH,不能为达标临时下调成本。
 
 口径分层(2026-07-21 架构 P1-1③):cost_snapshot / canonical_cost_json /
 cost_hash 三个纯函数的定义层权威在 lake.cost(费率定义归属 app_config 冻结
@@ -36,7 +36,7 @@ __all__ = [
 ]
 
 # ── 钉死值:与 core.engine.CostModel 默认字段一一对应 ──
-# 变更路径:DECISIONS ADR → 改 CostModel + cost_model.md + 受影响报告 → 更新本 pin
+# 变更路径:改 CostModel 默认值 -> 更新本 pin -> 重跑成本与回测守卫。
 EXPECTED_COST = {
     "buy_cost": 0.00225,
     "sell_cost": 0.00275,
@@ -72,8 +72,7 @@ def check_cost_pin(cost: Any | None = None) -> list[str]:
         "CostModel 默认费率被改动(R-COST-001 hash-pin 失败):\n"
         f"  当前: {snap} (hash {h[:12]}…)\n"
         f"  钉死: {EXPECTED_COST} (hash {EXPECTED_COST_HASH[:12]}…)\n"
-        "改费率须先记 DECISIONS(ADR)并同步四处"
-        "(见 factor_research/docs/cost_model.md §4)再更新本 pin"
+        "改费率必须同时更新 EXPECTED_COST 与 EXPECTED_COST_HASH,并重跑成本与回测守卫"
         f"(EXPECTED_COST / EXPECTED_COST_HASH in {Path(__file__).name})。"
     ]
 

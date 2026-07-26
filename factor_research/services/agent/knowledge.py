@@ -33,18 +33,10 @@ class KnowledgeHit:
 
 
 _SOURCE_SPECS: tuple[tuple[str, str, str, str], ...] = (
-    ("claude", "rules", "操作宪法与安全边界", "CLAUDE.md"),
-    ("spec", "rules", "系统规格与架构", "SPEC.md"),
-    ("web_design", "system_manual", "Web 工作台设计", "WEB_DESIGN.md"),
-    ("runbook", "system_manual", "运行手册", "RUNBOOK.md"),
-    ("lessons", "research", "经验教训", "LESSONS.md"),
-    ("decisions", "research", "决策记录", "DECISIONS.md"),
-    ("system_manual", "system_manual", "系统手册", "docs/system_manual.html"),
-    ("data_dimensions", "system_manual", "数据维度说明", "factor_research/docs/data_dimensions.md"),
-    ("data_infra", "system_manual", "数据基础设施", "factor_research/docs/data_infrastructure.md"),
-    ("engine_usage", "system_manual", "回测引擎使用", "factor_research/docs/engine_usage.md"),
-    ("ontology", "research", "研究本体词汇表", "factor_research/docs/ontology_glossary.md"),
-    ("strategy_eval", "research", "策略评价说明", "factor_research/docs/strategy_evaluation.md"),
+    ("settings", "rules", "运行配置", "factor_research/app_config/settings.yaml"),
+    ("production", "rules", "生产状态", "factor_research/deployments/production.json"),
+    ("strategy_registry", "research", "策略台账", "factor_research/strategy_versions.json"),
+    ("direction_registry", "research", "方向登记", "factor_research/knowledge/direction_registry.json"),
 )
 
 _IMPORTANT_TERMS = {
@@ -335,4 +327,3 @@ def citation_from_hit(hit: KnowledgeHit) -> dict:
         "source_path": hit.source_path,
         "excerpt": excerpt,
     }
-

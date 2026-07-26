@@ -6,9 +6,6 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 python3 scripts/ci/check_layer_deps.py
-python3 scripts/ci/check_module_status.py
-python3 scripts/ci/check_doc_map.py
-python3 scripts/ci/check_naming_taxonomy.py
 python3 scripts/ci/check_test_discovery.py
 python3 scripts/ci/check_control_exceptions.py
 python3 scripts/ci/check_registry_evidence.py

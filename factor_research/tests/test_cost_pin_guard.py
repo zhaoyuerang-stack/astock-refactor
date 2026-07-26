@@ -40,8 +40,7 @@ def test_injected_buy_cost_lowered_fails():
     assert errors, "下调 buy_cost 必须被 hash-pin 拦住"
     assert "R-COST-001" in errors[0]
     assert "0.001" in errors[0] or "buy_cost" in errors[0]
-    assert "cost_model.md" in errors[0]
-    assert "DECISIONS" in errors[0]
+    assert "EXPECTED_COST" in errors[0]
 
 
 def test_injected_sell_cost_lowered_fails():

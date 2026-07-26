@@ -368,7 +368,7 @@ def _items_exhaustion(exh) -> list[DecisionItem]:
             ),
             DecisionAction(
                 label="启动文献扫描剧本(literature-scan)",
-                entrypoint="docs/agent_skills/literature_scan.md(产出带出处 Hypothesis 草案入候选队列)",
+                entrypoint="services/actions/research_workspace.py",
                 allowed=True,
                 reason="只提假设不判有效(R-LLM-001);草案仍走完整 L0-L3/9-Gate(R-WF-001)",
             ),

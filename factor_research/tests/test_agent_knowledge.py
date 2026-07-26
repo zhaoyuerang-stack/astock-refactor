@@ -18,7 +18,7 @@ def test_retrieve_knowledge_returns_layered_sources_for_system_rules():
 
     assert hits
     assert any(hit.source_type == "rules" for hit in hits)
-    assert any("CLAUDE.md" in hit.source_path or "SPEC.md" in hit.source_path for hit in hits)
+    assert any("settings.yaml" in hit.source_path or "production.json" in hit.source_path for hit in hits)
     assert any("下单" in hit.text or "不越权" in hit.text for hit in hits)
 
 
@@ -28,7 +28,7 @@ def test_agent_answer_includes_citations_and_source_types():
 
     assert out["citations"]
     assert "rules" in out["source_types"]
-    assert any("CLAUDE.md" in c["source_path"] or "SPEC.md" in c["source_path"] for c in out["citations"])
+    assert any("settings.yaml" in c["source_path"] or "production.json" in c["source_path"] for c in out["citations"])
     assert out["requires_human_confirmation"] is False
 
 
@@ -68,7 +68,8 @@ def test_system_usage_question_uses_manual_sources_not_stock_tool():
     r = ask("这个系统怎么用", {"current_page": "overview"})
 
     assert r["tool"] is None
-    assert any(c["source_type"] == "system_manual" for c in r["output"]["citations"])
+    assert r["output"]["citations"]
+    assert any(c["source_type"] in {"research", "runtime"} for c in r["output"]["citations"])
 
 
 def test_strategy_count_question_uses_runtime_registry_not_manual_docs():

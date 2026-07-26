@@ -62,7 +62,7 @@ def test_route_usage_questions_to_system_guide_skill():
     assert skill.name == "system_guide"
     result = skill.answer("这个系统怎么用", {"current_page": "overview"})
     assert result["tool"] is None
-    assert "system_manual" in result["output"].source_types
+    assert any(source in result["output"].source_types for source in ("research", "runtime"))
 
 
 def test_capability_questions_route_to_guide():
