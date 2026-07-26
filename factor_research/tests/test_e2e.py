@@ -2,6 +2,8 @@
 import sys
 from pathlib import Path
 
+import pytest
+
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
@@ -26,6 +28,7 @@ def test_run_daily_no_update():
     print("✅ test_run_daily_no_update passed")
 
 
+@pytest.mark.data_lake
 def test_validate_final():
     """validate_final.py runs and reports clean_ratio."""
     import subprocess

@@ -8,6 +8,7 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
+import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
@@ -15,6 +16,7 @@ sys.path.insert(0, str(ROOT))
 from scripts.research.style_neutralization import build_cne6_styles, style_loadings  # noqa: E402
 
 EXPECTED = {"Size", "Liquidity", "Beta", "Momentum", "ResidVol", "Value_BP", "Value_EP", "Growth", "Quality"}
+pytestmark = pytest.mark.data_lake
 
 
 def _synthetic():

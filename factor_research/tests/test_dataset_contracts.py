@@ -87,6 +87,7 @@ def _manifest_dataset_names() -> list[str]:
     return names
 
 
+@pytest.mark.data_lake
 def test_full_coverage_30_datasets_declared():
     """两 manifest 全部数据集经别名归一后都能在声明表找到;mode 合法。"""
     names = _manifest_dataset_names()

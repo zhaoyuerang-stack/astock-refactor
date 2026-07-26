@@ -20,9 +20,24 @@ PIT 数据 → 因子 → BacktestEngine → workflow/9-Gate
 
 ## 验证
 
+公开仓源码验证：
+
+```bash
+cd factor_research
+bash scripts/test_source_only.sh
+```
+
+它运行静态守卫和全部无数据依赖测试；私有数据湖不存在时，明确标记为
+`data_lake` 的集成测试会跳过。
+
+完整生产数据验证仍然 fail-closed：
+
 ```bash
 cd factor_research
 bash scripts/test_all.sh
 ```
 
-数据湖 payload 不进入 Git。需要真实数据验证时，请按 `factor_research/docs/agent_skills/data_source_onboarding.md` 接入独立数据副本；不要把本仓指向正在运行的生产数据湖。
+数据湖 payload 不进入 Git。需要真实数据验证时，请按
+`factor_research/docs/agent_skills/data_source_onboarding.md` 接入独立数据副本；
+不要把本仓指向正在运行的生产数据湖。也可用
+`REQUIRE_DATA_LAKE=1 python3 -m pytest` 强制所有数据集成测试执行。

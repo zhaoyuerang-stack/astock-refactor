@@ -67,6 +67,7 @@ def test_factor_card_pulls_live_registry_not_snapshot():
         semantics.factor_card(fake_name)
 
 
+@pytest.mark.data_lake
 def test_dataset_card_contract_pulled_from_schema_for_all_30():
     """30 个数据集 contract_missing 全 False,timeline ∈ 合法词表;契约来自声明表非编造。"""
     inv = semantics.list_semantic_entities()

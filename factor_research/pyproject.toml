@@ -61,6 +61,9 @@ pythonpath = ["."]
 # tests/ 全量 + 根目录唯一的 pytest 风格模块 test_engine.py
 testpaths = ["tests", "test_engine.py"]
 addopts = "-q"
+markers = [
+  "data_lake: requires the private canonical data-lake payload",
+]
 
 [tool.ruff]
 line-length = 100

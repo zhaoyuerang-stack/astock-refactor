@@ -11,6 +11,8 @@ import os
 import sys
 from pathlib import Path
 
+import pytest
+
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 os.chdir(ROOT)
@@ -29,6 +31,7 @@ def test_read_endpoints_callable():
     print(f"✅ read endpoints callable (strategies={len(strategies)}, factors={len(factors)})")
 
 
+@pytest.mark.data_lake
 def test_backtest_smoke():
     res = run_backtest(start="2024-01-01")
     assert isinstance(res, BacktestResult)
@@ -41,6 +44,7 @@ def test_backtest_smoke():
           f"回撤={res.maxdd:.2%} ({res.n_stocks}只×{res.n_days}日)")
 
 
+@pytest.mark.data_lake
 def test_service_matches_strategy_lake():
     """铁证:同区间 service 结果与 strategy_lake.py 逐项相等。"""
     import strategy_lake  # 导入即 chdir 到 factor_research(模块级),不跑 main

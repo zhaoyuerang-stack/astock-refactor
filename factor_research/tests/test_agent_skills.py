@@ -10,6 +10,8 @@ import os
 import sys
 from pathlib import Path
 
+import pytest
+
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 os.chdir(ROOT)
@@ -178,6 +180,7 @@ def test_stock_code_safety_overrides_llm():
     assert sk.name == "stock_data"      # 安全前置:抽到代码必走数据源
 
 
+@pytest.mark.data_lake
 def test_stock_resolves_by_name():
     from services.read.stocks import resolve_stock_code
     assert resolve_stock_code("汇川技术股票怎么样") == "300124"

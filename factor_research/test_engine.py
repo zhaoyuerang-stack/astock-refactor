@@ -18,6 +18,7 @@ os.chdir(Path(__file__).parent)
 
 import numpy as np
 import pandas as pd
+import pytest
 
 from core.engine import (
     BacktestConfig,
@@ -32,6 +33,9 @@ def _lake_available() -> bool:
     """与 lake.load_lake.load_prices 相同的判定:prices 日线目录有无 parquet。"""
     daily = Path("data_lake/price/daily")
     return daily.is_dir() and any(daily.glob("*.parquet"))
+
+
+requires_data_lake = pytest.mark.data_lake
 
 
 # ---------------------------------------------------------------------------
@@ -84,6 +88,7 @@ def _make_test_signal_weights():
 # Test 1: BacktestResult.metrics matches core.backtest.metrics()
 # ---------------------------------------------------------------------------
 
+@requires_data_lake
 def test_backtest_result_metrics():
     """Engine result.metrics must equal legacy metrics() function."""
     from engine.metrics import metrics
@@ -108,6 +113,7 @@ def test_backtest_result_metrics():
 # Test 2: Engine.run(weights) uses the canonical engine weights path
 # ---------------------------------------------------------------------------
 
+@requires_data_lake
 def test_engine_run_weights():
     """BacktestEngine.run with pre-computed weights must match its canonical weights path."""
     close, weights_dict, timing = _make_test_signal_weights()
@@ -128,6 +134,7 @@ def test_engine_run_weights():
 # Test 3: Engine.run(factor) == weights path
 # ---------------------------------------------------------------------------
 
+@requires_data_lake
 def test_engine_run_factor():
     """Signal(factor=...) via engine must match Signal(weights=...) via engine."""
     from factors.small_cap import small_cap_factor, small_cap_timing
@@ -160,6 +167,7 @@ def test_engine_run_factor():
 # Test 4: BacktestResult properties are consistent
 # ---------------------------------------------------------------------------
 
+@requires_data_lake
 def test_backtest_result_properties():
     """Derived properties must be internally consistent."""
     from strategies.small_cap import run_small_cap_strategy
@@ -178,6 +186,7 @@ def test_backtest_result_properties():
 # Test 5: run_small_cap_strategy_engine() matches run_small_cap_strategy()
 # ---------------------------------------------------------------------------
 
+@requires_data_lake
 def test_small_cap_strategy_engine():
     """The engine-based small-cap wrapper must match the legacy implementation."""
     from strategies.small_cap import run_small_cap_strategy

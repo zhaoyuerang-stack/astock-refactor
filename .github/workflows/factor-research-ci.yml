@@ -1,4 +1,4 @@
-name: factor-research canonical verification
+name: factor-research source-only verification
 
 on:
   pull_request:
@@ -12,7 +12,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  canonical-verification:
+  source-verification:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -26,5 +26,5 @@ jobs:
           cache-dependency-path: factor_research/pyproject.toml
       - name: Install project and test dependencies
         run: python -m pip install --disable-pip-version-check -e "factor_research[dev]"
-      - name: Run canonical verification
-        run: bash factor_research/scripts/test_all.sh
+      - name: Run source-only verification
+        run: bash factor_research/scripts/test_source_only.sh

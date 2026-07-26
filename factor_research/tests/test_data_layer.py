@@ -6,6 +6,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 import pandas as pd
+import pytest
 
 from lake.load_lake import (
     load_capital_panel,
@@ -17,6 +18,7 @@ from lake.schema import CAPITAL_FIELDS, FUNDAMENTAL_FIELDS
 
 # Use a narrow date window for fast test execution.
 TEST_START = "2025-06-01"
+pytestmark = pytest.mark.data_lake
 
 
 def test_load_prices_shape():

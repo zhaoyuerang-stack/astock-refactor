@@ -57,6 +57,7 @@ def test_handwiring_gross_margin_manually_would_be_rejected():
 
 # ── 真实数据 happy path:gross_margin 输出截面 z-score,非全 NaN ────────────
 
+@pytest.mark.data_lake
 def test_gross_margin_computes_on_real_lake_data():
     from factors.fundamental import gross_margin
     from lake.load_lake import load_raw_close

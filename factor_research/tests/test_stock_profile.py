@@ -5,12 +5,16 @@ import os
 import sys
 from pathlib import Path
 
+import pytest
+
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 os.chdir(ROOT)
 
 from services.agent.planner import ask
 from services.read.stocks import stock_profile
+
+pytestmark = pytest.mark.data_lake
 
 
 def test_stock_profile_reads_price_and_basic_data():

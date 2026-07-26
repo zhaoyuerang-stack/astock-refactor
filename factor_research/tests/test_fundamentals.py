@@ -15,6 +15,7 @@ sys.path.insert(0, str(ROOT))
 os.chdir(ROOT)
 
 import pandas as pd
+import pytest
 
 from factory.fundamental import (
     BargainingPowerEstimator,
@@ -64,6 +65,7 @@ def test_pricing_gap_states():
 
 
 # ── 读层:真实数据 + None-safe + 防未来对齐 ──────────────────────────────────────
+@pytest.mark.data_lake
 def test_fundamental_profile_real_data():
     p = fundamental_profile("300124")
     assert p["code"] == "300124" and p["name"]
@@ -81,6 +83,7 @@ def test_fundamental_profile_real_data():
         assert 0 < b["dpo_days"] < 1095
 
 
+@pytest.mark.data_lake
 def test_fundamental_profile_uses_latest_disclosed_anndate():
     """防未来:as_of 应等于该股财务表里最大的 ann_date(只取已披露最新)。"""
     p = fundamental_profile("300124")
