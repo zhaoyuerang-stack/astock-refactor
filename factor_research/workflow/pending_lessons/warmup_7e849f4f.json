@@ -1,0 +1,15 @@
+{
+  "fingerprint": "7e849f4f",
+  "trigger": "Phase_warmup",
+  "pattern": "预热完整",
+  "detail": "Leading NaN: 89d > max window 60d. Data may have gaps at start.",
+  "fix": "Load price data from >=2 years before backtest start. For typical window=60, load from at least 2016 for a 2018 start.",
+  "hit_count": 3,
+  "first_seen": "2026-06-17",
+  "last_seen": "2026-06-17",
+  "strategies": [
+    "small_cap_factor__window90",
+    "small_cap_factor__window120",
+    "small_cap_factor__window252"
+  ]
+}

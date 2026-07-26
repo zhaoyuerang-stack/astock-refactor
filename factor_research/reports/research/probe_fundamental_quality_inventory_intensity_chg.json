@@ -1,0 +1,49 @@
+{
+  "factor": "factors.fundamental_quality:inventory_intensity_chg",
+  "params": {},
+  "universe": "all",
+  "window": {
+    "start": "2018-01-01",
+    "cutoff": "2022-12-31",
+    "end": "2024-12-31"
+  },
+  "raw_ic": {
+    "full": {
+      "ic": -0.0052,
+      "icir": 0.16,
+      "months": 83
+    },
+    "IS": {
+      "ic": -0.0088,
+      "icir": 0.27,
+      "months": 60
+    },
+    "OOS": {
+      "ic": 0.0043,
+      "icir": 0.15,
+      "months": 23
+    }
+  },
+  "residual_ic_size_liq": {
+    "full": {
+      "ic": -0.0012,
+      "icir": 0.04,
+      "months": 83
+    },
+    "IS": {
+      "ic": -0.0037,
+      "icir": 0.12,
+      "months": 60
+    },
+    "OOS": {
+      "ic": 0.0052,
+      "icir": 0.16,
+      "months": 23
+    }
+  },
+  "style_corr": {
+    "size": -0.038,
+    "liquidity": 0.032,
+    "momentum": -0.005
+  }
+}

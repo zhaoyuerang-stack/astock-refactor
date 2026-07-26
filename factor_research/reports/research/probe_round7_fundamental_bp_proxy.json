@@ -1,0 +1,49 @@
+{
+  "factor": "factors.fundamental:bp_proxy",
+  "params": {},
+  "universe": "all",
+  "window": {
+    "start": "2018-01-01",
+    "cutoff": "2022-12-31",
+    "end": "2024-12-31"
+  },
+  "raw_ic": {
+    "full": {
+      "ic": 0.0619,
+      "icir": 0.4,
+      "months": 83
+    },
+    "IS": {
+      "ic": 0.0501,
+      "icir": 0.29,
+      "months": 60
+    },
+    "OOS": {
+      "ic": 0.0928,
+      "icir": 0.99,
+      "months": 23
+    }
+  },
+  "residual_ic_size_liq": {
+    "full": {
+      "ic": 0.0263,
+      "icir": 0.17,
+      "months": 83
+    },
+    "IS": {
+      "ic": 0.0136,
+      "icir": 0.08,
+      "months": 60
+    },
+    "OOS": {
+      "ic": 0.0592,
+      "icir": 0.59,
+      "months": 23
+    }
+  },
+  "style_corr": {
+    "size": 0.082,
+    "liquidity": -0.339,
+    "momentum": -0.098
+  }
+}

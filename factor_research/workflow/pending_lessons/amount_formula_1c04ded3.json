@@ -1,0 +1,16 @@
+{
+  "fingerprint": "1c04ded3",
+  "trigger": "Phase1_amount_formula",
+  "pattern": "amount = vol×100×raw_close",
+  "detail": "Input amount is correct but perturbation inconclusive. Verify factor computes amount from raw_close internally.",
+  "fix": "Use amount = volume * 100 * raw_close, not adjusted close.",
+  "hit_count": 4,
+  "first_seen": "2026-06-06 20:07:47.083860",
+  "last_seen": "2026-06-06 20:07:48.503024",
+  "strategies": [
+    "v2.0 CLEAN",
+    "LEAKY timing",
+    "LEAKY amount",
+    "size-earnings"
+  ]
+}

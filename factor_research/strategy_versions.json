@@ -1,0 +1,5277 @@
+{
+  "families": [
+    {
+      "id": "alternative-flow-shareholder",
+      "versions": [
+        {
+          "version": "v1.0",
+          "date": "2026-06-28",
+          "desc": "大深搜 Path A 另类因子冠军版本，由 0.6×北向流入 + 0.4×筹码集中 合成。回测叠加 MA16 每日大盘均线择时。",
+          "config": {
+            "family": "alternative-flow-shareholder",
+            "version": "v1.0",
+            "formula": "{'type': 'linear_combo', 'terms': [{'factor': 'northbound_accumulation', 'params': {'window': 20}, 'transforms': ['mad_clip', 'zscore', 'rank'], 'weight': 0.6}, {'factor': 'holder_count_chg', 'params': {'window': 191}, 'transforms': ['mad_clip', 'zscore', 'rank'], 'weight': 0.4}], 'direction': 'positive', 'thesis': {'mechanism': 'northbound_accumulation 与 momentum 的互补信号组合,用于受控自动研究初筛。', 'citation': 'autoresearch island search'}}",
+            "rebalance_days": 20,
+            "top_n": 25,
+            "timing_ma": 16
+          },
+          "data_scope": "data_lake·2018-2026",
+          "metrics": {
+            "annual": -0.02672989603214497,
+            "maxdd": -0.535361720793571,
+            "sharpe": -0.1457517026430095,
+            "calmar": -0.049928665038888154,
+            "n": 2055,
+            "hit": false
+          },
+          "status": "候选",
+          "notes": "裸回测最大回撤-54.8%超标被拒，通过叠加每日 MA16 大盘均线择时，最大回撤改善至 -53.54%，夏普提升。符合另类分流器候选特征。",
+          "evidence": {
+            "hypothesis_id": "70f35889c39918d2",
+            "experiment_ids": [
+              "v1.0"
+            ]
+          },
+          "admission": {},
+          "nine_gate": {
+            "run_date": "2026-06-30",
+            "passed_all": false,
+            "dsr": -1.3430326784196134,
+            "dsr_p": 0.91036930366796,
+            "dsr_significant": false,
+            "psr": 0.28379236618623016,
+            "n_trials": 4,
+            "wf_sharpe": 0.2932350329579298,
+            "wf_positive_ratio": 0.9230769230769231,
+            "cv_sharpe": 0.2932350329579298,
+            "cv_win_rate": 0.9230769230769231,
+            "sortino": -0.16220041087268414,
+            "var_95": 0.022799384065767273,
+            "cvar_95": 0.03535259224207306,
+            "tail_ratio": 0.9778160304714878,
+            "ic_mean": 0.034908408576594135,
+            "nw_icir": 0.11276492859655235,
+            "ic_win_rate": 0.6816143497757847,
+            "monotonicity_corr": 0.7,
+            "ic_decay": {
+              "1": 0.010174022356689925,
+              "5": 0.02043218712589043,
+              "10": 0.02603421557052609,
+              "20": 0.034546783549661016
+            },
+            "neut_nw_icir": 0.28677111172416153,
+            "icir_retention": 1.1512026727852296,
+            "cost_decay_rate": 1.0,
+            "capacity_limit_aum": 5000000,
+            "annual_1x": -0.045083596195817456,
+            "annual_2x": -0.1571244125223481,
+            "annual_3x": -0.2691652288488787,
+            "bull_sharpe": 2.048232489000876,
+            "bear_sharpe": -4.595345979918241,
+            "bull_annual": 0.5140298864947767,
+            "bear_annual": -0.8010050247935009,
+            "daily_mean_expected": -0.00017890315950721213,
+            "daily_vol_expected": 0.014195144328661804,
+            "max_live_drawdown_limit": -1.0441920736084533,
+            "gate4_verdict": "FAIL",
+            "gate7_verdict": "WARN",
+            "status": "PERSISTED",
+            "strategy": "alternative-flow-shareholder",
+            "version": "v1.0"
+          }
+        }
+      ],
+      "name": "北向资金与筹码集中另类组合",
+      "hypothesis": "北向资金累积流入(聪明资金维度)+ 筹码集中度股东户数变化率(筹码吸筹维度)。二者低相关且具备中长周期趋势，旨在规避小盘贝塔污染、获取纯粹另类超额。",
+      "regime": "小盘占优/宽信用环境(大盘趋势 MA16 指引每日仓位避险)",
+      "decay_signal": "北向资金转为净流出 / 筹码发散股东户数持续增加",
+      "status": "active",
+      "style_betas": {},
+      "capacity_m": 0.0,
+      "failure_boundaries": {}
+    },
+    {
+      "id": "amount-timing",
+      "versions": [
+        {
+          "version": "v1.0",
+          "date": "2026-06-18",
+          "desc": "成交额排名 + MA16 趋势择时（可交易约束版，参考）",
+          "config": {
+            "factor": "amount.rank(pct=True)",
+            "timing": "small-cap MA16 binary",
+            "top_n": 25,
+            "rebal_days": 20,
+            "leverage": 1.25,
+            "exclude_st": true,
+            "exclude_suspend": true,
+            "exclude_limits": true,
+            "exclude_star": true,
+            "min_age_days": 60,
+            "min_adv20": 10000000,
+            "max_participation": 0.1,
+            "cost": {
+              "buy": 0.00225,
+              "sell": 0.00275,
+              "financing_rate": 0.065
+            }
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2010-2026",
+            "survivorship_bias": false,
+            "warmup": "2010 预热切片",
+            "tradable_filters": [
+              "ST",
+              "suspend",
+              "up/down limit",
+              "listed < 60d",
+              "ADV20 >= 10M"
+            ]
+          },
+          "metrics": {
+            "annual": 0.188,
+            "maxdd": -0.199,
+            "sharpe": 0.97,
+            "calmar": 0.94,
+            "hit": true,
+            "wf_annual": 0.181,
+            "wf_maxdd": -0.124,
+            "wf_sharpe": 1.04
+          },
+          "status": "参考",
+          "notes": "可交易约束后勉强过单策略门槛，但边际审计为负：对 small_cap_v2 与 illiq_v3.1 相关约 0.75，加入双基线 book 后 delta_sharpe 为负；风格中性化显示主要是 Size/Liquidity 代理，不应登记为在册核心 alpha。",
+          "evidence": {},
+          "nine_gate": {
+            "run_date": "2026-06-29",
+            "status": "GATE2_ONLY",
+            "gate2_verdict": "WARN",
+            "gate2_details": "IC Win%=20.1% < 55%",
+            "ic_mean": -0.12596,
+            "ic_std": 0.14997,
+            "ic_ir": -0.8399,
+            "ic_ir_nw": 0.2246,
+            "ic_win_rate": 0.201,
+            "ic_count": 3980,
+            "monotonicity_corr": -1.0,
+            "factor_quality": {
+              "status": "OK",
+              "n_dates": 4000,
+              "n_stocks": 5207,
+              "nan_pct": 0.3706,
+              "zero_std_pct": 0.0
+            }
+          },
+          "admission": {}
+        }
+      ],
+      "name": "成交额排名 + MA16趋势择时",
+      "hypothesis": "全市场成交额排名捕捉流动性/规模溢价，MA16 过滤弱势期；在可交易约束下更像小盘/低流动性风格代理，而非独立特质 alpha。",
+      "regime": "小盘/低流动性风格主导期；小资金可交易，容量受限。",
+      "decay_signal": "成交额排名 IC 持续低于 0.02 / 单票参与率超过 10% / ST、涨跌停、次新股暴露上升",
+      "status": "active",
+      "style_betas": {
+        "size": 0.64,
+        "liquidity": 0.48,
+        "volatility": 0.34,
+        "momentum": 0.31
+      },
+      "capacity_m": 50.0,
+      "failure_boundaries": {
+        "max_drawdown": -0.2,
+        "rolling_12m_sharpe": 0.9
+      }
+    },
+    {
+      "id": "autoresearch_2335eeab",
+      "versions": [
+        {
+          "version": "v1.0",
+          "date": "2026-06-17",
+          "desc": "autoresearch_2335eeab vv1.0 — auto-registered via workflow",
+          "config": {
+            "top_n": 25,
+            "rebalance_days": 20,
+            "leverage": 1.25,
+            "buy_cost": 0.00225,
+            "sell_cost": 0.00275,
+            "financing_rate": 0.065,
+            "ast": {
+              "type": "linear_combo",
+              "terms": [
+                {
+                  "factor": "net_profit_yoy",
+                  "params": {},
+                  "transforms": [
+                    "mad_clip",
+                    "zscore",
+                    "rank"
+                  ],
+                  "weight": 0.59
+                },
+                {
+                  "factor": "volume_ratio",
+                  "params": {
+                    "window": 77
+                  },
+                  "transforms": [
+                    "mad_clip",
+                    "zscore",
+                    "rank"
+                  ],
+                  "weight": 1
+                }
+              ],
+              "direction": "negative",
+              "thesis": {
+                "mechanism": "基本面盈利增长与价格趋势共同强化趋势延续性，盈利改善为动量提供基本面支撑，降低纯价格动量因噪声交易导致的回调风险。",
+                "citation": "autoresearch island search"
+              }
+            },
+            "factor_fn_name": "factors.autoresearch_dsl.compute_dsl_factor",
+            "factor_params": {
+              "ast": {
+                "type": "linear_combo",
+                "terms": [
+                  {
+                    "factor": "net_profit_yoy",
+                    "params": {},
+                    "transforms": [
+                      "mad_clip",
+                      "zscore",
+                      "rank"
+                    ],
+                    "weight": 0.59
+                  },
+                  {
+                    "factor": "volume_ratio",
+                    "params": {
+                      "window": 77
+                    },
+                    "transforms": [
+                      "mad_clip",
+                      "zscore",
+                      "rank"
+                    ],
+                    "weight": 1
+                  }
+                ],
+                "direction": "negative",
+                "thesis": {
+                  "mechanism": "基本面盈利增长与价格趋势共同强化趋势延续性，盈利改善为动量提供基本面支撑，降低纯价格动量因噪声交易导致的回调风险。",
+                  "citation": "autoresearch island search"
+                }
+              }
+            },
+            "data_dependencies": [
+              "fundamental/net_profit_yoy",
+              "price/close",
+              "price/volume"
+            ],
+            "cost": {
+              "buy": 0.00225,
+              "sell": 0.00275,
+              "financing_rate": 0.065
+            }
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2010-2026",
+            "survivorship_bias": false,
+            "wf_validated": true,
+            "phase1_audited": true,
+            "reproducibility": {
+              "date": "2026-06-17",
+              "git_commit": "bbc8986d5",
+              "python": "3.13.3",
+              "dependencies": {
+                "pandas": "3.0.3",
+                "numpy": "2.2.6",
+                "scipy": "1.17.1"
+              },
+              "data_snapshot": "{\"daily_all.parquet\": \"2026-06-16\", \"daily_raw_all.parquet\": \"2026-06-16\", \"fundamental_batch.parquet\": \"2026-06-02\"}",
+              "engine": "core.engine.BacktestEngine"
+            }
+          },
+          "metrics": {
+            "annual": -0.3053781544659148,
+            "maxdd": -0.9388004903195821,
+            "sharpe": -1.2920316636204094,
+            "vol": 0.23635500821257965,
+            "calmar": 0.32528546545811815,
+            "end_nav": 0.06443324097120243,
+            "hit": false,
+            "source": "path_live_rerun",
+            "as_of": "2026-07-23",
+            "window": "2018-01-02 → 2026-07-17",
+            "n": 2071,
+            "returns_sha256": "ea070a85745e222bfbbf68ceacc6ff6e669dd4edf8c9ae6ba28e0c16be74e7d7",
+            "path": "strategies.ast_config_strategy.run_ast_config_strategy"
+          },
+          "status": "候选",
+          "notes": "Workflow Phase 1-3 validated. WF: +28.7% ann / -28.6% dd.\n[metrics@path_live_rerun 2026-07-23 annual=-30.54% maxdd=-93.88% hit=False]",
+          "evidence": {
+            "hypothesis_id": "ce6ecd6271c50a96",
+            "experiment_ids": [],
+            "data_incidents": [
+              {
+                "code": "DQ_2026_001_FUNDAMENTAL_BATCH_ANNDATE",
+                "incident_id": "DQ-2026-001",
+                "resolved": true,
+                "reasons": [
+                  "net_profit_yoy"
+                ],
+                "note": "live re-run 完成(2026-07-23),metrics 已写回。annual 0.2397→-0.3054、maxdd -0.2594→-0.9388、sharpe 1.2997→-1.2920,方向性反转(正转负)。与 round7 已确认的 net_profit_yoy standalone 负IC结论一致,合理推测原正收益是基于受污染(滞后约1年)数据的artifact,非真实alpha;未做受控A/B对比,不作最终归因结论。"
+              }
+            ],
+            "production_blocked": false,
+            "metrics_history": [
+              {
+                "replaced_at": "2026-07-23T08:35:38.855878+00:00",
+                "metrics": {
+                  "annual_2018": 0.2397,
+                  "maxdd_2018": -0.2594,
+                  "sharpe_2018": 1.2997,
+                  "annual_2023": 0.2809,
+                  "maxdd_2023": -0.2083,
+                  "sharpe_2023": 1.409,
+                  "annual_2010": 0.2406,
+                  "maxdd_2010": -0.4005,
+                  "sharpe_2010": 1.0159,
+                  "annual": 0.2397,
+                  "maxdd": -0.2594,
+                  "sharpe": 1.2997,
+                  "calmar": 0.924,
+                  "hit": false,
+                  "wf_annual": 0.2868,
+                  "wf_maxdd": -0.2858,
+                  "wf_sharpe": 1.2977
+                },
+                "reason": "path_live_rerun_refresh",
+                "note": "path_analysis live re-run 纠偏；旧 metrics 见 evidence.metrics_history；nine_gate 若标 stale 须另跑 run_nine_gates_all --persist"
+              }
+            ],
+            "metrics_refresh": {
+              "at": "2026-07-23T08:35:38.855886+00:00",
+              "provenance": "live_rerun",
+              "path": "strategies.ast_config_strategy.run_ast_config_strategy",
+              "window": "2018-01-02 → 2026-07-17",
+              "returns_sha256": "ea070a85745e222bfbbf68ceacc6ff6e669dd4edf8c9ae6ba28e0c16be74e7d7",
+              "material_delta_keys": [
+                "annual",
+                "maxdd",
+                "sharpe"
+              ],
+              "note": "path_analysis live re-run 纠偏；旧 metrics 见 evidence.metrics_history；nine_gate 若标 stale 须另跑 run_nine_gates_all --persist"
+            }
+          },
+          "nine_gate": {},
+          "admission": {}
+        }
+      ],
+      "name": "autoresearch_2335eeab",
+      "hypothesis": "基本面盈利增长与价格趋势共同强化趋势延续性，盈利改善为动量提供基本面支撑，降低纯价格动量因噪声交易导致的回调风险。",
+      "regime": "",
+      "decay_signal": "",
+      "status": "active",
+      "style_betas": {},
+      "capacity_m": 0.0,
+      "failure_boundaries": {}
+    },
+    {
+      "id": "autoresearch_234c8ab7",
+      "versions": [
+        {
+          "version": "v1.0",
+          "date": "2026-06-17",
+          "desc": "autoresearch_234c8ab7 vv1.0 — auto-registered via workflow",
+          "config": {
+            "top_n": 25,
+            "rebalance_days": 20,
+            "leverage": 1.25,
+            "buy_cost": 0.00225,
+            "sell_cost": 0.00275,
+            "financing_rate": 0.065,
+            "ast": {
+              "type": "linear_combo",
+              "terms": [
+                {
+                  "factor": "roe",
+                  "transforms": [
+                    "mad_clip",
+                    "rank"
+                  ],
+                  "weight": -0.61
+                },
+                {
+                  "factor": "volatility",
+                  "params": {
+                    "window": 60
+                  },
+                  "transforms": [
+                    "mad_clip",
+                    "zscore",
+                    "rank"
+                  ],
+                  "weight": -0.8
+                }
+              ],
+              "direction": "positive",
+              "thesis": {
+                "mechanism": "高质量（高ROE）且低波动性的股票提供稳定超额收益，波动率代表噪音风险，负向加权剥离不确定性后盈利能力价值更显著。",
+                "citation": "autoresearch island search"
+              }
+            },
+            "factor_fn_name": "factors.autoresearch_dsl.compute_dsl_factor",
+            "factor_params": {
+              "ast": {
+                "type": "linear_combo",
+                "terms": [
+                  {
+                    "factor": "roe",
+                    "transforms": [
+                      "mad_clip",
+                      "rank"
+                    ],
+                    "weight": -0.61
+                  },
+                  {
+                    "factor": "volatility",
+                    "params": {
+                      "window": 60
+                    },
+                    "transforms": [
+                      "mad_clip",
+                      "zscore",
+                      "rank"
+                    ],
+                    "weight": -0.8
+                  }
+                ],
+                "direction": "positive",
+                "thesis": {
+                  "mechanism": "高质量（高ROE）且低波动性的股票提供稳定超额收益，波动率代表噪音风险，负向加权剥离不确定性后盈利能力价值更显著。",
+                  "citation": "autoresearch island search"
+                }
+              }
+            },
+            "data_dependencies": [
+              "fundamental/roe",
+              "price/close"
+            ],
+            "cost": {
+              "buy": 0.00225,
+              "sell": 0.00275,
+              "financing_rate": 0.065
+            }
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2010-2026",
+            "survivorship_bias": false,
+            "wf_validated": true,
+            "phase1_audited": true,
+            "reproducibility": {
+              "date": "2026-06-17",
+              "git_commit": "bbc8986d5",
+              "python": "3.13.3",
+              "dependencies": {
+                "pandas": "3.0.3",
+                "numpy": "2.2.6",
+                "scipy": "1.17.1"
+              },
+              "data_snapshot": "{\"daily_all.parquet\": \"2026-06-16\", \"daily_raw_all.parquet\": \"2026-06-16\", \"fundamental_batch.parquet\": \"2026-06-02\"}",
+              "engine": "core.engine.BacktestEngine"
+            }
+          },
+          "metrics": {
+            "annual": -0.3414784906940275,
+            "maxdd": -0.9544590043558173,
+            "sharpe": -1.4579031136746916,
+            "vol": 0.2342257777564656,
+            "calmar": 0.3577717734712953,
+            "end_nav": 0.04804784357418169,
+            "hit": false,
+            "source": "path_live_rerun",
+            "as_of": "2026-07-23",
+            "window": "2018-01-02 → 2026-07-17",
+            "n": 2071,
+            "returns_sha256": "8651d19fc374d6edf8974311a59a15075b947363cea87a23ddf7098a1003ceac",
+            "path": "strategies.ast_config_strategy.run_ast_config_strategy"
+          },
+          "status": "候选",
+          "notes": "Workflow Phase 1-3 validated. WF: +32.1% ann / -35.4% dd.\n[metrics@path_live_rerun 2026-07-23 annual=-34.15% maxdd=-95.45% hit=False]",
+          "evidence": {
+            "hypothesis_id": "2a91a524182eaef4",
+            "experiment_ids": [],
+            "data_incidents": [
+              {
+                "code": "DQ_2026_001_FUNDAMENTAL_BATCH_ANNDATE",
+                "incident_id": "DQ-2026-001",
+                "resolved": true,
+                "reasons": [
+                  "roe"
+                ],
+                "note": "live re-run 完成(2026-07-23),metrics 已写回。annual 0.128→-0.3415、maxdd -0.2878→-0.9545、sharpe 0.7041→-1.4579,方向性反转。未做受控A/B对比,不作最终归因结论。"
+              }
+            ],
+            "production_blocked": false,
+            "metrics_history": [
+              {
+                "replaced_at": "2026-07-23T08:37:42.109199+00:00",
+                "metrics": {
+                  "annual_2018": 0.128,
+                  "maxdd_2018": -0.2878,
+                  "sharpe_2018": 0.7041,
+                  "annual_2023": 0.2138,
+                  "maxdd_2023": -0.2919,
+                  "sharpe_2023": 1.2112,
+                  "annual_2010": 0.3477,
+                  "maxdd_2010": -0.3986,
+                  "sharpe_2010": 1.4217,
+                  "annual": 0.128,
+                  "maxdd": -0.2878,
+                  "sharpe": 0.7041,
+                  "calmar": 0.4446,
+                  "hit": false,
+                  "wf_annual": 0.3213,
+                  "wf_maxdd": -0.3542,
+                  "wf_sharpe": 1.5046
+                },
+                "reason": "path_live_rerun_refresh",
+                "note": "path_analysis live re-run 纠偏；旧 metrics 见 evidence.metrics_history；nine_gate 若标 stale 须另跑 run_nine_gates_all --persist"
+              }
+            ],
+            "metrics_refresh": {
+              "at": "2026-07-23T08:37:42.109210+00:00",
+              "provenance": "live_rerun",
+              "path": "strategies.ast_config_strategy.run_ast_config_strategy",
+              "window": "2018-01-02 → 2026-07-17",
+              "returns_sha256": "8651d19fc374d6edf8974311a59a15075b947363cea87a23ddf7098a1003ceac",
+              "material_delta_keys": [
+                "annual",
+                "maxdd",
+                "sharpe"
+              ],
+              "note": "path_analysis live re-run 纠偏；旧 metrics 见 evidence.metrics_history；nine_gate 若标 stale 须另跑 run_nine_gates_all --persist"
+            }
+          },
+          "nine_gate": {},
+          "admission": {}
+        }
+      ],
+      "name": "autoresearch_234c8ab7",
+      "hypothesis": "高质量（高ROE）且低波动性的股票提供稳定超额收益，波动率代表噪音风险，负向加权剥离不确定性后盈利能力价值更显著。",
+      "regime": "",
+      "decay_signal": "",
+      "status": "active",
+      "style_betas": {},
+      "capacity_m": 0.0,
+      "failure_boundaries": {}
+    },
+    {
+      "id": "autoresearch_6332599c",
+      "versions": [
+        {
+          "version": "v1.0",
+          "date": "2026-06-28",
+          "desc": "autoresearch_6332599c vv1.0 — auto-registered via workflow",
+          "config": {
+            "top_n": 25,
+            "rebalance_days": 20,
+            "leverage": 1.25,
+            "buy_cost": 0.00225,
+            "sell_cost": 0.00275,
+            "financing_rate": 0.065,
+            "ast": {
+              "type": "linear_combo",
+              "terms": [
+                {
+                  "factor": "holder_count_chg",
+                  "params": {
+                    "window": 80
+                  },
+                  "transforms": [
+                    "mad_clip",
+                    "zscore",
+                    "rank",
+                    "regime_gate"
+                  ],
+                  "weight": 0.6
+                }
+              ],
+              "direction": "positive",
+              "neutralize": [
+                "size"
+              ],
+              "transforms": [
+                "error_feedback_correction"
+              ],
+              "execution": {
+                "portfolio_size": 25,
+                "rebalance_freq": "40D",
+                "smoothing_window": 10
+              },
+              "thesis": {
+                "mechanism": "Co-evolved Evolved Strategy: 筹码低频吸筹集中度特征 + 10日平滑与40日低频调仓 + 误差修正反向传播反馈环",
+                "citation": "Evolved in Joint Search + Prehoc Backpropagation"
+              }
+            },
+            "factor_fn_name": "factors.autoresearch_dsl.compute_dsl_factor",
+            "factor_params": {
+              "ast": {
+                "type": "linear_combo",
+                "terms": [
+                  {
+                    "factor": "holder_count_chg",
+                    "params": {
+                      "window": 80
+                    },
+                    "transforms": [
+                      "mad_clip",
+                      "zscore",
+                      "rank",
+                      "regime_gate"
+                    ],
+                    "weight": 0.6
+                  }
+                ],
+                "direction": "positive",
+                "neutralize": [
+                  "size"
+                ],
+                "transforms": [
+                  "error_feedback_correction"
+                ],
+                "execution": {
+                  "portfolio_size": 25,
+                  "rebalance_freq": "40D",
+                  "smoothing_window": 10
+                },
+                "thesis": {
+                  "mechanism": "Co-evolved Evolved Strategy: 筹码低频吸筹集中度特征 + 10日平滑与40日低频调仓 + 误差修正反向传播反馈环",
+                  "citation": "Evolved in Joint Search + Prehoc Backpropagation"
+                }
+              }
+            },
+            "data_dependencies": [
+              "holder/holdernumber",
+              "price/close"
+            ],
+            "cost": {
+              "buy": 0.00225,
+              "sell": 0.00275,
+              "financing_rate": 0.065
+            }
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2010-2026",
+            "survivorship_bias": false,
+            "wf_validated": false,
+            "phase1_audited": true,
+            "reproducibility": {
+              "date": "2026-06-28",
+              "git_commit": "e926c8cd7",
+              "python": "3.13.3",
+              "dependencies": {
+                "pandas": "3.0.3",
+                "numpy": "2.2.6",
+                "scipy": "1.17.1"
+              },
+              "data_snapshot": "{\"daily_all.parquet\": \"2026-06-26\", \"daily_raw_all.parquet\": \"2026-06-28\", \"fundamental_batch.parquet\": \"2026-06-02\"}",
+              "engine": "core.engine.BacktestEngine"
+            },
+            "holdout": {}
+          },
+          "metrics": {
+            "annual_2018": -0.0242,
+            "maxdd_2018": -0.3716,
+            "sharpe_2018": -0.115,
+            "annual_2010": 0.1036,
+            "maxdd_2010": -0.4461,
+            "sharpe_2010": 0.3947,
+            "annual": -0.0242,
+            "maxdd": -0.3716,
+            "sharpe": -0.115,
+            "calmar": -0.065,
+            "hit": false,
+            "wf_annual": 0.0803,
+            "wf_maxdd": -0.6395,
+            "wf_sharpe": 0.3372
+          },
+          "status": "候选",
+          "notes": "Workflow Phase 1-3 validated. WF: +8.0% ann / -64.0% dd.",
+          "evidence": {
+            "hypothesis_id": "d17adfabb99eab96",
+            "experiment_ids": []
+          },
+          "admission": {},
+          "nine_gate": {
+            "wf_sharpe": 0.3372038438987097,
+            "wf_annual": 0.08026218060817743,
+            "wf_positive_windows": 5,
+            "wf_total_windows": 11,
+            "wf_verdict": "FAIL"
+          },
+          "executable_spec": {
+            "spec": {
+              "family": "autoresearch_6332599c",
+              "version": "v1.0",
+              "universe": {
+                "type": "small_cap"
+              },
+              "data": {
+                "dependencies": [
+                  "holder/holdernumber",
+                  "price/close"
+                ]
+              },
+              "factor": {
+                "type": "factors.autoresearch_dsl.compute_dsl_factor",
+                "shift": 1,
+                "params": {
+                  "ast": {
+                    "type": "linear_combo",
+                    "terms": [
+                      {
+                        "factor": "holder_count_chg",
+                        "params": {
+                          "window": 80
+                        },
+                        "transforms": [
+                          "mad_clip",
+                          "zscore",
+                          "rank",
+                          "regime_gate"
+                        ],
+                        "weight": 0.6
+                      }
+                    ],
+                    "direction": "positive",
+                    "neutralize": [
+                      "size"
+                    ],
+                    "transforms": [
+                      "error_feedback_correction"
+                    ],
+                    "execution": {
+                      "portfolio_size": 25,
+                      "rebalance_freq": "40D",
+                      "smoothing_window": 10
+                    },
+                    "thesis": {
+                      "mechanism": "Co-evolved Evolved Strategy: 筹码低频吸筹集中度特征 + 10日平滑与40日低频调仓 + 误差修正反向传播反馈环",
+                      "citation": "Evolved in Joint Search + Prehoc Backpropagation"
+                    }
+                  }
+                }
+              },
+              "selection": {
+                "top_n": 25,
+                "rebalance_days": 40
+              },
+              "timing": {
+                "type": "factors.small_cap.small_cap_timing",
+                "params": {
+                  "ma_window": 16
+                }
+              },
+              "policy": {
+                "veto": "none"
+              },
+              "execution": {
+                "portfolio_size": 25,
+                "rebalance_freq": "40D",
+                "smoothing_window": 10,
+                "fill": "T_PLUS_1_CLOSE",
+                "cost_model": "A_SHARE_STANDARD_V1"
+              }
+            },
+            "spec_hash": "0d12a939ab0993208070121d5d17a146a32caa58a9448f3bc5847479385aa739"
+          }
+        }
+      ],
+      "name": "autoresearch_6332599c",
+      "hypothesis": "Co-evolved Evolved Strategy: 筹码低频吸筹集中度特征 + 10日平滑与40日低频调仓 + 误差修正反向传播反馈环",
+      "regime": "",
+      "decay_signal": "",
+      "status": "active",
+      "style_betas": {},
+      "capacity_m": 0.0,
+      "failure_boundaries": {}
+    },
+    {
+      "id": "autoresearch_8de70997",
+      "versions": [
+        {
+          "version": "v1.0",
+          "date": "2026-06-17",
+          "desc": "autoresearch_8de70997 vv1.0 — auto-registered via workflow",
+          "config": {
+            "top_n": 25,
+            "rebalance_days": 20,
+            "leverage": 1.25,
+            "buy_cost": 0.00225,
+            "sell_cost": 0.00275,
+            "financing_rate": 0.065,
+            "ast": {
+              "type": "linear_combo",
+              "terms": [
+                {
+                  "factor": "roe",
+                  "params": {},
+                  "transforms": [
+                    "mad_clip",
+                    "zscore",
+                    "rank"
+                  ],
+                  "weight": 0.59
+                },
+                {
+                  "factor": "momentum",
+                  "params": {
+                    "window": 120
+                  },
+                  "transforms": [
+                    "mad_clip",
+                    "zscore",
+                    "rank"
+                  ],
+                  "weight": 1.0
+                }
+              ],
+              "direction": "negative",
+              "thesis": {
+                "mechanism": "营业收入增长趋势与价格动量协同，反映实体扩张被市场认可并加速定价，提高趋势持续性。",
+                "citation": "autoresearch island search"
+              }
+            },
+            "factor_fn_name": "factors.autoresearch_dsl.compute_dsl_factor",
+            "factor_params": {
+              "ast": {
+                "type": "linear_combo",
+                "terms": [
+                  {
+                    "factor": "roe",
+                    "params": {},
+                    "transforms": [
+                      "mad_clip",
+                      "zscore",
+                      "rank"
+                    ],
+                    "weight": 0.59
+                  },
+                  {
+                    "factor": "momentum",
+                    "params": {
+                      "window": 120
+                    },
+                    "transforms": [
+                      "mad_clip",
+                      "zscore",
+                      "rank"
+                    ],
+                    "weight": 1.0
+                  }
+                ],
+                "direction": "negative",
+                "thesis": {
+                  "mechanism": "营业收入增长趋势与价格动量协同，反映实体扩张被市场认可并加速定价，提高趋势持续性。",
+                  "citation": "autoresearch island search"
+                }
+              }
+            },
+            "data_dependencies": [
+              "fundamental/roe",
+              "price/close"
+            ],
+            "cost": {
+              "buy": 0.00225,
+              "sell": 0.00275,
+              "financing_rate": 0.065
+            }
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2010-2026",
+            "survivorship_bias": false,
+            "wf_validated": true,
+            "phase1_audited": true,
+            "reproducibility": {
+              "date": "2026-06-17",
+              "git_commit": "bbc8986d5",
+              "python": "3.13.3",
+              "dependencies": {
+                "pandas": "3.0.3",
+                "numpy": "2.2.6",
+                "scipy": "1.17.1"
+              },
+              "data_snapshot": "{\"daily_all.parquet\": \"2026-06-16\", \"daily_raw_all.parquet\": \"2026-06-16\", \"fundamental_batch.parquet\": \"2026-06-02\"}",
+              "engine": "core.engine.BacktestEngine"
+            }
+          },
+          "metrics": {
+            "annual": -0.43706694998476064,
+            "maxdd": -0.9810098658656927,
+            "sharpe": -1.820479932770466,
+            "vol": 0.2400833659943825,
+            "calmar": 0.445527578460254,
+            "end_nav": 0.021615568574265036,
+            "hit": false,
+            "source": "path_live_rerun",
+            "as_of": "2026-07-23",
+            "window": "2018-01-02 → 2026-07-17",
+            "n": 2071,
+            "returns_sha256": "76aaaf470e192a55822bc0a5f7da1f10fd498b58b3a51d0e5a2e4367c33d05bc",
+            "path": "strategies.ast_config_strategy.run_ast_config_strategy"
+          },
+          "status": "候选",
+          "notes": "Workflow Phase 1-3 validated. WF: +34.3% ann / -30.7% dd.\n[metrics@path_live_rerun 2026-07-23 annual=-43.71% maxdd=-98.10% hit=False]",
+          "evidence": {
+            "hypothesis_id": "86796bbeddf1361f",
+            "experiment_ids": [],
+            "data_incidents": [
+              {
+                "code": "DQ_2026_001_FUNDAMENTAL_BATCH_ANNDATE",
+                "incident_id": "DQ-2026-001",
+                "resolved": true,
+                "reasons": [
+                  "roe"
+                ],
+                "note": "live re-run 完成(2026-07-23),metrics 已写回。annual 0.3082→-0.4371、maxdd -0.2577→-0.9810、sharpe 0.9659→-1.8205,方向性反转。未做受控A/B对比,不作最终归因结论。"
+              }
+            ],
+            "production_blocked": false,
+            "metrics_history": [
+              {
+                "replaced_at": "2026-07-23T08:39:22.458100+00:00",
+                "metrics": {
+                  "annual_2018": 0.3082,
+                  "maxdd_2018": -0.2577,
+                  "sharpe_2018": 0.9659,
+                  "annual_2023": 0.2892,
+                  "maxdd_2023": -0.2515,
+                  "sharpe_2023": 1.0828,
+                  "annual_2010": 0.3299,
+                  "maxdd_2010": -0.4041,
+                  "sharpe_2010": 1.3083,
+                  "annual": 0.3082,
+                  "maxdd": -0.2577,
+                  "sharpe": 0.9659,
+                  "calmar": 1.1961,
+                  "hit": false,
+                  "wf_annual": 0.3431,
+                  "wf_maxdd": -0.3073,
+                  "wf_sharpe": 1.4858
+                },
+                "reason": "path_live_rerun_refresh",
+                "note": "path_analysis live re-run 纠偏；旧 metrics 见 evidence.metrics_history；nine_gate 若标 stale 须另跑 run_nine_gates_all --persist"
+              }
+            ],
+            "metrics_refresh": {
+              "at": "2026-07-23T08:39:22.458110+00:00",
+              "provenance": "live_rerun",
+              "path": "strategies.ast_config_strategy.run_ast_config_strategy",
+              "window": "2018-01-02 → 2026-07-17",
+              "returns_sha256": "76aaaf470e192a55822bc0a5f7da1f10fd498b58b3a51d0e5a2e4367c33d05bc",
+              "material_delta_keys": [
+                "annual",
+                "maxdd",
+                "sharpe"
+              ],
+              "note": "path_analysis live re-run 纠偏；旧 metrics 见 evidence.metrics_history；nine_gate 若标 stale 须另跑 run_nine_gates_all --persist"
+            }
+          },
+          "nine_gate": {},
+          "admission": {}
+        }
+      ],
+      "name": "autoresearch_8de70997",
+      "hypothesis": "营业收入增长趋势与价格动量协同，反映实体扩张被市场认可并加速定价，提高趋势持续性。",
+      "regime": "",
+      "decay_signal": "",
+      "status": "active",
+      "style_betas": {},
+      "capacity_m": 0.0,
+      "failure_boundaries": {}
+    },
+    {
+      "id": "autoresearch_e181a275",
+      "versions": [
+        {
+          "version": "v1.0",
+          "date": "2026-06-17",
+          "desc": "autoresearch_e181a275 vv1.0 — auto-registered via workflow",
+          "config": {
+            "top_n": 25,
+            "rebalance_days": 20,
+            "leverage": 1.25,
+            "buy_cost": 0.00225,
+            "sell_cost": 0.00275,
+            "financing_rate": 0.065,
+            "ast": {
+              "type": "linear_combo",
+              "terms": [
+                {
+                  "factor": "revenue_yoy",
+                  "params": {},
+                  "transforms": [
+                    "mad_clip",
+                    "zscore",
+                    "rank"
+                  ],
+                  "weight": 0.59
+                },
+                {
+                  "factor": "momentum",
+                  "params": {
+                    "window": 120
+                  },
+                  "transforms": [
+                    "mad_clip",
+                    "zscore",
+                    "rank"
+                  ],
+                  "weight": 1.0
+                }
+              ],
+              "direction": "negative",
+              "thesis": {
+                "mechanism": "营业收入增长趋势与价格动量协同，反映实体扩张被市场认可并加速定价，提高趋势持续性。",
+                "citation": "autoresearch island search"
+              }
+            },
+            "factor_fn_name": "factors.autoresearch_dsl.compute_dsl_factor",
+            "factor_params": {
+              "ast": {
+                "type": "linear_combo",
+                "terms": [
+                  {
+                    "factor": "revenue_yoy",
+                    "params": {},
+                    "transforms": [
+                      "mad_clip",
+                      "zscore",
+                      "rank"
+                    ],
+                    "weight": 0.59
+                  },
+                  {
+                    "factor": "momentum",
+                    "params": {
+                      "window": 120
+                    },
+                    "transforms": [
+                      "mad_clip",
+                      "zscore",
+                      "rank"
+                    ],
+                    "weight": 1.0
+                  }
+                ],
+                "direction": "negative",
+                "thesis": {
+                  "mechanism": "营业收入增长趋势与价格动量协同，反映实体扩张被市场认可并加速定价，提高趋势持续性。",
+                  "citation": "autoresearch island search"
+                }
+              }
+            },
+            "data_dependencies": [
+              "fundamental/revenue_yoy",
+              "price/close"
+            ],
+            "cost": {
+              "buy": 0.00225,
+              "sell": 0.00275,
+              "financing_rate": 0.065
+            }
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2010-2026",
+            "survivorship_bias": false,
+            "wf_validated": true,
+            "phase1_audited": true,
+            "reproducibility": {
+              "date": "2026-06-17",
+              "git_commit": "bbc8986d5",
+              "python": "3.13.3",
+              "dependencies": {
+                "pandas": "3.0.3",
+                "numpy": "2.2.6",
+                "scipy": "1.17.1"
+              },
+              "data_snapshot": "{\"daily_all.parquet\": \"2026-06-16\", \"daily_raw_all.parquet\": \"2026-06-16\", \"fundamental_batch.parquet\": \"2026-06-02\"}",
+              "engine": "core.engine.BacktestEngine"
+            }
+          },
+          "metrics": {
+            "annual": -0.4308481909239414,
+            "maxdd": -0.9790337490091853,
+            "sharpe": -1.8025420836287276,
+            "vol": 0.2390225420183221,
+            "calmar": 0.4400749119833449,
+            "end_nav": 0.022807522984210703,
+            "hit": false,
+            "source": "path_live_rerun",
+            "as_of": "2026-07-23",
+            "window": "2018-01-02 → 2026-07-17",
+            "n": 2071,
+            "returns_sha256": "1b472c165ac4758b31c95987089c52158b19a1b9a5bd2075285b2d357004c70b",
+            "path": "strategies.ast_config_strategy.run_ast_config_strategy"
+          },
+          "status": "候选",
+          "notes": "Workflow Phase 1-3 validated. WF: +31.2% ann / -30.1% dd.\n[metrics@path_live_rerun 2026-07-23 annual=-43.08% maxdd=-97.90% hit=False]",
+          "evidence": {
+            "hypothesis_id": "d8b09631c1030612",
+            "experiment_ids": [],
+            "data_incidents": [
+              {
+                "code": "DQ_2026_001_FUNDAMENTAL_BATCH_ANNDATE",
+                "incident_id": "DQ-2026-001",
+                "resolved": true,
+                "reasons": [
+                  "revenue_yoy"
+                ],
+                "note": "live re-run 完成(2026-07-23),metrics 已写回。annual 0.266→-0.4308、maxdd -0.2798→-0.9790、sharpe 0.97→-1.8025,方向性反转。未做受控A/B对比,不作最终归因结论。"
+              }
+            ],
+            "production_blocked": false,
+            "metrics_history": [
+              {
+                "replaced_at": "2026-07-23T08:41:09.090491+00:00",
+                "metrics": {
+                  "annual_2018": 0.266,
+                  "maxdd_2018": -0.2798,
+                  "sharpe_2018": 0.97,
+                  "annual_2023": 0.267,
+                  "maxdd_2023": -0.2239,
+                  "sharpe_2023": 1.0073,
+                  "annual_2010": 0.2706,
+                  "maxdd_2010": -0.4446,
+                  "sharpe_2010": 1.0673,
+                  "annual": 0.266,
+                  "maxdd": -0.2798,
+                  "sharpe": 0.97,
+                  "calmar": 0.9508,
+                  "hit": false,
+                  "wf_annual": 0.3118,
+                  "wf_maxdd": -0.3015,
+                  "wf_sharpe": 1.3524
+                },
+                "reason": "path_live_rerun_refresh",
+                "note": "path_analysis live re-run 纠偏；旧 metrics 见 evidence.metrics_history；nine_gate 若标 stale 须另跑 run_nine_gates_all --persist"
+              }
+            ],
+            "metrics_refresh": {
+              "at": "2026-07-23T08:41:09.090496+00:00",
+              "provenance": "live_rerun",
+              "path": "strategies.ast_config_strategy.run_ast_config_strategy",
+              "window": "2018-01-02 → 2026-07-17",
+              "returns_sha256": "1b472c165ac4758b31c95987089c52158b19a1b9a5bd2075285b2d357004c70b",
+              "material_delta_keys": [
+                "annual",
+                "maxdd",
+                "sharpe"
+              ],
+              "note": "path_analysis live re-run 纠偏；旧 metrics 见 evidence.metrics_history；nine_gate 若标 stale 须另跑 run_nine_gates_all --persist"
+            }
+          },
+          "nine_gate": {},
+          "admission": {}
+        }
+      ],
+      "name": "autoresearch_e181a275",
+      "hypothesis": "营业收入增长趋势与价格动量协同，反映实体扩张被市场认可并加速定价，提高趋势持续性。",
+      "regime": "",
+      "decay_signal": "",
+      "status": "active",
+      "style_betas": {},
+      "capacity_m": 0.0,
+      "failure_boundaries": {}
+    },
+    {
+      "id": "composite-portfolio",
+      "versions": [
+        {
+          "version": "size_mix_v1.0",
+          "date": "2026-06-30",
+          "desc": "复合自适应资产配置版本，配比为: illiq_sc:0.40,lc_mom:0.40,reversal:0.20",
+          "config": {
+            "family": "composite-portfolio",
+            "version": "size_mix_v1.0",
+            "allocation": {
+              "illiq_sc": 0.4,
+              "lc_mom": 0.4,
+              "reversal": 0.2
+            },
+            "rebalance_days": 1,
+            "cost": {
+              "buy": 0.00225,
+              "sell": 0.00275,
+              "financing_rate": 0.0
+            },
+            "adversarial_guard": {
+              "lag_applied": 1,
+              "decay_sharpe": 0.018241036514987097,
+              "decay_dd": 0.007632446697640405
+            }
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2018-01-01-2026",
+            "survivorship_bias": false
+          },
+          "metrics": {
+            "annual": 0.0822381688064867,
+            "maxdd": -0.27257529701706906,
+            "sharpe": 0.609724989706432,
+            "calmar": 0.3017080773880137,
+            "n": 2058,
+            "hit": false
+          },
+          "status": "候选",
+          "notes": "合成信号重构后的 9-Gate 审计版本。自动化对抗审查结果：通过。DSR p-value = 0.0737。",
+          "evidence": {
+            "hypothesis_id": "composite_reconstruction",
+            "experiment_ids": [
+              "composite_v1.0",
+              "adversarial_decay_guard"
+            ]
+          },
+          "admission": {},
+          "nine_gate": {
+            "run_date": "2026-06-30",
+            "passed_all": false,
+            "dsr": 1.0178245686783816,
+            "dsr_p": 0.15438066700043473,
+            "dsr_significant": false,
+            "psr": 0.9349255414739681,
+            "n_trials": 1,
+            "wf_sharpe": 0.2243259920326151,
+            "wf_positive_ratio": 0.7857142857142857,
+            "cv_sharpe": 0.2243259920326151,
+            "cv_win_rate": 0.7857142857142857,
+            "sortino": 0.48659174749226586,
+            "var_95": 0.016493764969165124,
+            "cvar_95": 0.026573246301994046,
+            "tail_ratio": 1.0937607829840952,
+            "ic_mean": -0.011606543950720886,
+            "nw_icir": 0.049762112397974005,
+            "ic_win_rate": 0.5670307845084409,
+            "monotonicity_corr": 0.0,
+            "ic_decay": {
+              "1": -0.0020276848031812677,
+              "5": -0.007681045368484554,
+              "10": -0.010479755335907632,
+              "20": -0.011710259016840596
+            },
+            "neut_nw_icir": 0.03423182762975562,
+            "icir_retention": 0.3477210949244448,
+            "cost_decay_rate": 1.1172797450981087,
+            "capacity_limit_aum": 5000000,
+            "annual_1x": 0.0896903251966409,
+            "annual_2x": 0.039585733359906214,
+            "annual_3x": -0.010518858476828511,
+            "bull_sharpe": 3.0138916980213426,
+            "bear_sharpe": -2.595890851744338,
+            "bull_annual": 0.48662284632733954,
+            "bear_annual": -0.44696244337206353,
+            "daily_mean_expected": 0.00035591398887555915,
+            "daily_vol_expected": 0.010620078700457657,
+            "max_live_drawdown_limit": -0.5308264518862689,
+            "gate4_verdict": "FAIL",
+            "gate7_verdict": "WARN",
+            "adversarial_execution_decay": {
+              "passed": true,
+              "sharpe_decay": 0.018241036514987097,
+              "drawdown_decay": 0.007632446697640405,
+              "verdict": "PASS"
+            }
+          }
+        },
+        {
+          "version": "v1.0",
+          "date": "2026-06-30",
+          "desc": "复合自适应资产配置版本，配比为: illiq_sc:0.40,lc_mom:0.40,reversal:0.20",
+          "config": {
+            "family": "composite-portfolio",
+            "version": "v1.0",
+            "allocation": {
+              "illiq_sc": 0.4,
+              "lc_mom": 0.4,
+              "reversal": 0.2
+            },
+            "rebalance_days": 1,
+            "cost": {
+              "buy": 0.00225,
+              "sell": 0.00275,
+              "financing_rate": 0.0
+            },
+            "adversarial_guard": {
+              "lag_applied": 1,
+              "decay_sharpe": 0.061354561274589825,
+              "decay_dd": 0.03416911128205935
+            }
+          },
+          "data_scope": "data_lake·2023-01-01-2026",
+          "metrics": {
+            "annual": 0.17808401603317922,
+            "maxdd": -0.18918264093020287,
+            "sharpe": 1.150184253367279,
+            "calmar": 0.9413338092625614,
+            "n": 843,
+            "hit": true
+          },
+          "status": "候选",
+          "notes": "合成信号重构后的 9-Gate 审计版本。自动化对抗审查结果：通过。DSR p-value = 0.0737。",
+          "evidence": {
+            "hypothesis_id": "composite_reconstruction",
+            "experiment_ids": [
+              "composite_v1.0",
+              "adversarial_decay_guard"
+            ]
+          },
+          "admission": {},
+          "nine_gate": {
+            "run_date": "2026-06-30",
+            "passed_all": false,
+            "dsr": 1.448530716913953,
+            "dsr_p": 0.07373434089006714,
+            "dsr_significant": false,
+            "psr": 0.9747027270251256,
+            "n_trials": 1,
+            "wf_sharpe": 0.2243259920326151,
+            "wf_positive_ratio": 0.7857142857142857,
+            "cv_sharpe": 0.2243259920326151,
+            "cv_win_rate": 0.7857142857142857,
+            "sortino": 1.0619834878332466,
+            "var_95": 0.018567904488510048,
+            "cvar_95": 0.02950707667696535,
+            "tail_ratio": 1.1626723394080685,
+            "ic_mean": -0.011606543950720886,
+            "nw_icir": 0.049762112397974005,
+            "ic_win_rate": 0.5670307845084409,
+            "monotonicity_corr": 0.0,
+            "ic_decay": {
+              "1": -0.0020276848031812677,
+              "5": -0.007681045368484554,
+              "10": -0.010479755335907632,
+              "20": -0.011710259016840596
+            },
+            "neut_nw_icir": 0.03423182762975562,
+            "icir_retention": 0.3477210949244448,
+            "cost_decay_rate": 0.6761782826696895,
+            "capacity_limit_aum": 2000000000,
+            "annual_1x": 0.2078778551541667,
+            "annual_2x": 0.13759660960256523,
+            "annual_3x": 0.0673153640509638,
+            "bull_sharpe": 4.150288791023286,
+            "bear_sharpe": -2.7790027740431476,
+            "bull_annual": 0.7558206664506791,
+            "bear_annual": -0.5527226477786692,
+            "daily_mean_expected": 0.0008249121236276457,
+            "daily_vol_expected": 0.012191279741670938,
+            "max_live_drawdown_limit": -0.3652986619671907,
+            "gate4_verdict": "FAIL",
+            "gate7_verdict": "WARN",
+            "adversarial_execution_decay": {
+              "passed": true,
+              "sharpe_decay": 0.061354561274589825,
+              "drawdown_decay": 0.03416911128205935,
+              "verdict": "PASS"
+            }
+          }
+        }
+      ],
+      "name": "多策略自适应防守复合组合",
+      "hypothesis": "小盘非流动性(压舱石) ＋ 大盘动量(双阀风控) ＋ 另类反转(双阀风控)的三因子复合资产配置，旨在达成低回撤、稳夏普的生产级组合。",
+      "regime": "全局混合政权(底仓长效持仓，卫星及对冲腿根据双阀门控自动启停避险)",
+      "decay_signal": "底仓因子衰退，或整体最大滚动回撤突破 -30%",
+      "status": "active",
+      "style_betas": {},
+      "capacity_m": 0.0,
+      "failure_boundaries": {}
+    },
+    {
+      "id": "d-le-sc-hedged",
+      "versions": [
+        {
+          "version": "v1.0",
+          "date": "2026-06-12",
+          "desc": "学术理论版：日频调仓+零交易成本",
+          "config": {
+            "network_type": "daytime_lead_overnight",
+            "correlation_method": "spearman",
+            "rebalance_days": 1,
+            "direction": 1,
+            "top_n": 25,
+            "cost": {
+              "buy": 0.0,
+              "sell": 0.0,
+              "hedge_cost_annual": 0.0
+            }
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2023-2026",
+            "survivorship_bias": false
+          },
+          "metrics": {
+            "annual": 0.1394,
+            "maxdd": -0.0931,
+            "sharpe": 1.23,
+            "calmar": 1.5,
+            "hit": false
+          },
+          "status": "参考",
+          "notes": "❌学术理论版：日频调仓在零成本下夏普达 1.23，但未考虑摩擦成本。实际执行会因年换手率 >300 倍而导致严重亏损（净回报 -64.37%）。",
+          "evidence": {},
+          "nine_gate": {
+            "run_date": "2026-06-29",
+            "passed_all": false,
+            "status": "SKIP",
+            "gate2_verdict": "SKIP",
+            "gate2_details": "因子公式为空: 因子公式为空，不可复现"
+          },
+          "admission": {}
+        },
+        {
+          "version": "v1.1",
+          "date": "2026-06-12",
+          "desc": "实盘优化版：慢速 20 日调仓+标准摩擦成本",
+          "config": {
+            "network_type": "preclose_lead_close",
+            "correlation_method": "pearson",
+            "rebalance_days": 20,
+            "direction": -1,
+            "top_n": 25,
+            "cost": {
+              "buy": 0.00225,
+              "sell": 0.00275,
+              "hedge_cost_annual": 0.015
+            }
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2023-2026",
+            "survivorship_bias": false
+          },
+          "metrics": {
+            "annual": 0.0511,
+            "maxdd": -0.2616,
+            "sharpe": 0.33,
+            "calmar": 0.2,
+            "hit": false
+          },
+          "status": "参考",
+          "notes": "✅考虑标准交易摩擦与 1.5% 对冲成本后的实盘优化版（引入了 Top 25/Buf 50 滞后秩缓冲控制换手）。调仓为 20 日（年化换手 20.65 倍），净超额年化 +5.11%，夏普 0.33。由于单体夏普较低，MVO Spanning 检验分配权重为 0%，归为参考档。",
+          "evidence": {},
+          "nine_gate": {
+            "run_date": "2026-06-29",
+            "passed_all": false,
+            "status": "SKIP",
+            "gate2_verdict": "SKIP",
+            "gate2_details": "因子公式为空: 因子公式为空，不可复现"
+          },
+          "admission": {}
+        }
+      ],
+      "name": "有向似然谱聚类领先滞后对冲策略",
+      "hypothesis": "利用日内/隔夜收益分解与有向似然估计谱聚类（d-LE-SC），构建 Leader-Lagger 领先-滞后网络。做多受 Leader 引导、预期日内收益最高的 Lagger 股票，对冲 Beta，捕捉日内/隔夜信息外溢超额。",
+      "regime": "信息流传导顺畅、隔夜投机与日间修正效应明显的市场环境；月频/周频对 Top 25 股票进行轮动对冲。",
+      "decay_signal": "Leader 与 Lagger 组别分类混沌（eta 接近 0.5）/ 隔夜投机效应消失 / 日度换手成本完全吞噬超额",
+      "status": "active",
+      "style_betas": {},
+      "capacity_m": 0.0,
+      "failure_boundaries": {}
+    },
+    {
+      "id": "fundamental-momentum",
+      "versions": [
+        {
+          "version": "v0.1",
+          "date": "2026-06-12",
+          "desc": "fundamental-momentum vv0.1 — auto-registered via workflow",
+          "config": {
+            "top_n": 25,
+            "rebalance_days": 20,
+            "leverage": 1.25,
+            "buy_cost": 0.00225,
+            "sell_cost": 0.00275,
+            "financing_rate": 0.065,
+            "ast": {
+              "type": "linear_combo",
+              "direction": "negative",
+              "terms": [
+                {
+                  "factor": "momentum",
+                  "params": {
+                    "window": 60
+                  },
+                  "transforms": [
+                    "mad_clip",
+                    "zscore"
+                  ],
+                  "weight": 0.5
+                },
+                {
+                  "factor": "revenue_yoy",
+                  "params": {},
+                  "transforms": [
+                    "mad_clip",
+                    "zscore"
+                  ],
+                  "weight": 0.5
+                }
+              ],
+              "thesis": {
+                "mechanism": "营收同比增长确认基本面改善,与 60 日价格动量共振:基本面支撑的趋势更可持续,过滤纯价格动量的假突破。",
+                "citation": "autoresearch closed-loop champion 6cd21086"
+              }
+            },
+            "cost": {
+              "buy": 0.00225,
+              "sell": 0.00275,
+              "financing_rate": 0.065
+            }
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2010-2026",
+            "survivorship_bias": false,
+            "wf_validated": true,
+            "phase1_audited": true,
+            "reproducibility": {
+              "date": "2026-06-12",
+              "git_commit": "a584c9cce",
+              "python": "3.13.3",
+              "dependencies": {
+                "pandas": "3.0.3",
+                "numpy": "2.2.6",
+                "scipy": "1.17.1"
+              },
+              "data_snapshot": "{\"daily_all.parquet\": \"2026-06-13\", \"daily_raw_all.parquet\": \"2026-06-12\", \"fundamental_batch.parquet\": \"2026-06-02\"}",
+              "engine": "core.engine.BacktestEngine"
+            }
+          },
+          "metrics": {
+            "annual": 0.09238918563369355,
+            "maxdd": -0.4776865054688342,
+            "sharpe": 0.3326152459608226,
+            "vol": 0.2777659375378593,
+            "calmar": 0.19340966214445704,
+            "end_nav": 1.5689672207830596,
+            "hit": false,
+            "source": "path_live_rerun",
+            "as_of": "2026-07-23",
+            "window": "2018-01-02 → 2026-07-17",
+            "n": 2071,
+            "returns_sha256": "c020b247ef526609c41f3c2b667899352ab05f571eada306e4e9af5b04530e9a",
+            "path": "strategies.ast_config_strategy.run_ast_config_strategy"
+          },
+          "status": "候选",
+          "notes": "Workflow Phase 1-3 validated. WF: +32.5% ann / -30.6% dd. 2026-06-17容量回测：所选股票中位数市值91.3亿(纯小盘的5倍)，选股日均成交额(ADV)8.4亿CNY(小盘的24-90倍)，容量测算高达4亿CNY。对于大账户是极佳的扩容轮换件。但小账户下与小盘book相关系数0.605，有负边际稀释，故保留在册但不进LIVE。\n[metrics@path_live_rerun 2026-07-23 annual=9.24% maxdd=-47.77% hit=False]",
+          "evidence": {
+            "data_incidents": [
+              {
+                "code": "DQ_2026_001_FUNDAMENTAL_BATCH_ANNDATE",
+                "incident_id": "DQ-2026-001",
+                "resolved": true,
+                "reasons": [
+                  "revenue_yoy"
+                ],
+                "note": "live re-run 完成(2026-07-23),metrics 已写回。annual 0.2886→0.0924、maxdd -0.2849→-0.4777、sharpe 0.8957→0.3326,数字显著恶化但方向未反转(仍正收益)。未做受控A/B对比,不作最终归因结论。"
+              }
+            ],
+            "production_blocked": false,
+            "metrics_history": [
+              {
+                "replaced_at": "2026-07-23T08:42:47.144877+00:00",
+                "metrics": {
+                  "annual_2018": 0.2886,
+                  "maxdd_2018": -0.2849,
+                  "sharpe_2018": 0.8957,
+                  "annual_2023": 0.2307,
+                  "maxdd_2023": -0.2787,
+                  "sharpe_2023": 0.8225,
+                  "annual_2010": 0.2856,
+                  "maxdd_2010": -0.2901,
+                  "sharpe_2010": 1.1368,
+                  "annual": 0.2886,
+                  "maxdd": -0.2849,
+                  "sharpe": 0.8957,
+                  "calmar": 1.013,
+                  "hit": false,
+                  "wf_annual": 0.3252,
+                  "wf_maxdd": -0.3055,
+                  "wf_sharpe": 1.2368
+                },
+                "reason": "path_live_rerun_refresh",
+                "note": "path_analysis live re-run 纠偏；旧 metrics 见 evidence.metrics_history；nine_gate 若标 stale 须另跑 run_nine_gates_all --persist"
+              }
+            ],
+            "metrics_refresh": {
+              "at": "2026-07-23T08:42:47.144889+00:00",
+              "provenance": "live_rerun",
+              "path": "strategies.ast_config_strategy.run_ast_config_strategy",
+              "window": "2018-01-02 → 2026-07-17",
+              "returns_sha256": "c020b247ef526609c41f3c2b667899352ab05f571eada306e4e9af5b04530e9a",
+              "material_delta_keys": [
+                "annual",
+                "maxdd",
+                "sharpe"
+              ],
+              "note": "path_analysis live re-run 纠偏；旧 metrics 见 evidence.metrics_history；nine_gate 若标 stale 须另跑 run_nine_gates_all --persist"
+            }
+          },
+          "nine_gate": {},
+          "admission": {}
+        }
+      ],
+      "name": "fundamental-momentum",
+      "hypothesis": "营收同比增长确认基本面改善,与 60 日价格动量共振:基本面支撑的趋势更可持续,过滤纯价格动量的假突破。",
+      "regime": "大盘/中盘成长有基本面主线时;月频(20d)选 top25,PureTrend MA16 截左尾。",
+      "decay_signal": "与在册动量/成长母策略相关性转强正 / 营收增长因子系统性失效 / 长期无超额。",
+      "status": "active",
+      "style_betas": {},
+      "capacity_m": 400.0,
+      "failure_boundaries": {}
+    },
+    {
+      "id": "hq-momentum-hedged",
+      "versions": [
+        {
+          "version": "v1.0",
+          "date": "2026-06-11",
+          "desc": "高质量动量对冲策略样本外验证版：60日动量 + 60日 Kaufman ER + 40% 财务质量过滤",
+          "config": {
+            "factor": "Smooth Momentum (Mom60 * ER60) with 40% Quality Filter",
+            "lookback": 60,
+            "top_n": 25,
+            "rebal_days": 20,
+            "leverage": 1.0,
+            "cost": {
+              "hedge_cost_annual": 0.015
+            }
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2023-2024",
+            "survivorship_bias": false
+          },
+          "metrics": {
+            "annual": -0.0943,
+            "maxdd": -0.5398,
+            "sharpe": -0.2552,
+            "calmar": -0.1748,
+            "n": 484,
+            "hit": false
+          },
+          "status": "退役",
+          "notes": "✅高质量动量对冲样本外（2023-2026）表现良好：超额为正，年化回报 10.86%，夏普比率达到 0.70，展现出在震荡下行市中极强的抗风险与选股阿尔法能力。",
+          "evidence": {
+            "retirement": {
+              "reason": "已衰退失效 (06-22 9-Gate 审计：回撤较大，WF夏普已趋近于0，超额收益耗尽)",
+              "evidence_refs": [],
+              "retired_at": "2026-06-25T14:44:13.972644+00:00",
+              "actor": "manual_governance"
+            }
+          },
+          "nine_gate": {
+            "run_date": "2026-06-30",
+            "passed_all": false,
+            "dsr": -1.0815112313061432,
+            "dsr_p": 0.8602651162800901,
+            "dsr_significant": false,
+            "psr": 0.3626789997979962,
+            "n_trials": 3,
+            "wf_sharpe": 0.1796171969967782,
+            "wf_positive_ratio": 0.6666666666666666,
+            "cv_sharpe": 0.1796171969967782,
+            "cv_win_rate": 0.6666666666666666,
+            "sortino": -0.27208636199566333,
+            "var_95": 0.035512769100326275,
+            "cvar_95": 0.04941781917866032,
+            "tail_ratio": 1.0114924723730456,
+            "ic_mean": -0.014680277555435623,
+            "nw_icir": 0.028060723871891236,
+            "ic_win_rate": 0.5405078597339782,
+            "monotonicity_corr": -0.3,
+            "ic_decay": {
+              "1": -0.01221806481731273,
+              "5": -0.01708730994203937,
+              "10": -0.019351077735988008,
+              "20": -0.01723870370815967
+            },
+            "neut_nw_icir": 0.018803095077670886,
+            "icir_retention": 0.2732205374474435,
+            "cost_decay_rate": 1.0,
+            "capacity_limit_aum": 5000000,
+            "annual_1x": -0.09433411230321859,
+            "annual_2x": -0.15030518668338388,
+            "annual_3x": -0.20627626106354918,
+            "bull_sharpe": 3.3636415708660254,
+            "bear_sharpe": -4.342781003703571,
+            "bull_annual": 1.24436264374942,
+            "bear_annual": -1.5127830155249504,
+            "daily_mean_expected": -0.00037434171548896266,
+            "daily_vol_expected": 0.023283094433576894,
+            "max_live_drawdown_limit": -0.809711743132758,
+            "gate4_verdict": "FAIL",
+            "gate7_verdict": "WARN",
+            "status": "PERSISTED",
+            "strategy": "hq_momentum",
+            "version": "v1.0"
+          },
+          "admission": {
+            "track": "diversifier",
+            "rationale": "✅高质量动量对冲样本外（2023-2026）表现良好：超额为正，年化回报 10.86%，夏普比率达到 0.70，展现出在震荡下行市中极强的抗风险与选股阿尔法能力。",
+            "note": "迁移自动归类：对冲母策略，单体低收益+负相关，靠组合层增量入册"
+          },
+          "decay_check": {
+            "n_days": 835,
+            "rolling_3y_sharpe_latest": 0.363,
+            "decayed": true,
+            "reasons": [
+              "滚动3年夏普 0.36 < 0.5"
+            ],
+            "action": "触发退役复核(workflow 标退役,非删除)",
+            "checked_at": "2026-06-22T02:17:04.041769+00:00"
+          }
+        },
+        {
+          "version": "v1.0-full",
+          "date": "2026-06-11",
+          "desc": "高质量动量对冲策略全历史压力测试版：60日动量 + 60日 Kaufman ER + 40% 财务质量过滤",
+          "config": {
+            "factor": "Smooth Momentum (Mom60 * ER60) with 40% Quality Filter",
+            "lookback": 60,
+            "top_n": 25,
+            "rebal_days": 20,
+            "leverage": 1.0,
+            "cost": {
+              "hedge_cost_annual": 0.015
+            }
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2012-2024",
+            "survivorship_bias": false
+          },
+          "metrics": {
+            "annual": -0.0118,
+            "maxdd": -0.9585,
+            "sharpe": -0.0268,
+            "calmar": -0.0123,
+            "n": 3156,
+            "hit": false
+          },
+          "status": "退役",
+          "notes": "全历史压力测试（2012-2026）：经历多次动量崩塌（Momentum Crash），由于质量和路径平滑度过滤，全历史年化保持为正（+5.33%，夏普 0.39），显著优于原始动量（-13.90%，夏普 -0.67）。",
+          "evidence": {
+            "retirement": {
+              "reason": "已衰退失效 (06-22 9-Gate 审计：回撤较大，WF夏普已趋近于0，超额收益耗尽)",
+              "evidence_refs": [],
+              "retired_at": "2026-06-25T14:44:13.974235+00:00",
+              "actor": "manual_governance"
+            }
+          },
+          "nine_gate": {
+            "run_date": "2026-06-30",
+            "passed_all": false,
+            "dsr": -0.9275643162339793,
+            "dsr_p": 0.8231831925369322,
+            "dsr_significant": false,
+            "psr": 0.4622107260516092,
+            "n_trials": 3,
+            "wf_sharpe": 0.1796171969967782,
+            "wf_positive_ratio": 0.6666666666666666,
+            "cv_sharpe": 0.1796171969967782,
+            "cv_win_rate": 0.6666666666666666,
+            "sortino": -0.024938928310147653,
+            "var_95": 0.04836099815624073,
+            "cvar_95": 0.06962007902867565,
+            "tail_ratio": 0.8567416658998418,
+            "ic_mean": -0.014680277555435623,
+            "nw_icir": 0.028060723871891236,
+            "ic_win_rate": 0.5405078597339782,
+            "monotonicity_corr": -0.3,
+            "ic_decay": {
+              "1": -0.01221806481731273,
+              "5": -0.01708730994203937,
+              "10": -0.019351077735988008,
+              "20": -0.01723870370815967
+            },
+            "neut_nw_icir": 0.018803095077670886,
+            "icir_retention": 0.2732205374474435,
+            "cost_decay_rate": 1.0,
+            "capacity_limit_aum": 5000000,
+            "annual_1x": -0.01180631592391727,
+            "annual_2x": -0.06440612580984882,
+            "annual_3x": -0.11700593569578044,
+            "bull_sharpe": 3.8694380707251583,
+            "bear_sharpe": -4.235499206313595,
+            "bull_annual": 1.442682016848381,
+            "bear_annual": -2.0910864036515213,
+            "daily_mean_expected": -4.685046001554472e-05,
+            "daily_vol_expected": 0.027750267504490417,
+            "max_live_drawdown_limit": -1.4377970134878644,
+            "gate4_verdict": "FAIL",
+            "gate7_verdict": "WARN",
+            "status": "PERSISTED",
+            "strategy": "hq_momentum",
+            "version": "v1.0-full"
+          },
+          "admission": {
+            "track": "diversifier",
+            "rationale": "全历史压力测试（2012-2026）：经历多次动量崩塌（Momentum Crash），由于质量和路径平滑度过滤，全历史年化保持为正（+5.33%，夏普 0.39），显著优于原始动量（-13.90%，夏普 -0.67）。",
+            "note": "迁移自动归类：对冲母策略，单体低收益+负相关，靠组合层增量入册"
+          },
+          "decay_check": {
+            "n_days": 3507,
+            "rolling_3y_sharpe_latest": 0.363,
+            "decayed": true,
+            "reasons": [
+              "滚动3年夏普 0.36 < 0.5"
+            ],
+            "action": "触发退役复核(workflow 标退役,非删除)",
+            "checked_at": "2026-06-22T02:17:04.045420+00:00"
+          }
+        }
+      ],
+      "name": "高质量动量对冲策略",
+      "hypothesis": "做多稳步上涨（Kaufman ER 高）、基本面优秀（ROE / 毛利率高 / 现金流充沛）的动量龙头，等额做空 Top 800 等权指数以对冲 Beta。",
+      "regime": "大盘及中盘成长风格占优、有清晰基本面主线时期；月频（20d）调仓，选 Top 25 股票。",
+      "decay_signal": "与大盘对冲策略相关性转为强正相关 / 长期无超额收益 / 动量因子系统性失效",
+      "status": "active",
+      "style_betas": {
+        "momentum": 0.55,
+        "quality": 0.45,
+        "size": 0.1
+      },
+      "capacity_m": 100.0,
+      "failure_boundaries": {
+        "max_drawdown": -0.22,
+        "max_drawdown_days": 120
+      }
+    },
+    {
+      "id": "illiquidity",
+      "versions": [
+        {
+          "version": "clean-v1",
+          "date": "2026-06-21",
+          "desc": "小盘 Amihud 非流动性溢价(干净登记范本):配置同 v1.0(amihud20/无veto/二值MA16/top25),leverage=1.0;首个用全套 LOOP_ENGINEERING 防自欺纪律(L0去overlay归因/独立IC+t/holdout单次校验/真实PBO)支撑的登记,供后续候选对标。",
+          "config": {
+            "factor": "Amihud illiquidity (|ret|/amount).rolling(20)",
+            "timing": "PureTrend MA16(二值,非Band)",
+            "top_n": 25,
+            "rebal_days": 20,
+            "leverage": 1.0,
+            "cost": {
+              "buy": 0.00225,
+              "sell": 0.00275,
+              "financing_rate": 0.0
+            }
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2010-2026",
+            "survivorship_bias": false,
+            "holdout": {
+              "boundary": "2025-01-01",
+              "candidate_id": "illiquidity-clean-v1",
+              "peek_count": 1,
+              "sharpe": 2.076163891675329
+            }
+          },
+          "metrics": {
+            "annual": 0.2644,
+            "maxdd": -0.2284,
+            "sharpe": 1.4218,
+            "calmar": 1.1577,
+            "hit": false,
+            "annual_search_2018": 0.2493,
+            "maxdd_search_2018": -0.172,
+            "sharpe_search_2018": 1.5201,
+            "hit_search_2018": true,
+            "annual_holdout_2025": 0.2709,
+            "maxdd_holdout_2025": -0.0812,
+            "sharpe_holdout_2025": 2.0762,
+            "hit_holdout_2025": true
+          },
+          "status": "候选",
+          "notes": "LOOP_ENGINEERING §4 防自欺范本登记。dsr_p/pbo 待下一步真实补算,先以 None 占位(不伪造)。",
+          "evidence": {
+            "hypothesis_id": "",
+            "experiment_ids": [],
+            "source_script": "scripts/research/illiquidity_evidence_pack.py"
+          },
+          "admission": {
+            "track": "standalone",
+            "rationale": "全历史(2010-2026)回撤-22.8%略超20%单体线(2015/2018小盘崩,诚实代价);搜索窗(2018-<2025)与金库样本外(2025-2026)均 hit=True,L0裸因子夏普1.05(去overlay自身达标)+独立IC t=5.94。status=候选,在册与否留待 workflow/用户确认。"
+          },
+          "nine_gate": {
+            "run_date": "2026-06-30",
+            "passed_all": false,
+            "dsr": 0.32226846922182273,
+            "dsr_p": 0.37362465893120156,
+            "dsr_significant": false,
+            "psr": 0.9995600855768073,
+            "n_trials": 7,
+            "wf_sharpe": 0.6573003746216483,
+            "wf_positive_ratio": 1.0,
+            "cv_sharpe": 0.6573003746216483,
+            "cv_win_rate": 1.0,
+            "sortino": 0.6498364248104544,
+            "var_95": 0.021140339005460654,
+            "cvar_95": 0.037772245076923346,
+            "tail_ratio": 1.0504503589686527,
+            "ic_mean": 0.07707184364710856,
+            "nw_icir": 0.12445634268378664,
+            "ic_win_rate": 0.7036101994445847,
+            "monotonicity_corr": 0.9999999999999999,
+            "ic_decay": {
+              "1": 0.023234554856057507,
+              "5": 0.04410178294889154,
+              "10": 0.05909095179733031,
+              "20": 0.07697582935337001
+            },
+            "neut_nw_icir": 0.43750649529518243,
+            "icir_retention": 1.712486350947189,
+            "cost_decay_rate": 1.0957357933436356,
+            "capacity_limit_aum": 2000000000,
+            "annual_1x": 0.19744806511407068,
+            "annual_2x": 0.08927260897810464,
+            "annual_3x": -0.018902847157861398,
+            "bull_sharpe": 4.305307144709294,
+            "bear_sharpe": -4.446127562961943,
+            "bull_annual": 0.9954690021226003,
+            "bear_annual": -0.9233301378840867,
+            "daily_mean_expected": 0.0007835240679129789,
+            "daily_vol_expected": 0.014461509101763737,
+            "max_live_drawdown_limit": -0.6240189145271308,
+            "gate4_verdict": "FAIL",
+            "gate7_verdict": "WARN",
+            "status": "PERSISTED",
+            "strategy": "illiquidity",
+            "version": "clean-v1"
+          },
+          "decay_check": {
+            "n_days": 3994,
+            "rolling_3y_sharpe_latest": 1.84,
+            "decayed": false,
+            "reasons": [],
+            "action": "健康,继续持有",
+            "checked_at": "2026-06-21T17:16:14.818911+00:00"
+          }
+        },
+        {
+          "version": "v1.0",
+          "date": "2026-06-06",
+          "desc": "Amihud illiquidity 20d + PureTrend MA16 + Lev1.25x. 生产基线.",
+          "config": {
+            "factor": "Amihud illiquidity (|ret|/amount).rolling(20)",
+            "timing": "PureTrend MA16",
+            "top_n": 25,
+            "rebal_days": 20,
+            "leverage": 1.25
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2010-2026",
+            "wf_validated": true,
+            "wf_annual": 0.356,
+            "wf_maxdd": -0.276,
+            "wf_sharpe": 1.58,
+            "paper_replay_annual": 0.2,
+            "paper_replay_maxdd": -0.134
+          },
+          "metrics": {
+            "annual": 0.323,
+            "maxdd": -0.154,
+            "sharpe": 1.78,
+            "calmar": 2.1,
+            "hit": true,
+            "annual_2023": 0.328,
+            "maxdd_2023": -0.132,
+            "sharpe_2023": 1.76,
+            "annual_2010": 0.297,
+            "maxdd_2010": -0.305,
+            "sharpe_2010": 1.35
+          },
+          "status": "参考",
+          "notes": "生产基线. WF+35.6%/-27.6%/10/12正. 真实盘+20.0%/-13.4%. 17年仅3年负.",
+          "evidence": {},
+          "nine_gate": {
+            "run_date": "2026-06-29",
+            "passed_all": false,
+            "dsr": 0.40927933746934,
+            "dsr_p": 0.3411673386047246,
+            "dsr_significant": false,
+            "psr": 0.9995600781357363,
+            "n_trials": 6,
+            "wf_sharpe": 0.6576632604196051,
+            "wf_positive_ratio": 1.0,
+            "cv_sharpe": 0.6576632604196051,
+            "cv_win_rate": 1.0,
+            "sortino": 0.6501614242727252,
+            "var_95": 0.02114428973024843,
+            "cvar_95": 0.03785540460728066,
+            "tail_ratio": 1.050355900057753,
+            "ic_mean": 0.07724306592155178,
+            "nw_icir": 0.12487809458933853,
+            "ic_win_rate": 0.7039656478908816,
+            "monotonicity_corr": 0.9999999999999999,
+            "ic_decay": {
+              "1": 0.023539311488692465,
+              "5": 0.04420803965960156,
+              "10": 0.05951389064273167,
+              "20": 0.07734754288543477
+            },
+            "neut_nw_icir": 0.4382357006544214,
+            "icir_retention": 1.7002730517565754,
+            "cost_decay_rate": 1.0957357933436356,
+            "capacity_limit_aum": 2000000000,
+            "annual_1x": 0.19754681383380762,
+            "annual_2x": 0.0893172564444603,
+            "annual_3x": -0.018912300944887078,
+            "bull_sharpe": 4.305307144709294,
+            "bear_sharpe": -4.449010438071806,
+            "bull_annual": 0.9954690021226003,
+            "bear_annual": -0.9244412451498919,
+            "daily_mean_expected": 0.000783915927911935,
+            "daily_vol_expected": 0.014465115214576845,
+            "max_live_drawdown_limit": -0.6240189145271308,
+            "gate4_verdict": "FAIL",
+            "gate7_verdict": "WARN",
+            "status": "PERSISTED",
+            "strategy": "illiquidity",
+            "version": "v1.0"
+          },
+          "admission": {},
+          "decay_check": {
+            "n_days": 3994,
+            "rolling_3y_sharpe_latest": 1.84,
+            "decayed": false,
+            "reasons": [],
+            "action": "健康,继续持有",
+            "checked_at": "2026-06-22T02:17:04.048883+00:00"
+          },
+          "dsr_demotion": {
+            "from_status": "在册",
+            "from_track": "standalone",
+            "dsr_p": 0.3408210349272085,
+            "threshold": 0.05,
+            "rule": "R-OBJECTIVE-001 / 9-Gate G8（DSR 多重测试惩罚下不显著）",
+            "date": "2026-06-22"
+          }
+        },
+        {
+          "version": "v1.1",
+          "date": "2026-06-06",
+          "desc": "illiquidity 20d Top50 等权 + PureTrend MA16 + Lev1.25x",
+          "config": {
+            "factor": "Amihud illiquidity 20d",
+            "timing": "PureTrend MA16",
+            "top_n": 50,
+            "rebal_days": 20,
+            "leverage": 1.25
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2010-2026",
+            "wf_validated": true,
+            "wf_annual": 0.367,
+            "wf_maxdd": -0.323,
+            "wf_sharpe": 1.62
+          },
+          "metrics": {
+            "annual": 0.3,
+            "maxdd": -0.18,
+            "sharpe": 1.65,
+            "calmar": 1.67,
+            "hit": true
+          },
+          "status": "参考",
+          "notes": "Top50分散变体.WF+36.7%/-32.3%/1.62夏普最高. 更多分散=更低单票风险.",
+          "evidence": {},
+          "nine_gate": {
+            "run_date": "2026-06-29",
+            "passed_all": false,
+            "dsr": 0.6016559005059836,
+            "dsr_p": 0.27370160523396714,
+            "dsr_significant": false,
+            "psr": 0.9998796331961,
+            "n_trials": 6,
+            "wf_sharpe": 0.6988254215630757,
+            "wf_positive_ratio": 1.0,
+            "cv_sharpe": 0.6988254215630757,
+            "cv_win_rate": 1.0,
+            "sortino": 0.7113116771622687,
+            "var_95": 0.021142430882272398,
+            "cvar_95": 0.03835650353049332,
+            "tail_ratio": 1.0464629978412674,
+            "ic_mean": 0.07724306592155178,
+            "nw_icir": 0.12487809458933853,
+            "ic_win_rate": 0.7039656478908816,
+            "monotonicity_corr": 0.9999999999999999,
+            "ic_decay": {
+              "1": 0.023539311488692465,
+              "5": 0.04420803965960156,
+              "10": 0.05951389064273167,
+              "20": 0.07734754288543477
+            },
+            "neut_nw_icir": 0.4382357006544214,
+            "icir_retention": 1.7002730517565754,
+            "cost_decay_rate": 0.9781949074758322,
+            "capacity_limit_aum": 2000000000,
+            "annual_1x": 0.2189489968324295,
+            "annual_2x": 0.11186159998321721,
+            "annual_3x": 0.004774203134004873,
+            "bull_sharpe": 4.4873619554754995,
+            "bear_sharpe": -4.571289898720424,
+            "bull_annual": 1.0413948075273984,
+            "bear_annual": -0.9375226395058031,
+            "daily_mean_expected": 0.0008688452255255139,
+            "daily_vol_expected": 0.014463793779754923,
+            "max_live_drawdown_limit": -0.6295672308586538,
+            "gate4_verdict": "FAIL",
+            "gate7_verdict": "WARN",
+            "status": "PERSISTED",
+            "strategy": "illiquidity",
+            "version": "v1.1"
+          },
+          "admission": {},
+          "decay_check": {
+            "n_days": 3994,
+            "rolling_3y_sharpe_latest": 1.574,
+            "decayed": false,
+            "reasons": [],
+            "action": "健康,继续持有",
+            "checked_at": "2026-06-22T02:17:04.052154+00:00"
+          },
+          "dsr_demotion": {
+            "from_status": "在册",
+            "from_track": "standalone",
+            "dsr_p": 0.27335541861086987,
+            "threshold": 0.05,
+            "rule": "R-OBJECTIVE-001 / 9-Gate G8（DSR 多重测试惩罚下不显著）",
+            "date": "2026-06-22"
+          }
+        },
+        {
+          "version": "v1.2",
+          "date": "2026-06-06",
+          "desc": "illiquidity 20d 周频调仓(5d) + PureTrend MA16 + Lev1.25x",
+          "config": {
+            "factor": "Amihud illiquidity 20d",
+            "timing": "PureTrend MA16",
+            "top_n": 25,
+            "rebal_days": 5,
+            "leverage": 1.25
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2010-2026",
+            "wf_validated": true,
+            "wf_annual": 0.333,
+            "wf_maxdd": -0.313,
+            "wf_sharpe": 1.47
+          },
+          "metrics": {
+            "annual": 0.3,
+            "maxdd": -0.22,
+            "sharpe": 1.55,
+            "calmar": 1.36,
+            "hit": false
+          },
+          "status": "参考",
+          "notes": "周频调仓变体.WF+33.3%/-31.3%. 换手更高但响应更快. 适合高换手容忍场景.",
+          "evidence": {},
+          "nine_gate": {
+            "run_date": "2026-06-29",
+            "status": "GATE2_ONLY",
+            "gate2_verdict": "PASS",
+            "gate2_details": "|ICIR|=0.474 Win%=70.8%",
+            "ic_mean": 0.07886,
+            "ic_std": 0.16648,
+            "ic_ir": 0.4737,
+            "ic_ir_nw": 0.1274,
+            "ic_win_rate": 0.7076,
+            "ic_count": 3960,
+            "monotonicity_corr": 1.0,
+            "factor_quality": {
+              "status": "OK",
+              "n_dates": 4000,
+              "n_stocks": 5207,
+              "nan_pct": 0.4025,
+              "zero_std_pct": 0.0
+            }
+          },
+          "admission": {}
+        },
+        {
+          "version": "v1.3",
+          "date": "2026-06-06",
+          "desc": "illiquidity 20d + size 60d 等权混合 + PureTrend MA16 + Lev1.25x",
+          "config": {
+            "factor": "0.5*illiq20 + 0.5*size60",
+            "timing": "PureTrend MA16",
+            "top_n": 25,
+            "rebal_days": 20,
+            "leverage": 1.25
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2010-2026",
+            "wf_validated": true,
+            "wf_annual": 0.236,
+            "wf_maxdd": -0.27,
+            "wf_sharpe": 1.36
+          },
+          "metrics": {
+            "annual": 0.28,
+            "maxdd": -0.16,
+            "sharpe": 1.55,
+            "calmar": 1.75,
+            "hit": true
+          },
+          "status": "参考",
+          "notes": "双因子变体.比纯illiquidity DD更小(-16%). smoother ride.",
+          "evidence": {},
+          "nine_gate": {
+            "run_date": "2026-06-21",
+            "passed_all": false,
+            "dsr": 0.4254764474118903,
+            "dsr_p": 0.33524469374993315,
+            "dsr_significant": false,
+            "psr": 0.9998044432786126,
+            "n_trials": 6,
+            "wf_sharpe": 0.7574807715210442,
+            "wf_positive_ratio": 1.0,
+            "cv_sharpe": 0.7574807715210442,
+            "cv_win_rate": 1.0,
+            "sortino": 0.7007181640915018,
+            "var_95": 0.018771905412981023,
+            "cvar_95": 0.03500644615542257,
+            "tail_ratio": 1.09592321038929,
+            "ic_mean": 0.08963648890893257,
+            "nw_icir": 0.15404749565430295,
+            "ic_win_rate": 0.7333333333333333,
+            "monotonicity_corr": 0.9999999999999999,
+            "ic_decay": {
+              "1": 0.031030125227834753,
+              "5": 0.05555125454042394,
+              "10": 0.07185306374701221,
+              "20": 0.09002475578343319
+            },
+            "neut_nw_icir": 0.42221170699551935,
+            "icir_retention": 1.3086288625192064,
+            "cost_decay_rate": 0.9989583360709973,
+            "capacity_limit_aum": 2000000000,
+            "annual_1x": 0.19611314728647397,
+            "annual_2x": 0.09815871563900277,
+            "annual_3x": 0.0002042839915315272,
+            "bull_sharpe": 4.236218071511638,
+            "bear_sharpe": -4.438796260688571,
+            "bull_annual": 0.9308710532716735,
+            "bear_annual": -0.8380397824756965,
+            "daily_mean_expected": 0.0007782267749463252,
+            "daily_vol_expected": 0.013516757484022646,
+            "max_live_drawdown_limit": -0.6217533808421518,
+            "gate4_verdict": "FAIL",
+            "gate7_verdict": "WARN",
+            "status": "PERSISTED",
+            "strategy": "illiquidity",
+            "version": "v1.3",
+            "pbo": 0.92,
+            "pbo_risk": "high",
+            "corr_to_parent": 0.9115,
+            "corr_parent_version": "v1.1",
+            "incremental_alpha": 0.0095
+          },
+          "admission": {},
+          "decay_check": {
+            "n_days": 3994,
+            "rolling_3y_sharpe_latest": 1.181,
+            "decayed": false,
+            "reasons": [],
+            "action": "健康,继续持有",
+            "checked_at": "2026-06-22T02:17:04.055676+00:00"
+          },
+          "dsr_demotion": {
+            "from_status": "在册",
+            "from_track": "standalone",
+            "dsr_p": 0.33524469374993315,
+            "threshold": 0.05,
+            "rule": "R-OBJECTIVE-001 / 9-Gate G8（DSR 多重测试惩罚下不显著）",
+            "date": "2026-06-22"
+          }
+        },
+        {
+          "version": "v3.0",
+          "date": "2026-06-12",
+          "desc": "Amihud illiquidity 20d + PureTrend MA16 Band Timing + 511010 Bond Rotation",
+          "config": {
+            "factor": "Amihud illiquidity (|ret|/amount).rolling(20)",
+            "timing": "PureTrend MA16 Band Timing (dynamic leverage 0-1.5x)",
+            "rotation": "511010 Gov Bond ETF (in BEAR regime)",
+            "top_n": 25,
+            "rebal_days": 20
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2018-2026",
+            "wf_validated": true
+          },
+          "metrics": {
+            "annual": 0.3703,
+            "maxdd": -0.1249,
+            "sharpe": 2.08,
+            "calmar": 2.96,
+            "hit": true
+          },
+          "status": "参考",
+          "notes": "旧生产版本。已全区间压力测试 +37.0%/-12.5%/2.08，被 v3.1 替代。",
+          "evidence": {},
+          "nine_gate": {
+            "run_date": "2026-06-21",
+            "passed_all": false,
+            "dsr": 0.8730172965727313,
+            "dsr_p": 0.19132682504405074,
+            "dsr_significant": false,
+            "psr": 0.9996389092027566,
+            "n_trials": 6,
+            "wf_sharpe": 0.6585731109779527,
+            "wf_positive_ratio": 1.0,
+            "cv_sharpe": 0.6585731109779527,
+            "cv_win_rate": 1.0,
+            "sortino": 0.9643961981771173,
+            "var_95": 0.017742992962613363,
+            "cvar_95": 0.02912756808005842,
+            "tail_ratio": 1.129088397207605,
+            "ic_mean": 0.0776292139902866,
+            "nw_icir": 0.12577367644628767,
+            "ic_win_rate": 0.704855842185129,
+            "monotonicity_corr": 0.9999999999999999,
+            "ic_decay": {
+              "1": 0.023030226964007774,
+              "5": 0.044678835014986075,
+              "10": 0.05999791857714023,
+              "20": 0.07782954226941735
+            },
+            "neut_nw_icir": 0.43917462266735846,
+            "icir_retention": 1.6849638800217284,
+            "cost_decay_rate": 0.9257427678353537,
+            "capacity_limit_aum": 2000000000,
+            "annual_1x": 0.22403557944190172,
+            "annual_2x": 0.12033592073883008,
+            "annual_3x": 0.01663626203575835,
+            "bull_sharpe": 4.5638827793004255,
+            "bear_sharpe": -4.113744882412478,
+            "bull_annual": 0.8711360321989221,
+            "bear_annual": -0.654384690335157,
+            "daily_mean_expected": 0.0008890300771504037,
+            "daily_vol_expected": 0.011607805366637412,
+            "max_live_drawdown_limit": -0.5050911412244895,
+            "gate4_verdict": "FAIL",
+            "gate7_verdict": "WARN",
+            "status": "PERSISTED",
+            "strategy": "illiquidity",
+            "version": "v3.0",
+            "pbo": 0.92,
+            "pbo_risk": "high",
+            "corr_to_parent": 0.7829,
+            "corr_parent_version": "v1.3",
+            "incremental_alpha": 0.0878
+          },
+          "admission": {},
+          "decay_check": {
+            "n_days": 2051,
+            "rolling_3y_sharpe_latest": 1.84,
+            "decayed": false,
+            "reasons": [],
+            "action": "健康,继续持有",
+            "checked_at": "2026-06-21T17:16:14.812942+00:00"
+          }
+        },
+        {
+          "version": "v3.1",
+          "date": "2026-06-12",
+          "desc": "Amihud illiquidity 20d + Salience Veto 30% + PureTrend MA16 Band Timing + 511010 Bond Rotation",
+          "config": {
+            "factor": "Amihud illiquidity (|ret|/amount).rolling(20)",
+            "veto": "Faded Salience Covariance (-ST_cov) bottom 30% excluded",
+            "timing": "PureTrend MA16 Band Timing (dynamic leverage 0-1.5x)",
+            "rotation": "511010 Gov Bond ETF (in BEAR regime)",
+            "top_n": 25,
+            "rebal_days": 20
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2018-2026",
+            "wf_validated": true
+          },
+          "metrics": {
+            "annual": 0.3777,
+            "maxdd": -0.1195,
+            "sharpe": 2.12,
+            "calmar": 3.16,
+            "hit": true
+          },
+          "status": "参考",
+          "notes": "当前 LIVE 生产版本。引入 30% 凸显性一票否决风控层后，相较 v3.0 实现了年化收益微增（+0.7%）、最大回撤缩减（从-12.5%降至-11.9%）与卡玛比率上升（从 2.96 升至 3.16）。\n\n【血缘审计 2026-06-19】v3.1 = v3.0 + Salience Veto。对真实父版本 v3.0 收益相关 ρ=0.95、正交增量 alpha 仅 +1.89% → 实为 v3.0 换皮版,Veto 几乎不动收益结构。真正的 alpha 跃迁在 v1.3→v3.0(ρ0.77、+12.87%,加 PureTrend Band 择时 + 511010 国债轮动)。家族版本池 PBO=0.76(high)=版本选择过拟合显著。注:参考版 v3.0 DSR_p=0.016 比在册 v3.1(0.034)更显著、夏普 2.08 vs 2.12 相近、回撤相近——在册版未必是血缘里统计最干净者,可考虑以 v3.0 为主、v3.1 留作 veto 实验。",
+          "evidence": {
+            "data_incidents": [
+              {
+                "code": "INVALIDATED_BY_DATA_UNIT_INCIDENT",
+                "incident_id": "price-units-20260620",
+                "resolved": false,
+                "reasons": [
+                  "top25_overlap_below_0.80",
+                  "factor_spearman_below_0.95",
+                  "annual_delta_above_2pct",
+                  "sharpe_delta_above_0.10"
+                ]
+              }
+            ],
+            "production_blocked": true,
+            "spec_migration": {
+              "spec_hash": "c9b0269146171f87a58a27359e748d7e6b3f063af0f921820201bf4c30ca457f",
+              "requires_revalidation": true
+            }
+          },
+          "admission": {},
+          "nine_gate": {
+            "run_date": "2026-06-29",
+            "passed_all": false,
+            "dsr": 0.9276771989136922,
+            "dsr_p": 0.1767875196826476,
+            "dsr_significant": false,
+            "psr": 0.9999076682209433,
+            "n_trials": 6,
+            "wf_sharpe": 0.6739586364617527,
+            "wf_positive_ratio": 1.0,
+            "cv_sharpe": 0.6739586364617527,
+            "cv_win_rate": 1.0,
+            "sortino": 1.0868496569546902,
+            "var_95": 0.017994873401316953,
+            "cvar_95": 0.02913136416218069,
+            "tail_ratio": 1.1205794149577402,
+            "ic_mean": 0.07724306592155178,
+            "nw_icir": 0.12487809458933853,
+            "ic_win_rate": 0.7039656478908816,
+            "monotonicity_corr": 0.9999999999999999,
+            "ic_decay": {
+              "1": 0.023539311488692465,
+              "5": 0.04420803965960156,
+              "10": 0.05951389064273167,
+              "20": 0.07734754288543477
+            },
+            "neut_nw_icir": 0.4382357006544214,
+            "icir_retention": 1.7002730517565754,
+            "cost_decay_rate": 0.8667686767085276,
+            "capacity_limit_aum": 2000000000,
+            "annual_1x": 0.25347398134794014,
+            "annual_2x": 0.1436223276514421,
+            "annual_3x": 0.03377067395494403,
+            "bull_sharpe": 4.615831767584144,
+            "bear_sharpe": -4.100081970071881,
+            "bull_annual": 0.9233475451962326,
+            "bear_annual": -0.65426992017844,
+            "daily_mean_expected": 0.0010058491323330957,
+            "daily_vol_expected": 0.01199134198832146,
+            "max_live_drawdown_limit": -0.4393177360783149,
+            "gate4_verdict": "FAIL",
+            "gate7_verdict": "WARN",
+            "status": "PERSISTED",
+            "strategy": "illiquidity",
+            "version": "v3.1"
+          },
+          "executable_spec": {
+            "spec": {
+              "family": "illiquidity",
+              "version": "v3.1",
+              "universe": {
+                "market": "A_SHARE",
+                "exclude_star": false
+              },
+              "data": {
+                "price_units": "shares_yuan",
+                "warmup_start": "2010-01-01"
+              },
+              "factor": {
+                "type": "amihud_illiquidity",
+                "window": 20,
+                "shift": 1,
+                "mad_clip": 5.0
+              },
+              "selection": {
+                "top_n": 25,
+                "rebalance_days": 20
+              },
+              "timing": {
+                "type": "pure_trend_band",
+                "ma": 16,
+                "cap": 1.5
+              },
+              "policy": {
+                "veto": "salience_covariance",
+                "veto_q": 0.3
+              },
+              "execution": {
+                "fill": "T_PLUS_1_CLOSE",
+                "cost_model": "A_SHARE_STANDARD_V1"
+              }
+            },
+            "spec_hash": "c9b0269146171f87a58a27359e748d7e6b3f063af0f921820201bf4c30ca457f"
+          },
+          "decay_check": {
+            "n_days": 2051,
+            "rolling_3y_sharpe_latest": 2.2,
+            "decayed": false,
+            "reasons": [],
+            "action": "健康,继续持有",
+            "checked_at": "2026-06-22T02:17:04.058471+00:00"
+          },
+          "dsr_demotion": {
+            "from_status": "在册",
+            "from_track": "standalone",
+            "dsr_p": 0.17616589968290963,
+            "threshold": 0.05,
+            "rule": "R-OBJECTIVE-001 / 9-Gate G8（DSR 多重测试惩罚下不显著）",
+            "date": "2026-06-22"
+          }
+        }
+      ],
+      "name": "Amihud非流动性因子",
+      "hypothesis": "流动性差的股票需要更高的预期收益。A股散户偏好高流动性→低流动性被系统性低估。",
+      "regime": "小盘占优市(PureTrend MA16)。流动性收缩期更强。",
+      "decay_signal": "因子IC连续4季<0 / 滚动3年夏普<0.5 / 市场成交额持续放大",
+      "status": "active",
+      "style_betas": {
+        "size": 0.75,
+        "illiquidity": 0.8,
+        "volatility": 0.1
+      },
+      "capacity_m": 15.0,
+      "failure_boundaries": {
+        "max_drawdown": -0.3,
+        "max_drawdown_days": 180
+      }
+    },
+    {
+      "id": "illiquidity-large-cap",
+      "versions": [
+        {
+          "version": "v1.0",
+          "date": "2026-06-19",
+          "desc": "大中盘非流动性溢价策略v1.0：A股Top800成交额股池 + Amihud因子 + 30%凸显性风控否决 + MA16趋势择时（日频执行）",
+          "config": {
+            "factor": "Amihud illiquidity (|ret|/amount).rolling(20)",
+            "veto": "Faded Salience Covariance (-ST_cov) bottom 30% excluded",
+            "timing": "PureTrend MA16 Binary Gated (dynamic leverage 0-1.25x)",
+            "top_n": 25,
+            "rebal_days": 20,
+            "universe_size": 800
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2018-2026",
+            "survivorship_bias": false
+          },
+          "metrics": {
+            "annual": 0.5825964264883672,
+            "maxdd": -0.1765620463290659,
+            "sharpe": 2.1558270237237767,
+            "calmar": 3.2996696549526754,
+            "hit": true,
+            "annual_2018": 0.5982322425092605,
+            "maxdd_2018": -0.1765620463290659,
+            "sharpe_2018": 2.3522617867551867,
+            "annual_2023": 0.5633305702361757,
+            "maxdd_2023": -0.1732138325779472,
+            "sharpe_2023": 1.9340056870383255,
+            "annual_2010": 1.0287873523504125,
+            "maxdd_2010": -0.18939766508664302,
+            "sharpe_2010": 3.6290496388010327
+          },
+          "status": "退役",
+          "notes": "首个机构级大中盘（大容量） standalone 在册策略。全区间（2018-2026）年化58.26%，回撤-17.66%，夏普比率2.16。通过 9-Gate 完整审计。在 5亿 AUM 规模下净夏普比率仍然可达 1.74。",
+          "evidence": {
+            "hypothesis_id": "large_cap_illiquidity_9_gates_report",
+            "experiment_ids": [
+              "task-493"
+            ],
+            "data_incidents": [
+              {
+                "code": "INVALIDATED_BY_DATA_UNIT_INCIDENT",
+                "incident_id": "price-units-20260620",
+                "resolved": false,
+                "reasons": [
+                  "top25_overlap_below_0.80",
+                  "factor_spearman_below_0.95",
+                  "annual_delta_above_2pct",
+                  "sharpe_delta_above_0.10"
+                ]
+              }
+            ],
+            "production_blocked": true,
+            "retirement": {
+              "reason": "evidence_plagiarized_across_family_and_factor_reverses_in_own_universe",
+              "evidence_refs": [
+                "scripts/research/illiq_largecap_audit.py",
+                "scratch/illiq_largecap_audit.json",
+                "scratch/illiq_largecap_governance_DRAFT.md"
+              ],
+              "retired_at": "2026-06-21T05:42:43.454154+00:00",
+              "actor": "claude_session_2026-06-20"
+            },
+            "archived_invalid_nine_gate": {
+              "run_date": "2026-06-19",
+              "passed_all": true,
+              "dsr": 2.2843700253743706,
+              "dsr_p": 0.011174896822476632,
+              "dsr_significant": true,
+              "psr": 0.9999999997614173,
+              "n_trials": 6,
+              "wf_sharpe": 3.1102666297300128,
+              "wf_positive_ratio": 1.0,
+              "cv_sharpe": 3.1102666297300128,
+              "cv_win_rate": 1.0,
+              "sortino": 1.9223197262863942,
+              "var_95": 0.023797800963992158,
+              "cvar_95": 0.03725011254765869,
+              "tail_ratio": 1.3400140105721614,
+              "ic_mean": 0.07788025514127284,
+              "nw_icir": 0.12614597712045197,
+              "ic_win_rate": 0.7051087506322711,
+              "monotonicity_corr": 0.9999999999999999,
+              "ic_decay": {
+                "1": 0.02315499728004259,
+                "5": 0.04487760189814495,
+                "10": 0.060228075915403634,
+                "20": 0.07807444949272138
+              },
+              "neut_nw_icir": 0.4419597322623363,
+              "icir_retention": 1.6914728819552094,
+              "cost_decay_rate": 0.4622563089571472,
+              "capacity_limit_aum": 2000000000,
+              "annual_1x": 0.5825964264883672,
+              "annual_2x": 0.4479419896282989,
+              "annual_3x": 0.3132875527682306,
+              "bull_sharpe": 3.1240042624023845,
+              "bear_sharpe": -6.376739263206083,
+              "bull_annual": 1.1005262664924989,
+              "bear_annual": -0.12047844827586206,
+              "gate4_verdict": "PASS",
+              "gate7_verdict": "PASS",
+              "daily_mean_expected": 0.002312,
+              "daily_vol_expected": 0.017024,
+              "max_live_drawdown_limit": -0.265
+            }
+          },
+          "admission": {
+            "track": "standalone",
+            "rationale": "单体达标（年化>15% 且 回撤<20%）"
+          },
+          "nine_gate": {
+            "status": "INVALIDATED_EVIDENCE_PLAGIARIZED",
+            "passed_all": false,
+            "reasons": [
+              "IC/DSR/中性化/单调性/ic_decay 与 illiquidity 小盘家族逐位完全相同(跨家族照抄)",
+              "独立 Top800 自有宇宙重算 IC=-0.084(反向),非台账 +0.0779",
+              "PBO 实为未算(None)却 passed_all=true"
+            ],
+            "independent_reaudit": {
+              "own_universe_ic": -0.084,
+              "own_universe_ic_ir": -0.494,
+              "win_rate": 0.277,
+              "n_trials": 6,
+              "dsr_p_honest": 0.165,
+              "pbo_cscv": 0.4,
+              "l0_bare_factor_annual": -0.375,
+              "l0_bare_factor_sharpe": -1.04
+            }
+          }
+        }
+      ],
+      "name": "大中盘非流动性溢价策略",
+      "hypothesis": "在A股Top 800大容量股票池中，非正常的流动性萎缩伴随价格波动的背离（非流动性异常）流动性溢价蕴含显著的风险补偿，通过30%凸显性协方差风控排除高风险股，并挂载日频MA16二值择时规避宏观大盘熊市回撤。",
+      "regime": "中大盘成长与价值均衡期，且指数运行在MA16之上；调仓为20日（年化换手 44.17 倍）。",
+      "decay_signal": "Amihud因子中性化Rank ICIR持续低于0.05 / 大中盘日成交额整体萎缩 / 与其他小盘主策略相关性显著上升。",
+      "status": "active",
+      "style_betas": {
+        "size": 0.05,
+        "liquidity": -0.45,
+        "volatility": 0.15
+      },
+      "capacity_m": 500.0,
+      "failure_boundaries": {
+        "max_drawdown": -0.25,
+        "rolling_12m_sharpe": 0.8
+      }
+    },
+    {
+      "id": "industry-neglect-rotation",
+      "versions": [
+        {
+          "version": "v1.0",
+          "date": "2026-06-11",
+          "desc": "首选行业 ETF 轮动版：中观反拥挤度轮动",
+          "config": {
+            "factor": "AMT_GROWTH(成交额萎缩度) + Reversal + Low Vol",
+            "timing": "月频轮动(20d)",
+            "top_k_industries": 10,
+            "cost": {
+              "etf_fee_double_side": 0.0005
+            }
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2012-2026",
+            "survivorship_bias": false
+          },
+          "metrics": {
+            "annual": 0.1374,
+            "maxdd": -0.2964,
+            "sharpe": 0.81,
+            "calmar": 0.46,
+            "hit": false,
+            "source": "reverted_to_pre_dq2026001_persist"
+          },
+          "status": "参考",
+          "notes": "✅首选行业 ETF 轮动：样本外（2023-2026）年化 +20.09%，跑赢行业等权基准 +5.98%（IR 0.81），具备极强的主动轮动超额。\n[metrics@path_live_rerun 2026-07-23 annual=0.00% maxdd=0.00% hit=False]",
+          "evidence": {
+            "data_incidents": [
+              {
+                "code": "DQ_2026_001_FUNDAMENTAL_BATCH_ANNDATE",
+                "incident_id": "DQ-2026-001",
+                "resolved": false,
+                "reasons": [
+                  "roe"
+                ],
+                "note": "尝试 live re-run 核实(2026-07-23)时发现 run_industry_rotation_strategy 独立调用产出全零收益(2044天全部0,sharpe=nan)——非真实回测结果,已诊断非 strategy_path_report.py 包装层问题(直接调用 canonical runner 复现同样结果)。错误写入已撤回(见 evidence.metrics_history 的reverted_broken_rerun 条目),metrics 已恢复为覆盖前数字。根因未定,疑似与本次 fundamental_batch修复后 roe 面板的可用性模式变化有关(proxy_statutory 盲区处理方式改变),但未证实,也可能是与本次修复无关的既有 bug。重跑暂停,待诊断完成。"
+              }
+            ],
+            "production_blocked": true,
+            "metrics_history": [
+              {
+                "replaced_at": "2026-07-23T08:23:30.168342+00:00",
+                "metrics": {
+                  "annual": 0.1374,
+                  "maxdd": -0.2964,
+                  "sharpe": 0.81,
+                  "calmar": 0.46,
+                  "hit": false,
+                  "source": "reverted_to_pre_dq2026001_persist"
+                },
+                "reason": "path_live_rerun_refresh",
+                "note": "path_analysis live re-run 纠偏；旧 metrics 见 evidence.metrics_history；nine_gate 若标 stale 须另跑 run_nine_gates_all --persist"
+              },
+              {
+                "replaced_at": "2026-07-23T08:26:22.782507+00:00",
+                "metrics": {
+                  "annual": 0.0,
+                  "maxdd": 0.0,
+                  "sharpe": NaN,
+                  "vol": 0.0,
+                  "calmar": NaN,
+                  "end_nav": 1.0,
+                  "hit": false,
+                  "source": "path_live_rerun",
+                  "as_of": "2026-07-23",
+                  "window": "2018-01-02 → 2026-06-09",
+                  "n": 2044,
+                  "returns_sha256": "0439a12256524cef13807dd2fcbe39536540aea8dc43049b48f30534f9494738",
+                  "path": "strategies.industry_rotation.run_industry_rotation_strategy"
+                },
+                "reason": "reverted_broken_rerun",
+                "note": "live re-run 产出全零收益(2044天全部0收益,疑似策略/数据交互 bug,非真实回测结果),已诊断确认 run_industry_rotation_strategy 独立调用同样返回全零,不是path_report.py包装层的问题。撤回此次写入,恢复为覆盖前数字,标记本版本 DQ-2026-001 incident 重新回到 resolved=false,待根因修复后重跑。"
+              }
+            ],
+            "metrics_refresh": {
+              "at": "2026-07-23T08:23:30.168349+00:00",
+              "provenance": "live_rerun",
+              "path": "strategies.industry_rotation.run_industry_rotation_strategy",
+              "window": "2018-01-02 → 2026-06-09",
+              "returns_sha256": "0439a12256524cef13807dd2fcbe39536540aea8dc43049b48f30534f9494738",
+              "material_delta_keys": [
+                "annual",
+                "maxdd",
+                "sharpe"
+              ],
+              "note": "path_analysis live re-run 纠偏；旧 metrics 见 evidence.metrics_history；nine_gate 若标 stale 须另跑 run_nine_gates_all --persist"
+            }
+          },
+          "nine_gate": {
+            "run_date": "2026-06-29",
+            "passed_all": false,
+            "status": "SKIP",
+            "gate2_verdict": "SKIP",
+            "gate2_details": "行业级因子: 行业级因子，需独立审计框架",
+            "stale_vs_path_metrics": true,
+            "stale_reason": "path_metrics_refresh_material_delta:annual,maxdd,sharpe",
+            "stale_as_of": "2026-07-23"
+          },
+          "admission": {}
+        },
+        {
+          "version": "v1.1",
+          "date": "2026-06-11",
+          "desc": "低频个股轮动版：冷门行业 + 绩优股筛选",
+          "config": {
+            "factor": "Contrarian Industry + Stock Quality(ROE+NPY)",
+            "timing": "慢速半年频轮动(120d)",
+            "top_k_industries": 10,
+            "top_n_stocks": 2,
+            "cost": {
+              "buy": 0.00225,
+              "sell": 0.00275
+            }
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2012-2026",
+            "survivorship_bias": false
+          },
+          "metrics": {
+            "annual": 0.1155,
+            "maxdd": -0.5903,
+            "sharpe": 0.56,
+            "calmar": 0.2,
+            "hit": false
+          },
+          "status": "参考",
+          "notes": "个股执行版：通过 120 日慢速调仓降低个股换手摩擦成本，持有冷门行业内的龙头绩优股。",
+          "evidence": {
+            "data_incidents": [
+              {
+                "code": "DQ_2026_001_FUNDAMENTAL_BATCH_ANNDATE",
+                "incident_id": "DQ-2026-001",
+                "resolved": false,
+                "reasons": [
+                  "roe"
+                ],
+                "note": "尝试重跑本 family 时发现 run_industry_rotation_strategy 全版本(v1.0/v1.1 均已直接验证)产出全零收益,根因在 mom/vol/amt_growth industry-level 因子计算或 aggregate_industry_data/load_industry_groups 上游(v1.0 走ETF等权分支不读roe/npy也复现零收益,排除是本次fundamental_batch修复引入),与 DQ-2026-001 无关,是另一个独立的预先存在的 bug,本次不深挖修复(超出范围)。该 family 暂时无法用 live re-run 核实,DQ-2026-001 incident 保留 resolved=false。"
+              }
+            ],
+            "production_blocked": true
+          },
+          "nine_gate": {
+            "run_date": "2026-06-29",
+            "passed_all": false,
+            "status": "SKIP",
+            "gate2_verdict": "SKIP",
+            "gate2_details": "行业级因子: 行业级因子，需独立审计框架"
+          },
+          "admission": {}
+        },
+        {
+          "version": "v1.2",
+          "date": "2026-06-11",
+          "desc": "反拥挤度个股轮动版：中观成交额缩量 + ROE + NPY 选股 - 0.5 * Rank_Product_CPV 惩罚",
+          "config": {
+            "factor": "Contrarian Industry + Stock Quality(ROE+NPY) - 0.5*Rank_Product_CPV",
+            "timing": "月频轮动(20d)",
+            "top_k_industries": 10,
+            "top_n_stocks": 2,
+            "w_cpv": 0.5,
+            "cost": {
+              "buy": 0.00225,
+              "sell": 0.00275
+            }
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2012-2026",
+            "survivorship_bias": false
+          },
+          "metrics": {
+            "annual": 0.1123,
+            "maxdd": -0.2663,
+            "sharpe": 0.75,
+            "calmar": 0.42,
+            "hit": false
+          },
+          "status": "参考",
+          "notes": "✅反拥挤度个股选股版：升级为 CPV_rank * M_rank 秩乘积加权版，过滤掉高放大系数且过度放量的个股。相较 Baseline（7.82%/-51.77%/0.42），全历史年化回报提升至 11.23%，夏普比率跃升至 0.75，且最大回撤大幅缩减近一半（-26.63%）。",
+          "evidence": {
+            "data_incidents": [
+              {
+                "code": "DQ_2026_001_FUNDAMENTAL_BATCH_ANNDATE",
+                "incident_id": "DQ-2026-001",
+                "resolved": false,
+                "reasons": [
+                  "roe"
+                ],
+                "note": "尝试重跑本 family 时发现 run_industry_rotation_strategy 全版本(v1.0/v1.1 均已直接验证)产出全零收益,根因在 mom/vol/amt_growth industry-level 因子计算或 aggregate_industry_data/load_industry_groups 上游(v1.0 走ETF等权分支不读roe/npy也复现零收益,排除是本次fundamental_batch修复引入),与 DQ-2026-001 无关,是另一个独立的预先存在的 bug,本次不深挖修复(超出范围)。该 family 暂时无法用 live re-run 核实,DQ-2026-001 incident 保留 resolved=false。"
+              }
+            ],
+            "production_blocked": true
+          },
+          "nine_gate": {
+            "run_date": "2026-06-29",
+            "passed_all": false,
+            "status": "SKIP",
+            "gate2_verdict": "SKIP",
+            "gate2_details": "行业级因子: 行业级因子，需独立审计框架"
+          },
+          "admission": {}
+        },
+        {
+          "version": "v1.3",
+          "date": "2026-06-12",
+          "desc": "华西证券11因子量价ETF轮动版（含MA16择时+国债轮动）",
+          "config": {
+            "factor": "Huaxi 11 Volume-Price Factors Composite",
+            "timing": "Small-cap Index MA16 Trend Timing",
+            "rotation": "511010 Gov Bond ETF (in BEAR regime)",
+            "top_k_industries": 10,
+            "cost": {
+              "etf_fee_double_side": 0.0005
+            }
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2012-2026",
+            "survivorship_bias": false
+          },
+          "metrics": {
+            "annual": 0.2127,
+            "maxdd": -0.1754,
+            "sharpe": 1.28,
+            "calmar": 1.21,
+            "hit": true
+          },
+          "status": "参考",
+          "notes": "✅华西量价ETF轮动版：合成华西证券11个月频行业量价因子进行截面轮动，并引入小盘指数MA16均线择时与511010国债ETF轮动。全历史年化 +21.27%，最大回撤仅 -17.54%，夏普比率 1.28。样本外（2023-2026）年化 +15.58%，最大回撤仅 -11.48%，表现极度稳健。",
+          "evidence": {
+            "experiment_ids": [
+              "industry_neglect_v13_audit_20260620"
+            ],
+            "admission_caveat": "本版本 standalone 准入依据为 L2 复合(含 MA16 择时 + 国债轮动)绩效,非裸因子单体表现;裸因子年化13.8%/回撤-59.78%(hit=False)不达标。择时是合法风控 overlay,但其回撤控制不应记为因子 alpha。DSR/PBO 因 trial_count_unknown 暂不可计算,不构成统计显著性证据。",
+            "data_incidents": [
+              {
+                "code": "DQ_2026_001_FUNDAMENTAL_BATCH_ANNDATE",
+                "incident_id": "DQ-2026-001",
+                "resolved": false,
+                "reasons": [
+                  "roe"
+                ],
+                "note": "尝试重跑本 family 时发现 run_industry_rotation_strategy 全版本(v1.0/v1.1 均已直接验证)产出全零收益,根因在 mom/vol/amt_growth industry-level 因子计算或 aggregate_industry_data/load_industry_groups 上游(v1.0 走ETF等权分支不读roe/npy也复现零收益,排除是本次fundamental_batch修复引入),与 DQ-2026-001 无关,是另一个独立的预先存在的 bug,本次不深挖修复(超出范围)。该 family 暂时无法用 live re-run 核实,DQ-2026-001 incident 保留 resolved=false。"
+              }
+            ],
+            "production_blocked": true
+          },
+          "nine_gate": {
+            "run_date": "2026-06-30",
+            "passed_all": false,
+            "dsr": -1.7308475019498417,
+            "dsr_p": 0.9582605164751884,
+            "dsr_significant": false,
+            "psr": 2.9545481372442753e-19,
+            "n_trials": 1,
+            "wf_sharpe": -0.2957639209463088,
+            "wf_positive_ratio": 0.2857142857142857,
+            "cv_sharpe": -0.2957639209463088,
+            "cv_win_rate": 0.2857142857142857,
+            "sortino": -1.5553430050132742,
+            "var_95": 0.0035019841269841264,
+            "cvar_95": 0.007096759966870746,
+            "tail_ratio": 0.5235228516026884,
+            "ic_mean": -0.00016314642568085038,
+            "nw_icir": 0.003411021693146175,
+            "ic_win_rate": 0.4779021803182086,
+            "monotonicity_corr": 0.0,
+            "ic_decay": {
+              "1": -0.0019735003132581096,
+              "5": -0.0003962092065686485,
+              "10": 0.0008657399733204063,
+              "20": -8.028024944314326e-05
+            },
+            "neut_nw_icir": 0.0,
+            "icir_retention": 0.0,
+            "cost_decay_rate": 1.0,
+            "capacity_limit_aum": 5000000,
+            "annual_1x": -0.10730376922515093,
+            "annual_2x": -0.2368667512302923,
+            "annual_3x": -0.36642973323543376,
+            "bull_sharpe": -2.13676539823854,
+            "bear_sharpe": -2.6571861432334414,
+            "bull_annual": -0.09779921095486106,
+            "bear_annual": -0.12146596664780904,
+            "daily_mean_expected": -0.0004258086080363132,
+            "daily_vol_expected": 0.002881715488895061,
+            "max_live_drawdown_limit": -1.1674511240306784,
+            "gate4_verdict": "FAIL",
+            "gate7_verdict": "FAIL"
+          },
+          "admission": {},
+          "dsr_demotion": {
+            "from_status": "在册",
+            "from_track": "standalone",
+            "dsr_p": null,
+            "threshold": 0.05,
+            "rule": "R-OBJECTIVE-001 / 9-Gate G8（DSR 多重测试惩罚下不显著）",
+            "date": "2026-06-22"
+          }
+        },
+        {
+          "version": "v1.4",
+          "date": "2026-06-12",
+          "desc": "华西证券11因子量价个股选股版（含MA16择时+国债轮动）",
+          "config": {
+            "factor": "Huaxi 11 Volume-Price Factors Composite + Stock Quality(ROE+NPY) - 0.5*Rank_Product_CPV",
+            "timing": "Small-cap Index MA16 Trend Timing",
+            "rotation": "511010 Gov Bond ETF (in BEAR regime)",
+            "top_k_industries": 10,
+            "top_n_stocks": 2,
+            "w_cpv": 0.5,
+            "cost": {
+              "buy": 0.00225,
+              "sell": 0.00275
+            }
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2012-2026",
+            "survivorship_bias": false
+          },
+          "metrics": {
+            "annual": 0.1289,
+            "maxdd": -0.2675,
+            "sharpe": 0.76,
+            "calmar": 0.48,
+            "hit": false
+          },
+          "status": "候选",
+          "notes": "华西个股选股版：在v1.3的基础上，对于选中的行业，在行业内部挑选绩优且非拥挤个股（ROE+NPY-0.5*CPV）。由于个股摩擦成本和因子分散度大，相比纯行业ETF版（v1.3）表现有一定磨损，全历史年化 +12.89%，夏普 0.76，回撤 -26.75%，登记为候选。",
+          "evidence": {
+            "data_incidents": [
+              {
+                "code": "DQ_2026_001_FUNDAMENTAL_BATCH_ANNDATE",
+                "incident_id": "DQ-2026-001",
+                "resolved": false,
+                "reasons": [
+                  "roe"
+                ],
+                "note": "尝试重跑本 family 时发现 run_industry_rotation_strategy 全版本(v1.0/v1.1 均已直接验证)产出全零收益,根因在 mom/vol/amt_growth industry-level 因子计算或 aggregate_industry_data/load_industry_groups 上游(v1.0 走ETF等权分支不读roe/npy也复现零收益,排除是本次fundamental_batch修复引入),与 DQ-2026-001 无关,是另一个独立的预先存在的 bug,本次不深挖修复(超出范围)。该 family 暂时无法用 live re-run 核实,DQ-2026-001 incident 保留 resolved=false。"
+              }
+            ],
+            "production_blocked": true
+          },
+          "nine_gate": {},
+          "admission": {}
+        }
+      ],
+      "name": "中观行业反拥挤度轮动策略",
+      "hypothesis": "在A股市场，热门拥挤行业易估值见顶回落，而成交量极端萎缩的冷门行业（反拥挤度）因被市场遗忘而存在显著低估 and 反弹不对称性。",
+      "regime": "行业轮动剧烈、市场无明显主线时期；月频对申万L2行业成交量萎缩度排名，选最冷门行业配置。",
+      "decay_signal": "冷门行业超额收益长期转负 / 与其他母策略相关性显著上升。",
+      "status": "active",
+      "style_betas": {
+        "size": 0.15,
+        "value": 0.3,
+        "crowdness": -0.6
+      },
+      "capacity_m": 80.0,
+      "failure_boundaries": {
+        "max_drawdown": -0.3,
+        "max_drawdown_days": 150
+      }
+    },
+    {
+      "id": "large-cap-growth-hedged",
+      "versions": [
+        {
+          "version": "v1.0",
+          "date": "2026-06-11",
+          "desc": "样本外验证版：大盘成长对冲 + MA120 + 1% 滞后缓冲",
+          "config": {
+            "factor": "comp_premium(Growth+Valuation)",
+            "timing": "Hysteresis NAV-MA120 (buf 1%)",
+            "top_n": 25,
+            "rebal_days": 40,
+            "leverage": 1.0,
+            "cost": {
+              "hedge_cost_annual": 0.015,
+              "switch_friction": 0.0025
+            }
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2023-2024",
+            "survivorship_bias": false
+          },
+          "metrics": {
+            "annual": -0.0993,
+            "maxdd": -0.239,
+            "sharpe": -0.9501,
+            "calmar": -0.4157,
+            "n": 484,
+            "hit": false
+          },
+          "status": "退役",
+          "notes": "✅样本外测试（2023-2026）表现良好：超额为正，最大回撤 11.3% 控制在 15% 以内，年化调仓降至 3.6 次，与小盘策略相关性 -0.096 负相关，符合第二母策略分流要求。",
+          "evidence": {
+            "retirement": {
+              "reason": "已衰退失效 (06-22 9-Gate 审计：回撤较大，WF夏普已趋近于0，超额收益耗尽)",
+              "evidence_refs": [],
+              "retired_at": "2026-06-25T14:44:13.975441+00:00",
+              "actor": "manual_governance"
+            }
+          },
+          "nine_gate": {
+            "run_date": "2026-06-30",
+            "passed_all": false,
+            "dsr": -1.8375032176616373,
+            "dsr_p": 0.9669321790499421,
+            "dsr_significant": false,
+            "psr": 0.1000851835912488,
+            "n_trials": 4,
+            "wf_sharpe": 0.0,
+            "wf_positive_ratio": 0.0,
+            "cv_sharpe": 0.0,
+            "cv_win_rate": 0.0,
+            "sortino": -0.692108638236392,
+            "var_95": 0.011209512047955016,
+            "cvar_95": 0.015877435113163408,
+            "tail_ratio": 0.9447764668108429,
+            "ic_mean": -0.014328358855751275,
+            "nw_icir": 0.05972930848740538,
+            "ic_win_rate": 0.5581395348837209,
+            "monotonicity_corr": 0.0,
+            "ic_decay": {
+              "1": -0.004769007494765731,
+              "5": -0.00022756007543497012,
+              "10": -0.0075614592137311165,
+              "20": -0.013806566474409268
+            },
+            "neut_nw_icir": 0.026638971300881175,
+            "icir_retention": 0.2878182155843786,
+            "cost_decay_rate": 1.0,
+            "capacity_limit_aum": 5000000,
+            "annual_1x": -0.09933933823124887,
+            "annual_2x": -0.11001289195025712,
+            "annual_3x": -0.12068644566926538,
+            "bull_sharpe": 1.3925676220364602,
+            "bear_sharpe": -3.3404388889280634,
+            "bull_annual": 0.140862920053792,
+            "bear_annual": -0.35385151828646244,
+            "daily_mean_expected": -0.00039420372313987646,
+            "daily_vol_expected": 0.006586744698035203,
+            "max_live_drawdown_limit": -0.35842839081992617,
+            "gate4_verdict": "FAIL",
+            "gate7_verdict": "FAIL",
+            "status": "PERSISTED",
+            "strategy": "large_cap",
+            "version": "v1.0"
+          },
+          "admission": {
+            "track": "diversifier",
+            "rationale": "✅样本外测试（2023-2026）表现良好：超额为正，最大回撤 11.3% 控制在 15% 以内，年化调仓降至 3.6 次，与小盘策略相关性 -0.096 负相关，符合第二母策略分流要求。",
+            "note": "迁移自动归类：对冲母策略，单体低收益+负相关，靠组合层增量入册"
+          },
+          "decay_check": {
+            "n_days": 835,
+            "rolling_3y_sharpe_latest": 0.645,
+            "decayed": false,
+            "reasons": [],
+            "action": "健康,继续持有",
+            "checked_at": "2026-06-22T02:17:04.060770+00:00"
+          }
+        },
+        {
+          "version": "v1.0-full",
+          "date": "2026-06-11",
+          "desc": "全历史压力测试版：大盘成长对冲 + MA120 + 2% 滞后缓冲",
+          "config": {
+            "factor": "comp_premium(Growth+Valuation)",
+            "timing": "Hysteresis NAV-MA120 (buf 2%)",
+            "top_n": 25,
+            "rebal_days": 40,
+            "leverage": 1.0,
+            "cost": {
+              "hedge_cost_annual": 0.015,
+              "switch_friction": 0.0025
+            }
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2010-2026",
+            "survivorship_bias": false
+          },
+          "metrics": {
+            "annual": -0.0289,
+            "maxdd": -0.4454,
+            "sharpe": -0.34,
+            "calmar": -0.06,
+            "hit": false
+          },
+          "status": "参考",
+          "notes": "全历史测试（2010-2026）：大盘蓝筹在 2021-2024 年经历漫长估值出清，且均值回归型 Spread 导致频繁空仓，长期回报受拖累，但与小盘股表现呈强负相关（-0.102）。",
+          "evidence": {},
+          "nine_gate": {
+            "run_date": "2026-06-29",
+            "status": "GATE2_ONLY",
+            "gate2_verdict": "WARN",
+            "gate2_details": "IC Win%=45.2% < 55%",
+            "ic_mean": -0.02862,
+            "ic_std": 0.18131,
+            "ic_ir": -0.1579,
+            "ic_ir_nw": 0.0434,
+            "ic_win_rate": 0.452,
+            "ic_count": 3960,
+            "monotonicity_corr": -1.0,
+            "factor_quality": {
+              "status": "OK",
+              "n_dates": 4000,
+              "n_stocks": 5207,
+              "nan_pct": 0.4025,
+              "zero_std_pct": 0.0
+            },
+            "note": "复合因子，可能因数据缺失失败"
+          },
+          "admission": {}
+        },
+        {
+          "version": "v1.1",
+          "date": "2026-06-11",
+          "desc": "自适应 CPV 惩罚版：大盘成长对冲 + MA120 自适应 CPV 惩罚 ($w_{max}=0.5$)",
+          "config": {
+            "factor": "comp_premium(Growth+Valuation - w*CPV)",
+            "w_cpv_max": 0.5,
+            "timing": "Hysteresis NAV-MA120 (buf 1%)",
+            "top_n": 25,
+            "rebal_days": 40,
+            "leverage": 1.0,
+            "cost": {
+              "hedge_cost_annual": 0.015,
+              "switch_friction": 0.0025
+            }
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2023-2024",
+            "survivorship_bias": false
+          },
+          "metrics": {
+            "annual": 0.0579,
+            "maxdd": -0.2362,
+            "sharpe": 0.3721,
+            "calmar": 0.2453,
+            "n": 484,
+            "hit": false
+          },
+          "status": "退役",
+          "notes": "✅自适应 CPV 惩罚版：样本外（2023-2026）年化提升至 5.66%（超越 Baseline 3.97%），最大回撤控制在 10.53%，成功避开了 2023-2026 年高股息红利央国企的拥挤抱团误伤。",
+          "evidence": {
+            "retirement": {
+              "reason": "已衰退失效 (06-22 9-Gate 审计：回撤较大，WF夏普已趋近于0，超额收益耗尽)",
+              "evidence_refs": [],
+              "retired_at": "2026-06-25T14:44:13.976591+00:00",
+              "actor": "manual_governance"
+            }
+          },
+          "nine_gate": {
+            "run_date": "2026-06-30",
+            "passed_all": false,
+            "dsr": -0.8656273482458132,
+            "dsr_p": 0.8066527234515577,
+            "dsr_significant": false,
+            "psr": 0.6982625610622684,
+            "n_trials": 4,
+            "wf_sharpe": 0.0,
+            "wf_positive_ratio": 0.0,
+            "cv_sharpe": 0.0,
+            "cv_win_rate": 0.0,
+            "sortino": 0.25347544621066126,
+            "var_95": 0.013640631119201387,
+            "cvar_95": 0.02188630966925897,
+            "tail_ratio": 0.9935231854188399,
+            "ic_mean": -0.007135934675290392,
+            "nw_icir": 0.013295252174726114,
+            "ic_win_rate": 0.5131639722863741,
+            "monotonicity_corr": 0.3,
+            "ic_decay": {
+              "1": 0.002389486245605214,
+              "5": -0.005176608514388977,
+              "10": -0.009245130201367805,
+              "20": -0.008470374492249109
+            },
+            "neut_nw_icir": 0.028514361855221756,
+            "icir_retention": 1.158623133057719,
+            "cost_decay_rate": 0.4908867723640378,
+            "capacity_limit_aum": 5000000,
+            "annual_1x": 0.057938240147541835,
+            "annual_2x": 0.04371768229630216,
+            "annual_3x": 0.029497124445062507,
+            "bull_sharpe": 1.7657217226366526,
+            "bear_sharpe": -2.7166001935543234,
+            "bull_annual": 0.34708049247149453,
+            "bear_annual": -0.24842950805954003,
+            "daily_mean_expected": 0.00022991365137913427,
+            "daily_vol_expected": 0.009808242376643878,
+            "max_live_drawdown_limit": -0.3542384973215339,
+            "gate4_verdict": "FAIL",
+            "gate7_verdict": "FAIL",
+            "status": "PERSISTED",
+            "strategy": "large_cap",
+            "version": "v1.1"
+          },
+          "admission": {
+            "track": "diversifier",
+            "rationale": "✅自适应 CPV 惩罚版：样本外（2023-2026）年化提升至 5.66%（超越 Baseline 3.97%），最大回撤控制在 10.53%，成功避开了 2023-2026 年高股息红利央国企的拥挤抱团误伤。",
+            "note": "迁移自动归类：对冲母策略，单体低收益+负相关，靠组合层增量入册"
+          },
+          "decay_check": {
+            "n_days": 835,
+            "rolling_3y_sharpe_latest": 0.315,
+            "decayed": true,
+            "reasons": [
+              "滚动3年夏普 0.32 < 0.5"
+            ],
+            "action": "触发退役复核(workflow 标退役,非删除)",
+            "checked_at": "2026-06-22T02:17:04.063007+00:00"
+          }
+        },
+        {
+          "version": "v1.1-full",
+          "date": "2026-06-11",
+          "desc": "全历史压力测试自适应 CPV 惩罚版：大盘成长对冲 + MA120 自适应 CPV 惩罚 ($w_{max}=0.5$)",
+          "config": {
+            "factor": "comp_premium(Growth+Valuation - w*CPV)",
+            "w_cpv_max": 0.5,
+            "timing": "Hysteresis NAV-MA120 (buf 1%)",
+            "top_n": 25,
+            "rebal_days": 40,
+            "leverage": 1.0,
+            "cost": {
+              "hedge_cost_annual": 0.015,
+              "switch_friction": 0.0025
+            }
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2012-2026",
+            "survivorship_bias": false
+          },
+          "metrics": {
+            "annual": 0.0138,
+            "maxdd": -0.2698,
+            "sharpe": 0.19,
+            "calmar": 0.05,
+            "hit": false
+          },
+          "status": "退役",
+          "notes": "全历史压力测试：将全历史收益从 -3.03% 扭转为 +1.38%（夏普 0.19），且最大回撤由 -48.69% 压缩至 -26.98%，相比 baseline 有巨大的绝对与相对优化。",
+          "evidence": {
+            "retirement": {
+              "reason": "已衰退失效 (06-22 9-Gate 审计：回撤较大，WF夏普已趋近于0，超额收益耗尽)",
+              "evidence_refs": [],
+              "retired_at": "2026-06-25T14:44:13.977731+00:00",
+              "actor": "manual_governance"
+            }
+          },
+          "nine_gate": {
+            "run_date": "2026-06-21",
+            "passed_all": false,
+            "dsr": -1.096448076528242,
+            "dsr_p": 0.8635586328019098,
+            "dsr_significant": false,
+            "psr": 0.4695490925671116,
+            "n_trials": 4,
+            "wf_sharpe": 0.0,
+            "wf_positive_ratio": 0.0,
+            "cv_sharpe": 0.0,
+            "cv_win_rate": 0.0,
+            "sortino": -0.016467696634759683,
+            "var_95": 0.026480707371467717,
+            "cvar_95": 0.04123380645656317,
+            "tail_ratio": 1.0452405288275997,
+            "ic_mean": 0.026908416060948223,
+            "nw_icir": 0.0500575351465765,
+            "ic_win_rate": 0.5741935483870968,
+            "monotonicity_corr": 0.8999999999999998,
+            "ic_decay": {
+              "1": 0.0064777397664533675,
+              "5": 0.016066886510415785,
+              "10": 0.01643945160477743,
+              "20": 0.025339855480349737
+            },
+            "neut_nw_icir": 0.03492974650348622,
+            "icir_retention": 0.37905201219487483,
+            "cost_decay_rate": 1.0,
+            "capacity_limit_aum": 5000000,
+            "annual_1x": -0.005503733791031447,
+            "annual_2x": -0.033927386485642225,
+            "annual_3x": -0.06235103918025302,
+            "bull_sharpe": 2.368778113540458,
+            "bear_sharpe": -2.563099608115512,
+            "bull_annual": 0.5352052296745559,
+            "bear_annual": -0.8077595967233299,
+            "daily_mean_expected": -2.1840213456473997e-05,
+            "daily_vol_expected": 0.01692455763574749,
+            "max_live_drawdown_limit": -1.2772813272752876,
+            "gate4_verdict": "FAIL",
+            "gate7_verdict": "FAIL",
+            "status": "PERSISTED",
+            "strategy": "large_cap",
+            "version": "v1.1-full"
+          },
+          "admission": {
+            "track": "diversifier",
+            "rationale": "全历史压力测试：将全历史收益从 -3.03% 扭转为 +1.38%（夏普 0.19），且最大回撤由 -48.69% 压缩至 -26.98%，相比 baseline 有巨大的绝对与相对优化。",
+            "note": "迁移自动归类：对冲母策略，单体低收益+负相关，靠组合层增量入册"
+          },
+          "decay_check": {
+            "n_days": 3507,
+            "rolling_3y_sharpe_latest": 0.315,
+            "decayed": true,
+            "reasons": [
+              "滚动3年夏普 0.32 < 0.5"
+            ],
+            "action": "触发退役复核(workflow 标退役,非删除)",
+            "checked_at": "2026-06-22T02:17:04.065982+00:00"
+          }
+        }
+      ],
+      "name": "大盘成长多空对冲策略",
+      "hypothesis": "做多最贵、增长最快的白马龙头，等额做空大盘等权指数（剥离 Beta），并叠加策略级 Hysteresis MA120 择时过滤以控制摩擦和回撤。",
+      "regime": "大盘蓝筹/核心资产占占优或防御占优市；策略 NAV > MA120 (带 1% Hysteresis) 时持仓，否则空仓",
+      "decay_signal": "与小盘策略相关性转为强正相关 / 长期无 alpha 超额 / 创不出新高",
+      "status": "active",
+      "style_betas": {
+        "size": -0.5,
+        "growth": 0.6,
+        "value": -0.4
+      },
+      "capacity_m": 150.0,
+      "failure_boundaries": {
+        "max_drawdown": -0.15,
+        "max_drawdown_days": 120
+      }
+    },
+    {
+      "id": "loser_veto_reversal",
+      "versions": [
+        {
+          "version": "v0.1-observe",
+          "date": "2026-06-12",
+          "desc": "反转+低波死亡分位排除器(双宿主证伪留档)",
+          "config": {
+            "artifact_type": "VetoFilter",
+            "hosts_tested": [
+              {
+                "family": "small-cap-size",
+                "version": "v2.0"
+              },
+              {
+                "family": "momentum60-top25",
+                "version": "正交性复测,无择时"
+              }
+            ],
+            "veto_q": 0.1,
+            "application": "filter candidate pool before top_n; refill positions; rebalance-day only"
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "marginal_protocol 三窗口",
+            "survivorship_bias": false
+          },
+          "metrics": {
+            "smallcap_delta_annual_is_oos_stress": [
+              -0.0124,
+              -0.0236,
+              -0.0097
+            ],
+            "momentum_delta_annual_is_oos_stress": [
+              -0.0335,
+              -0.0659,
+              -0.0173
+            ],
+            "hit": false
+          },
+          "status": "已证伪",
+          "notes": "❌双宿主证伪(2026-06):反转宿主(small-cap v2.0)与动量宿主(mom60 top25)上边际贡献协议三窗口 Δ年化全负。根因:死亡分位负 alpha 是全截面无条件度量,但任何宿主 top-N 自带强度筛选,top-N∩死亡分位 ≈ 强势股刚回撤的子集,在 20 日反转主导的 A 股恰好反弹——空头侧 alpha既不能做空套利,也不能靠回避套利(理性宿主本就不持有真正的烂票)。结构性死亡,非 regime 依赖。机制五件套(候选池过滤/边际贡献协议/弃牌堆分诊)保留;报告 reports/research/veto_filter_marginal*.json。",
+          "evidence": {},
+          "nine_gate": {},
+          "admission": {}
+        }
+      ],
+      "name": "输家端反转低波否决器",
+      "hypothesis": "A股无做空,输家端负 alpha 无法被套利,变现方式是排除宿主候选池的死亡分位而非独立做多。",
+      "regime": "作为宿主策略候选池 VetoFilter;无独立净值,只看边际贡献。",
+      "decay_signal": "(已触发)任意宿主上边际贡献为负即证伪。",
+      "status": "retired",
+      "style_betas": {},
+      "capacity_m": 0.0,
+      "failure_boundaries": {}
+    },
+    {
+      "id": "multi-factor-composite",
+      "versions": [
+        {
+          "version": "v1.0",
+          "date": "2026-06-30",
+          "desc": "illiq(60%)+small_cap(20%)+lc_hedge(20%) 三策略低相关组合",
+          "config": {
+            "allocation": {
+              "illiq_v3.1": 0.6,
+              "small_cap_v2.0": 0.2,
+              "lc_hedge_v1.0": 0.2
+            },
+            "rebalance": "monthly"
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2018-2024",
+            "train_period": "2018-2022",
+            "oos_period": "2023-2024",
+            "survivorship_bias": false,
+            "n_trials": 126,
+            "dsr_p": 1e-06
+          },
+          "metrics": {
+            "annual": 0.1735,
+            "maxdd": -0.1725,
+            "sharpe": 0.87,
+            "calmar": 1.01,
+            "hit": false
+          },
+          "status": "参考",
+          "notes": "⚠️ 2026-06-30 严格训练/OOS分离测试(2018-22训练/2023-24验证)。最优权重 illiq_v11(60%)+illiq(10%)+small(10%)+size_earn(10%)+hq_full(10%)。OOS T-1: 年化17.35%/夏普0.87/回撤-17.25%/卡玛1.01。夏普差一口气(0.87 vs 门槛1.0)。DSR高度显著(p≈0,n_trials=126)。策略池多样性不足(illiq簇合计70%)，需引入真正正交的新因子后重组合。记为参考，待新因子入库后重跑。",
+          "evidence": {},
+          "admission": {},
+          "nine_gate": {}
+        }
+      ],
+      "name": "多因子低相关组合",
+      "hypothesis": "通过将低相关策略（illiq/小盘/大盘对冲）组合，利用MPT分散降低回撤，在多Regime下维持正超额",
+      "regime": "全天候（低相关对冲）",
+      "decay_signal": "illiq单体夏普<1.0持续3个月 | lc_hedge与illiq相关性>0.5 | 组合MaxDD突破-20%",
+      "status": "active",
+      "style_betas": {},
+      "capacity_m": 0.0,
+      "failure_boundaries": {}
+    },
+    {
+      "id": "ontology_industry",
+      "versions": [
+        {
+          "version": "v1.0-shadow",
+          "date": "2026-06-21",
+          "desc": "产业链本体研究的正式观察版本；身份已入台账，但尚无可声明的 Nine-Gate 或正式绩效。",
+          "config": {
+            "mode": "SHADOW",
+            "signal_source": "data_lake/research_signals/ontology_predictions.json",
+            "production_weight": 0.0
+          },
+          "data_scope": {
+            "source": "research_signals + shadow observation",
+            "period": "forward observation",
+            "survivorship_bias": null
+          },
+          "metrics": {},
+          "status": "候选",
+          "notes": "观察版本：不得参与生产组合；未编造收益、回撤、夏普或 Gate 结果。",
+          "evidence": {
+            "artifact_paths": [
+              "data_lake/agent/shadow_incubation_log.json",
+              "data_lake/research_signals/ontology_predictions.json",
+              "reports/islands/shadow_ontology_performance.json"
+            ]
+          },
+          "admission": {},
+          "nine_gate": {}
+        }
+      ],
+      "name": "产业链本体与 BOM 成本传导",
+      "hypothesis": "BOM 成本传导与议价权差异形成行业层面的预期差；当前仅作影子观察，不参与生产权重。",
+      "regime": "产业成本或供需结构发生可验证变化的观察期",
+      "decay_signal": "影子组合持续跑输行业基准，或后续财报方向与传导预测长期相反",
+      "status": "active",
+      "style_betas": {},
+      "capacity_m": 0.0,
+      "failure_boundaries": {}
+    },
+    {
+      "id": "roc-yc",
+      "versions": [
+        {
+          "version": "v1.0",
+          "date": "2026-06-23",
+          "desc": "风格中性化与市值匹配对冲的神奇公式（ROC + YC）策略",
+          "config": {
+            "blend_weight": 0.5,
+            "neutralize": true,
+            "hedged": true,
+            "top_n": 25,
+            "rebalance_days": 20,
+            "leverage": 1.25,
+            "exclude_star": true
+          },
+          "data_scope": {
+            "period": "2018-2026",
+            "universe": "A股全市场（排除科创板688）"
+          },
+          "metrics": {
+            "annual": 0.069,
+            "maxdd": -0.3692,
+            "sharpe": 0.44,
+            "hit": false
+          },
+          "status": "参考",
+          "notes": "经过56次参数扫频，原始神奇公式在A股由于小盘垃圾股溢价跑输。通过Barra风格中性化成功扭转因子单调性（-1.00至+0.40），夏普回升至0.28。市值匹配对冲（Top-800）进一步将回撤从-54%降至-36.92%，夏普提升至0.44。由于DSR不显著（p-val=0.9554），未达独立在册门槛，记为参考。",
+          "evidence": {},
+          "admission": {},
+          "nine_gate": {
+            "dsr_p": 0.9554,
+            "psr": 0.786,
+            "n_trials": 56,
+            "wf_sharpe": 0.46,
+            "cv_sharpe": 0.46,
+            "run_date": "2026-06-29",
+            "status": "GATE2_ONLY",
+            "gate2_verdict": "FAIL",
+            "gate2_details": "|ICIR|=0.045 < 0.10",
+            "ic_mean": 0.00558,
+            "ic_std": 0.12465,
+            "ic_ir": 0.0447,
+            "ic_ir_nw": 0.0121,
+            "ic_win_rate": 0.5111,
+            "ic_count": 3469,
+            "monotonicity_corr": -1.0,
+            "factor_quality": {
+              "status": "OK",
+              "n_dates": 4000,
+              "n_stocks": 5207,
+              "nan_pct": 0.433,
+              "zero_std_pct": 0.0
+            }
+          }
+        }
+      ],
+      "name": "资本回报率与盈利收益率双因子组合",
+      "hypothesis": "结合A股基本面资本回报率（ROC/ROE）与盈利收益率（YC/EP），即经典的乔·格林布拉特“神奇公式”，并在截面上剥离CNE6风格与行业暴露，最后做多高品质便宜股票并做空top-800市值等权基准以对冲Beta风险，捕捉长期风格中性且市场中性的纯净基本面超额。",
+      "regime": "",
+      "decay_signal": "",
+      "status": "active",
+      "style_betas": {},
+      "capacity_m": 0.0,
+      "failure_boundaries": {}
+    },
+    {
+      "id": "size-earnings",
+      "versions": [
+        {
+          "version": "v1.0",
+          "date": "2026-06-06",
+          "desc": "Size(60d)+NPY λ=0.5 + PureTrend(MA16) + VolTarget(25%/60d) + Lev1.10x",
+          "config": {
+            "factor": "0.5*size60 + 0.5*npy_yoy",
+            "size_window": 60,
+            "npy_source": "yjbb_em.net_profit_yoy",
+            "timing": "PureTrend MA16",
+            "vol_target": {
+              "target_vol": 0.25,
+              "lookback": 60,
+              "min_exp": 0.3,
+              "max_exp": 1.5
+            },
+            "top_n": 25,
+            "rebal_days": 20,
+            "leverage": 1.1,
+            "cost": {
+              "buy": 0.00225,
+              "sell": 0.00275,
+              "financing_rate": 0.065
+            }
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2018-2024",
+            "survivorship_bias": false,
+            "wf_validated": true,
+            "wf_period": "2022-2025",
+            "wf_annual": 0.19,
+            "wf_maxdd": -0.195,
+            "wf_sharpe": 1.16
+          },
+          "metrics": {
+            "annual": 0.12018809146181221,
+            "maxdd": -0.20745386817720068,
+            "sharpe": 0.7953899942575529,
+            "vol": 0.15110586294714498,
+            "calmar": 0.5793485198316536,
+            "end_nav": 2.4431328985493304,
+            "hit": false,
+            "source": "path_live_rerun",
+            "as_of": "2026-07-23",
+            "window": "2018-01-03 → 2026-07-17",
+            "n": 2070,
+            "returns_sha256": "932930f6878816c545d192bf6cb8554ba3808942e6874cd152fd97161cc0ee1e",
+            "path": "strategies.size_earnings.run_strategy"
+          },
+          "status": "参考",
+          "notes": "✅WF存活(+19.0%/-19.5%/夏普1.16,3/4年正)。NPY熊市缓冲(2022 λ=0.7→+23%)，size牛市弹性(2024-25 λ=1.0→+37/+46%)。VolTarget压IS回撤-18.3%。OOS回撤仅-11.1%。压力回撤-23.7%主因2015(+146%后崩)。换手~30x。\n[metrics@path_live_rerun 2026-07-23 annual=12.02% maxdd=-20.75% hit=False]",
+          "evidence": {
+            "data_incidents": [
+              {
+                "code": "DQ_2026_001_FUNDAMENTAL_BATCH_ANNDATE",
+                "incident_id": "DQ-2026-001",
+                "resolved": true,
+                "reasons": [
+                  "net_profit_yoy"
+                ],
+                "note": "live re-run 完成(2026-07-23,provenance=live_rerun),metrics 已经 attach_path_metrics 写回台账为事实。annual 0.0871→0.1202、maxdd -0.3069→-0.2075、sharpe 0.4804→0.7955,实质偏差(material_mismatch=True)。归因未定(不排除同期其他引擎/口径变化叠加影响,未做同 price_unit_blast_radius 式新旧数据受控对比);nine_gate 已标 stale_vs_path_metrics,未重跑 9-Gate。"
+              }
+            ],
+            "production_blocked": false,
+            "metrics_history": [
+              {
+                "replaced_at": "2026-07-23T08:22:02.032058+00:00",
+                "metrics": {
+                  "annual": 0.0871,
+                  "maxdd": -0.3069,
+                  "sharpe": 0.4804,
+                  "calmar": 0.2837,
+                  "n": 1698,
+                  "hit": false
+                },
+                "reason": "path_live_rerun_refresh",
+                "note": "path_analysis live re-run 纠偏；旧 metrics 见 evidence.metrics_history；nine_gate 若标 stale 须另跑 run_nine_gates_all --persist"
+              }
+            ],
+            "metrics_refresh": {
+              "at": "2026-07-23T08:22:02.032066+00:00",
+              "provenance": "live_rerun",
+              "path": "strategies.size_earnings.run_strategy",
+              "window": "2018-01-03 → 2026-07-17",
+              "returns_sha256": "932930f6878816c545d192bf6cb8554ba3808942e6874cd152fd97161cc0ee1e",
+              "material_delta_keys": [
+                "annual",
+                "maxdd",
+                "sharpe"
+              ],
+              "note": "path_analysis live re-run 纠偏；旧 metrics 见 evidence.metrics_history；nine_gate 若标 stale 须另跑 run_nine_gates_all --persist"
+            }
+          },
+          "nine_gate": {
+            "run_date": "2026-06-30",
+            "passed_all": false,
+            "dsr": -0.26125803235689093,
+            "dsr_p": 0.6030532358884153,
+            "dsr_significant": false,
+            "psr": 0.8945095056452033,
+            "n_trials": 3,
+            "wf_sharpe": 0.48448976765696555,
+            "wf_positive_ratio": 1.0,
+            "cv_sharpe": 0.48448976765696555,
+            "cv_win_rate": 1.0,
+            "sortino": 0.3815978811999879,
+            "var_95": 0.017707195254613495,
+            "cvar_95": 0.02841039996805931,
+            "tail_ratio": 1.055791191328246,
+            "ic_mean": 0.05102006436991639,
+            "nw_icir": 0.13705635056120002,
+            "ic_win_rate": 0.7030864197530864,
+            "monotonicity_corr": 0.9999999999999999,
+            "ic_decay": {
+              "1": 0.013588879450638166,
+              "5": 0.03210832399781039,
+              "10": 0.040359880552008044,
+              "20": 0.05083215698576892
+            },
+            "neut_nw_icir": 0.4728435204779398,
+            "icir_retention": 1.1917704528313313,
+            "cost_decay_rate": 2.126724327694062,
+            "capacity_limit_aum": 5000000,
+            "annual_1x": 0.08707226538507677,
+            "annual_2x": -0.005517087145861389,
+            "annual_3x": -0.09810643967679955,
+            "bull_sharpe": 3.6097643006416633,
+            "bear_sharpe": -4.824056675458421,
+            "bull_annual": 0.7199322261377302,
+            "bear_annual": -0.6847687063563945,
+            "daily_mean_expected": 0.0003455248626391935,
+            "daily_vol_expected": 0.011418488512745404,
+            "max_live_drawdown_limit": -0.4603582098299238,
+            "gate4_verdict": "FAIL",
+            "gate7_verdict": "WARN",
+            "status": "PERSISTED",
+            "strategy": "size_earnings",
+            "version": "v1.0",
+            "stale_vs_path_metrics": true,
+            "stale_reason": "path_metrics_refresh_material_delta:annual,maxdd,sharpe",
+            "stale_as_of": "2026-07-23"
+          },
+          "admission": {},
+          "decay_check": {
+            "n_days": 2050,
+            "rolling_3y_sharpe_latest": 1.019,
+            "decayed": false,
+            "reasons": [],
+            "action": "健康,继续持有",
+            "checked_at": "2026-06-22T02:17:04.068678+00:00"
+          },
+          "dsr_demotion": {
+            "from_status": "在册",
+            "from_track": "standalone",
+            "dsr_p": 0.39597259266799845,
+            "threshold": 0.05,
+            "rule": "R-OBJECTIVE-001 / 9-Gate G8（DSR 多重测试惩罚下不显著）",
+            "date": "2026-06-22"
+          }
+        }
+      ],
+      "name": "小盘+盈利增长双因子",
+      "hypothesis": "A股散户同时追逐小盘(流动性溢价)和高成长故事(注意力溢价)，两者叠加捕获更纯粹的散户行为alpha。盈利增长(NPY)在熊市提供质量锚，小盘在牛市提供弹性。Vol Target控制回撤。",
+      "regime": "小盘占优市(小盘等权>MA16时持仓)。vol target动态缩放仓位：低波加仓，高波减仓。NPY提供熊市缓冲。",
+      "decay_signal": "size因子IC转负(同small-cap-size)；NPY因子IC转负；vol target长期压仓到min(0.3x)持续>3月",
+      "status": "active",
+      "style_betas": {
+        "size": 0.65,
+        "quality": 0.4,
+        "volatility": 0.15
+      },
+      "capacity_m": 25.0,
+      "failure_boundaries": {
+        "max_drawdown": -0.25,
+        "max_drawdown_days": 150
+      }
+    },
+    {
+      "id": "size-low-vol",
+      "versions": [
+        {
+          "version": "v1.0",
+          "date": "2026-06-06",
+          "desc": "size60 + 低波20d + PureTrend MA16 + Lev1.25x",
+          "config": {
+            "factor": "size(-log60d_amt) + low_vol(-std20d)",
+            "timing": "PureTrend MA16",
+            "top_n": 25,
+            "rebal_days": 20,
+            "leverage": 1.25
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2010-2026",
+            "wf_validated": true,
+            "wf_annual": 0.233,
+            "wf_maxdd": -0.268,
+            "wf_sharpe": 1.35
+          },
+          "metrics": {
+            "annual": 0.192,
+            "maxdd": -0.2,
+            "sharpe": 1.27,
+            "calmar": 0.96,
+            "hit": false
+          },
+          "status": "参考",
+          "notes": "WF+23.3%/-26.8%/1.35. IS+19.2%. corr=0.84 vs illiquidity.成本衰减仅27%. low-vol filter helps.",
+          "evidence": {},
+          "nine_gate": {
+            "run_date": "2026-06-29",
+            "status": "GATE2_ONLY",
+            "gate2_verdict": "PASS",
+            "gate2_details": "|ICIR|=0.627 Win%=73.9%",
+            "ic_mean": 0.10554,
+            "ic_std": 0.16833,
+            "ic_ir": 0.627,
+            "ic_ir_nw": 0.1718,
+            "ic_win_rate": 0.7394,
+            "ic_count": 3921,
+            "monotonicity_corr": 1.0,
+            "factor_quality": {
+              "status": "OK",
+              "n_dates": 4000,
+              "n_stocks": 5207,
+              "nan_pct": 0.4523,
+              "zero_std_pct": 0.0
+            },
+            "note": "size 权重碾压 lowvol"
+          },
+          "admission": {}
+        },
+        {
+          "version": "v1.1",
+          "date": "2026-06-06",
+          "desc": "size60 + 低波40d(更长窗口) + PureTrend MA16 + Lev1.25x",
+          "config": {
+            "factor": "size(-log60d_amt) + low_vol(-std40d)",
+            "timing": "PureTrend MA16",
+            "top_n": 25,
+            "rebal_days": 20,
+            "leverage": 1.25
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2010-2026",
+            "wf_validated": true,
+            "wf_annual": 0.235,
+            "wf_maxdd": -0.27,
+            "wf_sharpe": 1.36
+          },
+          "metrics": {
+            "annual": 0.193,
+            "maxdd": -0.2,
+            "sharpe": 1.27,
+            "calmar": 0.97,
+            "hit": false
+          },
+          "status": "参考",
+          "notes": "WF+23.5%/-27.0%/1.36. 与v1.0几乎相同.40d略平滑但基本等价.",
+          "evidence": {},
+          "nine_gate": {
+            "run_date": "2026-06-29",
+            "status": "GATE2_ONLY",
+            "gate2_verdict": "PASS",
+            "gate2_details": "|ICIR|=0.598 Win%=73.2%",
+            "ic_mean": 0.10299,
+            "ic_std": 0.17232,
+            "ic_ir": 0.5977,
+            "ic_ir_nw": 0.1645,
+            "ic_win_rate": 0.7322,
+            "ic_count": 3921,
+            "monotonicity_corr": 1.0,
+            "factor_quality": {
+              "status": "OK",
+              "n_dates": 4000,
+              "n_stocks": 5207,
+              "nan_pct": 0.4523,
+              "zero_std_pct": 0.0
+            },
+            "note": "size 权重碾压 lowvol"
+          },
+          "admission": {}
+        }
+      ],
+      "name": "小盘低波双因子",
+      "hypothesis": "小盘因子(-log成交额60d) + 低波过滤器(-ret.std)。保留小盘alpha同时筛掉高波泡沫股。",
+      "regime": "小盘占优市(PureTrend MA16)。高波疯牛年(2015)超额更强——低波过滤选相对稳健的小盘。",
+      "decay_signal": "size因子IC转负 / 低波因子IC转负 / 市场VIX持续低位(低波溢价消失)",
+      "status": "active",
+      "style_betas": {
+        "size": 0.7,
+        "volatility": -0.4,
+        "value": 0.05
+      },
+      "capacity_m": 30.0,
+      "failure_boundaries": {
+        "max_drawdown": -0.25,
+        "max_drawdown_days": 150
+      }
+    },
+    {
+      "id": "small-cap-size",
+      "versions": [
+        {
+          "version": "v1.0",
+          "date": "2026-06-11",
+          "desc": "原始达标策略（小盘60+小盘指数MA16择时+1.25x杠杆）",
+          "config": {
+            "factor": "size60(-log成交额60均)",
+            "timing": "小盘指数MA16",
+            "top_n": 25,
+            "rebal_days": 20,
+            "leverage": 1.25
+          },
+          "data_scope": {
+            "source": "data_full",
+            "period": "2018-2026",
+            "survivorship_bias": true
+          },
+          "metrics": {
+            "annual": 0.404,
+            "maxdd": -0.146,
+            "sharpe": 2.06,
+            "calmar": 2.77,
+            "hit": true
+          },
+          "status": "参考",
+          "notes": "❌含幸存者偏差水分(active过滤剔退市股)，高估约8.5%",
+          "evidence": {},
+          "nine_gate": {
+            "run_date": "2026-06-29",
+            "status": "GATE2_ONLY",
+            "gate2_verdict": "PASS",
+            "gate2_details": "|ICIR|=0.586 Win%=73.4%",
+            "ic_mean": 0.09102,
+            "ic_std": 0.15526,
+            "ic_ir": 0.5863,
+            "ic_ir_nw": 0.156,
+            "ic_win_rate": 0.7337,
+            "ic_count": 3921,
+            "monotonicity_corr": 1.0,
+            "factor_quality": {
+              "status": "OK",
+              "n_dates": 4000,
+              "n_stocks": 5207,
+              "nan_pct": 0.4523,
+              "zero_std_pct": 0.0
+            }
+          },
+          "admission": {}
+        },
+        {
+          "version": "v2.0",
+          "date": "2026-06-14",
+          "desc": "data_lake 干净口径(不复权成交额)+真实成本+预热(2010切2018);688 显式排除 universe",
+          "config": {
+            "factor": "size60",
+            "timing": "小盘指数MA16",
+            "top_n": 25,
+            "rebal_days": 20,
+            "leverage": 1.25,
+            "exclude_star": true,
+            "cost": {
+              "buy": 0.00225,
+              "sell": 0.00275,
+              "financing_rate": 0.065
+            }
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2018-2024",
+            "survivorship_bias": false,
+            "warmup": "2010 预热切片"
+          },
+          "metrics": {
+            "annual": 0.121,
+            "maxdd": -0.2193,
+            "sharpe": 0.6625,
+            "calmar": 0.5516,
+            "n": 1699,
+            "hit": false
+          },
+          "status": "参考",
+          "notes": "✅2026-06-14 重测:旧值 22.2%/夏普1.38 陈旧,早于引擎迁移(5b4e2a90b)+start窗口语义(053d93441);同口径(2010切2018)重测=25.9%/1.69(+3.7pp,maxdd-19.4%≈旧-20%)。688 amount bug 修复后显式排除科创板(exclude_star;纳入不增alpha还降夏普1.85→1.65)。容量~2千万小资金可实盘。OOS 29.7%/1.90、压力(含15年股灾)27.4%/-30.5%。",
+          "evidence": {
+            "data_incidents": [
+              {
+                "code": "INVALIDATED_BY_DATA_UNIT_INCIDENT",
+                "incident_id": "price-units-20260620",
+                "resolved": false,
+                "reasons": [
+                  "top25_overlap_below_0.80",
+                  "factor_spearman_below_0.95",
+                  "annual_delta_above_2pct",
+                  "sharpe_delta_above_0.10",
+                  "maxdd_delta_above_2pct"
+                ]
+              }
+            ],
+            "production_blocked": true,
+            "spec_migration": {
+              "spec_hash": "ddf1b0c1c7bb55e74518f87b009e0e6de9bf52149852df6e79b79392d24af5df",
+              "requires_revalidation": true
+            }
+          },
+          "nine_gate": {
+            "run_date": "2026-06-30",
+            "passed_all": false,
+            "dsr": -0.33913025845572525,
+            "dsr_p": 0.6327441976385588,
+            "dsr_significant": false,
+            "psr": 0.9574506639831432,
+            "n_trials": 4,
+            "wf_sharpe": 0.5451292052856423,
+            "wf_positive_ratio": 1.0,
+            "cv_sharpe": 0.5451292052856423,
+            "cv_win_rate": 1.0,
+            "sortino": 0.5245583513097214,
+            "var_95": 0.016650148192796758,
+            "cvar_95": 0.029016426010957646,
+            "tail_ratio": 1.0577525533134517,
+            "ic_mean": 0.09188451262617668,
+            "nw_icir": 0.1577481414660237,
+            "ic_win_rate": 0.7410213243546577,
+            "monotonicity_corr": 0.9999999999999999,
+            "ic_decay": {
+              "1": 0.0329018099751635,
+              "5": 0.056834052901993476,
+              "10": 0.07382913829219877,
+              "20": 0.09234645155986329
+            },
+            "neut_nw_icir": 0.40668422946678734,
+            "icir_retention": 1.2413974458821464,
+            "cost_decay_rate": 1.6165462501278773,
+            "capacity_limit_aum": 500000000,
+            "annual_1x": 0.12097598351904441,
+            "annual_2x": 0.02319434726242288,
+            "annual_3x": -0.0745872889941987,
+            "bull_sharpe": 3.859951549384136,
+            "bear_sharpe": -4.770522018820706,
+            "bull_annual": 0.7698698784799074,
+            "bear_annual": -0.68649832170306,
+            "daily_mean_expected": 0.00048006342666287466,
+            "daily_vol_expected": 0.011503286617353644,
+            "max_live_drawdown_limit": -0.32896168660040465,
+            "gate4_verdict": "FAIL",
+            "gate7_verdict": "WARN",
+            "status": "PERSISTED",
+            "strategy": "small_cap",
+            "version": "v2.0"
+          },
+          "admission": {},
+          "executable_spec": {
+            "spec": {
+              "family": "small-cap-size",
+              "version": "v2.0",
+              "universe": {
+                "market": "A_SHARE",
+                "exclude_star": true
+              },
+              "data": {
+                "price_units": "shares_yuan",
+                "warmup_start": "2010-01-01"
+              },
+              "factor": {
+                "type": "small_cap_amount",
+                "window": 60,
+                "shift": 1
+              },
+              "selection": {
+                "top_n": 25,
+                "rebalance_days": 20
+              },
+              "timing": {
+                "type": "ma_trend",
+                "ma": 16
+              },
+              "policy": {
+                "veto": "none"
+              },
+              "execution": {
+                "fill": "T_PLUS_1_CLOSE",
+                "cost_model": "A_SHARE_STANDARD_V1"
+              }
+            },
+            "spec_hash": "ddf1b0c1c7bb55e74518f87b009e0e6de9bf52149852df6e79b79392d24af5df"
+          },
+          "decay_check": {
+            "n_days": 2050,
+            "rolling_3y_sharpe_latest": 1.727,
+            "decayed": false,
+            "reasons": [],
+            "action": "健康,继续持有",
+            "checked_at": "2026-06-22T02:17:04.071630+00:00"
+          },
+          "dsr_demotion": {
+            "from_status": "在册",
+            "from_track": "standalone",
+            "dsr_p": 0.0862683849620205,
+            "threshold": 0.05,
+            "rule": "R-OBJECTIVE-001 / 9-Gate G8（DSR 多重测试惩罚下不显著）",
+            "date": "2026-06-22"
+          }
+        },
+        {
+          "version": "v2.1",
+          "date": "2026-06-11",
+          "desc": "v2.0全历史压力测试（真实成本，含2015股灾/2017小盘崩盘）",
+          "config": {
+            "factor": "size60",
+            "timing": "小盘指数MA16",
+            "top_n": 25,
+            "rebal_days": 20,
+            "leverage": 1.25,
+            "cost": {
+              "buy": 0.00225,
+              "sell": 0.00275,
+              "financing_rate": 0.065
+            }
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2010-2026",
+            "survivorship_bias": false
+          },
+          "metrics": {
+            "annual": 0.242,
+            "maxdd": -0.317,
+            "sharpe": 1.27,
+            "calmar": 0.76,
+            "hit": false
+          },
+          "status": "参考",
+          "notes": "干净口径压力测试：剔极端年常态仅12%/夏普0.71；2011/2018小盘逆风长期阴跌(-32%回撤)；超额强依赖2015/2021/2025疯牛年",
+          "evidence": {},
+          "nine_gate": {
+            "run_date": "2026-06-30",
+            "passed_all": false,
+            "dsr": 1.856006008141075,
+            "dsr_p": 0.03172635084182396,
+            "dsr_significant": true,
+            "psr": 0.9999274926977902,
+            "n_trials": 1,
+            "wf_sharpe": 0.7939027089319239,
+            "wf_positive_ratio": 1.0,
+            "cv_sharpe": 0.7939027089319239,
+            "cv_win_rate": 1.0,
+            "sortino": 0.7505832448961439,
+            "var_95": 0.01756099762650868,
+            "cvar_95": 0.03335849888165567,
+            "tail_ratio": 1.1285537896668807,
+            "ic_mean": 0.09316965853878915,
+            "nw_icir": 0.1572879640123289,
+            "ic_win_rate": 0.7348967626816212,
+            "monotonicity_corr": 0.9999999999999999,
+            "ic_decay": {
+              "1": 0.032983094764617645,
+              "5": 0.0579036779698859,
+              "10": 0.07444022747365933,
+              "20": 0.09330561378892012
+            },
+            "neut_nw_icir": 0.4311934425860246,
+            "icir_retention": 1.3044042549999806,
+            "cost_decay_rate": 0.9808084312565011,
+            "capacity_limit_aum": 2000000000,
+            "annual_1x": 0.2013513770114591,
+            "annual_2x": 0.10260781290248637,
+            "annual_3x": 0.0038642487935135815,
+            "bull_sharpe": 4.514832893621498,
+            "bear_sharpe": -4.493756383650429,
+            "bull_annual": 0.9248765528809187,
+            "bear_annual": -0.8232057107988566,
+            "daily_mean_expected": 0.0007990134008391234,
+            "daily_vol_expected": 0.012820231942638453,
+            "max_live_drawdown_limit": -0.6188162246095725,
+            "gate4_verdict": "PASS",
+            "gate7_verdict": "WARN",
+            "status": "PERSISTED",
+            "strategy": "small_cap",
+            "version": "v2.1"
+          },
+          "admission": {}
+        },
+        {
+          "version": "v2.2",
+          "date": "2026-06-06",
+          "desc": "v2.0 × PureTrend tw=2 (shift(1) 修复后重跑)",
+          "config": {
+            "factor": "size60",
+            "timing": "小盘指数MA16",
+            "overlay": "PureTrend tw=2",
+            "top_n": 25,
+            "rebal_days": 20,
+            "leverage": 1.25,
+            "cost": {
+              "buy": 0.00225,
+              "sell": 0.00275,
+              "financing_rate": 0.065
+            }
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2010-2026",
+            "survivorship_bias": false,
+            "note": "shift(1) fix applied 2026-06-06, re-ran"
+          },
+          "metrics": {
+            "annual": 0.022,
+            "maxdd": -0.286,
+            "sharpe": 0.23,
+            "calmar": 0.08,
+            "hit": false,
+            "annual_2018": 0.022,
+            "maxdd_2018": -0.286,
+            "sharpe_2018": 0.23,
+            "annual_2023": 0.011,
+            "maxdd_2023": -0.228,
+            "sharpe_2023": 0.15,
+            "annual_2010": 0.034,
+            "maxdd_2010": -0.389,
+            "sharpe_2010": 0.29
+          },
+          "status": "退役",
+          "notes": "❌偷看:原始无shift(1),T日仓位用T日收益决策。修复后年化仅2.2%,回撤-28.6%,17年仅赢2年。PureTrend tw=2无真正择时能力。",
+          "evidence": {},
+          "nine_gate": {},
+          "admission": {}
+        }
+      ],
+      "name": "小盘成交额因子",
+      "hypothesis": "小盘流动性溢价 / size 因子（-log 60日均成交额，选小盘）",
+      "regime": "小盘占优市；小盘等权指数 > MA16 时持仓，否则空仓",
+      "decay_signal": "小盘等权指数滚动跑输沪深300 / size 因子 IC 转负（定量阈值待定）",
+      "status": "active",
+      "style_betas": {
+        "size": 0.85,
+        "volatility": 0.2,
+        "value": -0.1
+      },
+      "capacity_m": 20.0,
+      "failure_boundaries": {
+        "max_drawdown": -0.35,
+        "max_drawdown_days": 180
+      }
+    },
+    {
+      "id": "small-cap-staleness",
+      "versions": [
+        {
+          "version": "v1.0",
+          "date": "2026-06-27",
+          "desc": "small-cap 核心 + 价格停滞(Lesmond zero-return-days)正交 tilt",
+          "config": {
+            "factor": "zscore(small_cap_factor) + 0.5*zscore(zero_ret_days)",
+            "lambda": 0.5,
+            "small_cap_window": 60,
+            "zero_ret_window": 60,
+            "timing": "small_cap MA16 binary",
+            "top_n": 25,
+            "rebalance_days": 20,
+            "leverage": 1.25,
+            "buy_cost": 0.00225,
+            "sell_cost": 0.00275,
+            "financing_rate": 0.065,
+            "reproduce": "scripts/research/promote_smallcap_staleness.py"
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2010-2024",
+            "survivorship_bias": false,
+            "wf_validated": true,
+            "phase1_audited": true
+          },
+          "metrics": {
+            "annual": 0.18485873020102447,
+            "maxdd": -0.38470562173729295,
+            "sharpe": 0.9802791552114909,
+            "calmar": 0.48051996060317637,
+            "hit": false
+          },
+          "status": "参考",
+          "notes": "diversifier 轨;phase1-3 验证;hit=False(WF诚实口径);DSR kill-test 不显著(0.547)故非 standalone,靠组合边际入册",
+          "evidence": {
+            "reports": [
+              "reports/discovery/liquidity_family_findings.md",
+              "reports/discovery/smallcap_staleness_workflow_findings.md"
+            ],
+            "seed_provenance": {
+              "source": "liquidity_family_probe",
+              "signal": "zero_ret_days(Lesmond)"
+            }
+          },
+          "admission": {},
+          "nine_gate": {
+            "run_date": "2026-06-27",
+            "passed_all": false,
+            "dsr_p": 0.5469,
+            "n_trials": 12,
+            "wf_sharpe": 0.9802791552114909,
+            "wf_positive_ratio": 0.8181818181818182,
+            "is_sharpe": 1.1179353540130226,
+            "oos_sharpe": 0.6121436054144026,
+            "cost_decay_rate": 0.3508835908383585,
+            "note": "DSR kill-test 已跑: 前瞻 Sharpe 全现代 0.95→dsr_p 0.547(n_trials=12,不显著)、OOS 0.60→0.859;死因 Sharpe不够高+肥尾(kurt12-18)+多重检验惩罚,非2015回撤→standalone 不通,走 diversifier。",
+            "dsr_significant": false,
+            "psr": null,
+            "dsr_p_oos": 0.8587
+          },
+          "dsr_demotion": {
+            "from_status": "在册",
+            "from_track": "diversifier",
+            "dsr_p": 0.5469,
+            "threshold": 0.05,
+            "rule": "R-BT-001 maxdd-38.5%超20%上限 + DSR不显著 + STATUS 06-22确认decayed",
+            "date": "2026-06-27"
+          }
+        }
+      ],
+      "name": "Small-Cap × 价格停滞(zero-return-days)增强",
+      "hypothesis": "小盘规模溢价(核心)+ 价格停滞 zero-return-days(Lesmond 流动性维度,size 正交)tilt:在小盘里偏向价格停滞=被忽视/低关注的票,增量分散。",
+      "regime": "小盘有效期 + 低关注溢价",
+      "decay_signal": "小盘溢价反转 / zero_ret 拥挤",
+      "status": "active",
+      "style_betas": {},
+      "capacity_m": 0.0,
+      "failure_boundaries": {}
+    },
+    {
+      "id": "small_cap_factor__window120",
+      "versions": [
+        {
+          "version": "v1.0",
+          "date": "2026-06-17",
+          "desc": "small_cap_factor__window120 vv1.0 — auto-registered via workflow",
+          "config": {
+            "top_n": 25,
+            "rebalance_days": 20,
+            "leverage": 1.25,
+            "buy_cost": 0.00225,
+            "sell_cost": 0.00275,
+            "financing_rate": 0.065,
+            "window": 120,
+            "factor_fn_name": "factors.small_cap.small_cap_factor",
+            "factor_params": {
+              "window": 120
+            },
+            "data_dependencies": [
+              "price/amount"
+            ],
+            "cost": {
+              "buy": 0.00225,
+              "sell": 0.00275,
+              "financing_rate": 0.065
+            }
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2010-2026",
+            "survivorship_bias": false,
+            "wf_validated": true,
+            "phase1_audited": true,
+            "reproducibility": {
+              "date": "2026-06-17",
+              "git_commit": "bbc8986d5",
+              "python": "3.13.3",
+              "dependencies": {
+                "pandas": "3.0.3",
+                "numpy": "2.2.6",
+                "scipy": "1.17.1"
+              },
+              "data_snapshot": "{\"daily_all.parquet\": \"2026-06-16\", \"daily_raw_all.parquet\": \"2026-06-16\", \"fundamental_batch.parquet\": \"2026-06-02\"}",
+              "engine": "core.engine.BacktestEngine"
+            }
+          },
+          "metrics": {
+            "annual_2018": 0.261,
+            "maxdd_2018": -0.1822,
+            "sharpe_2018": 1.6348,
+            "annual_2023": 0.332,
+            "maxdd_2023": -0.1489,
+            "sharpe_2023": 1.5972,
+            "annual_2010": 0.262,
+            "maxdd_2010": -0.3199,
+            "sharpe_2010": 1.1739,
+            "annual": 0.261,
+            "maxdd": -0.1822,
+            "sharpe": 1.6348,
+            "calmar": 1.4322,
+            "hit": true,
+            "wf_annual": 0.1467,
+            "wf_maxdd": -0.2758,
+            "wf_sharpe": 0.9058
+          },
+          "status": "候选",
+          "notes": "Workflow Phase 1-3 validated. WF: +14.7% ann / -27.6% dd.",
+          "evidence": {
+            "hypothesis_id": "9639f3ba3407b1ac",
+            "experiment_ids": [
+              "d71a2fd19538",
+              "398dd16c129d",
+              "379ab29a652a",
+              "e59d7cece393",
+              "d5b589903145",
+              "09ec1245e85e",
+              "5254b3a6294d",
+              "a7e381faf8bf",
+              "ac0f9dc7a2fc",
+              "fab0d1d1ecaf",
+              "3f1e4dc9baa5",
+              "675f64cf5600",
+              "8d0bf273937e",
+              "92f779155c4c"
+            ]
+          },
+          "nine_gate": {
+            "run_date": "2026-07-17",
+            "passed_all": false,
+            "dsr": 0.24535569874326724,
+            "dsr_p": 0.403090514011503,
+            "dsr_significant": false,
+            "psr": 0.9971902270311652,
+            "n_trials": 7,
+            "wf_sharpe": 0.4437339726527521,
+            "wf_positive_ratio": 1.0,
+            "cv_sharpe": 0.4437339726527521,
+            "cv_win_rate": 1.0,
+            "sortino": 0.6395723559979737,
+            "var_95": 0.029021877790728824,
+            "cvar_95": 0.05070286234039655,
+            "tail_ratio": 0.9162848959459978,
+            "ic_mean": 0.07898664281676844,
+            "nw_icir": 0.13500418690135654,
+            "ic_win_rate": 0.7125220458553791,
+            "monotonicity_corr": 0.9999999999999999,
+            "ic_decay": {
+              "1": 0.027481974161183104,
+              "5": 0.048057615067520605,
+              "10": 0.06291765641183295,
+              "20": 0.08012591178980157
+            },
+            "neut_nw_icir": 0.3975619497222249,
+            "icir_retention": 1.3454588180874414,
+            "cost_decay_rate": 0.18129505148412442,
+            "capacity_limit_aum": 2000000000,
+            "annual_1x": 0.22598938851322353,
+            "annual_2x": 0.20550400960053816,
+            "annual_3x": 0.18501863068785288,
+            "bull_sharpe": 5.660941370497609,
+            "bear_sharpe": -3.780513298244999,
+            "bull_annual": 1.372818304594438,
+            "bear_annual": -1.3131951438735896,
+            "daily_mean_expected": 0.000896783287750887,
+            "daily_vol_expected": 0.019127535052913824,
+            "max_live_drawdown_limit": -0.9357289958415027,
+            "gate4_verdict": "FAIL",
+            "gate7_verdict": "WARN",
+            "status": "PERSISTED",
+            "strategy": "small_cap_factor__window120",
+            "version": "v1.0"
+          },
+          "admission": {}
+        }
+      ],
+      "name": "small_cap_factor__window120",
+      "hypothesis": "小盘流动性溢价：低成交额=低流动性=被低估，超额收益补偿流动性风险",
+      "regime": "",
+      "decay_signal": "",
+      "status": "active",
+      "style_betas": {},
+      "capacity_m": 0.0,
+      "failure_boundaries": {}
+    },
+    {
+      "id": "small_cap_factor__window20",
+      "versions": [
+        {
+          "version": "v1.0",
+          "date": "2026-06-17",
+          "desc": "small_cap_factor__window20 vv1.0 — auto-registered via workflow",
+          "config": {
+            "top_n": 25,
+            "rebalance_days": 20,
+            "leverage": 1.25,
+            "buy_cost": 0.00225,
+            "sell_cost": 0.00275,
+            "financing_rate": 0.065,
+            "window": 20,
+            "factor_fn_name": "factors.small_cap.small_cap_factor",
+            "factor_params": {
+              "window": 20
+            },
+            "data_dependencies": [
+              "price/amount"
+            ],
+            "cost": {
+              "buy": 0.00225,
+              "sell": 0.00275,
+              "financing_rate": 0.065
+            }
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2010-2026",
+            "survivorship_bias": false,
+            "wf_validated": true,
+            "phase1_audited": true,
+            "reproducibility": {
+              "date": "2026-06-17",
+              "git_commit": "bbc8986d5",
+              "python": "3.13.3",
+              "dependencies": {
+                "pandas": "3.0.3",
+                "numpy": "2.2.6",
+                "scipy": "1.17.1"
+              },
+              "data_snapshot": "{\"daily_all.parquet\": \"2026-06-16\", \"daily_raw_all.parquet\": \"2026-06-16\", \"fundamental_batch.parquet\": \"2026-06-02\"}",
+              "engine": "core.engine.BacktestEngine"
+            }
+          },
+          "metrics": {
+            "annual_2018": 0.2211,
+            "maxdd_2018": -0.1649,
+            "sharpe_2018": 1.4382,
+            "annual_2023": 0.3095,
+            "maxdd_2023": -0.1399,
+            "sharpe_2023": 1.5763,
+            "annual_2010": 0.3211,
+            "maxdd_2010": -0.2406,
+            "sharpe_2010": 1.4885,
+            "annual": 0.2211,
+            "maxdd": -0.1649,
+            "sharpe": 1.4382,
+            "calmar": 1.3405,
+            "hit": true,
+            "wf_annual": 0.3556,
+            "wf_maxdd": -0.2708,
+            "wf_sharpe": 1.8026
+          },
+          "status": "候选",
+          "notes": "Workflow Phase 1-3 validated. WF: +35.6% ann / -27.1% dd.",
+          "evidence": {
+            "hypothesis_id": "e79df6bc58583a88",
+            "experiment_ids": [
+              "6cbf40335fd3",
+              "f7509227ecdf",
+              "26eb8aaf9f85",
+              "179ee53a6c5d",
+              "c72d5015f195",
+              "9828a5e4fe81",
+              "e34ef4684a8b",
+              "154b39c2757c",
+              "47cd71bad134",
+              "af71daf080f7",
+              "6cf30bedfb21",
+              "e0aa189906e5",
+              "b9080e196d40",
+              "0917dcaceaeb"
+            ]
+          },
+          "nine_gate": {
+            "run_date": "2026-07-17",
+            "passed_all": false,
+            "dsr": 0.13124987871540175,
+            "dsr_p": 0.4477888198432014,
+            "dsr_significant": false,
+            "psr": 0.9929759330400642,
+            "n_trials": 7,
+            "wf_sharpe": 0.4266114595902228,
+            "wf_positive_ratio": 0.9166666666666666,
+            "cv_sharpe": 0.4266114595902228,
+            "cv_win_rate": 0.9166666666666666,
+            "sortino": 0.5711068726666281,
+            "var_95": 0.029991523512404177,
+            "cvar_95": 0.04923764214917703,
+            "tail_ratio": 0.8652111624433214,
+            "ic_mean": 0.10969308833185519,
+            "nw_icir": 0.19057977485159233,
+            "ic_win_rate": 0.7737996114349154,
+            "monotonicity_corr": 0.9999999999999999,
+            "ic_decay": {
+              "1": 0.04151993913221301,
+              "5": 0.0692393696523116,
+              "10": 0.08845721762156779,
+              "20": 0.1096672133830878
+            },
+            "neut_nw_icir": 0.5580359299782802,
+            "icir_retention": 1.3649339231109439,
+            "cost_decay_rate": 0.45059583196864683,
+            "capacity_limit_aum": 50000000,
+            "annual_1x": 0.19411694571948432,
+            "annual_2x": 0.15038280239164248,
+            "annual_3x": 0.10664865906380062,
+            "bull_sharpe": 5.846863072192569,
+            "bear_sharpe": -4.21394129349373,
+            "bull_annual": 1.3852069990652518,
+            "bear_annual": -1.4044714409895942,
+            "daily_mean_expected": 0.0007703053401566838,
+            "daily_vol_expected": 0.018594025273528693,
+            "max_live_drawdown_limit": -0.9092103316678037,
+            "gate4_verdict": "FAIL",
+            "gate7_verdict": "WARN",
+            "status": "PERSISTED",
+            "strategy": "small_cap_factor__window20",
+            "version": "v1.0"
+          },
+          "admission": {}
+        }
+      ],
+      "name": "small_cap_factor__window20",
+      "hypothesis": "小盘流动性溢价：低成交额=低流动性=被低估，超额收益补偿流动性风险",
+      "regime": "",
+      "decay_signal": "",
+      "status": "active",
+      "style_betas": {},
+      "capacity_m": 0.0,
+      "failure_boundaries": {}
+    },
+    {
+      "id": "small_cap_factor__window252",
+      "versions": [
+        {
+          "version": "v1.0",
+          "date": "2026-06-17",
+          "desc": "small_cap_factor__window252 vv1.0 — auto-registered via workflow",
+          "config": {
+            "top_n": 25,
+            "rebalance_days": 20,
+            "leverage": 1.25,
+            "buy_cost": 0.00225,
+            "sell_cost": 0.00275,
+            "financing_rate": 0.065,
+            "window": 252,
+            "factor_fn_name": "factors.small_cap.small_cap_factor",
+            "factor_params": {
+              "window": 252
+            },
+            "data_dependencies": [
+              "price/amount"
+            ],
+            "cost": {
+              "buy": 0.00225,
+              "sell": 0.00275,
+              "financing_rate": 0.065
+            }
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2010-2026",
+            "survivorship_bias": false,
+            "wf_validated": false,
+            "phase1_audited": true,
+            "reproducibility": {
+              "date": "2026-06-17",
+              "git_commit": "bbc8986d5",
+              "python": "3.13.3",
+              "dependencies": {
+                "pandas": "3.0.3",
+                "numpy": "2.2.6",
+                "scipy": "1.17.1"
+              },
+              "data_snapshot": "{\"daily_all.parquet\": \"2026-06-16\", \"daily_raw_all.parquet\": \"2026-06-16\", \"fundamental_batch.parquet\": \"2026-06-02\"}",
+              "engine": "core.engine.BacktestEngine"
+            }
+          },
+          "metrics": {
+            "annual_2018": 0.2272,
+            "maxdd_2018": -0.1899,
+            "sharpe_2018": 1.4394,
+            "annual_2023": 0.2758,
+            "maxdd_2023": -0.1715,
+            "sharpe_2023": 1.3505,
+            "annual_2010": 0.2782,
+            "maxdd_2010": -0.2811,
+            "sharpe_2010": 1.2537,
+            "annual": 0.2272,
+            "maxdd": -0.1899,
+            "sharpe": 1.4394,
+            "calmar": 1.1963,
+            "hit": true
+          },
+          "status": "候选",
+          "notes": "Workflow Phase 1-3 validated. WF: +0.0% ann / +0.0% dd.",
+          "evidence": {
+            "hypothesis_id": "172294761bad9251",
+            "experiment_ids": [
+              "4355c131451c",
+              "ee1b4329c35e",
+              "f0fff9b95eab",
+              "3e921cd3df31",
+              "8b52e2267713",
+              "0e3b0169191e",
+              "90e45d8652d6",
+              "6308de4cbcd7",
+              "5b3dda7c2084",
+              "d910085e748c",
+              "efa7ffe3e1fd",
+              "17b7d364c2ff",
+              "a387bfa9a2c2",
+              "d7a657f332b1"
+            ]
+          },
+          "nine_gate": {
+            "run_date": "2026-07-17",
+            "passed_all": false,
+            "dsr": 0.2204934909619984,
+            "dsr_p": 0.4127434205552617,
+            "dsr_significant": false,
+            "psr": 0.9979252639782977,
+            "n_trials": 7,
+            "wf_sharpe": 0.4679698905562201,
+            "wf_positive_ratio": 0.9166666666666666,
+            "cv_sharpe": 0.4679698905562201,
+            "cv_win_rate": 0.9166666666666666,
+            "sortino": 0.627457902209126,
+            "var_95": 0.02781657111493541,
+            "cvar_95": 0.05065147631600023,
+            "tail_ratio": 0.9662413283215276,
+            "ic_mean": 0.06800460873324082,
+            "nw_icir": 0.11237381627184906,
+            "ic_win_rate": 0.6740276862228082,
+            "monotonicity_corr": 0.9999999999999999,
+            "ic_decay": {
+              "1": 0.02445432003840726,
+              "5": 0.03896228475222588,
+              "10": 0.05102047682816146,
+              "20": 0.06563965099138863
+            },
+            "neut_nw_icir": 0.2605767073538301,
+            "icir_retention": 1.208531441090087,
+            "cost_decay_rate": 0.09992808489108729,
+            "capacity_limit_aum": 2000000000,
+            "annual_1x": 0.23239529866657532,
+            "annual_2x": 0.22078389009985375,
+            "annual_3x": 0.2091724815331322,
+            "bull_sharpe": 5.3419890845644655,
+            "bear_sharpe": -3.3352767570345057,
+            "bull_annual": 1.2737681045428562,
+            "bear_annual": -1.1652542485127158,
+            "daily_mean_expected": 0.0009222035661372037,
+            "daily_vol_expected": 0.018945139465389147,
+            "max_live_drawdown_limit": -0.9035391956398187,
+            "gate4_verdict": "FAIL",
+            "gate7_verdict": "WARN",
+            "status": "PERSISTED",
+            "strategy": "small_cap_factor__window252",
+            "version": "v1.0"
+          },
+          "admission": {}
+        }
+      ],
+      "name": "small_cap_factor__window252",
+      "hypothesis": "小盘流动性溢价：低成交额=低流动性=被低估，超额收益补偿流动性风险",
+      "regime": "",
+      "decay_signal": "",
+      "status": "active",
+      "style_betas": {},
+      "capacity_m": 0.0,
+      "failure_boundaries": {}
+    },
+    {
+      "id": "small_cap_factor__window30",
+      "versions": [
+        {
+          "version": "v1.0",
+          "date": "2026-06-17",
+          "desc": "small_cap_factor__window30 vv1.0 — auto-registered via workflow",
+          "config": {
+            "top_n": 25,
+            "rebalance_days": 20,
+            "leverage": 1.25,
+            "buy_cost": 0.00225,
+            "sell_cost": 0.00275,
+            "financing_rate": 0.065,
+            "window": 30,
+            "factor_fn_name": "factors.small_cap.small_cap_factor",
+            "factor_params": {
+              "window": 30
+            },
+            "data_dependencies": [
+              "price/amount"
+            ],
+            "cost": {
+              "buy": 0.00225,
+              "sell": 0.00275,
+              "financing_rate": 0.065
+            }
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2010-2026",
+            "survivorship_bias": false,
+            "wf_validated": true,
+            "phase1_audited": true,
+            "reproducibility": {
+              "date": "2026-06-17",
+              "git_commit": "bbc8986d5",
+              "python": "3.13.3",
+              "dependencies": {
+                "pandas": "3.0.3",
+                "numpy": "2.2.6",
+                "scipy": "1.17.1"
+              },
+              "data_snapshot": "{\"daily_all.parquet\": \"2026-06-16\", \"daily_raw_all.parquet\": \"2026-06-16\", \"fundamental_batch.parquet\": \"2026-06-02\"}",
+              "engine": "core.engine.BacktestEngine"
+            }
+          },
+          "metrics": {
+            "annual_2018": 0.2239,
+            "maxdd_2018": -0.2133,
+            "sharpe_2018": 1.4344,
+            "annual_2023": 0.3627,
+            "maxdd_2023": -0.1454,
+            "sharpe_2023": 1.8143,
+            "annual_2010": 0.3435,
+            "maxdd_2010": -0.2584,
+            "sharpe_2010": 1.6058,
+            "annual": 0.2239,
+            "maxdd": -0.2133,
+            "sharpe": 1.4344,
+            "calmar": 1.0497,
+            "hit": false,
+            "wf_annual": 0.3172,
+            "wf_maxdd": -0.2544,
+            "wf_sharpe": 1.6159
+          },
+          "status": "候选",
+          "notes": "Workflow Phase 1-3 validated. WF: +31.7% ann / -25.4% dd.",
+          "evidence": {
+            "hypothesis_id": "ce583c66c961bfa4",
+            "experiment_ids": [
+              "4c00363dea56",
+              "0f4264a34a62",
+              "bdace45c66a9",
+              "3af7ab3b1750",
+              "91c09a82821c",
+              "554a1ea4da69",
+              "cacb39e638c7",
+              "dc9c1d1bc486",
+              "0bf8b9bf1c9c",
+              "c581202fb29c",
+              "8a5c9f903647",
+              "befbe972ecbb",
+              "ff3ac8370b17",
+              "c3a08f66d56a"
+            ]
+          },
+          "nine_gate": {},
+          "admission": {}
+        }
+      ],
+      "name": "small_cap_factor__window30",
+      "hypothesis": "小盘流动性溢价：低成交额=低流动性=被低估，超额收益补偿流动性风险",
+      "regime": "",
+      "decay_signal": "",
+      "status": "active",
+      "style_betas": {},
+      "capacity_m": 0.0,
+      "failure_boundaries": {}
+    },
+    {
+      "id": "small_cap_factor__window45",
+      "versions": [
+        {
+          "version": "v1.0",
+          "date": "2026-06-17",
+          "desc": "small_cap_factor__window45 vv1.0 — auto-registered via workflow",
+          "config": {
+            "top_n": 25,
+            "rebalance_days": 20,
+            "leverage": 1.25,
+            "buy_cost": 0.00225,
+            "sell_cost": 0.00275,
+            "financing_rate": 0.065,
+            "window": 45,
+            "factor_fn_name": "factors.small_cap.small_cap_factor",
+            "factor_params": {
+              "window": 45
+            },
+            "data_dependencies": [
+              "price/amount"
+            ],
+            "cost": {
+              "buy": 0.00225,
+              "sell": 0.00275,
+              "financing_rate": 0.065
+            }
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2010-2026",
+            "survivorship_bias": false,
+            "wf_validated": true,
+            "phase1_audited": true,
+            "reproducibility": {
+              "date": "2026-06-17",
+              "git_commit": "bbc8986d5",
+              "python": "3.13.3",
+              "dependencies": {
+                "pandas": "3.0.3",
+                "numpy": "2.2.6",
+                "scipy": "1.17.1"
+              },
+              "data_snapshot": "{\"daily_all.parquet\": \"2026-06-16\", \"daily_raw_all.parquet\": \"2026-06-16\", \"fundamental_batch.parquet\": \"2026-06-02\"}",
+              "engine": "core.engine.BacktestEngine"
+            }
+          },
+          "metrics": {
+            "annual_2018": 0.2369,
+            "maxdd_2018": -0.2058,
+            "sharpe_2018": 1.5019,
+            "annual_2023": 0.3675,
+            "maxdd_2023": -0.1327,
+            "sharpe_2023": 1.8963,
+            "annual_2010": 0.3155,
+            "maxdd_2010": -0.2787,
+            "sharpe_2010": 1.4599,
+            "annual": 0.2369,
+            "maxdd": -0.2058,
+            "sharpe": 1.5019,
+            "calmar": 1.1511,
+            "hit": false,
+            "wf_annual": 0.2961,
+            "wf_maxdd": -0.298,
+            "wf_sharpe": 1.5898
+          },
+          "status": "候选",
+          "notes": "Workflow Phase 1-3 validated. WF: +29.6% ann / -29.8% dd.",
+          "evidence": {
+            "hypothesis_id": "5320ac1823a6fdb2",
+            "experiment_ids": [
+              "741a6a2e8b4f",
+              "76a2e8e3918d",
+              "cb66ff72f5aa",
+              "3ccaf818043e",
+              "cecf5faea2cf",
+              "275188a7ab92",
+              "459580358a9e",
+              "8b8d989917d5",
+              "c88b6ad3f6e8",
+              "17cca1d90d30",
+              "ae62e611b21a",
+              "b19425defa9c",
+              "76e9605db406",
+              "e6348b6a4c13"
+            ]
+          },
+          "nine_gate": {},
+          "admission": {}
+        }
+      ],
+      "name": "small_cap_factor__window45",
+      "hypothesis": "小盘流动性溢价：低成交额=低流动性=被低估，超额收益补偿流动性风险",
+      "regime": "",
+      "decay_signal": "",
+      "status": "active",
+      "style_betas": {},
+      "capacity_m": 0.0,
+      "failure_boundaries": {}
+    },
+    {
+      "id": "small_cap_factor__window60",
+      "versions": [
+        {
+          "version": "v1.0",
+          "date": "2026-06-17",
+          "desc": "small_cap_factor__window60 vv1.0 — auto-registered via workflow",
+          "config": {
+            "top_n": 25,
+            "rebalance_days": 20,
+            "leverage": 1.25,
+            "buy_cost": 0.00225,
+            "sell_cost": 0.00275,
+            "financing_rate": 0.065,
+            "window": 60,
+            "factor_fn_name": "factors.small_cap.small_cap_factor",
+            "factor_params": {
+              "window": 60
+            },
+            "data_dependencies": [
+              "price/amount"
+            ],
+            "cost": {
+              "buy": 0.00225,
+              "sell": 0.00275,
+              "financing_rate": 0.065
+            }
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2010-2026",
+            "survivorship_bias": false,
+            "wf_validated": true,
+            "phase1_audited": true,
+            "reproducibility": {
+              "date": "2026-06-17",
+              "git_commit": "bbc8986d5",
+              "python": "3.13.3",
+              "dependencies": {
+                "pandas": "3.0.3",
+                "numpy": "2.2.6",
+                "scipy": "1.17.1"
+              },
+              "data_snapshot": "{\"daily_all.parquet\": \"2026-06-16\", \"daily_raw_all.parquet\": \"2026-06-16\", \"fundamental_batch.parquet\": \"2026-06-02\"}",
+              "engine": "core.engine.BacktestEngine"
+            }
+          },
+          "metrics": {
+            "annual_2018": 0.2552,
+            "maxdd_2018": -0.1943,
+            "sharpe_2018": 1.6258,
+            "annual_2023": 0.3113,
+            "maxdd_2023": -0.1322,
+            "sharpe_2023": 1.5889,
+            "annual_2010": 0.2887,
+            "maxdd_2010": -0.3052,
+            "sharpe_2010": 1.3282,
+            "annual": 0.2552,
+            "maxdd": -0.1943,
+            "sharpe": 1.6258,
+            "calmar": 1.3134,
+            "hit": true,
+            "wf_annual": 0.2761,
+            "wf_maxdd": -0.2526,
+            "wf_sharpe": 1.521
+          },
+          "status": "候选",
+          "notes": "Workflow Phase 1-3 validated. WF: +27.6% ann / -25.3% dd.",
+          "evidence": {
+            "hypothesis_id": "a291ee8f81693d9e",
+            "experiment_ids": [
+              "11b76d69ea44",
+              "09b92c5f6541",
+              "85796b93f2cd",
+              "74fe471678e5",
+              "246665ed7d1b",
+              "9622c2e0fae4",
+              "f3f0cb7d9597",
+              "18926b77dca9",
+              "d255e6bccee4",
+              "39196e67d369",
+              "4fb9891f659a",
+              "09edde35447f",
+              "88a062a1ddd4",
+              "1bbd15af63db"
+            ]
+          },
+          "nine_gate": {
+            "run_date": "2026-07-17",
+            "passed_all": false,
+            "dsr": 0.017840091520936942,
+            "dsr_p": 0.4928832107168113,
+            "dsr_significant": false,
+            "psr": 0.9895571895691959,
+            "n_trials": 7,
+            "wf_sharpe": 0.4263389757125659,
+            "wf_positive_ratio": 1.0,
+            "cv_sharpe": 0.4263389757125659,
+            "cv_win_rate": 1.0,
+            "sortino": 0.5414513939408218,
+            "var_95": 0.029498284100072616,
+            "cvar_95": 0.04985167444968059,
+            "tail_ratio": 0.8878249361428876,
+            "ic_mean": 0.0900286070843237,
+            "nw_icir": 0.1561012061446881,
+            "ic_win_rate": 0.7403873140611844,
+            "monotonicity_corr": 0.9999999999999999,
+            "ic_decay": {
+              "1": 0.031797084299194894,
+              "5": 0.055227528854026,
+              "10": 0.07191401140050677,
+              "20": 0.09044105899047371
+            },
+            "neut_nw_icir": 0.43808538669379954,
+            "icir_retention": 1.3433566668113135,
+            "cost_decay_rate": 0.3125396439072591,
+            "capacity_limit_aum": 500000000,
+            "annual_1x": 0.18555141966736485,
+            "annual_2x": 0.15655533235270255,
+            "annual_3x": 0.12755924503804025,
+            "bull_sharpe": 5.806718019799245,
+            "bear_sharpe": -4.155212157520726,
+            "bull_annual": 1.383339327285586,
+            "bear_annual": -1.4220263058626852,
+            "daily_mean_expected": 0.000736315157410178,
+            "daily_vol_expected": 0.018913515615394626,
+            "max_live_drawdown_limit": -0.9261615943377015,
+            "gate4_verdict": "FAIL",
+            "gate7_verdict": "WARN",
+            "status": "PERSISTED",
+            "strategy": "small_cap_factor__window60",
+            "version": "v1.0"
+          },
+          "admission": {}
+        }
+      ],
+      "name": "small_cap_factor__window60",
+      "hypothesis": "小盘流动性溢价：低成交额=低流动性=被低估，超额收益补偿流动性风险",
+      "regime": "",
+      "decay_signal": "",
+      "status": "active",
+      "style_betas": {},
+      "capacity_m": 0.0,
+      "failure_boundaries": {}
+    },
+    {
+      "id": "small_cap_factor__window90",
+      "versions": [
+        {
+          "version": "v1.0",
+          "date": "2026-06-17",
+          "desc": "small_cap_factor__window90 vv1.0 — auto-registered via workflow",
+          "config": {
+            "top_n": 25,
+            "rebalance_days": 20,
+            "leverage": 1.25,
+            "buy_cost": 0.00225,
+            "sell_cost": 0.00275,
+            "financing_rate": 0.065,
+            "window": 90,
+            "factor_fn_name": "factors.small_cap.small_cap_factor",
+            "factor_params": {
+              "window": 90
+            },
+            "data_dependencies": [
+              "price/amount"
+            ],
+            "cost": {
+              "buy": 0.00225,
+              "sell": 0.00275,
+              "financing_rate": 0.065
+            }
+          },
+          "data_scope": {
+            "source": "data_lake",
+            "period": "2010-2026",
+            "survivorship_bias": false,
+            "wf_validated": true,
+            "phase1_audited": true,
+            "reproducibility": {
+              "date": "2026-06-17",
+              "git_commit": "bbc8986d5",
+              "python": "3.13.3",
+              "dependencies": {
+                "pandas": "3.0.3",
+                "numpy": "2.2.6",
+                "scipy": "1.17.1"
+              },
+              "data_snapshot": "{\"daily_all.parquet\": \"2026-06-16\", \"daily_raw_all.parquet\": \"2026-06-16\", \"fundamental_batch.parquet\": \"2026-06-02\"}",
+              "engine": "core.engine.BacktestEngine"
+            }
+          },
+          "metrics": {
+            "annual_2018": 0.2776,
+            "maxdd_2018": -0.2084,
+            "sharpe_2018": 1.7473,
+            "annual_2023": 0.3545,
+            "maxdd_2023": -0.1324,
+            "sharpe_2023": 1.743,
+            "annual_2010": 0.3107,
+            "maxdd_2010": -0.2912,
+            "sharpe_2010": 1.4,
+            "annual": 0.2776,
+            "maxdd": -0.2084,
+            "sharpe": 1.7473,
+            "calmar": 1.3322,
+            "hit": false,
+            "wf_annual": 0.2066,
+            "wf_maxdd": -0.3012,
+            "wf_sharpe": 1.1456
+          },
+          "status": "候选",
+          "notes": "Workflow Phase 1-3 validated. WF: +20.7% ann / -30.1% dd.",
+          "evidence": {
+            "hypothesis_id": "33726e8df8496699",
+            "experiment_ids": [
+              "54a65a70ad35",
+              "8bad40bf8580",
+              "2443214c1465",
+              "a45f258f6448",
+              "f51472f79626",
+              "a550e1dc5975",
+              "7fc5c3ec0f5b",
+              "cabe8b6f37b2",
+              "dc4e99a970e3",
+              "2f9d206a183e",
+              "6bec5989c4ac",
+              "77d3ca549964",
+              "f1615a4a7d42",
+              "6d3e32512647"
+            ]
+          },
+          "nine_gate": {},
+          "admission": {}
+        }
+      ],
+      "name": "small_cap_factor__window90",
+      "hypothesis": "小盘流动性溢价：低成交额=低流动性=被低估，超额收益补偿流动性风险",
+      "regime": "",
+      "decay_signal": "",
+      "status": "active",
+      "style_betas": {},
+      "capacity_m": 0.0,
+      "failure_boundaries": {}
+    }
+  ]
+}

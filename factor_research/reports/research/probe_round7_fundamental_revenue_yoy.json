@@ -1,0 +1,49 @@
+{
+  "factor": "factors.fundamental:revenue_yoy",
+  "params": {},
+  "universe": "all",
+  "window": {
+    "start": "2018-01-01",
+    "cutoff": "2022-12-31",
+    "end": "2024-12-31"
+  },
+  "raw_ic": {
+    "full": {
+      "ic": -0.015,
+      "icir": 0.19,
+      "months": 83
+    },
+    "IS": {
+      "ic": -0.0086,
+      "icir": 0.11,
+      "months": 60
+    },
+    "OOS": {
+      "ic": -0.0315,
+      "icir": 0.44,
+      "months": 23
+    }
+  },
+  "residual_ic_size_liq": {
+    "full": {
+      "ic": -0.0102,
+      "icir": 0.14,
+      "months": 83
+    },
+    "IS": {
+      "ic": -0.003,
+      "icir": 0.04,
+      "months": 60
+    },
+    "OOS": {
+      "ic": -0.0289,
+      "icir": 0.48,
+      "months": 23
+    }
+  },
+  "style_corr": {
+    "size": 0.064,
+    "liquidity": 0.045,
+    "momentum": -0.038
+  }
+}

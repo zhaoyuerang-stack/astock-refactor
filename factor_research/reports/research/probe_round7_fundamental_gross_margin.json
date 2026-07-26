@@ -1,0 +1,49 @@
+{
+  "factor": "factors.fundamental:gross_margin",
+  "params": {},
+  "universe": "all",
+  "window": {
+    "start": "2018-01-01",
+    "cutoff": "2022-12-31",
+    "end": "2024-12-31"
+  },
+  "raw_ic": {
+    "full": {
+      "ic": -0.0057,
+      "icir": 0.06,
+      "months": 83
+    },
+    "IS": {
+      "ic": -0.0021,
+      "icir": 0.02,
+      "months": 60
+    },
+    "OOS": {
+      "ic": -0.0151,
+      "icir": 0.21,
+      "months": 23
+    }
+  },
+  "residual_ic_size_liq": {
+    "full": {
+      "ic": -0.0016,
+      "icir": 0.02,
+      "months": 83
+    },
+    "IS": {
+      "ic": 0.0031,
+      "icir": 0.03,
+      "months": 60
+    },
+    "OOS": {
+      "ic": -0.0138,
+      "icir": 0.19,
+      "months": 23
+    }
+  },
+  "style_corr": {
+    "size": -0.017,
+    "liquidity": 0.065,
+    "momentum": -0.017
+  }
+}

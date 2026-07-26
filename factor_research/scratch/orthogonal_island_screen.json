@@ -1,0 +1,79 @@
+{
+  "window": "2018-01-01~<2025-01-01",
+  "factors": [
+    {
+      "name": "illiq_amihud20",
+      "L0_annual": 0.2851,
+      "L0_sharpe": 1.113,
+      "L0_maxdd": -0.3576,
+      "L1_sharpe": 0.79,
+      "L1_maxdd": -0.351,
+      "ic_mean": 0.0759,
+      "ic_t": 5.92,
+      "cap_亿": 0.214,
+      "real_alpha": true
+    },
+    {
+      "name": "size_neg_adv",
+      "L0_annual": 0.1466,
+      "L0_sharpe": 0.725,
+      "L0_maxdd": -0.3076,
+      "L1_sharpe": 0.511,
+      "L1_maxdd": -0.2119,
+      "ic_mean": 0.1108,
+      "ic_t": 9.62,
+      "cap_亿": 0.167,
+      "real_alpha": false
+    },
+    {
+      "name": "holder_count_chg",
+      "L0_annual": -0.0854,
+      "L0_sharpe": -0.342,
+      "L0_maxdd": -0.6306,
+      "L1_sharpe": -0.783,
+      "L1_maxdd": -0.7058,
+      "ic_mean": 0.0211,
+      "ic_t": 3.5,
+      "cap_亿": 1.906,
+      "real_alpha": false
+    },
+    {
+      "name": "holdertrade_net",
+      "L0_annual": 0.0709,
+      "L0_sharpe": 0.326,
+      "L0_maxdd": -0.4067,
+      "L1_sharpe": 0.106,
+      "L1_maxdd": -0.2659,
+      "ic_mean": 0.008,
+      "ic_t": 1.8,
+      "cap_亿": 1.586,
+      "real_alpha": false
+    },
+    {
+      "name": "large_order_net_ratio",
+      "L0_annual": -0.2081,
+      "L0_sharpe": -0.91,
+      "L0_maxdd": -0.8174,
+      "L1_sharpe": -0.656,
+      "L1_maxdd": -0.6338,
+      "ic_mean": -0.0041,
+      "ic_t": -0.59,
+      "cap_亿": 1.7,
+      "real_alpha": false
+    }
+  ],
+  "orthogonality_vs_price_volume_cluster": {
+    "holder_count_chg": {
+      "illiq_amihud20": 0.677,
+      "size_neg_adv": 0.773
+    },
+    "holdertrade_net": {
+      "illiq_amihud20": 0.729,
+      "size_neg_adv": 0.833
+    },
+    "large_order_net_ratio": {
+      "illiq_amihud20": 0.66,
+      "size_neg_adv": 0.772
+    }
+  }
+}

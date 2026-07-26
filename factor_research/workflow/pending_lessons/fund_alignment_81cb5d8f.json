@@ -1,0 +1,15 @@
+{
+  "fingerprint": "81cb5d8f",
+  "trigger": "Phase1_fund_alignment",
+  "pattern": "财务 avail_date 对齐",
+  "detail": "Factor doesn't show clear change at avail_date. Fundamental signal may be too weak to detect in synthetic test.",
+  "fix": "Ensure fundamental data is loaded via load_fundamental_panel() which aligns by avail_date → ffill. Do not use raw fundamental values without date alignment.",
+  "hit_count": 3,
+  "first_seen": "2026-06-06 20:02:24.920289",
+  "last_seen": "2026-06-06 20:02:25.507629",
+  "strategies": [
+    "small-cap-size",
+    "leaky-test",
+    "size-earnings"
+  ]
+}

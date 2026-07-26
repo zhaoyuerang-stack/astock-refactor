@@ -1,0 +1,13 @@
+{
+  "fingerprint": "ea98e81a",
+  "trigger": "Phase_wf_negative_window",
+  "pattern": "WF negative window 2024",
+  "detail": "OOS annual=-6.6% in 2024",
+  "fix": "Manual review needed.",
+  "hit_count": 1,
+  "first_seen": "2026-06-24",
+  "last_seen": "2026-06-24",
+  "strategies": [
+    "autoresearch_69ede240"
+  ]
+}

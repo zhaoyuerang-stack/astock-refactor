@@ -1,0 +1,13 @@
+{
+  "fingerprint": "d2989644",
+  "trigger": "Phase1_warmup",
+  "pattern": "预热完整",
+  "detail": "Data has 120 days but max rolling window is 200d. Need ≥200 days for proper warmup. Fix: load data from ≥200 trading days before backtest start.",
+  "fix": "Load data from ≥2yr before backtest start for rolling window warmup.",
+  "hit_count": 1,
+  "first_seen": "2026-06-06 20:12:31.209289",
+  "last_seen": "2026-06-06 20:12:31.209293",
+  "strategies": [
+    "no-warmup"
+  ]
+}

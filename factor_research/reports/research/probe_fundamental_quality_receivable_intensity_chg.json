@@ -1,0 +1,49 @@
+{
+  "factor": "factors.fundamental_quality:receivable_intensity_chg",
+  "params": {},
+  "universe": "all",
+  "window": {
+    "start": "2018-01-01",
+    "cutoff": "2022-12-31",
+    "end": "2024-12-31"
+  },
+  "raw_ic": {
+    "full": {
+      "ic": -0.0042,
+      "icir": 0.17,
+      "months": 83
+    },
+    "IS": {
+      "ic": -0.0056,
+      "icir": 0.2,
+      "months": 60
+    },
+    "OOS": {
+      "ic": -0.0005,
+      "icir": 0.02,
+      "months": 23
+    }
+  },
+  "residual_ic_size_liq": {
+    "full": {
+      "ic": -0.0029,
+      "icir": 0.12,
+      "months": 83
+    },
+    "IS": {
+      "ic": -0.0041,
+      "icir": 0.15,
+      "months": 60
+    },
+    "OOS": {
+      "ic": 0.0003,
+      "icir": 0.01,
+      "months": 23
+    }
+  },
+  "style_corr": {
+    "size": -0.053,
+    "liquidity": 0.032,
+    "momentum": -0.029
+  }
+}

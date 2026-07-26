@@ -1,0 +1,56 @@
+{
+  "metrics": {
+    "annual": 0.1738,
+    "sharpe": 1.1352,
+    "maxdd": -0.1471,
+    "calmar": 1.1814
+  },
+  "hit": false,
+  "top_n": 20,
+  "gap": 20,
+  "timing": 20,
+  "factors": [
+    {
+      "name": "turnover",
+      "params": {
+        "n": 5
+      },
+      "icir": 0.564
+    },
+    {
+      "name": "turnover",
+      "params": {
+        "n": 20
+      },
+      "icir": 0.548
+    },
+    {
+      "name": "price_ma",
+      "params": {
+        "n": 60
+      },
+      "icir": 0.513
+    },
+    {
+      "name": "low_vol",
+      "params": {
+        "n": 40
+      },
+      "icir": 0.434
+    },
+    {
+      "name": "price_ma",
+      "params": {
+        "n": 20
+      },
+      "icir": 0.412
+    },
+    {
+      "name": "momentum_quality",
+      "params": {
+        "n": 40
+      },
+      "icir": -0.404
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "fingerprint": "43574983",
+  "trigger": "Phase1_warmup",
+  "pattern": "预热完整",
+  "detail": "Leading NaN: 120d > max window 60d. Data may have gaps at start.",
+  "fix": "Load data from ≥2yr before backtest start for rolling window warmup.",
+  "hit_count": 3,
+  "first_seen": "2026-06-06 21:30:53.414163",
+  "last_seen": "2026-06-06 21:30:53.455951",
+  "strategies": [
+    "industry_mom_60d",
+    "industry_mom_20d",
+    "industry_mom_40d"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "fingerprint": "68d12504",
+  "trigger": "Phase_wf_negative_window",
+  "pattern": "WF negative window 2019",
+  "detail": "OOS annual=-2.8% in 2019",
+  "fix": "Manual review needed.",
+  "hit_count": 7,
+  "first_seen": "2026-06-24",
+  "last_seen": "2026-06-28",
+  "strategies": [
+    "autoresearch_a23f4dde",
+    "close_position__n5",
+    "autoresearch_6332599c"
+  ]
+}

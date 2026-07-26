@@ -1,0 +1,112 @@
+{
+  "_readme": [
+    "候选新数据源清单(scouting backlog)——研究枯竭时从这里取 1-2 个走 probe-signal-source 剧本。",
+    "接入执行顺序:人批准后,工程接入先走 docs/agent_skills/data_source_onboarding.md 固定剧本",
+    "(立项五判→探针→契约声明→回填→质量门→加载层→登记),数据落湖且守卫全绿后再走 probe。",
+    "消费方:services.read.research_exhaustion → 决策收件箱(exhausted 时推给人裁决);",
+    "每个条目只是**待证伪的提议**(thesis 必填),接入与否由人批准;接入后的验真仍走",
+    "L0-L3/9-Gate/holdout 完整链(R-WF-001),本清单不判有效(R-LLM-001)。",
+    "排序原则:数据债 > 预期正交性(参照 information_map 空白区)> 接入成本。",
+    "结论回写纪律:probe 结果(含阴性)必须回写 direction_registry.json(带证据指针),",
+    "否则死路会被反复重提——这正是本清单存在的原因。"
+  ],
+  "version": 1,
+  "entries": [
+    {
+      "id": "delisted-backfill",
+      "priority": 1,
+      "source": "tushare stock_basic(list_status=D/P) + daily(退市股历史行情)",
+      "thesis": "不是新因子,是还数据债:daily_all 只含存活股(8/8 已知退市股缺失),台账 survivorship_bias=False 经验为假,全部回测收益系统性高估;也是多条已关闭方向的复活条件。",
+      "evidence": [
+        "auto-memory:project_survivorship_bias_lake",
+        "STATUS 2026-06(phase1 退市守卫缺数据时降级 WARN 形同虚设)"
+      ],
+      "playbook": "数据修复:lake canonical writer + manifest(R-ARCH-004),非 probe-signal-source",
+      "orthogonality_hint": "n/a(数据完整性,优先级恒在新信息源之上)"
+    },
+    {
+      "id": "cyq-chips",
+      "priority": 2,
+      "source": "tushare cyq_chips / cyq_perf(筹码分布/获利盘)",
+      "thesis": "持仓成本分布与获利盘比例是独立于价格动量与基本面的微观结构信息源;与现有价量族的信息重叠预期低。",
+      "evidence": [],
+      "playbook": "probe-signal-source",
+      "orthogonality_hint": "微观结构族,information_map 现有池未覆盖"
+    },
+    {
+      "id": "lhb-seats",
+      "priority": 3,
+      "source": "tushare top_list / top_inst(龙虎榜个股与席位)",
+      "thesis": "席位级资金行为是事件驱动信息,公告日 PIT 清晰;与日频价量横截面正交的候选来源。",
+      "evidence": [],
+      "playbook": "probe-signal-source",
+      "orthogonality_hint": "事件族;注意与已证太弱的『大单资金流』区分(席位≠逐笔大单)"
+    },
+    {
+      "id": "auction-open",
+      "priority": 4,
+      "source": "tushare stk_auction / stk_auction_o / stk_auction_c(集合竞价)",
+      "thesis": "开盘前竞价量价反映隔夜供需失衡,微观结构族;T 日 09:25 已知,T 日收盘调仓口径下 PIT 干净。",
+      "evidence": [],
+      "playbook": "probe-signal-source",
+      "orthogonality_hint": "日内微观结构,现有池全空白"
+    },
+    {
+      "id": "share-float-unlock",
+      "priority": 5,
+      "source": "tushare share_float(限售解禁)",
+      "thesis": "解禁是可提前预知的供给冲击(公告日已知未来解禁日),事件驱动 PIT 友好,与价量/基本面族正交。",
+      "evidence": [],
+      "playbook": "probe-signal-source",
+      "orthogonality_hint": "事件族(供给侧)"
+    },
+    {
+      "id": "forecast-express",
+      "priority": 6,
+      "source": "tushare forecast / express(业绩预告/快报)",
+      "thesis": "公告日对齐的盈余惊喜是基本面族空白区(information_map 已指基本面族最独立)的事件版;须严格按公告日对齐(R-DATA-003)。",
+      "evidence": [
+        "reports/research/metasearch_findings_20260623.md(基本面族距价格族 MI 2.8-2.9)",
+        "reports/research/probe_expectation_gap_20260712.md(相关证据:估值条件化变体 guidance_gap 已 probe——残差 OOS 留存 68% 但 ICIR 0.14 太弱且 size 相关 0.44;**纯 SUE 口径仍待独立 probe**,本条目保持开放)"
+      ],
+      "playbook": "probe-signal-source",
+      "orthogonality_hint": "基本面事件族,与 frontier BOOST 方向一致"
+    },
+    {
+      "id": "block-trade",
+      "priority": 7,
+      "source": "tushare block_trade(大宗交易折溢价)",
+      "thesis": "大宗折溢价反映机构间转手定价,与二级盘口价量正交;折价率横截面可能携带知情交易信息。",
+      "evidence": [],
+      "playbook": "probe-signal-source",
+      "orthogonality_hint": "机构行为族"
+    },
+    {
+      "id": "pledge-risk",
+      "priority": 8,
+      "source": "tushare pledge_stat / pledge_detail(股权质押)",
+      "thesis": "质押比例与平仓线压力是风险/供给侧信息,熊市尾部可能有区分度;更可能是 veto/风控因子而非 alpha。",
+      "evidence": [],
+      "playbook": "probe-signal-source",
+      "orthogonality_hint": "风险族(veto 候选)"
+    },
+    {
+      "id": "irm-qa-nlp",
+      "priority": 9,
+      "source": "tushare irm_qa_sh / irm_qa_sz(互动易问答,NLP 抽取)",
+      "thesis": "投资者关系问答的回复及时性/语调是治理质量代理;NLP 抽取归便宜模型(R-LLM-001 允许),信号仍走确定性验真。",
+      "evidence": [],
+      "playbook": "probe-signal-source(NLP 抽取走 llm_adapter 苦力通道)",
+      "orthogonality_hint": "文本族,现有池全空白;接入成本高,排后"
+    },
+    {
+      "id": "hm-hotmoney",
+      "priority": 10,
+      "source": "tushare hm_list / hm_detail(游资名录与明细)",
+      "thesis": "游资席位行为是短周期博弈信息;与本系统日频 20 日持有周期匹配度存疑,预期主要作反向/拥挤度信号。",
+      "evidence": [],
+      "playbook": "probe-signal-source",
+      "orthogonality_hint": "博弈族;周期不匹配风险高,排最后"
+    }
+  ]
+}

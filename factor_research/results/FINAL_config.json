@@ -1,0 +1,27 @@
+{
+  "strategy": "小盘60 + 小盘指数择时 + 杠杆",
+  "factor": "size60 = -log(amount.rolling(60).mean())",
+  "timing": "小盘股等权指数 MA16",
+  "top_n": 25,
+  "rebalance_days": 20,
+  "leverage": 1.25,
+  "full_sample": {
+    "annual": 0.4044,
+    "maxdd": -0.1458,
+    "sharpe": 2.0627,
+    "calmar": 2.774
+  },
+  "in_sample": {
+    "annual": 0.3747,
+    "maxdd": -0.109,
+    "sharpe": 2.2304,
+    "calmar": 3.4372
+  },
+  "out_sample": {
+    "annual": 0.4489,
+    "maxdd": -0.1458,
+    "sharpe": 1.9355,
+    "calmar": 3.0791
+  },
+  "hit_target": true
+}

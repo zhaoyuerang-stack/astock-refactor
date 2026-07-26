@@ -1,0 +1,13 @@
+{
+  "fingerprint": "5b42bf0d",
+  "trigger": "Phase_wf_negative_window",
+  "pattern": "WF negative window 2021",
+  "detail": "OOS annual=-8.7% in 2021",
+  "fix": "Manual review needed.",
+  "hit_count": 5,
+  "first_seen": "2026-06-28",
+  "last_seen": "2026-06-28",
+  "strategies": [
+    "autoresearch_6332599c"
+  ]
+}

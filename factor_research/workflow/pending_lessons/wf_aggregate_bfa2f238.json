@@ -1,0 +1,20 @@
+{
+  "fingerprint": "bfa2f238",
+  "trigger": "Phase_wf_aggregate",
+  "pattern": "WF aggregate FAIL",
+  "detail": "WF OOS annual=-2.6%, positive=6/11",
+  "fix": "Walk-Forward OOS aggregate failed. Strategy does not generalize. Simplify factor construction, reduce lookback windows, or verify no data leakage in factor/timing builders.",
+  "hit_count": 12,
+  "first_seen": "2026-06-24",
+  "last_seen": "2026-06-28",
+  "strategies": [
+    "autoresearch_7258f152",
+    "autoresearch_4063f1c4",
+    "autoresearch_fb43fa16",
+    "autoresearch_a23f4dde",
+    "autoresearch_69ede240",
+    "autoresearch_58ad0efc",
+    "close_position__n5",
+    "autoresearch_6332599c"
+  ]
+}

@@ -1,0 +1,67 @@
+# 全局配置 — 与 app_config/settings.py 中的 dataclass 默认值保持一致。
+# 这里的值是当前生产实际生效的值(illiquidity v3.1，registry 状态=在册)。
+# 修改后无需改动代码,Settings.from_yaml() 会读取此文件。
+
+cost:
+  buy_cost: 0.00225
+  sell_cost: 0.00275
+  financing_rate: 0.065
+
+strategy:
+  family: illiquidity
+  version: v3.1
+  start: "2018-01-01"
+  size_window: 60
+  timing_ma: 16
+  top_n: 25
+  rebalance_days: 20
+  leverage: 1.25
+
+data:
+  warmup_start: "2010-01-01"
+  default_start: "2018-01-01"
+
+# Holdout 金库(LOOP_ENGINEERING §5.2):date >= start 永不用于搜索,仅晋级前唯一一次校验。
+# 搜索/研究回测必须截到 < start;改此日期 = 改变金库,须谨慎并记 DECISIONS。
+holdout:
+  start: "2025-01-01"
+
+factory:
+  top_n_choices: [15, 20, 25, 40, 60, 80, 120]
+  leverage_choices: [1.0, 1.25]
+  review_corr_threshold: 0.50
+
+# 声明式风控规则(Phase 3)。services/read/risk 据此评估组合 → 超限生成 ControlAction。
+# 注:行业/市值集中度规则待 data_lake 补 industry_map/market_cap 后再加(当前无数据,不臆造)。
+risk_policy:
+  max_single_position_weight: 0.10   # 单票最大权重
+  max_position_count: 30             # 最大持仓数
+  max_leverage: 1.30                 # 杠杆上限(生产 1.25)
+  max_drawdown_warning: -0.15        # 回撤预警线
+  max_drawdown_stop: -0.20           # 回撤降仓线
+  max_turnover_annual: 25.0          # 年化换手上限(x)
+
+# Agent LLM —— 切模型只改这里(无 key/无配置 → 规则式 NullAdapter)。
+# LLM 只做"路由+解读",永不执行工具/下单(不越权门在 planner)。
+ai_model:
+  provider: openai_compatible  # 便宜模型干苦力(候选生成);判断在确定性代码(Alpha Audit/回测),不靠 LLM
+  model: deepseek-v4-flash     # DeepSeek:候选生成性价比高,大批量低风险
+  base_url: https://api.deepseek.com/v1
+  api_key_env: DEEPSEEK_API_KEY    # 运行时配置(data_lake/agent/llm_config.json,已 gitignore)的 key 优先;否则读此环境变量;均无 → 退规则式
+  # 示例:
+  #  DeepSeek : provider=openai_compatible model=deepseek-chat base_url=https://api.deepseek.com/v1 api_key_env=DEEPSEEK_API_KEY
+  #  通义Qwen : provider=openai_compatible model=qwen-max  base_url=https://dashscope.aliyun.com/compatible-mode/v1 api_key_env=DASHSCOPE_API_KEY
+  #  Kimi     : provider=openai_compatible model=moonshot-v1-8k base_url=https://api.moonshot.cn/v1 api_key_env=MOONSHOT_API_KEY
+  #  智谱GLM  : provider=openai_compatible model=glm-4 base_url=https://open.bigmodel.cn/api/paas/v4 api_key_env=ZHIPU_API_KEY
+  #  Ollama本地: provider=openai_compatible model=qwen2.5 base_url=http://localhost:11434/v1 api_key_env=OLLAMA_KEY(任填)
+  #  OpenAI   : provider=openai_compatible model=gpt-4o base_url=https://api.openai.com/v1 api_key_env=OPENAI_API_KEY
+  #  Anthropic: provider=anthropic model=claude-opus-4-8 api_key_env=ANTHROPIC_API_KEY
+
+# 运维告警(scripts/ops/notify.py)。桌面通知零依赖开箱即用。
+# 远程通道(Bark 手机推送/邮件)密钥走 gitignored data_lake/agent/notify_config.json,
+# 绝不写此文件(settings.yaml 进 git);示例见 notify.py docstring。
+notify:
+  desktop: true                    # macOS 桌面通知(设 false 则只写 Obsidian)
+  obsidian: true                   # 写入 Obsidian: 30.output/2.[A]inbox/ai_data/日更告警_YYYY-MM.md(按月滚动 append)
+  alert_on: [failed, partial_ok]   # 哪些日更 status 触发告警(ok 不打扰)
+  recovery: true                   # 失败后转 ok 时发"已恢复"通知

@@ -1,0 +1,27 @@
+{
+  "fingerprint": "19f7c148",
+  "trigger": "Phase_correlation",
+  "pattern": "correlation",
+  "detail": "{'verdict': 'WARN', 'max_abs_corr': np.float64(0.8340015555485676), 'correlations': {'size-earnings/v1.0': np.float64(0.834), 'small-cap-size/v2.0': np.float64(0.834)}, 'threshold_warn': 0.7, 'threshold_fail': 0.85}",
+  "fix": "Strategy highly correlated with existing strategy. Find orthogonal alpha source or accept role as diversification component.",
+  "hit_count": 20,
+  "first_seen": "2026-06-06",
+  "last_seen": "2026-06-28",
+  "strategies": [
+    "size-earnings-e2e",
+    "small-cap-size",
+    "illiquidity",
+    "size-low-vol",
+    "autoresearch_234c8ab7",
+    "autoresearch_2335eeab",
+    "small_cap_factor__window20",
+    "small_cap_factor__window30",
+    "small_cap_factor__window45",
+    "small_cap_factor__window60",
+    "small_cap_factor__window90",
+    "small_cap_factor__window120",
+    "small_cap_factor__window252",
+    "autoresearch_58ad0efc",
+    "autoresearch_6332599c"
+  ]
+}

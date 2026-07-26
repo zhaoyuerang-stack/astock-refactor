@@ -1,0 +1,49 @@
+{
+  "factor": "factors.expectation_gap:peg_inverse",
+  "params": {},
+  "universe": "all",
+  "window": {
+    "start": "2018-01-01",
+    "cutoff": "2022-12-31",
+    "end": "2024-12-31"
+  },
+  "raw_ic": {
+    "full": {
+      "ic": 0.0071,
+      "icir": 0.09,
+      "months": 83
+    },
+    "IS": {
+      "ic": 0.0134,
+      "icir": 0.17,
+      "months": 60
+    },
+    "OOS": {
+      "ic": -0.0094,
+      "icir": 0.11,
+      "months": 23
+    }
+  },
+  "residual_ic_size_liq": {
+    "full": {
+      "ic": 0.015,
+      "icir": 0.22,
+      "months": 83
+    },
+    "IS": {
+      "ic": 0.0202,
+      "icir": 0.3,
+      "months": 60
+    },
+    "OOS": {
+      "ic": 0.0014,
+      "icir": 0.02,
+      "months": 23
+    }
+  },
+  "style_corr": {
+    "size": 0.122,
+    "liquidity": 0.058,
+    "momentum": 0.111
+  }
+}

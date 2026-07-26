@@ -1,0 +1,9 @@
+# LLM 费率表(USD / 1M tokens)——providers/llm_ledger.py 成本估算唯一来源。
+# 未知模型:cost_usd 记 null(token 照记),不编造费率。
+# ⚠️ 价格随供应商调整,请按供应商最新价目核对后填写;以下为公开价示例(2025 年),
+#    取消注释前请核实。当前配置模型(settings.yaml ai_model.model)建议优先补。
+pricing:
+  # deepseek-chat:      {input_per_m: 0.27, output_per_m: 1.10}   # DeepSeek 公开价(缓存未命中)
+  # deepseek-reasoner:  {input_per_m: 0.55, output_per_m: 2.19}
+  # claude-sonnet-4-5:  {input_per_m: 3.0,  output_per_m: 15.0}   # Anthropic 公开价
+  # gpt-4o:             {input_per_m: 2.5,  output_per_m: 10.0}

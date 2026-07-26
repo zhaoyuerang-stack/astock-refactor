@@ -1,0 +1,15 @@
+{
+  "fingerprint": "749517c1",
+  "trigger": "Phase1_timing_peek",
+  "pattern": "timing shift(1)",
+  "detail": "Timing MISSING shift(1)! Uses T-day market return.",
+  "fix": "Add .shift(1) to timing: timing = (condition).shift(1).",
+  "hit_count": 4,
+  "first_seen": "2026-06-06 20:07:47.091494",
+  "last_seen": "2026-06-06 20:26:06.836330",
+  "strategies": [
+    "LEAKY timing",
+    "leaky-timing",
+    "leaky-block-test"
+  ]
+}

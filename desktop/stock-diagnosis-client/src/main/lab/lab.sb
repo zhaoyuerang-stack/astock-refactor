@@ -1,0 +1,7 @@
+(version 1)
+(allow default)
+(deny file-write* (subpath "/"))
+(allow file-write*
+  (subpath (param "LAB_DIR"))
+  (subpath (param "TMP_DIR"))
+  (subpath "/dev"))

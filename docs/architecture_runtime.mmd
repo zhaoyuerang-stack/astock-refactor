@@ -1,0 +1,15 @@
+flowchart TD
+  A["外部数据源<br/>Tencent / Sina / Eastmoney / Exchange"] --> B["data_lake<br/>全市场价量 / 财务 / 资金面 / ETF"]
+  B --> C["lake 层<br/>加载 / 聚合 / 校验 / invariants / fingerprint"]
+  C --> D["factors 层<br/>因子库 / AutoResearch DSL"]
+  D --> E["core.engine.BacktestEngine<br/>唯一回测权威<br/>成本 / 融资 / 指标 / anomalies"]
+  E --> F["strategies<br/>生产策略: illiquidity / bond rotation 等"]
+  E --> G["factory + workflow<br/>L0-L3 / walk-forward / promote / phase4 register"]
+  G --> H["strategy_registry<br/>唯一策略台账写入口"]
+  F --> I["production<br/>run_daily / paper_engine / launchd ops"]
+  H --> I
+  I --> J["services<br/>read/actions/agent"]
+  J --> K["FastAPI api.routers<br/>薄 HTTP 层"]
+  K --> L["Next.js web<br/>overview / data / risk / portfolio / paper / experiments / settings"]
+  I --> M["signals / paper / reports / logs"]
+  G --> N["review queue / experiment logs"]

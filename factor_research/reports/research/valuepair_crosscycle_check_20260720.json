@@ -1,0 +1,263 @@
+{
+  "check": "valuepair_crosscycle_check",
+  "date": "2026-07-20",
+  "purpose": "反例检验 round7/8 对 bp_proxy/ep_proxy 的 regime 共同贝塔怀疑:覆盖 2018-2020(成长占优期,round8 措辞)的分日历年残差 IC",
+  "results": {
+    "factors.fundamental:bp_proxy": {
+      "factor": "factors.fundamental:bp_proxy",
+      "universe": "all",
+      "window": {
+        "start": "2018-01-01",
+        "end": "2024-12-31"
+      },
+      "holdout_boundary": "2025-01-01",
+      "by_year": {
+        "2018": {
+          "raw_ic": {
+            "ic": 0.0554,
+            "icir": 0.33,
+            "months": 12
+          },
+          "residual_ic_size_liq": {
+            "ic": 0.0188,
+            "icir": 0.14,
+            "months": 12
+          },
+          "liquidity_corr": -0.368
+        },
+        "2019": {
+          "raw_ic": {
+            "ic": -0.0153,
+            "icir": 0.15,
+            "months": 12
+          },
+          "residual_ic_size_liq": {
+            "ic": -0.0459,
+            "icir": 0.46,
+            "months": 12
+          },
+          "liquidity_corr": -0.336
+        },
+        "2020": {
+          "raw_ic": {
+            "ic": 0.0281,
+            "icir": 0.17,
+            "months": 12
+          },
+          "residual_ic_size_liq": {
+            "ic": -0.0148,
+            "icir": 0.1,
+            "months": 12
+          },
+          "liquidity_corr": -0.411
+        },
+        "2021": {
+          "raw_ic": {
+            "ic": 0.1163,
+            "icir": 0.51,
+            "months": 12
+          },
+          "residual_ic_size_liq": {
+            "ic": 0.0766,
+            "icir": 0.38,
+            "months": 12
+          },
+          "liquidity_corr": -0.373
+        },
+        "2022": {
+          "raw_ic": {
+            "ic": 0.0661,
+            "icir": 0.36,
+            "months": 12
+          },
+          "residual_ic_size_liq": {
+            "ic": 0.0334,
+            "icir": 0.18,
+            "months": 12
+          },
+          "liquidity_corr": -0.285
+        },
+        "2023": {
+          "raw_ic": {
+            "ic": 0.1389,
+            "icir": 1.25,
+            "months": 12
+          },
+          "residual_ic_size_liq": {
+            "ic": 0.1116,
+            "icir": 1.28,
+            "months": 12
+          },
+          "liquidity_corr": -0.325
+        },
+        "2024": {
+          "raw_ic": {
+            "ic": 0.0424,
+            "icir": 0.31,
+            "months": 11
+          },
+          "residual_ic_size_liq": {
+            "ic": 0.002,
+            "icir": 0.02,
+            "months": 11
+          },
+          "liquidity_corr": -0.268
+        }
+      },
+      "cross_check_vs_round78": {
+        "raw_ic": {
+          "IS_2018_2022": {
+            "ic": 0.0501,
+            "icir": 0.29,
+            "months": 60
+          },
+          "OOS_2023_2024": {
+            "ic": 0.0928,
+            "icir": 0.99,
+            "months": 23
+          }
+        },
+        "residual_ic_size_liq": {
+          "IS_2018_2022": {
+            "ic": 0.0136,
+            "icir": 0.08,
+            "months": 60
+          },
+          "OOS_2023_2024": {
+            "ic": 0.0592,
+            "icir": 0.59,
+            "months": 23
+          }
+        }
+      }
+    },
+    "factors.fundamental:ep_proxy": {
+      "factor": "factors.fundamental:ep_proxy",
+      "universe": "all",
+      "window": {
+        "start": "2018-01-01",
+        "end": "2024-12-31"
+      },
+      "holdout_boundary": "2025-01-01",
+      "by_year": {
+        "2018": {
+          "raw_ic": {
+            "ic": 0.0531,
+            "icir": 0.84,
+            "months": 12
+          },
+          "residual_ic_size_liq": {
+            "ic": 0.0373,
+            "icir": 0.85,
+            "months": 12
+          },
+          "liquidity_corr": -0.164
+        },
+        "2019": {
+          "raw_ic": {
+            "ic": -0.0033,
+            "icir": 0.04,
+            "months": 12
+          },
+          "residual_ic_size_liq": {
+            "ic": -0.0187,
+            "icir": 0.32,
+            "months": 12
+          },
+          "liquidity_corr": -0.234
+        },
+        "2020": {
+          "raw_ic": {
+            "ic": 0.0304,
+            "icir": 0.46,
+            "months": 12
+          },
+          "residual_ic_size_liq": {
+            "ic": -0.0051,
+            "icir": 0.08,
+            "months": 12
+          },
+          "liquidity_corr": -0.277
+        },
+        "2021": {
+          "raw_ic": {
+            "ic": 0.0361,
+            "icir": 0.25,
+            "months": 12
+          },
+          "residual_ic_size_liq": {
+            "ic": 0.028,
+            "icir": 0.21,
+            "months": 12
+          },
+          "liquidity_corr": -0.264
+        },
+        "2022": {
+          "raw_ic": {
+            "ic": 0.0187,
+            "icir": 0.17,
+            "months": 12
+          },
+          "residual_ic_size_liq": {
+            "ic": 0.0006,
+            "icir": 0.01,
+            "months": 12
+          },
+          "liquidity_corr": -0.235
+        },
+        "2023": {
+          "raw_ic": {
+            "ic": 0.0457,
+            "icir": 0.44,
+            "months": 12
+          },
+          "residual_ic_size_liq": {
+            "ic": 0.0472,
+            "icir": 0.66,
+            "months": 12
+          },
+          "liquidity_corr": -0.262
+        },
+        "2024": {
+          "raw_ic": {
+            "ic": 0.0249,
+            "icir": 0.12,
+            "months": 11
+          },
+          "residual_ic_size_liq": {
+            "ic": 0.0056,
+            "icir": 0.03,
+            "months": 11
+          },
+          "liquidity_corr": -0.257
+        }
+      },
+      "cross_check_vs_round78": {
+        "raw_ic": {
+          "IS_2018_2022": {
+            "ic": 0.027,
+            "icir": 0.31,
+            "months": 60
+          },
+          "OOS_2023_2024": {
+            "ic": 0.0358,
+            "icir": 0.22,
+            "months": 23
+          }
+        },
+        "residual_ic_size_liq": {
+          "IS_2018_2022": {
+            "ic": 0.0084,
+            "icir": 0.1,
+            "months": 60
+          },
+          "OOS_2023_2024": {
+            "ic": 0.0273,
+            "icir": 0.2,
+            "months": 23
+          }
+        }
+      }
+    }
+  }
+}

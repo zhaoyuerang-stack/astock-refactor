@@ -1,0 +1,73 @@
+{
+  "_updated": "2026-07-18T04:30:30",
+  "_version": "2.0",
+  "price_daily": {
+    "last_check": "2026-07-18",
+    "updated": 0,
+    "added_delisted": 0,
+    "compact": "skipped"
+  },
+  "price_daily_raw": {
+    "last_check": "2026-06-05",
+    "source": "tdx_mootdx",
+    "fields": [
+      "date",
+      "raw_open",
+      "raw_high",
+      "raw_low",
+      "raw_close"
+    ],
+    "format": "per-code parquet",
+    "path": "data_lake/price/daily_raw"
+  },
+  "fundamental": {
+    "last_check": "2026-07-18"
+  },
+  "capital_margin": {
+    "last_check": "2026-06-05",
+    "source": "exchange_sse_szse",
+    "fields": [
+      "date",
+      "code",
+      "margin_balance",
+      "margin_buy",
+      "short_balance",
+      "short_vol"
+    ],
+    "format": "single parquet",
+    "path": "data_lake/capital/margin_all.parquet"
+  },
+  "capital_northbound": {
+    "last_check": "2026-06-05",
+    "source": "eastmoney_hsgt",
+    "fields": [
+      "date",
+      "code",
+      "northbound_hold_shares",
+      "northbound_hold_value",
+      "northbound_hold_pct",
+      "northbound_value_chg_1d",
+      "northbound_value_chg_5d",
+      "northbound_value_chg_10d",
+      "northbound_hold_shares_chg_1d",
+      "northbound_buy_value_1d"
+    ],
+    "format": "single parquet",
+    "path": "data_lake/capital/northbound_all.parquet"
+  },
+  "meta": {
+    "trade_calendar": "data_lake/meta/trade_calendar.parquet",
+    "codes": "data_lake/meta/codes.parquet",
+    "st_history": "data_lake/meta/st_history.parquet",
+    "list_date": "data_lake/meta/list_date.parquet"
+  },
+  "data_vintage": {
+    "stamped_at": "2026-07-17T17:30:08",
+    "last_date": "2026-07-17",
+    "shape": [
+      4015,
+      5460
+    ],
+    "fingerprint": "3f9aa9a292f2"
+  }
+}

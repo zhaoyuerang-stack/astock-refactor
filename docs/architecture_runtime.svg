@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1580" height="1180" viewBox="0 0 1580 1180" role="img" aria-labelledby="title desc">
+  <title id="title">ASTCOK runtime architecture</title>
+  <desc id="desc">Runtime architecture diagram for the quant research system.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#334155"/>
+    </marker>
+    <style>
+      .bg { fill: #f8fafc; }
+      .box { fill: #ffffff; stroke: #334155; stroke-width: 2; rx: 10; }
+      .box-core { fill: #ecfdf5; stroke: #047857; stroke-width: 2.5; rx: 10; }
+      .box-prod { fill: #eff6ff; stroke: #1d4ed8; stroke-width: 2.5; rx: 10; }
+      .box-artifact { fill: #fff7ed; stroke: #c2410c; stroke-width: 2; rx: 10; }
+      .arrow { stroke: #334155; stroke-width: 2.4; fill: none; marker-end: url(#arrow); }
+      .title { font: 700 34px -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", sans-serif; fill: #0f172a; }
+      .label { font: 700 22px -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", sans-serif; fill: #0f172a; }
+      .sub { font: 18px -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", sans-serif; fill: #475569; }
+      .note { font: 17px -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", sans-serif; fill: #64748b; }
+    </style>
+  </defs>
+  <rect class="bg" x="0" y="0" width="1580" height="1180"/>
+  <text class="title" x="790" y="58" text-anchor="middle">A 股因子研究系统运行态架构</text>
+  <text class="note" x="790" y="88" text-anchor="middle">核心约束: data_lake → factors → core.engine → strategies/factory/workflow → registry → production/API/web</text>
+
+  <rect class="box" x="70" y="130" width="300" height="96"/>
+  <text class="label" x="220" y="166" text-anchor="middle">外部数据源</text>
+  <text class="sub" x="220" y="196" text-anchor="middle">Tencent / Sina / Eastmoney</text>
+  <text class="sub" x="220" y="218" text-anchor="middle">Exchange</text>
+
+  <rect class="box-artifact" x="470" y="130" width="310" height="96"/>
+  <text class="label" x="625" y="166" text-anchor="middle">data_lake</text>
+  <text class="sub" x="625" y="196" text-anchor="middle">全市场价量 / 财务</text>
+  <text class="sub" x="625" y="218" text-anchor="middle">资金面 / ETF</text>
+
+  <rect class="box" x="880" y="130" width="330" height="96"/>
+  <text class="label" x="1045" y="166" text-anchor="middle">lake 层</text>
+  <text class="sub" x="1045" y="196" text-anchor="middle">加载 / 聚合 / 校验</text>
+  <text class="sub" x="1045" y="218" text-anchor="middle">invariants / fingerprint</text>
+
+  <rect class="box" x="470" y="300" width="310" height="96"/>
+  <text class="label" x="625" y="336" text-anchor="middle">factors 层</text>
+  <text class="sub" x="625" y="366" text-anchor="middle">因子库</text>
+  <text class="sub" x="625" y="388" text-anchor="middle">AutoResearch DSL</text>
+
+  <rect class="box-core" x="860" y="300" width="380" height="112"/>
+  <text class="label" x="1050" y="338" text-anchor="middle">core.engine.BacktestEngine</text>
+  <text class="sub" x="1050" y="370" text-anchor="middle">唯一回测权威</text>
+  <text class="sub" x="1050" y="394" text-anchor="middle">成本 / 融资 / 指标 / anomalies</text>
+
+  <rect class="box" x="360" y="500" width="330" height="100"/>
+  <text class="label" x="525" y="536" text-anchor="middle">strategies</text>
+  <text class="sub" x="525" y="566" text-anchor="middle">生产策略</text>
+  <text class="sub" x="525" y="590" text-anchor="middle">illiquidity / bond rotation</text>
+
+  <rect class="box" x="820" y="500" width="410" height="100"/>
+  <text class="label" x="1025" y="536" text-anchor="middle">factory + workflow</text>
+  <text class="sub" x="1025" y="566" text-anchor="middle">L0-L3 / walk-forward / promote</text>
+  <text class="sub" x="1025" y="590" text-anchor="middle">phase4 register</text>
+
+  <rect class="box-artifact" x="890" y="690" width="330" height="90"/>
+  <text class="label" x="1055" y="726" text-anchor="middle">strategy_registry</text>
+  <text class="sub" x="1055" y="758" text-anchor="middle">唯一策略台账写入口</text>
+
+  <rect class="box-prod" x="470" y="690" width="330" height="100"/>
+  <text class="label" x="635" y="726" text-anchor="middle">production</text>
+  <text class="sub" x="635" y="756" text-anchor="middle">run_daily / paper_engine</text>
+  <text class="sub" x="635" y="780" text-anchor="middle">launchd ops</text>
+
+  <rect class="box" x="300" y="880" width="330" height="90"/>
+  <text class="label" x="465" y="916" text-anchor="middle">services</text>
+  <text class="sub" x="465" y="948" text-anchor="middle">read / actions / agent</text>
+
+  <rect class="box" x="710" y="880" width="330" height="90"/>
+  <text class="label" x="875" y="916" text-anchor="middle">FastAPI api.routers</text>
+  <text class="sub" x="875" y="948" text-anchor="middle">薄 HTTP 层</text>
+
+  <rect class="box" x="1120" y="880" width="360" height="90"/>
+  <text class="label" x="1300" y="916" text-anchor="middle">Next.js web</text>
+  <text class="sub" x="1300" y="948" text-anchor="middle">overview / data / risk / paper</text>
+
+  <rect class="box-artifact" x="160" y="690" width="240" height="90"/>
+  <text class="label" x="280" y="726" text-anchor="middle">运行产物</text>
+  <text class="sub" x="280" y="758" text-anchor="middle">signals / paper / reports / logs</text>
+
+  <rect class="box-artifact" x="1270" y="500" width="250" height="100"/>
+  <text class="label" x="1395" y="536" text-anchor="middle">研究产物</text>
+  <text class="sub" x="1395" y="566" text-anchor="middle">review queue</text>
+  <text class="sub" x="1395" y="590" text-anchor="middle">experiment logs</text>
+
+  <path class="arrow" d="M370 178 H470"/>
+  <path class="arrow" d="M780 178 H880"/>
+  <path class="arrow" d="M1045 226 V268 C1045 288 1010 300 970 300 H780"/>
+  <path class="arrow" d="M780 348 H860"/>
+  <path class="arrow" d="M955 412 C875 455 720 490 610 500"/>
+  <path class="arrow" d="M1050 412 V500"/>
+  <path class="arrow" d="M1025 600 C1025 638 1045 656 1055 690"/>
+  <path class="arrow" d="M525 600 C525 642 585 650 625 690"/>
+  <path class="arrow" d="M1055 780 C1010 828 820 828 700 690"/>
+  <path class="arrow" d="M635 790 C600 835 525 850 465 880"/>
+  <path class="arrow" d="M630 925 H710"/>
+  <path class="arrow" d="M1040 925 H1120"/>
+  <path class="arrow" d="M470 740 H400"/>
+  <path class="arrow" d="M1230 550 H1270"/>
+</svg>

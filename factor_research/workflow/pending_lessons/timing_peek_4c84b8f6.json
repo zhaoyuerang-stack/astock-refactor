@@ -1,0 +1,14 @@
+{
+  "fingerprint": "4c84b8f6",
+  "trigger": "Phase1_timing_peek",
+  "pattern": "timing shift(1)",
+  "detail": "Timing MISSING shift(1)! T-day signal uses T-day market return.",
+  "fix": "Add .shift(1) to timing signal computation: timing = (condition).shift(1). Verify that timing[T] only uses data through T-1.",
+  "hit_count": 2,
+  "first_seen": "2026-06-06 20:03:59.442446",
+  "last_seen": "2026-06-06 20:05:34.963542",
+  "strategies": [
+    "leaky-test",
+    "2. LEAKY timing"
+  ]
+}

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.astcok.daily-update</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/opt/homebrew/bin/python3</string>
+    <string>/Users/kiki/astcok/factor_research/scripts/ops/scheduled_daily_update.py</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/kiki/astcok/factor_research</string>
+
+  <!--
+    北京时间触发窗口 (launchd Hour/Minute 为本机时间 = PDT = UTC-7):
+      PDT 00:30 = CST 15:30  ← 盘中，太早，改掉
+      PDT 01:30 = CST 16:30  ← 主触发（盘后第一次）
+      PDT 02:30 = CST 17:30  ← 重试1（tushare 数据延迟时）
+      PDT 03:30 = CST 18:30  ← 重试2
+      PDT 04:30 = CST 19:30  ← 重试3（兜底，成功后 prior_success 阻止重复执行）
+    周一~周五均启用。prior_success 检查防止重复执行（ok/partial_ok 不再重跑）。
+    注：周六(Weekday=7/0)、周日(Weekday=1) 不触发。
+  -->
+
+  <key>StartCalendarInterval</key>
+  <array>
+    <!-- 周一 PDT -->
+    <dict>
+      <key>Weekday</key><integer>2</integer>
+      <key>Hour</key><integer>1</integer>
+      <key>Minute</key><integer>30</integer>
+    </dict>
+    <dict>
+      <key>Weekday</key><integer>2</integer>
+      <key>Hour</key><integer>2</integer>
+      <key>Minute</key><integer>30</integer>
+    </dict>
+    <dict>
+      <key>Weekday</key><integer>2</integer>
+      <key>Hour</key><integer>3</integer>
+      <key>Minute</key><integer>30</integer>
+    </dict>
+    <dict>
+      <key>Weekday</key><integer>2</integer>
+      <key>Hour</key><integer>4</integer>
+      <key>Minute</key><integer>30</integer>
+    </dict>
+    <!-- 周二 PDT -->
+    <dict>
+      <key>Weekday</key><integer>3</integer>
+      <key>Hour</key><integer>1</integer>
+      <key>Minute</key><integer>30</integer>
+    </dict>
+    <dict>
+      <key>Weekday</key><integer>3</integer>
+      <key>Hour</key><integer>2</integer>
+      <key>Minute</key><integer>30</integer>
+    </dict>
+    <dict>
+      <key>Weekday</key><integer>3</integer>
+      <key>Hour</key><integer>3</integer>
+      <key>Minute</key><integer>30</integer>
+    </dict>
+    <dict>
+      <key>Weekday</key><integer>3</integer>
+      <key>Hour</key><integer>4</integer>
+      <key>Minute</key><integer>30</integer>
+    </dict>
+    <!-- 周三 PDT -->
+    <dict>
+      <key>Weekday</key><integer>4</integer>
+      <key>Hour</key><integer>1</integer>
+      <key>Minute</key><integer>30</integer>
+    </dict>
+    <dict>
+      <key>Weekday</key><integer>4</integer>
+      <key>Hour</key><integer>2</integer>
+      <key>Minute</key><integer>30</integer>
+    </dict>
+    <dict>
+      <key>Weekday</key><integer>4</integer>
+      <key>Hour</key><integer>3</integer>
+      <key>Minute</key><integer>30</integer>
+    </dict>
+    <dict>
+      <key>Weekday</key><integer>4</integer>
+      <key>Hour</key><integer>4</integer>
+      <key>Minute</key><integer>30</integer>
+    </dict>
+    <!-- 周四 PDT -->
+    <dict>
+      <key>Weekday</key><integer>5</integer>
+      <key>Hour</key><integer>1</integer>
+      <key>Minute</key><integer>30</integer>
+    </dict>
+    <dict>
+      <key>Weekday</key><integer>5</integer>
+      <key>Hour</key><integer>2</integer>
+      <key>Minute</key><integer>30</integer>
+    </dict>
+    <dict>
+      <key>Weekday</key><integer>5</integer>
+      <key>Hour</key><integer>3</integer>
+      <key>Minute</key><integer>30</integer>
+    </dict>
+    <dict>
+      <key>Weekday</key><integer>5</integer>
+      <key>Hour</key><integer>4</integer>
+      <key>Minute</key><integer>30</integer>
+    </dict>
+    <!-- 周五 PDT -->
+    <dict>
+      <key>Weekday</key><integer>6</integer>
+      <key>Hour</key><integer>1</integer>
+      <key>Minute</key><integer>30</integer>
+    </dict>
+    <dict>
+      <key>Weekday</key><integer>6</integer>
+      <key>Hour</key><integer>2</integer>
+      <key>Minute</key><integer>30</integer>
+    </dict>
+    <dict>
+      <key>Weekday</key><integer>6</integer>
+      <key>Hour</key><integer>3</integer>
+      <key>Minute</key><integer>30</integer>
+    </dict>
+    <dict>
+      <key>Weekday</key><integer>6</integer>
+      <key>Hour</key><integer>4</integer>
+      <key>Minute</key><integer>30</integer>
+    </dict>
+  </array>
+
+  <key>StandardOutPath</key>
+  <string>/Users/kiki/astcok/factor_research/logs/daily_update/launchd.out.log</string>
+
+  <key>StandardErrorPath</key>
+  <string>/Users/kiki/astcok/factor_research/logs/daily_update/launchd.err.log</string>
+</dict>
+</plist>

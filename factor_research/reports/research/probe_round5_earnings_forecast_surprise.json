@@ -1,0 +1,49 @@
+{
+  "factor": "factors.earnings:earnings_forecast_surprise",
+  "params": {},
+  "universe": "all",
+  "window": {
+    "start": "2020-06-01",
+    "cutoff": "2023-06-30",
+    "end": "2024-12-31"
+  },
+  "raw_ic": {
+    "full": {
+      "ic": -0.0046,
+      "icir": 0.06,
+      "months": 54
+    },
+    "IS": {
+      "ic": -0.0078,
+      "icir": 0.12,
+      "months": 37
+    },
+    "OOS": {
+      "ic": -0.0036,
+      "icir": 0.04,
+      "months": 18
+    }
+  },
+  "residual_ic_size_liq": {
+    "full": {
+      "ic": 0.0013,
+      "icir": 0.03,
+      "months": 54
+    },
+    "IS": {
+      "ic": 0.0022,
+      "icir": 0.04,
+      "months": 37
+    },
+    "OOS": {
+      "ic": -0.006,
+      "icir": 0.1,
+      "months": 18
+    }
+  },
+  "style_corr": {
+    "size": 0.173,
+    "liquidity": -0.004,
+    "momentum": 0.037
+  }
+}

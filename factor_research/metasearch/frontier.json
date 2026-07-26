@@ -1,0 +1,50 @@
+{
+  "generated_at": "2026-07-13 10:21:29",
+  "method": "min MI-distance to LIVE anchors (无锚退回平均两两距离), top-k",
+  "k": 8,
+  "signals": [
+    {
+      "name": "vol_breakout__short5_long10",
+      "distance": 2.962
+    },
+    {
+      "name": "gross_margin___0",
+      "distance": 2.96
+    },
+    {
+      "name": "roe___0",
+      "distance": 2.956
+    },
+    {
+      "name": "net_profit_yoy___0",
+      "distance": 2.953
+    },
+    {
+      "name": "mom_n__n60_skip0",
+      "distance": 2.95
+    },
+    {
+      "name": "volatility__n10",
+      "distance": 2.944
+    },
+    {
+      "name": "close_position__n5",
+      "distance": 2.944
+    },
+    {
+      "name": "bp_proxy___0",
+      "distance": 2.943
+    }
+  ],
+  "factors": [
+    "bp_proxy",
+    "close_position",
+    "gross_margin",
+    "mom_n",
+    "net_profit_yoy",
+    "roe",
+    "vol_breakout",
+    "volatility"
+  ],
+  "consumer": "knowledge.directions.frontier_factors(生成端算力倾斜,fail-open)"
+}

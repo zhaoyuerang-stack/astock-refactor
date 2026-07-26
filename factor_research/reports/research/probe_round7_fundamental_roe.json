@@ -1,0 +1,49 @@
+{
+  "factor": "factors.fundamental:roe",
+  "params": {},
+  "universe": "all",
+  "window": {
+    "start": "2018-01-01",
+    "cutoff": "2022-12-31",
+    "end": "2024-12-31"
+  },
+  "raw_ic": {
+    "full": {
+      "ic": -0.0091,
+      "icir": 0.08,
+      "months": 83
+    },
+    "IS": {
+      "ic": -0.0053,
+      "icir": 0.05,
+      "months": 60
+    },
+    "OOS": {
+      "ic": -0.019,
+      "icir": 0.12,
+      "months": 23
+    }
+  },
+  "residual_ic_size_liq": {
+    "full": {
+      "ic": 0.0047,
+      "icir": 0.04,
+      "months": 83
+    },
+    "IS": {
+      "ic": 0.0116,
+      "icir": 0.13,
+      "months": 60
+    },
+    "OOS": {
+      "ic": -0.0133,
+      "icir": 0.1,
+      "months": 23
+    }
+  },
+  "style_corr": {
+    "size": 0.103,
+    "liquidity": -0.0,
+    "momentum": -0.034
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "fingerprint": "88d94368",
+  "trigger": "Phase1_amount_formula",
+  "pattern": "amount = vol×100×raw_close",
+  "detail": "Input amount is correct, but factor doesn't respond to amount formula perturbation. Factor may compute its own amount internally — verify it uses raw_close, not adjusted close.",
+  "fix": "Use raw_close (not adjusted close) for amount: amount = volume * 100 * raw_close. Adjusted close embeds future corporate actions in historical prices.",
+  "hit_count": 4,
+  "first_seen": "2026-06-06 20:05:34.958514",
+  "last_seen": "2026-06-06 20:05:36.057809",
+  "strategies": [
+    "1. v2.0 CLEAN",
+    "2. LEAKY timing",
+    "3. LEAKY amount",
+    "4. size-earnings"
+  ]
+}

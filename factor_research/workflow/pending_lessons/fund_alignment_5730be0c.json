@@ -1,0 +1,13 @@
+{
+  "fingerprint": "5730be0c",
+  "trigger": "Phase1_fund_alignment",
+  "pattern": "avail_date 对齐",
+  "detail": "Fundamental signal appears 5d BEFORE avail_date! (early spread=-1.3600, pre-avail spread=1.4142, post-avail spread=1.4142). Look-ahead detected.",
+  "fix": "Use load_fundamental_panel() which aligns via avail_date→ffill.",
+  "hit_count": 1,
+  "first_seen": "2026-06-06 20:38:56.149481",
+  "last_seen": "2026-06-06 20:38:56.149505",
+  "strategies": [
+    "low_volatility_20d"
+  ]
+}

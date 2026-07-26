@@ -1,0 +1,49 @@
+{
+  "factor": "factors.earnings:sue",
+  "params": {},
+  "universe": "all",
+  "window": {
+    "start": "2020-06-01",
+    "cutoff": "2023-06-30",
+    "end": "2024-12-31"
+  },
+  "raw_ic": {
+    "full": {
+      "ic": 0.0048,
+      "icir": 0.06,
+      "months": 54
+    },
+    "IS": {
+      "ic": 0.0033,
+      "icir": 0.06,
+      "months": 37
+    },
+    "OOS": {
+      "ic": 0.0093,
+      "icir": 0.09,
+      "months": 18
+    }
+  },
+  "residual_ic_size_liq": {
+    "full": {
+      "ic": 0.0035,
+      "icir": 0.07,
+      "months": 54
+    },
+    "IS": {
+      "ic": 0.0043,
+      "icir": 0.13,
+      "months": 37
+    },
+    "OOS": {
+      "ic": 0.004,
+      "icir": 0.06,
+      "months": 18
+    }
+  },
+  "style_corr": {
+    "size": 0.439,
+    "liquidity": -0.206,
+    "momentum": 0.006
+  }
+}

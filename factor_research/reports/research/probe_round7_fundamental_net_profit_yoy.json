@@ -1,0 +1,49 @@
+{
+  "factor": "factors.fundamental:net_profit_yoy",
+  "params": {},
+  "universe": "all",
+  "window": {
+    "start": "2018-01-01",
+    "cutoff": "2022-12-31",
+    "end": "2024-12-31"
+  },
+  "raw_ic": {
+    "full": {
+      "ic": -0.0134,
+      "icir": 0.23,
+      "months": 83
+    },
+    "IS": {
+      "ic": -0.0115,
+      "icir": 0.22,
+      "months": 60
+    },
+    "OOS": {
+      "ic": -0.0182,
+      "icir": 0.25,
+      "months": 23
+    }
+  },
+  "residual_ic_size_liq": {
+    "full": {
+      "ic": -0.0104,
+      "icir": 0.2,
+      "months": 83
+    },
+    "IS": {
+      "ic": -0.0085,
+      "icir": 0.16,
+      "months": 60
+    },
+    "OOS": {
+      "ic": -0.0154,
+      "icir": 0.29,
+      "months": 23
+    }
+  },
+  "style_corr": {
+    "size": 0.084,
+    "liquidity": 0.003,
+    "momentum": -0.033
+  }
+}
