@@ -19,6 +19,7 @@ CI 守卫 CLI 入口见 scripts/ci/check_cost_model_pin.py(薄壳,复用本模�
 """
 from __future__ import annotations
 
+import ast
 from pathlib import Path
 from typing import Any
 
@@ -28,6 +29,7 @@ __all__ = [
     "EXPECTED_COST",
     "EXPECTED_COST_HASH",
     "canonical_cost_json",
+    "check_explicit_zero_cost_calls",
     "check_cost_pin",
     "cost_hash",
     "cost_snapshot",
@@ -42,6 +44,13 @@ EXPECTED_COST = {
 }
 # sha256(json.dumps(EXPECTED_COST, sort_keys=True, separators=(",", ":")))
 EXPECTED_COST_HASH = "40f40fbaefebb10e38b6ccc37e39c77573ebbf0bb941458d745c1645fdbaf43b"
+
+FORMAL_RUNTIME_ROOTS = (
+    "strategies",
+    "workflow",
+    "services/actions",
+    "scripts/ops",
+)
 
 
 def check_cost_pin(cost: Any | None = None) -> list[str]:
@@ -67,3 +76,43 @@ def check_cost_pin(cost: Any | None = None) -> list[str]:
         "(见 factor_research/docs/cost_model.md §4)再更新本 pin"
         f"(EXPECTED_COST / EXPECTED_COST_HASH in {Path(__file__).name})。"
     ]
+
+
+def check_explicit_zero_cost_calls(root: Path | None = None) -> list[str]:
+    """Reject explicit zero buy/sell costs in formal execution paths."""
+    root = Path(root) if root is not None else Path(__file__).resolve().parents[1]
+    errors: list[str] = []
+    for relative_root in FORMAL_RUNTIME_ROOTS:
+        scan_root = root / relative_root
+        if not scan_root.exists():
+            continue
+        for path in sorted(scan_root.rglob("*.py")):
+            try:
+                tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+            except (OSError, SyntaxError) as exc:
+                errors.append(f"{path.relative_to(root)} 无法做成本旁路检查: {exc}")
+                continue
+            for node in ast.walk(tree):
+                if not isinstance(node, ast.Call):
+                    continue
+                name = (
+                    node.func.id if isinstance(node.func, ast.Name)
+                    else node.func.attr if isinstance(node.func, ast.Attribute)
+                    else ""
+                )
+                if name != "CostModel":
+                    continue
+                zero_fields = [
+                    keyword.arg
+                    for keyword in node.keywords
+                    if keyword.arg in {"buy_cost", "sell_cost"}
+                    and isinstance(keyword.value, ast.Constant)
+                    and isinstance(keyword.value.value, (int, float))
+                    and float(keyword.value.value) == 0.0
+                ]
+                if zero_fields:
+                    errors.append(
+                        f"{path.relative_to(root)}:{node.lineno} "
+                        f"正式执行路径显式关闭交易成本: {', '.join(zero_fields)}"
+                    )
+    return errors

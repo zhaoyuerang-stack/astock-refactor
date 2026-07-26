@@ -7,11 +7,14 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 from collections.abc import Iterator
 from dataclasses import asdict, dataclass
 from datetime import datetime
 from pathlib import Path
 from typing import Any
+
+from governance.file_lock import exclusive_file_lock
 
 DEFAULT_LEDGER_PATH = (
     Path(__file__).resolve().parent.parent
@@ -135,10 +138,13 @@ class ResearchLedger:
         return last
 
     def _append_record(self, rec: dict) -> dict:
-        rec["prev_hash"] = self._last_hash()
-        rec["entry_hash"] = _chain_hash(rec["prev_hash"], rec)
-        with open(self.path, "a", encoding="utf-8") as f:
-            f.write(json.dumps(rec, ensure_ascii=False, default=str) + "\n")
+        with exclusive_file_lock(self.path):
+            rec["prev_hash"] = self._last_hash()
+            rec["entry_hash"] = _chain_hash(rec["prev_hash"], rec)
+            with open(self.path, "a", encoding="utf-8") as f:
+                f.write(json.dumps(rec, ensure_ascii=False, default=str) + "\n")
+                f.flush()
+                os.fsync(f.fileno())
         return rec
 
     def log_experiment(self, entry: LedgerEntry) -> None:
@@ -186,27 +192,30 @@ class ResearchLedger:
 
         使存量审计历史变为可验。返回回填的行数。
         """
-        if not self.path.exists():
-            return 0
-        recs = []
-        with open(self.path, encoding="utf-8") as f:
-            for line in f:
-                line = line.strip()
-                if line:
-                    recs.append(json.loads(line))
-        prev = ""
-        for rec in recs:
-            rec.pop("entry_hash", None)
-            rec.pop("prev_hash", None)
-            rec["prev_hash"] = prev
-            rec["entry_hash"] = _chain_hash(prev, rec)
-            prev = rec["entry_hash"]
-        tmp = self.path.with_suffix(".jsonl.tmp")
-        with open(tmp, "w", encoding="utf-8") as f:
+        with exclusive_file_lock(self.path):
+            if not self.path.exists():
+                return 0
+            recs = []
+            with open(self.path, encoding="utf-8") as f:
+                for line in f:
+                    line = line.strip()
+                    if line:
+                        recs.append(json.loads(line))
+            prev = ""
             for rec in recs:
-                f.write(json.dumps(rec, ensure_ascii=False, default=str) + "\n")
-        tmp.replace(self.path)
-        return len(recs)
+                rec.pop("entry_hash", None)
+                rec.pop("prev_hash", None)
+                rec["prev_hash"] = prev
+                rec["entry_hash"] = _chain_hash(prev, rec)
+                prev = rec["entry_hash"]
+            tmp = self.path.with_suffix(".jsonl.tmp")
+            with open(tmp, "w", encoding="utf-8") as f:
+                for rec in recs:
+                    f.write(json.dumps(rec, ensure_ascii=False, default=str) + "\n")
+                f.flush()
+                os.fsync(f.fileno())
+            tmp.replace(self.path)
+            return len(recs)
 
     def iter_all(self) -> Iterator[LedgerEntry]:
         """Iterate through all ledger entries."""

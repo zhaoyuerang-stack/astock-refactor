@@ -94,5 +94,23 @@ def test_live_repo_guard_script_exits_0():
     assert "hash-pin 通过" in proc.stdout
 
 
+def test_explicit_zero_transaction_cost_in_formal_path_fails(tmp_path):
+    strategy_dir = tmp_path / "strategies"
+    strategy_dir.mkdir()
+    (strategy_dir / "bad.py").write_text(
+        "cost = CostModel(buy_cost=0.0, sell_cost=0)\n",
+        encoding="utf-8",
+    )
+    errors = guard.check_explicit_zero_cost_calls(tmp_path)
+    assert len(errors) == 1
+    assert "bad.py:1" in errors[0]
+    assert "buy_cost" in errors[0]
+    assert "sell_cost" in errors[0]
+
+
+def test_live_formal_paths_have_no_explicit_zero_transaction_cost():
+    assert guard.check_explicit_zero_cost_calls(ROOT) == []
+
+
 if __name__ == "__main__":
     raise SystemExit(pytest.main([__file__, "-q"]))

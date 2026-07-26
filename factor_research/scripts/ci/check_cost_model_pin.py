@@ -22,6 +22,7 @@ from governance.cost_pin import (  # noqa: E402
     EXPECTED_COST,
     EXPECTED_COST_HASH,
     canonical_cost_json,
+    check_explicit_zero_cost_calls,
     check_cost_pin,
     cost_hash,
     cost_snapshot,
@@ -31,6 +32,7 @@ __all__ = [
     "EXPECTED_COST",
     "EXPECTED_COST_HASH",
     "canonical_cost_json",
+    "check_explicit_zero_cost_calls",
     "check_cost_pin",
     "cost_hash",
     "cost_snapshot",
@@ -39,7 +41,7 @@ __all__ = [
 
 
 def main() -> int:
-    errors = check_cost_pin()
+    errors = check_cost_pin() + check_explicit_zero_cost_calls()
     if errors:
         for msg in errors:
             print(f"❌ {msg}", file=sys.stderr)

@@ -23,10 +23,12 @@ import os
 import re
 from collections.abc import Iterable
 from datetime import UTC, date
+from functools import wraps
 from pathlib import Path
 from typing import Any, Literal, TypedDict, cast
 
 from engine.metrics import compute_hit
+from governance.file_lock import exclusive_file_lock
 
 REGISTRY: Path = Path(__file__).parent / "strategy_versions.json"
 
@@ -170,6 +172,17 @@ def _save(data: RegistryDoc) -> None:
     os.replace(tmp, REGISTRY)
 
 
+def _registry_mutation(function):
+    """Hold the registry lock across the complete read-modify-write operation."""
+    @wraps(function)
+    def wrapped(*args, **kwargs):
+        with exclusive_file_lock(REGISTRY):
+            return function(*args, **kwargs)
+
+    return wrapped
+
+
+@_registry_mutation
 def register_family(id: str, name: str, hypothesis: str = "", regime: str = "",
                     decay_signal: str = "", status: str = "active",
                     style_betas: dict[str, float] | None = None,
@@ -196,6 +209,7 @@ def register_family(id: str, name: str, hypothesis: str = "", regime: str = "",
     return id
 
 
+@_registry_mutation
 def register(family: str, version: str, desc: str, config: dict[str, Any],
              data_scope: DataScopeDict | str, metrics: dict[str, Any] | None,
              status: str = "候选", notes: str = "",
@@ -309,6 +323,7 @@ def register(family: str, version: str, desc: str, config: dict[str, Any],
     return f"{family}/{version}"
 
 
+@_registry_mutation
 def migrate_two_track_admission(apply: bool = True) -> list[dict[str, Any]]:
     """一次性迁移：用 compute_hit 重算全台账 hit，并按双轨准入规则裁定「在册」去留。
 
@@ -369,6 +384,7 @@ def migrate_two_track_admission(apply: bool = True) -> list[dict[str, Any]]:
     return transitions
 
 
+@_registry_mutation
 def demote_dsr_insignificant_standalone(threshold: float = DSR_ALPHA,
                                         apply: bool = True) -> list[dict[str, Any]]:
     """一次性治理迁移（ADR-020 / R-OBJECTIVE-001）：把 DSR 多重测试惩罚下不显著的
@@ -410,6 +426,7 @@ def demote_dsr_insignificant_standalone(threshold: float = DSR_ALPHA,
     return transitions
 
 
+@_registry_mutation
 def attach_nine_gate(family: str, version: str, summary: dict[str, Any] | None,
                      evidence: EvidenceDict | None = None) -> str:
     """把一次 Nine-Gate 审计摘要（NineGatesReport.summarize()）写入指定版本的 nine_gate 字段。
@@ -433,6 +450,7 @@ def attach_nine_gate(family: str, version: str, summary: dict[str, Any] | None,
     return f"{family}/{version}"
 
 
+@_registry_mutation
 def attach_path_metrics(
     family,
     version,
@@ -556,6 +574,7 @@ def attach_path_metrics(
     }
 
 
+@_registry_mutation
 def attach_data_incident(family: str, version: str, incident: dict[str, Any] | None) -> str:
     """Append a data incident to version evidence without changing lifecycle status."""
     data = _load()
@@ -581,6 +600,7 @@ def attach_data_incident(family: str, version: str, incident: dict[str, Any] | N
     return f"{family}/{version}"
 
 
+@_registry_mutation
 def attach_decay_check(family: str, version: str, result: dict[str, Any] | None, *,
                        checked_at: str | None = None) -> str:
     """把一次 governance/decay.py::decay_check() 的结果写入指定版本的 decay_check 字段。
@@ -606,6 +626,7 @@ def attach_decay_check(family: str, version: str, result: dict[str, Any] | None,
     return f"{family}/{version}"
 
 
+@_registry_mutation
 def attach_catalog_status(family: str, version: str, status: str, *,
                           marginal: dict[str, Any] | None = None,
                           changed_at: str | None = None) -> str:
@@ -639,6 +660,7 @@ def attach_catalog_status(family: str, version: str, status: str, *,
     return f"{family}/{version}"
 
 
+@_registry_mutation
 def attach_executable_spec(family: str, version: str, spec: dict[str, Any],
                            spec_hash: str, *, require_revalidation: bool = True) -> str:
     """Attach a validated executable identity without copying old evidence to it."""
@@ -670,6 +692,7 @@ def attach_executable_spec(family: str, version: str, spec: dict[str, Any],
     return f"{family}/{version}"
 
 
+@_registry_mutation
 def retire_version(family: str, version: str, *, reason: str,
                    evidence_refs: Iterable[str] = (), actor: str = "workflow",
                    control_event_path: Path | str | None = None) -> str:

@@ -60,7 +60,7 @@ def run_hq_momentum_strategy(config: StrategyConfig = _DEFAULT_CONFIG) -> dict[s
     # Engine configuration
     engine_config = BacktestConfig(
         start="2010-01-01",  # Warm-up from 2010
-        cost=CostModel(buy_cost=0.0, sell_cost=0.0, financing_rate=0.0),
+        cost=CostModel(),
         leverage=config.leverage,
     )
     engine = BacktestEngine(prices=prices, config=engine_config)
