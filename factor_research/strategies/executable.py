@@ -11,7 +11,7 @@ import pandas as pd
 
 from core.engine import PricePanel, Signal
 from core.strategy_spec import ExecutableStrategySpec
-from research_toolkit import apply_veto_filter
+from policy.candidate_filters import apply_veto_filter
 from strategies.catalog import (
     resolve_factor_builder,
     resolve_policy_builder,

@@ -45,6 +45,6 @@ factor library plugs in. Real-data demo: `scripts/research/alpha_audit_fund_mom.
 ## Typical Flow
 
 1. Create a `ControlArtifact` with a `HostSpec`.
-2. Apply a policy transform such as `apply_veto_filter` before host `top_n`.
+2. Apply the canonical `policy.candidate_filters.apply_veto_filter` before host `top_n`.
 3. Compare base host vs controlled host through `compute_marginal_report`.
 4. Register only as `条件假设/观察` until real OOS evidence accumulates.

@@ -15,7 +15,6 @@ from .alpha_audit import (
 )
 from .artifacts import ArtifactType, ControlArtifact, HostSpec
 from .marginal import MarginalReport, compute_marginal_report
-from .policy import apply_veto_filter
 from .triage import TriageDecision, route_failed_candidate
 
 __all__ = [
@@ -25,7 +24,6 @@ __all__ = [
     "HostSpec",
     "MarginalReport",
     "TriageDecision",
-    "apply_veto_filter",
     "compute_marginal_report",
     "route_failed_candidate",
     # Alpha Audit(因子测谎机)

@@ -44,7 +44,8 @@ FORBIDDEN_EDGES = [
     # factory→portfolio.marginal / research_toolkit 两条边已取证留待专项评审,不在禁列。
     ("factory.", ["services.", "api.", "workflow.", "scripts.", "strategy_registry.",
                   "research_ledger.", "metasearch.", "run_daily", "apps."]),
-    ("strategies.", ["factory.", "scripts.research.", "workflow.", "knowledge.", "api.", "services."]),
+    ("strategies.", ["factory.", "scripts.research.", "workflow.", "knowledge.", "api.", "services.",
+                     "research_toolkit."]),
     # factor_store. 于 2026-07-21 P1-1① 入禁:factors↔factor_store 环的恶化通道焊死;
     # 存量唯一边 autoresearch_dsl→factor_store.store 是 ADR-038 决策三 scoped 写区的
     # 署名代笔(制度性依赖,非架构倒灌),经 ALLOWED_IMPORT_EXCEPTIONS 显式留痕,
@@ -121,7 +122,7 @@ FORBIDDEN_EDGES = [
 # 全局禁止import的模块(无论从哪一层):已退场的兼容层 / 死接口。
 # core.backtest 已于解耦收尾阶段退场(重命名为 _deprecated_backtest.py.bak),
 # 唯一回测路径是 core.engine.BacktestEngine;新代码绝不能再 import core.backtest。
-GLOBAL_FORBIDDEN_IMPORTS = ["core.backtest"]
+GLOBAL_FORBIDDEN_IMPORTS = ["core.backtest", "model_risk", "reporting"]
 
 # 行号级例外集:已于 2026-07-18 清零并冻结——最后一条(search.py walk_forward)
 # 因上方插入 4 行代码就失配,实证行号钉脆弱;已迁至下方目标级白名单。

@@ -21,3 +21,22 @@ def loser_reversal_filter(
     momentum = close.pct_change(lookback, fill_method=None)
     volatility = close.pct_change(fill_method=None).rolling(vol_window).std()
     return 0.75 * _row_pct_rank(momentum) + 0.25 * _row_pct_rank(volatility)
+
+
+def apply_veto_filter(
+    host_scores: pd.Series,
+    veto_scores: pd.Series,
+    *,
+    top_n: int,
+    veto_q: float = 0.10,
+) -> pd.Series:
+    """Filter a candidate pool, then refill top-N from surviving names."""
+    host = host_scores.dropna()
+    veto = veto_scores.reindex(host.index).dropna()
+    if len(veto):
+        survivors = veto[veto > veto.quantile(veto_q)].index
+        host = host.reindex(survivors).dropna()
+    if len(host) < top_n:
+        return pd.Series(dtype="float64")
+    selected = host.nlargest(top_n).index
+    return pd.Series(1.0 / top_n, index=selected, dtype="float64")

@@ -16,7 +16,7 @@ from factors.small_cap import (  # noqa: F401  small_cap_timing re-exported for 
 )
 from lake.load_lake import load_prices, load_raw_close
 from lake.units import implied_amount
-from research_toolkit import apply_veto_filter
+from policy.candidate_filters import apply_veto_filter
 
 # ---------------------------------------------------------------------------
 # Config

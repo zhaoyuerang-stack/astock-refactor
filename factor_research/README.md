@@ -38,7 +38,6 @@ python3 -m pip install -e '.[dev]'
 - `scripts/research/`：研究验证、模拟、成本敏感性和旧研究遗留脚本。
 - `data_lake/`：新版数据湖，包含日线、周线、财务、交易日历和质量报告。
 - `lake/`：数据湖加载、聚合、校验和数据源模块。
-- `results/`：策略配置、净值图、进化历史等结果文件。
 - `signals/`：每日信号输出。
 - `paper/`：自动模拟盘账户、交易流水和净值曲线；只模拟，不连接真实券商。
 - `reports/`：报告和导出文件。
@@ -321,7 +320,6 @@ cd /Users/kiki/astcok/factor_research
 - `signals/state.json`：每日流程维护的真实持仓状态，包含当前仓位、上次调仓日和最近持仓。
 - `strategy_versions.json`：策略版本登记。
 - `reports/`：交易明细、执行层模拟等报告。
-- `results/`：阶段 0 早期研究产物，仅作历史参考，不作为主线口径。
 
 ## 注意事项
 

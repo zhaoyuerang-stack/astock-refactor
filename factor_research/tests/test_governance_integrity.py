@@ -267,29 +267,33 @@ def test_nine_gate_summarize_and_attach():
     print("✅ test_nine_gate_summarize_and_attach")
 
 
-# ── B2: 模型卡持久化 ────────────────────────────────────────────────────────────
-def test_model_card_sync_persists_real_cards():
+# ── B2: 治理视图直读唯一台账 ────────────────────────────────────────────────────
+def test_governance_overview_uses_registry_without_demo_cards(monkeypatch):
     import services.read.governance as G
     import strategy_registry as R
-    from model_risk.model_inventory import ModelInventory
-    # 临时台账：一个在册（应 APPROVED）+ 一个候选（PENDING）
+
+    class EmptyLedger:
+        def list_all(self):
+            return []
+
+    monkeypatch.setattr(G, "ResearchLedger", EmptyLedger)
     tmp_reg = Path(tempfile.mkdtemp()) / "tv.json"
     R.REGISTRY = tmp_reg
     R.register_family("fcard", "卡测试族", hypothesis="假设H", regime="R", decay_signal="D")
     R.register("fcard", "v1", "d", {}, {"source": "data_lake", "period": "2023-2026"},
                {"annual": 0.30, "maxdd": -0.10}, status="在册", nine_gate={"dsr_p": 0.01})
     R.register("fcard", "v2", "d", {}, {}, {"annual": 0.05, "maxdd": -0.10}, status="候选")
-    # 临时模型清单（依赖注入，避免污染真实清单）
-    tmp_inv = Path(tempfile.mkdtemp()) / "inv.json"
-    inv = ModelInventory(path=tmp_inv)
-    n = G.sync_model_cards_from_registry(inventory=inv)
-    assert n == 2
-    inv2 = ModelInventory(path=tmp_inv)   # 重新加载，确认已落盘
-    c1 = inv2.get_card("fcard/v1")
-    c2 = inv2.get_card("fcard/v2")
-    assert c1.approval_status == "APPROVED" and c2.approval_status == "PENDING"
-    assert c1.metadata.get("admission_track") == "standalone"
-    print("✅ test_model_card_sync_persists_real_cards")
+    view = G.get_governance_overview()
+    cards = {card["strategy_id"]: card for card in view.model_cards}
+    assert cards["fcard/v1"]["approval_status"] == "APPROVED"
+    assert cards["fcard/v2"]["approval_status"] == "PENDING"
+    assert cards["fcard/v1"]["admission_track"] == "standalone"
+
+    R.REGISTRY = Path(tempfile.mkdtemp()) / "empty.json"
+    empty_view = G.get_governance_overview()
+    assert empty_view.model_cards == []
+    assert empty_view.validation_reports == []
+    print("✅ test_governance_overview_uses_registry_without_demo_cards")
 
 
 # ── W2: 决策闸门 get_strategy_gate_status(供 trade-readiness 消费) ──────────────

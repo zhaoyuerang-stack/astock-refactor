@@ -22,7 +22,7 @@
 - 9-Gate 完整审计与 `strategy_registry.py` 回填不是自动串在入册流程后。
 - AutoResearch approve 后仍需要人触发 promote，且 ACTIVE/SHADOW 边界需要更硬。
 - 数据异常已经能阻断部分流程，但缺少统一分诊、建议、可审计状态。
-- `model_risk/` 已有审批对象，但和策略入册/9-Gate/交易准备度还不是闭环。
+- 治理卡片直接由 `strategy_versions.json` 与 9-Gate 证据派生，不维护第二份模型清单。
 - `scripts/research/` 大量实验结果没有统一 schema 和自动归档。
 - `workflow/pending_lessons/*.json` 尚未稳定回写到 `knowledge/graph.py`。
 - `report_nlp_pipeline.py` 还偏 demo/inbox 原型，没有成为真实文件队列处理器。
@@ -172,32 +172,11 @@
 - 严重数据问题会阻断正式信号。
 - 非严重问题只告警，不阻断。
 
-### P1-2: model_risk 自动建卡与审批材料
+### P1-2: 治理卡片单一来源（已完成）
 
-**目标:** 策略完成入册/审计后自动生成 model card，记录 owner、审批状态、9-Gate、phase 报告、容量和限制。
-
-**建议改动文件:**
-
-- `factor_research/model_risk/model_inventory.py`
-- `factor_research/model_risk/approval_workflow.py`
-- `factor_research/services/read/governance.py`
-- `factor_research/api/routers/governance.py`
-- `factor_research/strategy_registry.py`
-- `factor_research/tests/test_governance_integrity.py`
-
-**任务拆分:**
-
-- [ ] 定义 model card 字段和 strategy registry 的映射规则。
-- [ ] 入册成功后自动创建或更新 model card。
-- [ ] 9-Gate 回填后同步更新 model card metadata。
-- [ ] Web governance 页面展示审批状态和审计摘要。
-- [ ] 审批状态不通过时，`trade_readiness` 强制要求人工审批。
-
-**验收标准:**
-
-- 每个 registered family/version 都有对应 model card。
-- 审批状态变化能影响 trade readiness。
-- model card 可追溯到 phase1-4 和 9-Gate 证据。
+治理视图直接从 `strategy_versions.json` 派生 model card 与审批状态；9-Gate
+结果仍由同一版本记录提供。原 `model_risk/` 中间清单会复制状态，已经删除。
+`trade_readiness` 继续消费同一台账闸门，不再同步第二份 JSON。
 
 ### P1-3: 研究脚本结果统一归档
 
@@ -338,7 +317,7 @@
 2. P0-3 信号生成前 readiness gate
 3. P0-2 Approved 候选自动进入 SHADOW
 4. P1-1 数据异常自动分诊
-5. P1-2 model_risk 自动建卡
+5. P1-2 治理卡片单一来源
 6. P1-3 研究脚本结果统一归档
 7. P1-4 pending_lessons 自动进入知识图谱
 8. P2-1 研报 NLP inbox

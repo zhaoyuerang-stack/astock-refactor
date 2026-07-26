@@ -13,13 +13,13 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 os.chdir(ROOT)
 
+from policy.candidate_filters import apply_veto_filter
 from research_toolkit import (
     ArtifactType,
     ControlArtifact,
     HostSpec,
     MarginalReport,
     TriageDecision,
-    apply_veto_filter,
     compute_marginal_report,
     route_failed_candidate,
 )

@@ -12,48 +12,12 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from capacity.dollar_capacity import estimate_dollar_capacity
-from model_risk.independent_validation import (
-    analyze_parameter_stability,
-    validate_strategy_performance,
-)
-from model_risk.model_inventory import ModelCard, ModelInventory
 from portfolio.constraints import PortfolioConstraints
 from portfolio.optimizer import PortfolioOptimizer
 from research_ledger.ledger import LedgerEntry, ResearchLedger
 
 
 class TestInstitutionalUpgrades(unittest.TestCase):
-    def test_model_risk_inventory(self):
-        inventory = ModelInventory()
-        card = ModelCard(
-            strategy_id="test_strat/v1",
-            economic_hypothesis="Test Hypothesis",
-            data_sources=["test_source"],
-            train_period="2018-2020",
-            oos_period="2021-2022",
-            applicable_regimes=["BULL"],
-            capacity_limit=10000000.0,
-            style_exposures={"Beta": 1.0},
-            forbidden_conditions=["PANIC"],
-            known_failure_cases=["2018"],
-            owner="Researcher",
-            approver="Risk Officer"
-        )
-        inventory.register_card(card)
-        
-        retrieved = inventory.get_card("test_strat/v1")
-        self.assertIsNotNone(retrieved)
-        self.assertEqual(retrieved.economic_hypothesis, "Test Hypothesis")
-        self.assertEqual(retrieved.approval_status, "PENDING")
-
-    def test_independent_validation(self):
-        returns = pd.Series(np.random.normal(0.001, 0.01, 100))
-        report = validate_strategy_performance("test_strat/v1", returns, target_sharpe=0.1)
-        self.assertIn("oos_sharpe", report.metrics)
-
-        stability_report = analyze_parameter_stability("test_strat/v1", 1.5, [1.3, 1.4, 1.6])
-        self.assertTrue(stability_report.passed)
-
     def test_portfolio_optimizer_and_rebalance(self):
         alpha = np.array([0.05, 0.02, 0.08])
         initial_weights = np.array([0.33, 0.33, 0.33])

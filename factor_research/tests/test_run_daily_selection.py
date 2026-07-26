@@ -1,7 +1,7 @@
 """生产日信号选股与回测同源回归测试(2026-07-11 review)。
 
 历史缺陷:run_daily 第④步手写 veto 过滤(quantile 0.30 字面量)+ nlargest,
-与 research_toolkit.apply_veto_filter 语义等价但是复制品——strategies/executable.py
+与 policy.candidate_filters.apply_veto_filter 语义等价但是复制品——strategies/executable.py
 的存在意义就是杜绝公式复制。现收敛为 strategies.executable.select_holdings 唯一入口。
 旧代码上本文件 import select_holdings 即失败(对抗性)。
 """
@@ -14,7 +14,7 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from research_toolkit import apply_veto_filter  # noqa: E402
+from policy.candidate_filters import apply_veto_filter  # noqa: E402
 from strategies.executable import select_holdings  # noqa: E402
 
 
