@@ -442,35 +442,60 @@ class Phase1Checker:
         close = syn["close"]
 
         # Synthetic: stock 000003 is delisted
-        if "000003" in close.columns:
-            n_present = close["000003"].notna().sum()
-            if n_present > 0:
-                # Also check real data
-                meta = ROOT / "data_lake" / "meta" / "delisted_codes.parquet"
-                if meta.exists():
-                    try:
-                        dl = pd.read_parquet(meta)
-                        dl_codes = set(dl["code"].astype(str).str.zfill(6))
-                        found = dl_codes & set(close.columns)
-                        cov = len(found) / len(dl_codes) if dl_codes else 0
-                        if cov >= 0.70:
-                            return CheckResult("delisted", "退市股覆盖", "PASS",
-                                               f"Coverage {cov:.0%} ({len(found)}/{len(dl_codes)}).",
-                                               {"coverage": cov})
-                        elif cov >= 0.30:
-                            return CheckResult("delisted", "退市股覆盖", "WARN",
-                                               f"Coverage only {cov:.0%}.",
-                                               {"coverage": cov})
-                        return CheckResult("delisted", "退市股覆盖", "FAIL",
-                                           f"Coverage <30%: {cov:.0%}.", {"coverage": cov})
-                    except Exception:
-                        pass
-                return CheckResult("delisted", "退市股覆盖", "WARN",
-                                   "No delisted_codes.parquet — coverage unknown. "
-                                   "Synthetic delisted stock present (OK).")
+        if "000003" not in close.columns or close["000003"].notna().sum() == 0:
+            return CheckResult(
+                "delisted",
+                "退市股覆盖",
+                "FAIL",
+                "Delisted stock 000003 missing from synthetic panel.",
+            )
 
-        return CheckResult("delisted", "退市股覆盖", "WARN",
-                           "Delisted stock 000003 missing from synthetic panel.")
+        meta = ROOT / "data_lake" / "meta" / "delisted_codes.parquet"
+        if not meta.exists():
+            return CheckResult(
+                "delisted",
+                "退市股覆盖",
+                "FAIL",
+                "delisted_codes.parquet missing — survivorship-bias coverage is unknown.",
+                {"path": str(meta), "coverage": None},
+            )
+        try:
+            delisted = pd.read_parquet(meta)
+            delisted_codes = set(delisted["code"].astype(str).str.zfill(6))
+        except Exception as exc:
+            return CheckResult(
+                "delisted",
+                "退市股覆盖",
+                "FAIL",
+                f"delisted_codes.parquet unreadable: {type(exc).__name__}",
+                {"path": str(meta), "coverage": None},
+            )
+
+        found = delisted_codes & set(close.columns)
+        coverage = len(found) / len(delisted_codes) if delisted_codes else 0
+        if coverage >= 0.70:
+            return CheckResult(
+                "delisted",
+                "退市股覆盖",
+                "PASS",
+                f"Coverage {coverage:.0%} ({len(found)}/{len(delisted_codes)}).",
+                {"coverage": coverage},
+            )
+        if coverage >= 0.30:
+            return CheckResult(
+                "delisted",
+                "退市股覆盖",
+                "WARN",
+                f"Coverage only {coverage:.0%}.",
+                {"coverage": coverage},
+            )
+        return CheckResult(
+            "delisted",
+            "退市股覆盖",
+            "FAIL",
+            f"Coverage <30%: {coverage:.0%}.",
+            {"coverage": coverage},
+        )
 
     # ── main entry ──
 
