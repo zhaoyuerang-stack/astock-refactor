@@ -46,101 +46,44 @@ from services.read.autoresearch import (
     autoresearch_review_queue,
 )
 from services.read.experiments import funnel, hypotheses, registered_experiments, research_run_index
+from services.read.experiment_artifacts import (
+    ArtifactReadError,
+    amount_timing_validation,
+    industry_knowledge_graph,
+    logical_chains,
+    shadow_incubation,
+)
 from services.read.promotion_readiness import get_promotion_readiness
 from services.read.research_work_items import get_work_item, list_work_items
 
 router = APIRouter(prefix="/experiments", tags=["experiments"])
 
 
+def _artifact_or_503(reader):
+    try:
+        return reader()
+    except ArtifactReadError as exc:
+        raise HTTPException(status_code=503, detail=str(exc)) from exc
+
+
 @router.get("/shadow-incubation")
 def get_shadow_incubation() -> dict:
-    import json
-    from pathlib import Path
-    ROOT = Path(__file__).resolve().parents[2]
-    
-    shadow_log = ROOT / "data_lake" / "agent" / "shadow_incubation_log.json"
-    shadow_data = {}
-    if shadow_log.exists():
-        try:
-            shadow_data = json.loads(shadow_log.read_text(encoding="utf-8"))
-        except Exception:
-            pass
-            
-    predictions_file = ROOT / "data_lake" / "research_signals" / "ontology_predictions.json"
-    predictions_data = {}
-    if predictions_file.exists():
-        try:
-            predictions_data = json.loads(predictions_file.read_text(encoding="utf-8"))
-        except Exception:
-            pass
-            
-    performance_file = ROOT / "reports" / "islands" / "shadow_ontology_performance.json"
-    performance_data = {}
-    if performance_file.exists():
-        try:
-            performance_data = json.loads(performance_file.read_text(encoding="utf-8"))
-        except Exception:
-            pass
-            
-    return {
-        "incubation": shadow_data,
-        "predictions": predictions_data,
-        "performance": performance_data
-    }
+    return _artifact_or_503(shadow_incubation)
 
 
 @router.get("/amount-timing-validation")
 def get_amount_timing_validation() -> dict:
-    import json
-    from pathlib import Path
-    ROOT = Path(__file__).resolve().parents[2]
-    
-    validation_file = ROOT / "reports" / "ops" / "amount_timing_validation.json"
-    if validation_file.exists():
-        try:
-            return json.loads(validation_file.read_text(encoding="utf-8"))
-        except Exception:
-            pass
-            
-    return {
-        "latest_signal": None,
-        "all_market": [],
-        "ex688": [],
-        "cost_sensitivity": [],
-        "walk_forward": []
-    }
+    return _artifact_or_503(amount_timing_validation)
 
 
 @router.get("/logical-chains")
 def get_logical_chains() -> list[dict]:
-    import json
-    from pathlib import Path
-    ROOT = Path(__file__).resolve().parents[2]
-    logic_dir = ROOT / "data_lake" / "research_signals" / "logic_chains"
-    chains = []
-    if logic_dir.exists():
-        for f in logic_dir.glob("*.json"):
-            try:
-                chains.append(json.loads(f.read_text(encoding="utf-8")))
-            except Exception:
-                pass
-    return chains
+    return _artifact_or_503(logical_chains)
 
 
 @router.get("/industry-knowledge-graph")
 def get_industry_knowledge_graph() -> dict:
-    import json
-    from pathlib import Path
-    ROOT = Path(__file__).resolve().parents[2]
-    graph_file = ROOT / "data_lake" / "research_signals" / "industry_knowledge_graph.json"
-    
-    if graph_file.exists():
-        try:
-            return json.loads(graph_file.read_text(encoding="utf-8"))
-        except Exception:
-            pass
-            
-    return {"nodes": [], "links": [], "meta": {"total_nodes": 0, "total_links": 0}}
+    return _artifact_or_503(industry_knowledge_graph)
 
 
 def require_action_token(x_action_token: str | None = Header(default=None, alias=ACTION_HEADER)) -> None:

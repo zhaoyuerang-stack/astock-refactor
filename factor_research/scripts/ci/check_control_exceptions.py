@@ -27,6 +27,7 @@ CONTROL_PATHS_FILES = [
     "core/analysis/nine_gates.py",
     "core/analysis/nine_gate_policy.py",
     "services/read/trade_readiness.py",
+    "api/routers/experiments.py",
     "governance/holdout.py",
     "runtime/production_readiness.py",
     "runtime/deployment.py",
