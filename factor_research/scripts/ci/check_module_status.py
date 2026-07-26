@@ -7,10 +7,20 @@ ROOT = Path(__file__).resolve().parents[2]
 REQUIRED = ["# MODULE_STATUS", "Status:", "Role:"]
 
 
+def is_governed_module_dir(path: Path) -> bool:
+    """Return whether a directory is source-owned and needs a status contract."""
+    return (
+        path.is_dir()
+        and not path.name.startswith(".")
+        and path.name != "__pycache__"
+        and not path.name.endswith(".egg-info")
+    )
+
+
 def main() -> int:
     failures = []
     for module_dir in sorted(ROOT.iterdir(), key=lambda p: p.name):
-        if not module_dir.is_dir() or module_dir.name.startswith(".") or module_dir.name == "__pycache__":
+        if not is_governed_module_dir(module_dir):
             continue
         path = module_dir / "MODULE_STATUS.md"
         if not path.exists():
