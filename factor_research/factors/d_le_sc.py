@@ -5,15 +5,21 @@ builds a directed lead-lag correlation network, and clusters stocks
 into Leaders and Laggers using Hermitian Spectral Clustering.
 """
 
+from __future__ import annotations
+
 import logging
 
 import numpy as np
 import pandas as pd
 import scipy.linalg
 import scipy.sparse.linalg
-import torch
 from pandas.core.algorithms import rank as pandas_rank
 from sklearn.cluster import KMeans
+
+try:
+    import torch
+except ImportError:  # Optional CUDA acceleration; SciPy remains the CPU baseline.
+    torch = None
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -79,7 +85,7 @@ class DLESCClustering:
 
         # Determine backend: use 'torch' only for CUDA GPU to avoid MPS complex number issues
         if device is None:
-            if torch.cuda.is_available():
+            if torch is not None and torch.cuda.is_available():
                 self.device = "cuda"
                 self.backend = "torch"
             else:
@@ -87,6 +93,8 @@ class DLESCClustering:
                 self.backend = "scipy"
         else:
             if "cuda" in device:
+                if torch is None:
+                    raise RuntimeError("CUDA backend requires the optional 'torch' dependency")
                 self.device = device
                 self.backend = "torch"
             else:
@@ -100,6 +108,7 @@ class DLESCClustering:
         self.lag_cluster = None
 
         if self.backend == "torch":
+            assert torch is not None
             self.torch_device = torch.device(self.device)
             torch.manual_seed(self.random_state)
             if torch.cuda.is_available():

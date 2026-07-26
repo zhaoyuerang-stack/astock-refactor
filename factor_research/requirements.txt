@@ -9,6 +9,7 @@ pandas==3.0.3
 numpy==2.2.6
 pyarrow==24.0.0
 scipy==1.17.1
+scikit-learn==1.9.0
 
 # --- 产品 API 层(Phase 0 新增)---
 fastapi==0.136.3
@@ -22,3 +23,4 @@ duckdb==1.5.3
 # baostock: ETF/股票日线备用源(akshare 东财挂/被代理时自动 fallback)
 # 完全免费,无 token,数据覆盖 2006-至今,支持后复权/不复权
 baostock==0.9.2
+akshare==1.18.64
