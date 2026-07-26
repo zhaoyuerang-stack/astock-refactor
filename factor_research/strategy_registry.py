@@ -21,16 +21,18 @@ import argparse
 import json
 import os
 import re
-from collections.abc import Iterable
+from collections.abc import Callable, Iterable
 from datetime import UTC, date
 from functools import wraps
 from pathlib import Path
-from typing import Any, Literal, TypedDict, cast
+from typing import Any, Literal, ParamSpec, TypeVar, TypedDict, cast
 
 from engine.metrics import compute_hit
 from governance.file_lock import exclusive_file_lock
 
 REGISTRY: Path = Path(__file__).parent / "strategy_versions.json"
+P = ParamSpec("P")
+R = TypeVar("R")
 
 # 双轨准入：唯一允许长期占用「在册」的两条轨。
 #   standalone  —— 单体达标（hit=True：年化>15% 且 回撤<20%）+ DSR 多重测试惩罚下显著（dsr_p<DSR_ALPHA）
@@ -91,6 +93,8 @@ class EvidenceDict(TypedDict, total=False):
     spec_migration: dict[str, Any]   # attach_executable_spec 写入:spec_hash/requires_revalidation
     seed_provenance: dict[str, Any]      # phase4_register._build_evidence 写入(ADR-022 种子溯源)
     semantic_seed_review: dict[str, Any] # 同上:LLM 种子需人工审视标记
+    metrics_history: list[dict[str, Any]]
+    metrics_refresh: dict[str, Any]
 
 
 class DataScopeDict(TypedDict, total=False):
@@ -172,10 +176,10 @@ def _save(data: RegistryDoc) -> None:
     os.replace(tmp, REGISTRY)
 
 
-def _registry_mutation(function):
+def _registry_mutation(function: Callable[P, R]) -> Callable[P, R]:
     """Hold the registry lock across the complete read-modify-write operation."""
     @wraps(function)
-    def wrapped(*args, **kwargs):
+    def wrapped(*args: P.args, **kwargs: P.kwargs) -> R:
         with exclusive_file_lock(REGISTRY):
             return function(*args, **kwargs)
 
@@ -452,18 +456,18 @@ def attach_nine_gate(family: str, version: str, summary: dict[str, Any] | None,
 
 @_registry_mutation
 def attach_path_metrics(
-    family,
-    version,
-    metrics,
+    family: str,
+    version: str,
+    metrics: dict[str, Any] | None,
     *,
-    provenance,
-    window=None,
-    n=None,
-    returns_sha256=None,
-    path=None,
-    material_delta_keys=None,
-    note=None,
-):
+    provenance: str,
+    window: str | None = None,
+    n: int | None = None,
+    returns_sha256: str | None = None,
+    path: str | None = None,
+    material_delta_keys: Iterable[str] | None = None,
+    note: str | None = None,
+) -> dict[str, Any]:
     """用一次 **live path re-run** 的事实绩效覆盖 version.metrics（纠偏误导数字）。
 
     铁律：
@@ -523,7 +527,7 @@ def attach_path_metrics(
         if old.get("hit") is not None and bool(old.get("hit")) != bool(metrics.get("hit")):
             mat_keys.append("hit")
 
-    ev = dict(v.get("evidence") or {})
+    ev = cast(EvidenceDict, dict(v.get("evidence") or {}))
     hist = list(ev.get("metrics_history") or [])
     if old:
         hist.append({

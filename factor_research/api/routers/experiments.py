@@ -45,7 +45,6 @@ from services.read.autoresearch import (
     autoresearch_funnel,
     autoresearch_review_queue,
 )
-from services.read.experiments import funnel, hypotheses, registered_experiments, research_run_index
 from services.read.experiment_artifacts import (
     ArtifactReadError,
     amount_timing_validation,
@@ -53,6 +52,7 @@ from services.read.experiment_artifacts import (
     logical_chains,
     shadow_incubation,
 )
+from services.read.experiments import funnel, hypotheses, registered_experiments, research_run_index
 from services.read.promotion_readiness import get_promotion_readiness
 from services.read.research_work_items import get_work_item, list_work_items
 

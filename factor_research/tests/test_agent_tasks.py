@@ -19,12 +19,10 @@ def test_guard_blocks_direct_registry_write():
 
 
 def test_describe_module_cleanup_task_uses_inventory_and_policy():
-    # execution/ 已于 2026-07-18 归档退场(module-cleanup),不再是活体清单成员；
-    # 换用另一个现存 ARCHIVE_OR_REHOME 状态模块(results/)保持本测试语义不变。
-    payload = describe_agent_task("module_cleanup", target="results")
+    payload = describe_agent_task("module_cleanup", target="scratch")
     assert payload["task"] == "module_cleanup"
-    assert payload["target"] == "results"
-    assert payload["module"]["status"] == "ARCHIVE_OR_REHOME"
+    assert payload["target"] == "scratch"
+    assert payload["module"]["status"] == "TEMP_ONLY"
     assert payload["archive_policy"]["allowed"] is False
 
 

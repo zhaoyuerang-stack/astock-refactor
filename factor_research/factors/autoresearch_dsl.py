@@ -9,6 +9,10 @@ from __future__ import annotations
 import hashlib as _hashlib
 import importlib
 import json
+
+# ADR-040: trade-path default ON. Synthetic unit tests pass feature_mask="off".
+# Env override: ASTOCK_FEATURE_MASK=off only for hermetic tests / emergency.
+import os as _os
 from pathlib import Path
 from typing import Any
 
@@ -19,15 +23,10 @@ from factor_store.store import write_panel_cache
 from factors.tradable_mask import (  # noqa: E402
     FEATURE_MASK_NONE,
     cleanse,
-    get_active_feature_mask,
     normalize_feature_mask_version,
     resolve_feature_tradable_for_panel,
 )
 from factors.utils import mad_clip, safe_zscore
-
-# ADR-040: trade-path default ON. Synthetic unit tests pass feature_mask="off".
-# Env override: ASTOCK_FEATURE_MASK=off only for hermetic tests / emergency.
-import os as _os
 
 _FEATURE_MASK_DEFAULT = _os.environ.get("ASTOCK_FEATURE_MASK", "on").strip().lower()
 

@@ -9,7 +9,6 @@ from pathlib import Path
 
 import pytest
 
-
 FACTOR_ROOT = Path(__file__).resolve().parents[1]
 HOOK = FACTOR_ROOT / "scripts" / "hooks" / "pre-push"
 

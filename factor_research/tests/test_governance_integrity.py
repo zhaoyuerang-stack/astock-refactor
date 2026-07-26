@@ -268,7 +268,7 @@ def test_nine_gate_summarize_and_attach():
 
 
 # ── B2: 治理视图直读唯一台账 ────────────────────────────────────────────────────
-def test_governance_overview_uses_registry_without_demo_cards(monkeypatch):
+def test_governance_overview_uses_registry_without_demo_cards():
     import services.read.governance as G
     import strategy_registry as R
 
@@ -276,24 +276,28 @@ def test_governance_overview_uses_registry_without_demo_cards(monkeypatch):
         def list_all(self):
             return []
 
-    monkeypatch.setattr(G, "ResearchLedger", EmptyLedger)
-    tmp_reg = Path(tempfile.mkdtemp()) / "tv.json"
-    R.REGISTRY = tmp_reg
-    R.register_family("fcard", "卡测试族", hypothesis="假设H", regime="R", decay_signal="D")
-    R.register("fcard", "v1", "d", {}, {"source": "data_lake", "period": "2023-2026"},
-               {"annual": 0.30, "maxdd": -0.10}, status="在册", nine_gate={"dsr_p": 0.01})
-    R.register("fcard", "v2", "d", {}, {}, {"annual": 0.05, "maxdd": -0.10}, status="候选")
-    view = G.get_governance_overview()
-    cards = {card["strategy_id"]: card for card in view.model_cards}
-    assert cards["fcard/v1"]["approval_status"] == "APPROVED"
-    assert cards["fcard/v2"]["approval_status"] == "PENDING"
-    assert cards["fcard/v1"]["admission_track"] == "standalone"
+    old_ledger = G.ResearchLedger
+    G.ResearchLedger = EmptyLedger
+    try:
+        tmp_reg = Path(tempfile.mkdtemp()) / "tv.json"
+        R.REGISTRY = tmp_reg
+        R.register_family("fcard", "卡测试族", hypothesis="假设H", regime="R", decay_signal="D")
+        R.register("fcard", "v1", "d", {}, {"source": "data_lake", "period": "2023-2026"},
+                   {"annual": 0.30, "maxdd": -0.10}, status="在册", nine_gate={"dsr_p": 0.01})
+        R.register("fcard", "v2", "d", {}, {}, {"annual": 0.05, "maxdd": -0.10}, status="候选")
+        view = G.get_governance_overview()
+        cards = {card["strategy_id"]: card for card in view.model_cards}
+        assert cards["fcard/v1"]["approval_status"] == "APPROVED"
+        assert cards["fcard/v2"]["approval_status"] == "PENDING"
+        assert cards["fcard/v1"]["admission_track"] == "standalone"
 
-    R.REGISTRY = Path(tempfile.mkdtemp()) / "empty.json"
-    empty_view = G.get_governance_overview()
-    assert empty_view.model_cards == []
-    assert empty_view.validation_reports == []
-    print("✅ test_governance_overview_uses_registry_without_demo_cards")
+        R.REGISTRY = Path(tempfile.mkdtemp()) / "empty.json"
+        empty_view = G.get_governance_overview()
+        assert empty_view.model_cards == []
+        assert empty_view.validation_reports == []
+        print("✅ test_governance_overview_uses_registry_without_demo_cards")
+    finally:
+        G.ResearchLedger = old_ledger
 
 
 # ── W2: 决策闸门 get_strategy_gate_status(供 trade-readiness 消费) ──────────────
@@ -392,7 +396,7 @@ if __name__ == "__main__":
     test_ledger_hash_chain_detects_tamper()
     test_ledger_migrate_legacy()
     test_nine_gate_summarize_and_attach()
-    test_model_card_sync_persists_real_cards()
+    test_governance_overview_uses_registry_without_demo_cards()
     test_strategy_gate_status_consumes_dsr()
     test_trade_readiness_requires_nine_gate_pass()
     print("\n🎉 治理完整性测试全部通过！")

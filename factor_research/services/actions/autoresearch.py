@@ -28,8 +28,8 @@ def _load_validation_data(start: str):
 
     Returns ``(close, volume, amount, forward_ret, tradable, mask_version)``.
     """
-    from factory.lines.line2_validation.l0_ic_scan import precompute_forward_returns
     from factors.tradable_mask import load_feature_tradable_context
+    from factory.lines.line2_validation.l0_ic_scan import precompute_forward_returns
     from lake.units import implied_amount
 
     ctx = load_feature_tradable_context(start)

@@ -59,6 +59,8 @@ def _run_full_weight_on_A(decision_date, *, leverage=1.0, buy=0.001, sell=0.001)
         start=str(dates[0].date()),
         cost=CostModel(buy_cost=buy, sell_cost=sell, financing_rate=0.0),
         leverage=leverage,
+        # 本组只隔离验证 T+1 与成本；成交可用性另有专门测试覆盖。
+        enforce_fill_tradable=False,
     )
     engine = BacktestEngine(prices=prices, config=config)
     decision = pd.DataFrame({"A": [1.0], "B": [0.0]}, index=[decision_date])

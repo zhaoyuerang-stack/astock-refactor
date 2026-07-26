@@ -70,7 +70,8 @@ def _rebalance_days_from_cfg(cfg: dict[str, Any], ast: dict[str, Any]) -> int:
             return int(cfg["rebal_days"])
         except (TypeError, ValueError):
             pass
-    exec_b = ast.get("execution") if isinstance(ast.get("execution"), dict) else {}
+    execution = ast.get("execution")
+    exec_b: dict[str, Any] = execution if isinstance(execution, dict) else {}
     freq = str(exec_b.get("rebalance_freq") or "")
     # e.g. "20D" / "40D"
     if freq.endswith("D") and freq[:-1].isdigit():
@@ -88,8 +89,10 @@ def run_ast_config_strategy(
     """Live re-run one AST/config-driven strategy; returns engine bundle."""
     cfg = dict(config or {})
     ast = extract_ast_from_config(cfg)
+    execution = ast.get("execution")
+    exec_b: dict[str, Any] = execution if isinstance(execution, dict) else {}
     try:
-        top_n = int(cfg.get("top_n") or (ast.get("execution") or {}).get("portfolio_size") or 25)
+        top_n = int(cfg.get("top_n") or exec_b.get("portfolio_size") or 25)
     except (TypeError, ValueError):
         top_n = 25
     rebal = _rebalance_days_from_cfg(cfg, ast)
@@ -115,21 +118,6 @@ def run_ast_config_strategy(
         factor, close, top_n=top_n, rebalance_days=rebal
     )
     cost = CostModel()
-    # optional cost overrides from config (still clamped to known fields only)
-    cost0 = cfg.get("cost") if isinstance(cfg.get("cost"), dict) else {}
-    try:
-        if cfg.get("buy_cost") is not None or cost0.get("buy") is not None:
-            cost = CostModel(
-                buy_cost=float(cfg.get("buy_cost") if cfg.get("buy_cost") is not None else cost0.get("buy") or 0.00225),
-                sell_cost=float(cfg.get("sell_cost") if cfg.get("sell_cost") is not None else cost0.get("sell") or 0.00275),
-                financing_rate=float(
-                    cfg.get("financing_rate")
-                    if cfg.get("financing_rate") is not None
-                    else cost0.get("financing_rate") or 0.065
-                ),
-            )
-    except (TypeError, ValueError):
-        cost = CostModel()
 
     signal = Signal(
         weights=scheduled,

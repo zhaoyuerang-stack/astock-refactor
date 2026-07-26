@@ -50,7 +50,9 @@ def test_cascade_neither_source_absent_key():
     primary = _dates([("000001", "2024-06-30", "2024-08-16")])
     fallback = _empty_dates()
     out = cascade_true_dates(primary, fallback)
-    assert set(zip(out.code, out.end_date.dt.strftime("%Y-%m-%d"))) == {("000001", "2024-06-30")}
+    assert set(
+        zip(out.code, out.end_date.dt.strftime("%Y-%m-%d"), strict=True)
+    ) == {("000001", "2024-06-30")}
 
 
 # ── cascade_true_dates:两源都空,不报错,返回空表 ──

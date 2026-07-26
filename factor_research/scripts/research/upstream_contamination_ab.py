@@ -27,7 +27,7 @@ import json
 import os
 import sys
 import time
-from datetime import datetime, timezone
+from datetime import datetime, UTC
 from pathlib import Path
 
 import numpy as np
@@ -267,7 +267,7 @@ def run(
     elapsed = time.time() - t0
     report = {
         "meta": {
-            "created_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
+            "created_at": datetime.now(UTC).replace(microsecond=0).isoformat(),
             "citation_hypothesis_only": "arXiv:2507.07107 (USTC); numbers below are local recompute only",
             "holdout_boundary": str(holdout_boundary().date()),
             "start": str(start_ts.date()),
@@ -327,8 +327,8 @@ def to_markdown(report: dict) -> str:
         "",
         "## Mask coverage",
         "",
-        f"| metric | value |",
-        f"| --- | --- |",
+        "| metric | value |",
+        "| --- | --- |",
         f"| tradable_rate | {mask['tradable_rate']:.4%} |",
         f"| at_up_rate | {mask['at_up_rate']:.4%} |",
         f"| at_down_rate | {mask['at_down_rate']:.4%} |",

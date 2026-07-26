@@ -180,7 +180,7 @@ def _scan_forbidden_claims(text: str, where: str) -> None:
             )
 
 
-def _returns_fingerprint(ret: "pd.Series") -> str:
+def _returns_fingerprint(ret: pd.Series) -> str:
     import hashlib
     r = ret.dropna().astype("float64")
     # 稳定指纹：长度 + 首尾日 + 校验和（防换收益序列却保留旧 metrics）
@@ -195,7 +195,7 @@ def _returns_fingerprint(ret: "pd.Series") -> str:
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
 
-def verify_metrics_match_returns(ret: "pd.Series", full: dict, *, tol: float = 1e-9) -> None:
+def verify_metrics_match_returns(ret: pd.Series, full: dict, *, tol: float = 1e-9) -> None:
     """full.* 必须可由同一收益序列重算得到——禁止手改年化等字段骗展示。"""
     recomputed = _metrics_from_returns(ret)
     keys = ("n", "annual", "vol", "sharpe", "maxdd", "end_nav")
@@ -286,7 +286,7 @@ def verify_kpi_display_matches_value(kpis: list) -> None:
             )
 
 
-def detect_holdout_touch(ret: "pd.Series") -> dict:
+def detect_holdout_touch(ret: pd.Series) -> dict:
     """收益序列是否触碰 holdout 金库（全样本路径默认会碰）。"""
     info = {
         "touches_holdout": False,
@@ -718,7 +718,7 @@ def build_registry_audit(full: dict, meta: dict) -> dict:
     }
 
 
-def build_honesty_block(meta: dict, ret: "pd.Series", full: dict) -> dict:
+def build_honesty_block(meta: dict, ret: pd.Series, full: dict) -> dict:
     """反自欺元数据：强制写进 JSON/HTML，且 can_claim_valid 恒为 false。"""
     hold = detect_holdout_touch(ret)
     path = str((meta or {}).get("path") or "")
@@ -803,7 +803,7 @@ def validate_analysis(analysis: dict) -> None:
             f"overview.kpis 必须长度 {len(OVERVIEW_KPI_SPECS)}，实际 "
             f"{None if kpis is None else len(kpis)}"
         )
-    for i, (spec, row) in enumerate(zip(OVERVIEW_KPI_SPECS, kpis)):
+    for i, (spec, row) in enumerate(zip(OVERVIEW_KPI_SPECS, kpis, strict=True)):
         key, label = spec[0], spec[1]
         if row.get("key") != key or row.get("label") != label:
             raise ValueError(
@@ -2480,7 +2480,6 @@ def render_html(analysis: dict, out_path: Path) -> None:
     + 月度热力/分布/连亏/极端月 + 规律四档 + 规避 A–D + 9-Gate 对照 + 口径。
     """
     import html as html_lib
-    import math
 
     def esc(x) -> str:
         return html_lib.escape("" if x is None else str(x))
@@ -2557,7 +2556,6 @@ def render_html(analysis: dict, out_path: Path) -> None:
         """年度简评（机械、可复现）。"""
         ret = _f(r.get("ret")) or 0.0
         mdd = abs(_f(r.get("maxdd")) or 0.0)
-        sh = _f(r.get("sharpe")) or 0.0
         y = r.get("year")
         if y == 2026 or (r.get("n") or 0) < 180:
             return "未满年 / YTD"
@@ -2582,7 +2580,6 @@ def render_html(analysis: dict, out_path: Path) -> None:
     year_total = monthly.get("year_total") or {}
     st = monthly.get("stats") or {}
     streaks = analysis.get("losing_streaks") or []
-    patterns = analysis.get("patterns") or []
     avoidance = analysis.get("avoidance") or []
     timing = analysis.get("timing") or {}
     # 只用 schema 内 nine_gate_summary（不读 meta 旁路），无数据也要出第 6 章
@@ -3041,9 +3038,6 @@ def render_html(analysis: dict, out_path: Path) -> None:
           · production_blocked={esc(meta.get('production_blocked'))}</li>
       <li>本报告服务端渲染；有效性判断归门禁（R-LLM-001），入册归 workflow（R-WF-001）</li>
     </ul>"""
-
-    sec_notes_num = "7" if gate_rows else "6"
-    sec_avoid_num = "5"
 
     html = f"""<!DOCTYPE html>
 <html lang="zh-CN">

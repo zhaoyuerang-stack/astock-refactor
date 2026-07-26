@@ -1,8 +1,6 @@
 """path_analysis 标准输出契约 + 反自欺对抗（突变必须红）。"""
 from __future__ import annotations
 
-import copy
-
 import numpy as np
 import pandas as pd
 import pytest
@@ -11,15 +9,13 @@ from scripts.research.strategy_path_report import (
     HTML_SECTIONS,
     OVERVIEW_KPI_SPECS,
     REPORT_SCHEMA_VERSION,
+    _assert_html_contract,
+    _scan_forbidden_claims,
     build_analysis,
-    build_overview_kpis,
     format_pct,
     render_html,
     validate_analysis,
-    verify_kpi_display_matches_value,
     verify_metrics_match_returns,
-    _assert_html_contract,
-    _scan_forbidden_claims,
 )
 
 
@@ -93,9 +89,10 @@ def test_registry_audit_material_mismatch():
 
 def test_stale_csv_requires_flag():
     """CLI：仅 --returns-csv 无 --allow-stale-csv 必须拒绝。"""
-    from scripts.research.strategy_path_report import main
     import tempfile
     from pathlib import Path
+
+    from scripts.research.strategy_path_report import main
 
     ret = _synthetic_returns()
     with tempfile.TemporaryDirectory() as td:

@@ -41,7 +41,7 @@ INCIDENT_WINDOW_END = pd.Timestamp("2025-03-31")  # DQ-2026-001 事故窗口(202
 def load_exception_keys(path: Path) -> set[tuple[str, str]]:
     """例外指纹 CSV → {(code, 'YYYY-MM-DD')}。"""
     df = pd.read_csv(path, dtype={"code": str})
-    return set(zip(df["code"].str.zfill(6), df["report_date"]))
+    return set(zip(df["code"].str.zfill(6), df["report_date"], strict=True))
 
 
 def find_violations(
@@ -55,7 +55,9 @@ def find_violations(
     violations: list[str] = []
     notes: list[str] = []
     fb = fb.copy()
-    fb["rkey"] = list(zip(fb["code"], fb["report_date"].dt.strftime("%Y-%m-%d")))
+    fb["rkey"] = list(
+        zip(fb["code"], fb["report_date"].dt.strftime("%Y-%m-%d"), strict=True)
+    )
 
     # R1 物理零容忍:公告早于报告期末,物理不可能
     r1 = fb[fb["avail_date"] < fb["report_date"]]
