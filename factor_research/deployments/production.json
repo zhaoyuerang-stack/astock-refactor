@@ -1,0 +1,13 @@
+{
+  "deployment_id": "prod-a-share-v1",
+  "environment": "production",
+  "status": "paused",
+  "paused_at": "2026-06-28",
+  "paused_reason": "No deployable alpha leg currently passes the registry/Nine-Gate deployment gate. illiquidity/v3.1 was demoted to reference status and must not remain declared as an active production leg.",
+  "_scaffold": "Production is intentionally paused until a strategy or defensive overlay is re-approved through workflow/promote.py and registry deployment gates.",
+  "portfolio_policy": {
+    "type": "regime_rotation",
+    "defensive_cap": 1.0
+  },
+  "legs": []
+}

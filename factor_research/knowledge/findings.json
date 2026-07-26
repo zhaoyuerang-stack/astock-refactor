@@ -1,0 +1,4745 @@
+{
+  "validated_2a91a524182eaef4": {
+    "id": "validated_2a91a524182eaef4",
+    "statement": "✓ autoresearch_234c8ab7 [phase3] sharpe=1.50 annual=32.1%",
+    "domain": "factor",
+    "confidence": 0.9,
+    "evidence": [
+      "2a91a524182eaef4"
+    ],
+    "created": "2026-06-17",
+    "expires": "2026-12-14",
+    "depends_on": [],
+    "metrics": {
+      "wf_sharpe": 1.504597168297274,
+      "annual": 0.32128834452962046,
+      "wf_maxdd": -0.3542486989660558
+    },
+    "gates": []
+  },
+  "validated_ce6ecd6271c50a96": {
+    "id": "validated_ce6ecd6271c50a96",
+    "statement": "✓ autoresearch_2335eeab [phase3] sharpe=1.30 annual=28.7%",
+    "domain": "factor",
+    "confidence": 0.9,
+    "evidence": [
+      "ce6ecd6271c50a96"
+    ],
+    "created": "2026-06-17",
+    "expires": "2026-12-14",
+    "depends_on": [],
+    "metrics": {
+      "wf_sharpe": 1.2976837694823866,
+      "annual": 0.286826803644708,
+      "wf_maxdd": -0.2857500480912327
+    },
+    "gates": []
+  },
+  "validated_d8b09631c1030612": {
+    "id": "validated_d8b09631c1030612",
+    "statement": "✓ autoresearch_e181a275 [phase3] sharpe=1.35 annual=31.2%",
+    "domain": "factor",
+    "confidence": 0.9,
+    "evidence": [
+      "d8b09631c1030612"
+    ],
+    "created": "2026-06-17",
+    "expires": "2026-12-14",
+    "depends_on": [],
+    "metrics": {
+      "wf_sharpe": 1.3523951316850813,
+      "annual": 0.3117786911265842,
+      "wf_maxdd": -0.30148296467385594
+    },
+    "gates": []
+  },
+  "validated_86796bbeddf1361f": {
+    "id": "validated_86796bbeddf1361f",
+    "statement": "✓ autoresearch_8de70997 [phase3] sharpe=1.49 annual=34.3%",
+    "domain": "factor",
+    "confidence": 0.9,
+    "evidence": [
+      "86796bbeddf1361f"
+    ],
+    "created": "2026-06-17",
+    "expires": "2026-12-14",
+    "depends_on": [],
+    "metrics": {
+      "wf_sharpe": 1.485835009172262,
+      "annual": 0.3430696382673199,
+      "wf_maxdd": -0.3073363437628468
+    },
+    "gates": []
+  },
+  "validated_e79df6bc58583a88": {
+    "id": "validated_e79df6bc58583a88",
+    "statement": "✓ small_cap_factor__window20 [phase3] sharpe=1.01 annual=21.9%",
+    "domain": "factor",
+    "confidence": 0.9,
+    "evidence": [
+      "e79df6bc58583a88"
+    ],
+    "created": "2026-06-24",
+    "expires": "2026-12-21",
+    "depends_on": [],
+    "metrics": {
+      "wf_sharpe": 1.0109110949861808,
+      "annual": 0.2189577476051773,
+      "wf_maxdd": -0.4144806358481937
+    },
+    "gates": []
+  },
+  "validated_ce583c66c961bfa4": {
+    "id": "validated_ce583c66c961bfa4",
+    "statement": "✓ small_cap_factor__window30 [phase3] sharpe=1.62 annual=31.7%",
+    "domain": "factor",
+    "confidence": 0.9,
+    "evidence": [
+      "ce583c66c961bfa4"
+    ],
+    "created": "2026-06-17",
+    "expires": "2026-12-14",
+    "depends_on": [],
+    "metrics": {
+      "wf_sharpe": 1.6158785577409565,
+      "annual": 0.3171620608225672,
+      "wf_maxdd": -0.25436125487630823
+    },
+    "gates": []
+  },
+  "validated_5320ac1823a6fdb2": {
+    "id": "validated_5320ac1823a6fdb2",
+    "statement": "✓ small_cap_factor__window45 [phase3] sharpe=1.59 annual=29.6%",
+    "domain": "factor",
+    "confidence": 0.9,
+    "evidence": [
+      "5320ac1823a6fdb2"
+    ],
+    "created": "2026-06-17",
+    "expires": "2026-12-14",
+    "depends_on": [],
+    "metrics": {
+      "wf_sharpe": 1.5898399966002454,
+      "annual": 0.2961473272083804,
+      "wf_maxdd": -0.29801176932447804
+    },
+    "gates": []
+  },
+  "validated_a291ee8f81693d9e": {
+    "id": "validated_a291ee8f81693d9e",
+    "statement": "✓ small_cap_factor__window60 [phase3] sharpe=1.52 annual=27.6%",
+    "domain": "factor",
+    "confidence": 0.9,
+    "evidence": [
+      "a291ee8f81693d9e"
+    ],
+    "created": "2026-06-17",
+    "expires": "2026-12-14",
+    "depends_on": [],
+    "metrics": {
+      "wf_sharpe": 1.5210356633791187,
+      "annual": 0.2761459366846813,
+      "wf_maxdd": -0.25263983534770607
+    },
+    "gates": []
+  },
+  "validated_33726e8df8496699": {
+    "id": "validated_33726e8df8496699",
+    "statement": "✓ small_cap_factor__window90 [phase3] sharpe=1.15 annual=20.7%",
+    "domain": "factor",
+    "confidence": 0.9,
+    "evidence": [
+      "33726e8df8496699"
+    ],
+    "created": "2026-06-17",
+    "expires": "2026-12-14",
+    "depends_on": [],
+    "metrics": {
+      "wf_sharpe": 1.1456132372762746,
+      "annual": 0.2065901537842017,
+      "wf_maxdd": -0.3011848436307153
+    },
+    "gates": []
+  },
+  "validated_9639f3ba3407b1ac": {
+    "id": "validated_9639f3ba3407b1ac",
+    "statement": "✓ small_cap_factor__window120 [phase3] sharpe=0.91 annual=14.7%",
+    "domain": "factor",
+    "confidence": 0.9,
+    "evidence": [
+      "9639f3ba3407b1ac"
+    ],
+    "created": "2026-06-17",
+    "expires": "2026-12-14",
+    "depends_on": [],
+    "metrics": {
+      "wf_sharpe": 0.9058438023129474,
+      "annual": 0.14666481902778095,
+      "wf_maxdd": -0.2757896878108703
+    },
+    "gates": []
+  },
+  "validated_172294761bad9251": {
+    "id": "validated_172294761bad9251",
+    "statement": "✗ small_cap_factor__window252 [phase3] sharpe=0.00 annual=0.0%",
+    "domain": "factor",
+    "confidence": 0.8,
+    "evidence": [
+      "172294761bad9251"
+    ],
+    "created": "2026-06-17",
+    "expires": "2026-12-14",
+    "depends_on": [],
+    "metrics": {
+      "wf_sharpe": 0,
+      "annual": 0,
+      "wf_maxdd": 0
+    },
+    "gates": [
+      {
+        "match": {
+          "factor_fn_name": "factors.small_cap.small_cap_factor",
+          "window": "252"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "phase3 验证未过(✗ small_cap_factor__window252 [phase3] sharpe=0.00 annual=0.0%);180天后到期重测"
+      }
+    ]
+  },
+  "lesson_amount_formula_1c04ded3_b3335062": {
+    "id": "lesson_amount_formula_1c04ded3_b3335062",
+    "statement": "AMOUNT_FORMULA: amount = vol×100×raw_close (4 hits)",
+    "domain": "lesson",
+    "confidence": 0.9,
+    "evidence": [
+      "LEAKY amount",
+      "LEAKY timing",
+      "size-earnings",
+      "v2.0 CLEAN"
+    ],
+    "created": "2026-06-06",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "AMOUNT_FORMULA",
+      "hit_count": 4,
+      "last_seen": "2026-06-06 20:07:48.503024",
+      "detail": "Input amount is correct but perturbation inconclusive. Verify factor computes amount from raw_close internally.",
+      "fix": "Use amount = volume * 100 * raw_close, not adjusted close."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "LEAKY amount"
+        },
+        "action": "SKIP",
+        "reason": "AMOUNT_FORMULA: amount = vol×100×raw_close; hits=4; Use amount = volume * 100 * raw_close, not adjusted close."
+      },
+      {
+        "match": {
+          "factor_fn_name": "LEAKY amount"
+        },
+        "action": "SKIP",
+        "reason": "AMOUNT_FORMULA: amount = vol×100×raw_close; hits=4; Use amount = volume * 100 * raw_close, not adjusted close."
+      },
+      {
+        "match": {
+          "name": "LEAKY timing"
+        },
+        "action": "SKIP",
+        "reason": "AMOUNT_FORMULA: amount = vol×100×raw_close; hits=4; Use amount = volume * 100 * raw_close, not adjusted close."
+      },
+      {
+        "match": {
+          "factor_fn_name": "LEAKY timing"
+        },
+        "action": "SKIP",
+        "reason": "AMOUNT_FORMULA: amount = vol×100×raw_close; hits=4; Use amount = volume * 100 * raw_close, not adjusted close."
+      },
+      {
+        "match": {
+          "name": "size-earnings"
+        },
+        "action": "SKIP",
+        "reason": "AMOUNT_FORMULA: amount = vol×100×raw_close; hits=4; Use amount = volume * 100 * raw_close, not adjusted close."
+      },
+      {
+        "match": {
+          "factor_fn_name": "size-earnings"
+        },
+        "action": "SKIP",
+        "reason": "AMOUNT_FORMULA: amount = vol×100×raw_close; hits=4; Use amount = volume * 100 * raw_close, not adjusted close."
+      },
+      {
+        "match": {
+          "name": "v2.0 CLEAN"
+        },
+        "action": "SKIP",
+        "reason": "AMOUNT_FORMULA: amount = vol×100×raw_close; hits=4; Use amount = volume * 100 * raw_close, not adjusted close."
+      },
+      {
+        "match": {
+          "factor_fn_name": "v2.0 CLEAN"
+        },
+        "action": "SKIP",
+        "reason": "AMOUNT_FORMULA: amount = vol×100×raw_close; hits=4; Use amount = volume * 100 * raw_close, not adjusted close."
+      }
+    ]
+  },
+  "lesson_amount_formula_88d94368_b3335062": {
+    "id": "lesson_amount_formula_88d94368_b3335062",
+    "statement": "AMOUNT_FORMULA: amount = vol×100×raw_close (4 hits)",
+    "domain": "lesson",
+    "confidence": 0.9,
+    "evidence": [
+      "1. v2.0 CLEAN",
+      "2. LEAKY timing",
+      "3. LEAKY amount",
+      "4. size-earnings"
+    ],
+    "created": "2026-06-06",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "AMOUNT_FORMULA",
+      "hit_count": 4,
+      "last_seen": "2026-06-06 20:05:36.057809",
+      "detail": "Input amount is correct, but factor doesn't respond to amount formula perturbation. Factor may compute its own amount internally — verify it uses raw_close, not adjusted close.",
+      "fix": "Use raw_close (not adjusted close) for amount: amount = volume * 100 * raw_close. Adjusted close embeds future corporate actions in historical prices."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "1. v2.0 CLEAN"
+        },
+        "action": "SKIP",
+        "reason": "AMOUNT_FORMULA: amount = vol×100×raw_close; hits=4; Use raw_close (not adjusted close) for amount: amount = volume * 100 * raw_close. Adjusted close embeds future corporate actions in historical prices."
+      },
+      {
+        "match": {
+          "factor_fn_name": "1. v2.0 CLEAN"
+        },
+        "action": "SKIP",
+        "reason": "AMOUNT_FORMULA: amount = vol×100×raw_close; hits=4; Use raw_close (not adjusted close) for amount: amount = volume * 100 * raw_close. Adjusted close embeds future corporate actions in historical prices."
+      },
+      {
+        "match": {
+          "name": "2. LEAKY timing"
+        },
+        "action": "SKIP",
+        "reason": "AMOUNT_FORMULA: amount = vol×100×raw_close; hits=4; Use raw_close (not adjusted close) for amount: amount = volume * 100 * raw_close. Adjusted close embeds future corporate actions in historical prices."
+      },
+      {
+        "match": {
+          "factor_fn_name": "2. LEAKY timing"
+        },
+        "action": "SKIP",
+        "reason": "AMOUNT_FORMULA: amount = vol×100×raw_close; hits=4; Use raw_close (not adjusted close) for amount: amount = volume * 100 * raw_close. Adjusted close embeds future corporate actions in historical prices."
+      },
+      {
+        "match": {
+          "name": "3. LEAKY amount"
+        },
+        "action": "SKIP",
+        "reason": "AMOUNT_FORMULA: amount = vol×100×raw_close; hits=4; Use raw_close (not adjusted close) for amount: amount = volume * 100 * raw_close. Adjusted close embeds future corporate actions in historical prices."
+      },
+      {
+        "match": {
+          "factor_fn_name": "3. LEAKY amount"
+        },
+        "action": "SKIP",
+        "reason": "AMOUNT_FORMULA: amount = vol×100×raw_close; hits=4; Use raw_close (not adjusted close) for amount: amount = volume * 100 * raw_close. Adjusted close embeds future corporate actions in historical prices."
+      },
+      {
+        "match": {
+          "name": "4. size-earnings"
+        },
+        "action": "SKIP",
+        "reason": "AMOUNT_FORMULA: amount = vol×100×raw_close; hits=4; Use raw_close (not adjusted close) for amount: amount = volume * 100 * raw_close. Adjusted close embeds future corporate actions in historical prices."
+      },
+      {
+        "match": {
+          "factor_fn_name": "4. size-earnings"
+        },
+        "action": "SKIP",
+        "reason": "AMOUNT_FORMULA: amount = vol×100×raw_close; hits=4; Use raw_close (not adjusted close) for amount: amount = volume * 100 * raw_close. Adjusted close embeds future corporate actions in historical prices."
+      }
+    ]
+  },
+  "lesson_correlation_19f7c148_1469596f": {
+    "id": "lesson_correlation_19f7c148_1469596f",
+    "statement": "CORRELATION: correlation (20 hits)",
+    "domain": "lesson",
+    "confidence": 0.75,
+    "evidence": [
+      "autoresearch_2335eeab",
+      "autoresearch_234c8ab7",
+      "autoresearch_58ad0efc",
+      "autoresearch_6332599c",
+      "illiquidity",
+      "size-earnings-e2e",
+      "size-low-vol",
+      "small-cap-size",
+      "small_cap_factor__window120",
+      "small_cap_factor__window20",
+      "small_cap_factor__window252",
+      "small_cap_factor__window30",
+      "small_cap_factor__window45",
+      "small_cap_factor__window60",
+      "small_cap_factor__window90"
+    ],
+    "created": "2026-06-06",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "CORRELATION",
+      "hit_count": 20,
+      "last_seen": "2026-06-28",
+      "detail": "{'verdict': 'WARN', 'max_abs_corr': np.float64(0.8340015555485676), 'correlations': {'size-earnings/v1.0': np.float64(0.834), 'small-cap-size/v2.0': np.float64(0.834)}, 'threshold_warn': 0.7, 'threshold_fail': 0.85}",
+      "fix": "Strategy highly correlated with existing strategy. Find orthogonal alpha source or accept role as diversification component."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "autoresearch_2335eeab"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "CORRELATION: correlation; hits=20; Strategy highly correlated with existing strategy. Find orthogonal alpha source or accept role as diversification component."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_2335eeab"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "CORRELATION: correlation; hits=20; Strategy highly correlated with existing strategy. Find orthogonal alpha source or accept role as diversification component."
+      },
+      {
+        "match": {
+          "name": "autoresearch_234c8ab7"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "CORRELATION: correlation; hits=20; Strategy highly correlated with existing strategy. Find orthogonal alpha source or accept role as diversification component."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_234c8ab7"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "CORRELATION: correlation; hits=20; Strategy highly correlated with existing strategy. Find orthogonal alpha source or accept role as diversification component."
+      },
+      {
+        "match": {
+          "name": "autoresearch_58ad0efc"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "CORRELATION: correlation; hits=20; Strategy highly correlated with existing strategy. Find orthogonal alpha source or accept role as diversification component."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_58ad0efc"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "CORRELATION: correlation; hits=20; Strategy highly correlated with existing strategy. Find orthogonal alpha source or accept role as diversification component."
+      },
+      {
+        "match": {
+          "name": "autoresearch_6332599c"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "CORRELATION: correlation; hits=20; Strategy highly correlated with existing strategy. Find orthogonal alpha source or accept role as diversification component."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_6332599c"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "CORRELATION: correlation; hits=20; Strategy highly correlated with existing strategy. Find orthogonal alpha source or accept role as diversification component."
+      },
+      {
+        "match": {
+          "name": "illiquidity"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "CORRELATION: correlation; hits=20; Strategy highly correlated with existing strategy. Find orthogonal alpha source or accept role as diversification component."
+      },
+      {
+        "match": {
+          "factor_fn_name": "illiquidity"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "CORRELATION: correlation; hits=20; Strategy highly correlated with existing strategy. Find orthogonal alpha source or accept role as diversification component."
+      },
+      {
+        "match": {
+          "name": "size-earnings-e2e"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "CORRELATION: correlation; hits=20; Strategy highly correlated with existing strategy. Find orthogonal alpha source or accept role as diversification component."
+      },
+      {
+        "match": {
+          "factor_fn_name": "size-earnings-e2e"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "CORRELATION: correlation; hits=20; Strategy highly correlated with existing strategy. Find orthogonal alpha source or accept role as diversification component."
+      },
+      {
+        "match": {
+          "name": "size-low-vol"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "CORRELATION: correlation; hits=20; Strategy highly correlated with existing strategy. Find orthogonal alpha source or accept role as diversification component."
+      },
+      {
+        "match": {
+          "factor_fn_name": "size-low-vol"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "CORRELATION: correlation; hits=20; Strategy highly correlated with existing strategy. Find orthogonal alpha source or accept role as diversification component."
+      },
+      {
+        "match": {
+          "name": "small-cap-size"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "CORRELATION: correlation; hits=20; Strategy highly correlated with existing strategy. Find orthogonal alpha source or accept role as diversification component."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small-cap-size"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "CORRELATION: correlation; hits=20; Strategy highly correlated with existing strategy. Find orthogonal alpha source or accept role as diversification component."
+      },
+      {
+        "match": {
+          "name": "small_cap_factor__window120"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "CORRELATION: correlation; hits=20; Strategy highly correlated with existing strategy. Find orthogonal alpha source or accept role as diversification component."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small_cap_factor__window120"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "CORRELATION: correlation; hits=20; Strategy highly correlated with existing strategy. Find orthogonal alpha source or accept role as diversification component."
+      },
+      {
+        "match": {
+          "name": "small_cap_factor__window20"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "CORRELATION: correlation; hits=20; Strategy highly correlated with existing strategy. Find orthogonal alpha source or accept role as diversification component."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small_cap_factor__window20"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "CORRELATION: correlation; hits=20; Strategy highly correlated with existing strategy. Find orthogonal alpha source or accept role as diversification component."
+      },
+      {
+        "match": {
+          "name": "small_cap_factor__window252"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "CORRELATION: correlation; hits=20; Strategy highly correlated with existing strategy. Find orthogonal alpha source or accept role as diversification component."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small_cap_factor__window252"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "CORRELATION: correlation; hits=20; Strategy highly correlated with existing strategy. Find orthogonal alpha source or accept role as diversification component."
+      },
+      {
+        "match": {
+          "name": "small_cap_factor__window30"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "CORRELATION: correlation; hits=20; Strategy highly correlated with existing strategy. Find orthogonal alpha source or accept role as diversification component."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small_cap_factor__window30"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "CORRELATION: correlation; hits=20; Strategy highly correlated with existing strategy. Find orthogonal alpha source or accept role as diversification component."
+      },
+      {
+        "match": {
+          "name": "small_cap_factor__window45"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "CORRELATION: correlation; hits=20; Strategy highly correlated with existing strategy. Find orthogonal alpha source or accept role as diversification component."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small_cap_factor__window45"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "CORRELATION: correlation; hits=20; Strategy highly correlated with existing strategy. Find orthogonal alpha source or accept role as diversification component."
+      },
+      {
+        "match": {
+          "name": "small_cap_factor__window60"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "CORRELATION: correlation; hits=20; Strategy highly correlated with existing strategy. Find orthogonal alpha source or accept role as diversification component."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small_cap_factor__window60"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "CORRELATION: correlation; hits=20; Strategy highly correlated with existing strategy. Find orthogonal alpha source or accept role as diversification component."
+      },
+      {
+        "match": {
+          "name": "small_cap_factor__window90"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "CORRELATION: correlation; hits=20; Strategy highly correlated with existing strategy. Find orthogonal alpha source or accept role as diversification component."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small_cap_factor__window90"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "CORRELATION: correlation; hits=20; Strategy highly correlated with existing strategy. Find orthogonal alpha source or accept role as diversification component."
+      }
+    ]
+  },
+  "lesson_warmup_621ca031_1e742420": {
+    "id": "lesson_warmup_621ca031_1e742420",
+    "statement": "WARMUP: cost_sensitivity (13 hits)",
+    "domain": "lesson",
+    "confidence": 0.75,
+    "evidence": [
+      "autoresearch_4063f1c4",
+      "autoresearch_58ad0efc",
+      "autoresearch_6332599c",
+      "autoresearch_69ede240",
+      "autoresearch_7258f152",
+      "autoresearch_a23f4dde",
+      "autoresearch_fb43fa16",
+      "close_position__n5",
+      "small_cap_factor__window20"
+    ],
+    "created": "2026-06-24",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "WARMUP",
+      "hit_count": 13,
+      "last_seen": "2026-06-28",
+      "detail": "{'verdict': 'FAIL', 'base_annual': 0.08968973598337077, 'stressed_annual': 0.03260213292094438, 'decay_pct': 0.6365009600765343, 'threshold': 0.5}",
+      "fix": "Strategy too sensitive to trading costs. Reduce turnover (longer rebalance interval, fewer stocks) or find stronger alpha to absorb cost drag."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "autoresearch_4063f1c4"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: cost_sensitivity; hits=13; Strategy too sensitive to trading costs. Reduce turnover (longer rebalance interval, fewer stocks) or find stronger alpha to absorb cost drag."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_4063f1c4"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: cost_sensitivity; hits=13; Strategy too sensitive to trading costs. Reduce turnover (longer rebalance interval, fewer stocks) or find stronger alpha to absorb cost drag."
+      },
+      {
+        "match": {
+          "name": "autoresearch_58ad0efc"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: cost_sensitivity; hits=13; Strategy too sensitive to trading costs. Reduce turnover (longer rebalance interval, fewer stocks) or find stronger alpha to absorb cost drag."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_58ad0efc"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: cost_sensitivity; hits=13; Strategy too sensitive to trading costs. Reduce turnover (longer rebalance interval, fewer stocks) or find stronger alpha to absorb cost drag."
+      },
+      {
+        "match": {
+          "name": "autoresearch_6332599c"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: cost_sensitivity; hits=13; Strategy too sensitive to trading costs. Reduce turnover (longer rebalance interval, fewer stocks) or find stronger alpha to absorb cost drag."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_6332599c"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: cost_sensitivity; hits=13; Strategy too sensitive to trading costs. Reduce turnover (longer rebalance interval, fewer stocks) or find stronger alpha to absorb cost drag."
+      },
+      {
+        "match": {
+          "name": "autoresearch_69ede240"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: cost_sensitivity; hits=13; Strategy too sensitive to trading costs. Reduce turnover (longer rebalance interval, fewer stocks) or find stronger alpha to absorb cost drag."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_69ede240"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: cost_sensitivity; hits=13; Strategy too sensitive to trading costs. Reduce turnover (longer rebalance interval, fewer stocks) or find stronger alpha to absorb cost drag."
+      },
+      {
+        "match": {
+          "name": "autoresearch_7258f152"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: cost_sensitivity; hits=13; Strategy too sensitive to trading costs. Reduce turnover (longer rebalance interval, fewer stocks) or find stronger alpha to absorb cost drag."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_7258f152"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: cost_sensitivity; hits=13; Strategy too sensitive to trading costs. Reduce turnover (longer rebalance interval, fewer stocks) or find stronger alpha to absorb cost drag."
+      },
+      {
+        "match": {
+          "name": "autoresearch_a23f4dde"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: cost_sensitivity; hits=13; Strategy too sensitive to trading costs. Reduce turnover (longer rebalance interval, fewer stocks) or find stronger alpha to absorb cost drag."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_a23f4dde"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: cost_sensitivity; hits=13; Strategy too sensitive to trading costs. Reduce turnover (longer rebalance interval, fewer stocks) or find stronger alpha to absorb cost drag."
+      },
+      {
+        "match": {
+          "name": "autoresearch_fb43fa16"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: cost_sensitivity; hits=13; Strategy too sensitive to trading costs. Reduce turnover (longer rebalance interval, fewer stocks) or find stronger alpha to absorb cost drag."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_fb43fa16"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: cost_sensitivity; hits=13; Strategy too sensitive to trading costs. Reduce turnover (longer rebalance interval, fewer stocks) or find stronger alpha to absorb cost drag."
+      },
+      {
+        "match": {
+          "name": "close_position__n5"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: cost_sensitivity; hits=13; Strategy too sensitive to trading costs. Reduce turnover (longer rebalance interval, fewer stocks) or find stronger alpha to absorb cost drag."
+      },
+      {
+        "match": {
+          "factor_fn_name": "close_position__n5"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: cost_sensitivity; hits=13; Strategy too sensitive to trading costs. Reduce turnover (longer rebalance interval, fewer stocks) or find stronger alpha to absorb cost drag."
+      },
+      {
+        "match": {
+          "name": "small_cap_factor__window20"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: cost_sensitivity; hits=13; Strategy too sensitive to trading costs. Reduce turnover (longer rebalance interval, fewer stocks) or find stronger alpha to absorb cost drag."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small_cap_factor__window20"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: cost_sensitivity; hits=13; Strategy too sensitive to trading costs. Reduce turnover (longer rebalance interval, fewer stocks) or find stronger alpha to absorb cost drag."
+      }
+    ]
+  },
+  "lesson_delisted_036085a7_ff8ba6a4": {
+    "id": "lesson_delisted_036085a7_ff8ba6a4",
+    "statement": "DELISTED: 退市股覆盖 (66 hits)",
+    "domain": "lesson",
+    "confidence": 0.9,
+    "evidence": [
+      "LEAKY amount",
+      "LEAKY timing",
+      "dual_low_20d",
+      "dual_low_40d",
+      "fund-leak",
+      "illiquidity",
+      "illiquidity_20d",
+      "illiquidity_40d",
+      "illiquidity_60d",
+      "industry_mom_20d",
+      "industry_mom_40d",
+      "industry_mom_60d",
+      "leaky-block-test",
+      "leaky-timing",
+      "low_beta_40d",
+      "low_beta_60d",
+      "low_turnover_20d",
+      "low_turnover_40d",
+      "low_turnover_60d",
+      "low_vol",
+      "low_volatility_20d",
+      "low_volatility_40d",
+      "low_volatility_60d",
+      "midcap_quality",
+      "midcap_reversal_10d",
+      "midcap_reversal_20d",
+      "midcap_reversal_5d",
+      "mom_resonance_10d_40d",
+      "mom_resonance_20d_60d",
+      "mom_resonance_5d_20d",
+      "no-warmup",
+      "size-earnings",
+      "size-earnings-e2e",
+      "size-low-vol",
+      "size_low_vol_20d",
+      "size_low_vol_40d",
+      "small-cap-size",
+      "small-cap-size/v2.1",
+      "v2.0",
+      "v2.0 CLEAN",
+      "vol_price_div_20d",
+      "vol_price_div_40d"
+    ],
+    "created": "2026-06-06",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "DELISTED",
+      "hit_count": 66,
+      "last_seen": "2026-06-06 21:50:30.807096",
+      "detail": "No delisted_codes.parquet — coverage unknown. Synthetic delisted stock present (OK).",
+      "fix": "Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "LEAKY amount"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "LEAKY amount"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "LEAKY timing"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "LEAKY timing"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "dual_low_20d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "dual_low_20d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "dual_low_40d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "dual_low_40d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "fund-leak"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "fund-leak"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "illiquidity"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "illiquidity"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "illiquidity_20d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "illiquidity_20d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "illiquidity_40d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "illiquidity_40d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "illiquidity_60d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "illiquidity_60d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "industry_mom_20d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "industry_mom_20d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "industry_mom_40d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "industry_mom_40d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "industry_mom_60d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "industry_mom_60d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "leaky-block-test"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "leaky-block-test"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "leaky-timing"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "leaky-timing"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "low_beta_40d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "low_beta_40d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "low_beta_60d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "low_beta_60d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "low_turnover_20d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "low_turnover_20d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "low_turnover_40d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "low_turnover_40d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "low_turnover_60d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "low_turnover_60d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "low_vol"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "low_vol"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "low_volatility_20d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "low_volatility_20d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "low_volatility_40d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "low_volatility_40d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "low_volatility_60d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "low_volatility_60d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "midcap_quality"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "midcap_quality"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "midcap_reversal_10d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "midcap_reversal_10d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "midcap_reversal_20d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "midcap_reversal_20d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "midcap_reversal_5d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "midcap_reversal_5d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "mom_resonance_10d_40d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "mom_resonance_10d_40d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "mom_resonance_20d_60d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "mom_resonance_20d_60d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "mom_resonance_5d_20d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "mom_resonance_5d_20d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "no-warmup"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "no-warmup"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "size-earnings"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "size-earnings"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "size-earnings-e2e"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "size-earnings-e2e"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "size-low-vol"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "size-low-vol"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "size_low_vol_20d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "size_low_vol_20d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "size_low_vol_40d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "size_low_vol_40d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "small-cap-size"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small-cap-size"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "small-cap-size/v2.1"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small-cap-size/v2.1"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "v2.0"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "v2.0"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "v2.0 CLEAN"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "v2.0 CLEAN"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "vol_price_div_20d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "vol_price_div_20d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "name": "vol_price_div_40d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "vol_price_div_40d"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=66; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      }
+    ]
+  },
+  "lesson_delisted_66b5f23c_ff8ba6a4": {
+    "id": "lesson_delisted_66b5f23c_ff8ba6a4",
+    "statement": "DELISTED: 退市股覆盖 (31 hits)",
+    "domain": "lesson",
+    "confidence": 0.9,
+    "evidence": [
+      "autoresearch_2335eeab",
+      "autoresearch_234c8ab7",
+      "autoresearch_4063f1c4",
+      "autoresearch_58ad0efc",
+      "autoresearch_6332599c",
+      "autoresearch_69ede240",
+      "autoresearch_7258f152",
+      "autoresearch_8de70997",
+      "autoresearch_a23f4dde",
+      "autoresearch_e181a275",
+      "autoresearch_fb43fa16",
+      "close_position__n5",
+      "fundamental-momentum",
+      "illiquidity",
+      "leaky-block-test",
+      "size-earnings-e2e",
+      "size-low-vol",
+      "small-cap-size",
+      "small_cap_factor__window120",
+      "small_cap_factor__window20",
+      "small_cap_factor__window252",
+      "small_cap_factor__window30",
+      "small_cap_factor__window45",
+      "small_cap_factor__window60",
+      "small_cap_factor__window90"
+    ],
+    "created": "2026-06-06",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "DELISTED",
+      "hit_count": 31,
+      "last_seen": "2026-06-28",
+      "detail": "No delisted_codes.parquet — coverage unknown. Synthetic delisted stock present (OK).",
+      "fix": "Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "autoresearch_2335eeab"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_2335eeab"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "name": "autoresearch_234c8ab7"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_234c8ab7"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "name": "autoresearch_4063f1c4"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_4063f1c4"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "name": "autoresearch_58ad0efc"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_58ad0efc"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "name": "autoresearch_6332599c"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_6332599c"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "name": "autoresearch_69ede240"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_69ede240"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "name": "autoresearch_7258f152"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_7258f152"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "name": "autoresearch_8de70997"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_8de70997"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "name": "autoresearch_a23f4dde"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_a23f4dde"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "name": "autoresearch_e181a275"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_e181a275"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "name": "autoresearch_fb43fa16"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_fb43fa16"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "name": "close_position__n5"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "factor_fn_name": "close_position__n5"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "name": "fundamental-momentum"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "factor_fn_name": "fundamental-momentum"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "name": "illiquidity"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "factor_fn_name": "illiquidity"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "name": "leaky-block-test"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "factor_fn_name": "leaky-block-test"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "name": "size-earnings-e2e"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "factor_fn_name": "size-earnings-e2e"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "name": "size-low-vol"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "factor_fn_name": "size-low-vol"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "name": "small-cap-size"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small-cap-size"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "name": "small_cap_factor__window120"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small_cap_factor__window120"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "name": "small_cap_factor__window20"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small_cap_factor__window20"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "name": "small_cap_factor__window252"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small_cap_factor__window252"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "name": "small_cap_factor__window30"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small_cap_factor__window30"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "name": "small_cap_factor__window45"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small_cap_factor__window45"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "name": "small_cap_factor__window60"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small_cap_factor__window60"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "name": "small_cap_factor__window90"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small_cap_factor__window90"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=31; Ensure data pipeline includes delisted stocks. Check data_lake/price/daily_all.parquet against meta/delisted_codes.parquet."
+      }
+    ]
+  },
+  "lesson_delisted_a5e29a11_ff8ba6a4": {
+    "id": "lesson_delisted_a5e29a11_ff8ba6a4",
+    "statement": "DELISTED: 退市股覆盖 (2 hits)",
+    "domain": "lesson",
+    "confidence": 0.9,
+    "evidence": [
+      "delisted-test"
+    ],
+    "created": "2026-06-06",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "DELISTED",
+      "hit_count": 2,
+      "last_seen": "2026-06-06 20:12:31.219435",
+      "detail": "Coverage <30%: 10%.",
+      "fix": "Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "delisted-test"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=2; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      },
+      {
+        "match": {
+          "factor_fn_name": "delisted-test"
+        },
+        "action": "SKIP",
+        "reason": "DELISTED: 退市股覆盖; hits=2; Ensure data pipeline includes delisted stocks from meta/delisted_codes."
+      }
+    ]
+  },
+  "lesson_fund_alignment_322a5f2d_3c738dd5": {
+    "id": "lesson_fund_alignment_322a5f2d_3c738dd5",
+    "statement": "FUND_ALIGNMENT: avail_date 对齐 (1 hits)",
+    "domain": "lesson",
+    "confidence": 0.9,
+    "evidence": [
+      "delisted-test"
+    ],
+    "created": "2026-06-06",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "FUND_ALIGNMENT",
+      "hit_count": 1,
+      "last_seen": "2026-06-06 20:12:31.219299",
+      "detail": "Fundamental signal appears 5d BEFORE avail_date! (early spread=1.9883, pre-avail spread=1.9911, post-avail spread=1.9908). Look-ahead detected.",
+      "fix": "Use load_fundamental_panel() which aligns via avail_date→ffill."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "delisted-test"
+        },
+        "action": "SKIP",
+        "reason": "FUND_ALIGNMENT: avail_date 对齐; hits=1; Use load_fundamental_panel() which aligns via avail_date→ffill."
+      },
+      {
+        "match": {
+          "factor_fn_name": "delisted-test"
+        },
+        "action": "SKIP",
+        "reason": "FUND_ALIGNMENT: avail_date 对齐; hits=1; Use load_fundamental_panel() which aligns via avail_date→ffill."
+      }
+    ]
+  },
+  "lesson_fund_alignment_5730be0c_3c738dd5": {
+    "id": "lesson_fund_alignment_5730be0c_3c738dd5",
+    "statement": "FUND_ALIGNMENT: avail_date 对齐 (1 hits)",
+    "domain": "lesson",
+    "confidence": 0.9,
+    "evidence": [
+      "low_volatility_20d"
+    ],
+    "created": "2026-06-06",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "FUND_ALIGNMENT",
+      "hit_count": 1,
+      "last_seen": "2026-06-06 20:38:56.149505",
+      "detail": "Fundamental signal appears 5d BEFORE avail_date! (early spread=-1.3600, pre-avail spread=1.4142, post-avail spread=1.4142). Look-ahead detected.",
+      "fix": "Use load_fundamental_panel() which aligns via avail_date→ffill."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "low_volatility_20d"
+        },
+        "action": "SKIP",
+        "reason": "FUND_ALIGNMENT: avail_date 对齐; hits=1; Use load_fundamental_panel() which aligns via avail_date→ffill."
+      },
+      {
+        "match": {
+          "factor_fn_name": "low_volatility_20d"
+        },
+        "action": "SKIP",
+        "reason": "FUND_ALIGNMENT: avail_date 对齐; hits=1; Use load_fundamental_panel() which aligns via avail_date→ffill."
+      }
+    ]
+  },
+  "lesson_fund_alignment_60dcbdf3_3c738dd5": {
+    "id": "lesson_fund_alignment_60dcbdf3_3c738dd5",
+    "statement": "FUND_ALIGNMENT: avail_date 对齐 (1 hits)",
+    "domain": "lesson",
+    "confidence": 0.9,
+    "evidence": [
+      "low_volatility_60d"
+    ],
+    "created": "2026-06-06",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "FUND_ALIGNMENT",
+      "hit_count": 1,
+      "last_seen": "2026-06-06 20:38:56.164216",
+      "detail": "Fundamental signal appears 5d BEFORE avail_date! (early spread=-1.2994, pre-avail spread=1.4142, post-avail spread=1.4142). Look-ahead detected.",
+      "fix": "Use load_fundamental_panel() which aligns via avail_date→ffill."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "low_volatility_60d"
+        },
+        "action": "SKIP",
+        "reason": "FUND_ALIGNMENT: avail_date 对齐; hits=1; Use load_fundamental_panel() which aligns via avail_date→ffill."
+      },
+      {
+        "match": {
+          "factor_fn_name": "low_volatility_60d"
+        },
+        "action": "SKIP",
+        "reason": "FUND_ALIGNMENT: avail_date 对齐; hits=1; Use load_fundamental_panel() which aligns via avail_date→ffill."
+      }
+    ]
+  },
+  "lesson_fund_alignment_81cb5d8f_fb915d55": {
+    "id": "lesson_fund_alignment_81cb5d8f_fb915d55",
+    "statement": "FUND_ALIGNMENT: 财务 avail_date 对齐 (3 hits)",
+    "domain": "lesson",
+    "confidence": 0.9,
+    "evidence": [
+      "leaky-test",
+      "size-earnings",
+      "small-cap-size"
+    ],
+    "created": "2026-06-06",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "FUND_ALIGNMENT",
+      "hit_count": 3,
+      "last_seen": "2026-06-06 20:02:25.507629",
+      "detail": "Factor doesn't show clear change at avail_date. Fundamental signal may be too weak to detect in synthetic test.",
+      "fix": "Ensure fundamental data is loaded via load_fundamental_panel() which aligns by avail_date → ffill. Do not use raw fundamental values without date alignment."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "leaky-test"
+        },
+        "action": "SKIP",
+        "reason": "FUND_ALIGNMENT: 财务 avail_date 对齐; hits=3; Ensure fundamental data is loaded via load_fundamental_panel() which aligns by avail_date → ffill. Do not use raw fundamental values without date alignment."
+      },
+      {
+        "match": {
+          "factor_fn_name": "leaky-test"
+        },
+        "action": "SKIP",
+        "reason": "FUND_ALIGNMENT: 财务 avail_date 对齐; hits=3; Ensure fundamental data is loaded via load_fundamental_panel() which aligns by avail_date → ffill. Do not use raw fundamental values without date alignment."
+      },
+      {
+        "match": {
+          "name": "size-earnings"
+        },
+        "action": "SKIP",
+        "reason": "FUND_ALIGNMENT: 财务 avail_date 对齐; hits=3; Ensure fundamental data is loaded via load_fundamental_panel() which aligns by avail_date → ffill. Do not use raw fundamental values without date alignment."
+      },
+      {
+        "match": {
+          "factor_fn_name": "size-earnings"
+        },
+        "action": "SKIP",
+        "reason": "FUND_ALIGNMENT: 财务 avail_date 对齐; hits=3; Ensure fundamental data is loaded via load_fundamental_panel() which aligns by avail_date → ffill. Do not use raw fundamental values without date alignment."
+      },
+      {
+        "match": {
+          "name": "small-cap-size"
+        },
+        "action": "SKIP",
+        "reason": "FUND_ALIGNMENT: 财务 avail_date 对齐; hits=3; Ensure fundamental data is loaded via load_fundamental_panel() which aligns by avail_date → ffill. Do not use raw fundamental values without date alignment."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small-cap-size"
+        },
+        "action": "SKIP",
+        "reason": "FUND_ALIGNMENT: 财务 avail_date 对齐; hits=3; Ensure fundamental data is loaded via load_fundamental_panel() which aligns by avail_date → ffill. Do not use raw fundamental values without date alignment."
+      }
+    ]
+  },
+  "lesson_fund_alignment_8fe3c00e_3c738dd5": {
+    "id": "lesson_fund_alignment_8fe3c00e_3c738dd5",
+    "statement": "FUND_ALIGNMENT: avail_date 对齐 (1 hits)",
+    "domain": "lesson",
+    "confidence": 0.9,
+    "evidence": [
+      "vol_price_div_40d"
+    ],
+    "created": "2026-06-06",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "FUND_ALIGNMENT",
+      "hit_count": 1,
+      "last_seen": "2026-06-06 20:38:56.176338",
+      "detail": "Fundamental signal appears 5d BEFORE avail_date! (early spread=0.1795, pre-avail spread=1.4142, post-avail spread=1.4142). Look-ahead detected.",
+      "fix": "Use load_fundamental_panel() which aligns via avail_date→ffill."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "vol_price_div_40d"
+        },
+        "action": "SKIP",
+        "reason": "FUND_ALIGNMENT: avail_date 对齐; hits=1; Use load_fundamental_panel() which aligns via avail_date→ffill."
+      },
+      {
+        "match": {
+          "factor_fn_name": "vol_price_div_40d"
+        },
+        "action": "SKIP",
+        "reason": "FUND_ALIGNMENT: avail_date 对齐; hits=1; Use load_fundamental_panel() which aligns via avail_date→ffill."
+      }
+    ]
+  },
+  "lesson_fund_alignment_c0481f8b_3c738dd5": {
+    "id": "lesson_fund_alignment_c0481f8b_3c738dd5",
+    "statement": "FUND_ALIGNMENT: avail_date 对齐 (1 hits)",
+    "domain": "lesson",
+    "confidence": 0.9,
+    "evidence": [
+      "low_volatility_40d"
+    ],
+    "created": "2026-06-06",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "FUND_ALIGNMENT",
+      "hit_count": 1,
+      "last_seen": "2026-06-06 20:38:56.170944",
+      "detail": "Fundamental signal appears 5d BEFORE avail_date! (early spread=-0.5433, pre-avail spread=1.4142, post-avail spread=1.4142). Look-ahead detected.",
+      "fix": "Use load_fundamental_panel() which aligns via avail_date→ffill."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "low_volatility_40d"
+        },
+        "action": "SKIP",
+        "reason": "FUND_ALIGNMENT: avail_date 对齐; hits=1; Use load_fundamental_panel() which aligns via avail_date→ffill."
+      },
+      {
+        "match": {
+          "factor_fn_name": "low_volatility_40d"
+        },
+        "action": "SKIP",
+        "reason": "FUND_ALIGNMENT: avail_date 对齐; hits=1; Use load_fundamental_panel() which aligns via avail_date→ffill."
+      }
+    ]
+  },
+  "lesson_fund_alignment_f24475a4_3c738dd5": {
+    "id": "lesson_fund_alignment_f24475a4_3c738dd5",
+    "statement": "FUND_ALIGNMENT: avail_date 对齐 (1 hits)",
+    "domain": "lesson",
+    "confidence": 0.9,
+    "evidence": [
+      "fund-leak"
+    ],
+    "created": "2026-06-06",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "FUND_ALIGNMENT",
+      "hit_count": 1,
+      "last_seen": "2026-06-06 20:12:31.200594",
+      "detail": "Fundamental signal appears 5d BEFORE avail_date! (early spread=1.4142, pre-avail spread=1.4142, post-avail spread=1.4142). Look-ahead detected.",
+      "fix": "Use load_fundamental_panel() which aligns via avail_date→ffill."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "fund-leak"
+        },
+        "action": "SKIP",
+        "reason": "FUND_ALIGNMENT: avail_date 对齐; hits=1; Use load_fundamental_panel() which aligns via avail_date→ffill."
+      },
+      {
+        "match": {
+          "factor_fn_name": "fund-leak"
+        },
+        "action": "SKIP",
+        "reason": "FUND_ALIGNMENT: avail_date 对齐; hits=1; Use load_fundamental_panel() which aligns via avail_date→ffill."
+      }
+    ]
+  },
+  "lesson_fund_alignment_fe2666b7_3c738dd5": {
+    "id": "lesson_fund_alignment_fe2666b7_3c738dd5",
+    "statement": "FUND_ALIGNMENT: avail_date 对齐 (1 hits)",
+    "domain": "lesson",
+    "confidence": 0.9,
+    "evidence": [
+      "midcap_reversal_10d"
+    ],
+    "created": "2026-06-06",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "FUND_ALIGNMENT",
+      "hit_count": 1,
+      "last_seen": "2026-06-06 21:30:49.652853",
+      "detail": "Fundamental signal appears BEFORE avail_date! early=-0.3329 pre-avail=1.4142 post=-0.2828. Look-ahead detected.",
+      "fix": "Use load_fundamental_panel() which aligns via avail_date→ffill."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "midcap_reversal_10d"
+        },
+        "action": "SKIP",
+        "reason": "FUND_ALIGNMENT: avail_date 对齐; hits=1; Use load_fundamental_panel() which aligns via avail_date→ffill."
+      },
+      {
+        "match": {
+          "factor_fn_name": "midcap_reversal_10d"
+        },
+        "action": "SKIP",
+        "reason": "FUND_ALIGNMENT: avail_date 对齐; hits=1; Use load_fundamental_panel() which aligns via avail_date→ffill."
+      }
+    ]
+  },
+  "lesson_timing_peek_09304559_90c12bd8": {
+    "id": "lesson_timing_peek_09304559_90c12bd8",
+    "statement": "TIMING_PEEK: timing shift(1) (1 hits)",
+    "domain": "lesson",
+    "confidence": 0.9,
+    "evidence": [
+      "leaky-block-test"
+    ],
+    "created": "2026-06-06",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "TIMING_PEEK",
+      "hit_count": 1,
+      "last_seen": "2026-06-06",
+      "detail": "Timing MISSING shift(1)! Uses T-day market return.",
+      "fix": "Add .shift(1) to timing signal: timing = (condition).shift(1). Verify timing[T] only uses data through T-1."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "leaky-block-test"
+        },
+        "action": "SKIP",
+        "reason": "TIMING_PEEK: timing shift(1); hits=1; Add .shift(1) to timing signal: timing = (condition).shift(1). Verify timing[T] only uses data through T-1."
+      },
+      {
+        "match": {
+          "factor_fn_name": "leaky-block-test"
+        },
+        "action": "SKIP",
+        "reason": "TIMING_PEEK: timing shift(1); hits=1; Add .shift(1) to timing signal: timing = (condition).shift(1). Verify timing[T] only uses data through T-1."
+      }
+    ]
+  },
+  "lesson_timing_peek_187a485c_90c12bd8": {
+    "id": "lesson_timing_peek_187a485c_90c12bd8",
+    "statement": "TIMING_PEEK: timing shift(1) (1 hits)",
+    "domain": "lesson",
+    "confidence": 0.9,
+    "evidence": [
+      "leaky-test"
+    ],
+    "created": "2026-06-06",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "TIMING_PEEK",
+      "hit_count": 1,
+      "last_seen": "2026-06-06 20:02:24.924620",
+      "detail": "Timing MISSING shift(1)! T-day signal uses T-day market return (includes close[T] which is future information at open). VolTarget: correct=True, leaky=False.",
+      "fix": "Add .shift(1) to timing signal computation: timing = (condition).shift(1). Verify that timing[T] only uses data through T-1."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "leaky-test"
+        },
+        "action": "SKIP",
+        "reason": "TIMING_PEEK: timing shift(1); hits=1; Add .shift(1) to timing signal computation: timing = (condition).shift(1). Verify that timing[T] only uses data through T-1."
+      },
+      {
+        "match": {
+          "factor_fn_name": "leaky-test"
+        },
+        "action": "SKIP",
+        "reason": "TIMING_PEEK: timing shift(1); hits=1; Add .shift(1) to timing signal computation: timing = (condition).shift(1). Verify that timing[T] only uses data through T-1."
+      }
+    ]
+  },
+  "lesson_timing_peek_4c84b8f6_90c12bd8": {
+    "id": "lesson_timing_peek_4c84b8f6_90c12bd8",
+    "statement": "TIMING_PEEK: timing shift(1) (2 hits)",
+    "domain": "lesson",
+    "confidence": 0.9,
+    "evidence": [
+      "2. LEAKY timing",
+      "leaky-test"
+    ],
+    "created": "2026-06-06",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "TIMING_PEEK",
+      "hit_count": 2,
+      "last_seen": "2026-06-06 20:05:34.963542",
+      "detail": "Timing MISSING shift(1)! T-day signal uses T-day market return.",
+      "fix": "Add .shift(1) to timing signal computation: timing = (condition).shift(1). Verify that timing[T] only uses data through T-1."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "2. LEAKY timing"
+        },
+        "action": "SKIP",
+        "reason": "TIMING_PEEK: timing shift(1); hits=2; Add .shift(1) to timing signal computation: timing = (condition).shift(1). Verify that timing[T] only uses data through T-1."
+      },
+      {
+        "match": {
+          "factor_fn_name": "2. LEAKY timing"
+        },
+        "action": "SKIP",
+        "reason": "TIMING_PEEK: timing shift(1); hits=2; Add .shift(1) to timing signal computation: timing = (condition).shift(1). Verify that timing[T] only uses data through T-1."
+      },
+      {
+        "match": {
+          "name": "leaky-test"
+        },
+        "action": "SKIP",
+        "reason": "TIMING_PEEK: timing shift(1); hits=2; Add .shift(1) to timing signal computation: timing = (condition).shift(1). Verify that timing[T] only uses data through T-1."
+      },
+      {
+        "match": {
+          "factor_fn_name": "leaky-test"
+        },
+        "action": "SKIP",
+        "reason": "TIMING_PEEK: timing shift(1); hits=2; Add .shift(1) to timing signal computation: timing = (condition).shift(1). Verify that timing[T] only uses data through T-1."
+      }
+    ]
+  },
+  "lesson_timing_peek_749517c1_90c12bd8": {
+    "id": "lesson_timing_peek_749517c1_90c12bd8",
+    "statement": "TIMING_PEEK: timing shift(1) (4 hits)",
+    "domain": "lesson",
+    "confidence": 0.9,
+    "evidence": [
+      "LEAKY timing",
+      "leaky-block-test",
+      "leaky-timing"
+    ],
+    "created": "2026-06-06",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "TIMING_PEEK",
+      "hit_count": 4,
+      "last_seen": "2026-06-06 20:26:06.836330",
+      "detail": "Timing MISSING shift(1)! Uses T-day market return.",
+      "fix": "Add .shift(1) to timing: timing = (condition).shift(1)."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "LEAKY timing"
+        },
+        "action": "SKIP",
+        "reason": "TIMING_PEEK: timing shift(1); hits=4; Add .shift(1) to timing: timing = (condition).shift(1)."
+      },
+      {
+        "match": {
+          "factor_fn_name": "LEAKY timing"
+        },
+        "action": "SKIP",
+        "reason": "TIMING_PEEK: timing shift(1); hits=4; Add .shift(1) to timing: timing = (condition).shift(1)."
+      },
+      {
+        "match": {
+          "name": "leaky-block-test"
+        },
+        "action": "SKIP",
+        "reason": "TIMING_PEEK: timing shift(1); hits=4; Add .shift(1) to timing: timing = (condition).shift(1)."
+      },
+      {
+        "match": {
+          "factor_fn_name": "leaky-block-test"
+        },
+        "action": "SKIP",
+        "reason": "TIMING_PEEK: timing shift(1); hits=4; Add .shift(1) to timing: timing = (condition).shift(1)."
+      },
+      {
+        "match": {
+          "name": "leaky-timing"
+        },
+        "action": "SKIP",
+        "reason": "TIMING_PEEK: timing shift(1); hits=4; Add .shift(1) to timing: timing = (condition).shift(1)."
+      },
+      {
+        "match": {
+          "factor_fn_name": "leaky-timing"
+        },
+        "action": "SKIP",
+        "reason": "TIMING_PEEK: timing shift(1); hits=4; Add .shift(1) to timing: timing = (condition).shift(1)."
+      }
+    ]
+  },
+  "lesson_timing_peek_97e2b2d5_90c12bd8": {
+    "id": "lesson_timing_peek_97e2b2d5_90c12bd8",
+    "statement": "TIMING_PEEK: timing shift(1) (2 hits)",
+    "domain": "lesson",
+    "confidence": 0.9,
+    "evidence": [
+      "size-earnings",
+      "small-cap-size"
+    ],
+    "created": "2026-06-06",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "TIMING_PEEK",
+      "hit_count": 2,
+      "last_seen": "2026-06-06 20:02:25.507431",
+      "detail": "Timing doesn't match either shifted or unshifted reference. May use a different formula — manual review needed.",
+      "fix": "Add .shift(1) to timing signal computation: timing = (condition).shift(1). Verify that timing[T] only uses data through T-1."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "size-earnings"
+        },
+        "action": "SKIP",
+        "reason": "TIMING_PEEK: timing shift(1); hits=2; Add .shift(1) to timing signal computation: timing = (condition).shift(1). Verify that timing[T] only uses data through T-1."
+      },
+      {
+        "match": {
+          "factor_fn_name": "size-earnings"
+        },
+        "action": "SKIP",
+        "reason": "TIMING_PEEK: timing shift(1); hits=2; Add .shift(1) to timing signal computation: timing = (condition).shift(1). Verify that timing[T] only uses data through T-1."
+      },
+      {
+        "match": {
+          "name": "small-cap-size"
+        },
+        "action": "SKIP",
+        "reason": "TIMING_PEEK: timing shift(1); hits=2; Add .shift(1) to timing signal computation: timing = (condition).shift(1). Verify that timing[T] only uses data through T-1."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small-cap-size"
+        },
+        "action": "SKIP",
+        "reason": "TIMING_PEEK: timing shift(1); hits=2; Add .shift(1) to timing signal computation: timing = (condition).shift(1). Verify that timing[T] only uses data through T-1."
+      }
+    ]
+  },
+  "lesson_warmup_353489ff_a0b79fa9": {
+    "id": "lesson_warmup_353489ff_a0b79fa9",
+    "statement": "WARMUP: 预热完整 (2 hits)",
+    "domain": "lesson",
+    "confidence": 0.75,
+    "evidence": [
+      "vol_price_div_40d"
+    ],
+    "created": "2026-06-06",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "WARMUP",
+      "hit_count": 2,
+      "last_seen": "2026-06-06 21:30:49.632627",
+      "detail": "Leading NaN: 83d > max window 60d. Data may have gaps at start.",
+      "fix": "Load data from ≥2yr before backtest start for rolling window warmup."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "vol_price_div_40d"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: 预热完整; hits=2; Load data from ≥2yr before backtest start for rolling window warmup."
+      },
+      {
+        "match": {
+          "factor_fn_name": "vol_price_div_40d"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: 预热完整; hits=2; Load data from ≥2yr before backtest start for rolling window warmup."
+      }
+    ]
+  },
+  "lesson_warmup_43574983_a0b79fa9": {
+    "id": "lesson_warmup_43574983_a0b79fa9",
+    "statement": "WARMUP: 预热完整 (3 hits)",
+    "domain": "lesson",
+    "confidence": 0.75,
+    "evidence": [
+      "industry_mom_20d",
+      "industry_mom_40d",
+      "industry_mom_60d"
+    ],
+    "created": "2026-06-06",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "WARMUP",
+      "hit_count": 3,
+      "last_seen": "2026-06-06 21:30:53.455951",
+      "detail": "Leading NaN: 120d > max window 60d. Data may have gaps at start.",
+      "fix": "Load data from ≥2yr before backtest start for rolling window warmup."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "industry_mom_20d"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: 预热完整; hits=3; Load data from ≥2yr before backtest start for rolling window warmup."
+      },
+      {
+        "match": {
+          "factor_fn_name": "industry_mom_20d"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: 预热完整; hits=3; Load data from ≥2yr before backtest start for rolling window warmup."
+      },
+      {
+        "match": {
+          "name": "industry_mom_40d"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: 预热完整; hits=3; Load data from ≥2yr before backtest start for rolling window warmup."
+      },
+      {
+        "match": {
+          "factor_fn_name": "industry_mom_40d"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: 预热完整; hits=3; Load data from ≥2yr before backtest start for rolling window warmup."
+      },
+      {
+        "match": {
+          "name": "industry_mom_60d"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: 预热完整; hits=3; Load data from ≥2yr before backtest start for rolling window warmup."
+      },
+      {
+        "match": {
+          "factor_fn_name": "industry_mom_60d"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: 预热完整; hits=3; Load data from ≥2yr before backtest start for rolling window warmup."
+      }
+    ]
+  },
+  "lesson_warmup_7e849f4f_a0b79fa9": {
+    "id": "lesson_warmup_7e849f4f_a0b79fa9",
+    "statement": "WARMUP: 预热完整 (3 hits)",
+    "domain": "lesson",
+    "confidence": 0.75,
+    "evidence": [
+      "small_cap_factor__window120",
+      "small_cap_factor__window252",
+      "small_cap_factor__window90"
+    ],
+    "created": "2026-06-17",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "WARMUP",
+      "hit_count": 3,
+      "last_seen": "2026-06-17",
+      "detail": "Leading NaN: 89d > max window 60d. Data may have gaps at start.",
+      "fix": "Load price data from >=2 years before backtest start. For typical window=60, load from at least 2016 for a 2018 start."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "small_cap_factor__window120"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: 预热完整; hits=3; Load price data from >=2 years before backtest start. For typical window=60, load from at least 2016 for a 2018 start."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small_cap_factor__window120"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: 预热完整; hits=3; Load price data from >=2 years before backtest start. For typical window=60, load from at least 2016 for a 2018 start."
+      },
+      {
+        "match": {
+          "name": "small_cap_factor__window252"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: 预热完整; hits=3; Load price data from >=2 years before backtest start. For typical window=60, load from at least 2016 for a 2018 start."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small_cap_factor__window252"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: 预热完整; hits=3; Load price data from >=2 years before backtest start. For typical window=60, load from at least 2016 for a 2018 start."
+      },
+      {
+        "match": {
+          "name": "small_cap_factor__window90"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: 预热完整; hits=3; Load price data from >=2 years before backtest start. For typical window=60, load from at least 2016 for a 2018 start."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small_cap_factor__window90"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: 预热完整; hits=3; Load price data from >=2 years before backtest start. For typical window=60, load from at least 2016 for a 2018 start."
+      }
+    ]
+  },
+  "lesson_warmup_d2989644_a0b79fa9": {
+    "id": "lesson_warmup_d2989644_a0b79fa9",
+    "statement": "WARMUP: 预热完整 (1 hits)",
+    "domain": "lesson",
+    "confidence": 0.75,
+    "evidence": [
+      "no-warmup"
+    ],
+    "created": "2026-06-06",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "WARMUP",
+      "hit_count": 1,
+      "last_seen": "2026-06-06 20:12:31.209293",
+      "detail": "Data has 120 days but max rolling window is 200d. Need ≥200 days for proper warmup. Fix: load data from ≥200 trading days before backtest start.",
+      "fix": "Load data from ≥2yr before backtest start for rolling window warmup."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "no-warmup"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: 预热完整; hits=1; Load data from ≥2yr before backtest start for rolling window warmup."
+      },
+      {
+        "match": {
+          "factor_fn_name": "no-warmup"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: 预热完整; hits=1; Load data from ≥2yr before backtest start for rolling window warmup."
+      }
+    ]
+  },
+  "lesson_wf_negative_window_1f443f94_13d3a2cf": {
+    "id": "lesson_wf_negative_window_1f443f94_13d3a2cf",
+    "statement": "WF_NEGATIVE_WINDOW: WF negative window 2022 (13 hits)",
+    "domain": "lesson",
+    "confidence": 0.75,
+    "evidence": [
+      "autoresearch_4063f1c4",
+      "autoresearch_58ad0efc",
+      "autoresearch_6332599c",
+      "autoresearch_69ede240",
+      "autoresearch_7258f152",
+      "autoresearch_a23f4dde",
+      "autoresearch_fb43fa16",
+      "close_position__n5",
+      "small_cap_factor__window20"
+    ],
+    "created": "2026-06-24",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "WF_NEGATIVE_WINDOW",
+      "hit_count": 13,
+      "last_seen": "2026-06-28",
+      "detail": "OOS annual=-5.2% in 2022",
+      "fix": "Manual review needed."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "autoresearch_4063f1c4"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2022; hits=13; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_4063f1c4"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2022; hits=13; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_58ad0efc"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2022; hits=13; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_58ad0efc"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2022; hits=13; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_6332599c"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2022; hits=13; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_6332599c"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2022; hits=13; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_69ede240"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2022; hits=13; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_69ede240"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2022; hits=13; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_7258f152"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2022; hits=13; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_7258f152"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2022; hits=13; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_a23f4dde"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2022; hits=13; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_a23f4dde"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2022; hits=13; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_fb43fa16"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2022; hits=13; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_fb43fa16"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2022; hits=13; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "close_position__n5"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2022; hits=13; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "close_position__n5"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2022; hits=13; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "small_cap_factor__window20"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2022; hits=13; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small_cap_factor__window20"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2022; hits=13; Manual review needed."
+      }
+    ]
+  },
+  "lesson_wf_negative_window_3a2004ac_18640e1f": {
+    "id": "lesson_wf_negative_window_3a2004ac_18640e1f",
+    "statement": "WF_NEGATIVE_WINDOW: WF negative window 2017 (17 hits)",
+    "domain": "lesson",
+    "confidence": 0.75,
+    "evidence": [
+      "autoresearch_2335eeab",
+      "autoresearch_58ad0efc",
+      "autoresearch_6332599c",
+      "close_position__n5",
+      "illiquidity",
+      "size-earnings-e2e",
+      "size-low-vol",
+      "small-cap-size",
+      "small_cap_factor__window120",
+      "small_cap_factor__window45",
+      "small_cap_factor__window60",
+      "small_cap_factor__window90"
+    ],
+    "created": "2026-06-06",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "WF_NEGATIVE_WINDOW",
+      "hit_count": 17,
+      "last_seen": "2026-06-28",
+      "detail": "OOS annual=-8.0% in 2017",
+      "fix": "Manual review needed."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "autoresearch_2335eeab"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2017; hits=17; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_2335eeab"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2017; hits=17; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_58ad0efc"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2017; hits=17; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_58ad0efc"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2017; hits=17; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_6332599c"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2017; hits=17; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_6332599c"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2017; hits=17; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "close_position__n5"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2017; hits=17; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "close_position__n5"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2017; hits=17; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "illiquidity"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2017; hits=17; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "illiquidity"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2017; hits=17; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "size-earnings-e2e"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2017; hits=17; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "size-earnings-e2e"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2017; hits=17; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "size-low-vol"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2017; hits=17; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "size-low-vol"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2017; hits=17; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "small-cap-size"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2017; hits=17; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small-cap-size"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2017; hits=17; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "small_cap_factor__window120"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2017; hits=17; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small_cap_factor__window120"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2017; hits=17; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "small_cap_factor__window45"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2017; hits=17; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small_cap_factor__window45"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2017; hits=17; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "small_cap_factor__window60"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2017; hits=17; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small_cap_factor__window60"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2017; hits=17; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "small_cap_factor__window90"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2017; hits=17; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small_cap_factor__window90"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2017; hits=17; Manual review needed."
+      }
+    ]
+  },
+  "lesson_wf_negative_window_8114b987_eba0f304": {
+    "id": "lesson_wf_negative_window_8114b987_eba0f304",
+    "statement": "WF_NEGATIVE_WINDOW: WF negative window 2018 (28 hits)",
+    "domain": "lesson",
+    "confidence": 0.75,
+    "evidence": [
+      "autoresearch_2335eeab",
+      "autoresearch_234c8ab7",
+      "autoresearch_4063f1c4",
+      "autoresearch_58ad0efc",
+      "autoresearch_6332599c",
+      "autoresearch_69ede240",
+      "autoresearch_7258f152",
+      "autoresearch_8de70997",
+      "autoresearch_a23f4dde",
+      "autoresearch_e181a275",
+      "autoresearch_fb43fa16",
+      "close_position__n5",
+      "fundamental-momentum",
+      "size-earnings-e2e",
+      "size-low-vol",
+      "small-cap-size",
+      "small_cap_factor__window120",
+      "small_cap_factor__window20",
+      "small_cap_factor__window30",
+      "small_cap_factor__window45",
+      "small_cap_factor__window60",
+      "small_cap_factor__window90"
+    ],
+    "created": "2026-06-06",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "WF_NEGATIVE_WINDOW",
+      "hit_count": 28,
+      "last_seen": "2026-06-28",
+      "detail": "OOS annual=-9.1% in 2018",
+      "fix": "Manual review needed."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "autoresearch_2335eeab"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_2335eeab"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_234c8ab7"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_234c8ab7"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_4063f1c4"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_4063f1c4"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_58ad0efc"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_58ad0efc"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_6332599c"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_6332599c"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_69ede240"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_69ede240"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_7258f152"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_7258f152"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_8de70997"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_8de70997"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_a23f4dde"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_a23f4dde"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_e181a275"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_e181a275"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_fb43fa16"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_fb43fa16"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "close_position__n5"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "close_position__n5"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "fundamental-momentum"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "fundamental-momentum"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "size-earnings-e2e"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "size-earnings-e2e"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "size-low-vol"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "size-low-vol"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "small-cap-size"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small-cap-size"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "small_cap_factor__window120"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small_cap_factor__window120"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "small_cap_factor__window20"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small_cap_factor__window20"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "small_cap_factor__window30"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small_cap_factor__window30"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "small_cap_factor__window45"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small_cap_factor__window45"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "small_cap_factor__window60"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small_cap_factor__window60"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "small_cap_factor__window90"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small_cap_factor__window90"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2018; hits=28; Manual review needed."
+      }
+    ]
+  },
+  "lesson_wf_negative_window_c94776e5_90af4d34": {
+    "id": "lesson_wf_negative_window_c94776e5_90af4d34",
+    "statement": "WF_NEGATIVE_WINDOW: WF negative window 2023 (21 hits)",
+    "domain": "lesson",
+    "confidence": 0.75,
+    "evidence": [
+      "autoresearch_2335eeab",
+      "autoresearch_234c8ab7",
+      "autoresearch_4063f1c4",
+      "autoresearch_58ad0efc",
+      "autoresearch_6332599c",
+      "autoresearch_69ede240",
+      "autoresearch_7258f152",
+      "autoresearch_8de70997",
+      "autoresearch_a23f4dde",
+      "autoresearch_e181a275",
+      "autoresearch_fb43fa16",
+      "close_position__n5",
+      "fundamental-momentum",
+      "illiquidity",
+      "size-earnings-e2e",
+      "small_cap_factor__window20"
+    ],
+    "created": "2026-06-06",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "WF_NEGATIVE_WINDOW",
+      "hit_count": 21,
+      "last_seen": "2026-06-28",
+      "detail": "OOS annual=-6.3% in 2023",
+      "fix": "Manual review needed."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "autoresearch_2335eeab"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2023; hits=21; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_2335eeab"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2023; hits=21; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_234c8ab7"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2023; hits=21; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_234c8ab7"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2023; hits=21; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_4063f1c4"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2023; hits=21; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_4063f1c4"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2023; hits=21; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_58ad0efc"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2023; hits=21; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_58ad0efc"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2023; hits=21; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_6332599c"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2023; hits=21; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_6332599c"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2023; hits=21; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_69ede240"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2023; hits=21; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_69ede240"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2023; hits=21; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_7258f152"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2023; hits=21; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_7258f152"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2023; hits=21; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_8de70997"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2023; hits=21; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_8de70997"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2023; hits=21; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_a23f4dde"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2023; hits=21; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_a23f4dde"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2023; hits=21; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_e181a275"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2023; hits=21; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_e181a275"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2023; hits=21; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_fb43fa16"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2023; hits=21; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_fb43fa16"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2023; hits=21; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "close_position__n5"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2023; hits=21; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "close_position__n5"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2023; hits=21; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "fundamental-momentum"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2023; hits=21; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "fundamental-momentum"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2023; hits=21; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "illiquidity"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2023; hits=21; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "illiquidity"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2023; hits=21; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "size-earnings-e2e"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2023; hits=21; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "size-earnings-e2e"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2023; hits=21; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "small_cap_factor__window20"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2023; hits=21; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "small_cap_factor__window20"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2023; hits=21; Manual review needed."
+      }
+    ]
+  },
+  "validated_6f3fcf8116a2afb0": {
+    "id": "validated_6f3fcf8116a2afb0",
+    "statement": "✗ autoresearch_7258f152 [phase3] sharpe=-0.10 annual=-2.6%",
+    "domain": "factor",
+    "confidence": 0.8,
+    "evidence": [
+      "6f3fcf8116a2afb0"
+    ],
+    "created": "2026-06-24",
+    "expires": "2026-12-21",
+    "depends_on": [],
+    "metrics": {
+      "wf_sharpe": -0.09532721125338686,
+      "annual": -0.02556325469535488,
+      "wf_maxdd": -0.8072755090316863
+    },
+    "gates": [
+      {
+        "match": {
+          "factor_fn_name": "factors.autoresearch_dsl.compute_dsl_factor",
+          "ast": "{'type': 'linear_combo', 'terms': [{'factor': 'alpha_013', 'params': {}, 'transforms': ['mad_clip', 'zscore', 'rank'], 'weight': 0.5}, {'factor': 'alpha_012', 'params': {}, 'transforms': ['mad_clip', 'zscore', 'rank'], 'weight': 0.5}, {'factor': 'holdertrade_net', 'params': {'window': 120}, 'transforms': ['mad_clip', 'zscore', 'rank'], 'weight': 1.5}], 'direction': 'positive', 'thesis': {'mechanism': '杂交: 内部人信号与资金流向确认：大股东净买入（holdertrade_net）降低信息 × 内部人信号与资金流向确认：大股东净买入（holdertrade_net）降低信息', 'citation': 'autoresearch island search'}}"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "phase3 验证未过(✗ autoresearch_7258f152 [phase3] sharpe=-0.10 annual=-2.6%);180天后到期重测"
+      }
+    ]
+  },
+  "lesson_warmup_5453cf01_7e79d9c5": {
+    "id": "lesson_warmup_5453cf01_7e79d9c5",
+    "statement": "WARMUP: oos_is_decay (12 hits)",
+    "domain": "lesson",
+    "confidence": 0.75,
+    "evidence": [
+      "autoresearch_4063f1c4",
+      "autoresearch_58ad0efc",
+      "autoresearch_6332599c",
+      "autoresearch_69ede240",
+      "autoresearch_7258f152",
+      "autoresearch_a23f4dde",
+      "autoresearch_fb43fa16",
+      "close_position__n5"
+    ],
+    "created": "2026-06-24",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "WARMUP",
+      "hit_count": 12,
+      "last_seen": "2026-06-28",
+      "detail": "IS annual ≤ 0 (-14.9%).",
+      "fix": "Significant performance decay from IS to OOS — possible overfitting. Simplify factor, reduce parameters, or add walk-forward validation."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "autoresearch_4063f1c4"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: oos_is_decay; hits=12; Significant performance decay from IS to OOS — possible overfitting. Simplify factor, reduce parameters, or add walk-forward validation."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_4063f1c4"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: oos_is_decay; hits=12; Significant performance decay from IS to OOS — possible overfitting. Simplify factor, reduce parameters, or add walk-forward validation."
+      },
+      {
+        "match": {
+          "name": "autoresearch_58ad0efc"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: oos_is_decay; hits=12; Significant performance decay from IS to OOS — possible overfitting. Simplify factor, reduce parameters, or add walk-forward validation."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_58ad0efc"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: oos_is_decay; hits=12; Significant performance decay from IS to OOS — possible overfitting. Simplify factor, reduce parameters, or add walk-forward validation."
+      },
+      {
+        "match": {
+          "name": "autoresearch_6332599c"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: oos_is_decay; hits=12; Significant performance decay from IS to OOS — possible overfitting. Simplify factor, reduce parameters, or add walk-forward validation."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_6332599c"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: oos_is_decay; hits=12; Significant performance decay from IS to OOS — possible overfitting. Simplify factor, reduce parameters, or add walk-forward validation."
+      },
+      {
+        "match": {
+          "name": "autoresearch_69ede240"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: oos_is_decay; hits=12; Significant performance decay from IS to OOS — possible overfitting. Simplify factor, reduce parameters, or add walk-forward validation."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_69ede240"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: oos_is_decay; hits=12; Significant performance decay from IS to OOS — possible overfitting. Simplify factor, reduce parameters, or add walk-forward validation."
+      },
+      {
+        "match": {
+          "name": "autoresearch_7258f152"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: oos_is_decay; hits=12; Significant performance decay from IS to OOS — possible overfitting. Simplify factor, reduce parameters, or add walk-forward validation."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_7258f152"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: oos_is_decay; hits=12; Significant performance decay from IS to OOS — possible overfitting. Simplify factor, reduce parameters, or add walk-forward validation."
+      },
+      {
+        "match": {
+          "name": "autoresearch_a23f4dde"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: oos_is_decay; hits=12; Significant performance decay from IS to OOS — possible overfitting. Simplify factor, reduce parameters, or add walk-forward validation."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_a23f4dde"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: oos_is_decay; hits=12; Significant performance decay from IS to OOS — possible overfitting. Simplify factor, reduce parameters, or add walk-forward validation."
+      },
+      {
+        "match": {
+          "name": "autoresearch_fb43fa16"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: oos_is_decay; hits=12; Significant performance decay from IS to OOS — possible overfitting. Simplify factor, reduce parameters, or add walk-forward validation."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_fb43fa16"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: oos_is_decay; hits=12; Significant performance decay from IS to OOS — possible overfitting. Simplify factor, reduce parameters, or add walk-forward validation."
+      },
+      {
+        "match": {
+          "name": "close_position__n5"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: oos_is_decay; hits=12; Significant performance decay from IS to OOS — possible overfitting. Simplify factor, reduce parameters, or add walk-forward validation."
+      },
+      {
+        "match": {
+          "factor_fn_name": "close_position__n5"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: oos_is_decay; hits=12; Significant performance decay from IS to OOS — possible overfitting. Simplify factor, reduce parameters, or add walk-forward validation."
+      }
+    ]
+  },
+  "lesson_warmup_1747e92b_a991e7d9": {
+    "id": "lesson_warmup_1747e92b_a991e7d9",
+    "statement": "WARMUP: segment IS  2018-2022 (12 hits)",
+    "domain": "lesson",
+    "confidence": 0.75,
+    "evidence": [
+      "autoresearch_4063f1c4",
+      "autoresearch_58ad0efc",
+      "autoresearch_6332599c",
+      "autoresearch_69ede240",
+      "autoresearch_7258f152",
+      "autoresearch_a23f4dde",
+      "autoresearch_fb43fa16",
+      "close_position__n5"
+    ],
+    "created": "2026-06-24",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "WARMUP",
+      "hit_count": 12,
+      "last_seen": "2026-06-28",
+      "detail": "Segment IS  2018-2022 annual=-14.9%",
+      "fix": "Manual review needed."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "autoresearch_4063f1c4"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: segment IS  2018-2022; hits=12; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_4063f1c4"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: segment IS  2018-2022; hits=12; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_58ad0efc"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: segment IS  2018-2022; hits=12; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_58ad0efc"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: segment IS  2018-2022; hits=12; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_6332599c"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: segment IS  2018-2022; hits=12; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_6332599c"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: segment IS  2018-2022; hits=12; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_69ede240"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: segment IS  2018-2022; hits=12; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_69ede240"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: segment IS  2018-2022; hits=12; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_7258f152"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: segment IS  2018-2022; hits=12; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_7258f152"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: segment IS  2018-2022; hits=12; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_a23f4dde"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: segment IS  2018-2022; hits=12; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_a23f4dde"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: segment IS  2018-2022; hits=12; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_fb43fa16"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: segment IS  2018-2022; hits=12; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_fb43fa16"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: segment IS  2018-2022; hits=12; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "close_position__n5"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: segment IS  2018-2022; hits=12; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "close_position__n5"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: segment IS  2018-2022; hits=12; Manual review needed."
+      }
+    ]
+  },
+  "lesson_warmup_5719b42c_029b0d3a": {
+    "id": "lesson_warmup_5719b42c_029b0d3a",
+    "statement": "WARMUP: segment OOS 2023-2024 (12 hits)",
+    "domain": "lesson",
+    "confidence": 0.75,
+    "evidence": [
+      "autoresearch_4063f1c4",
+      "autoresearch_58ad0efc",
+      "autoresearch_6332599c",
+      "autoresearch_69ede240",
+      "autoresearch_7258f152",
+      "autoresearch_a23f4dde",
+      "autoresearch_fb43fa16",
+      "close_position__n5"
+    ],
+    "created": "2026-06-24",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "WARMUP",
+      "hit_count": 12,
+      "last_seen": "2026-06-28",
+      "detail": "Segment OOS 2023-2024 annual=-10.7%",
+      "fix": "Manual review needed."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "autoresearch_4063f1c4"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: segment OOS 2023-2024; hits=12; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_4063f1c4"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: segment OOS 2023-2024; hits=12; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_58ad0efc"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: segment OOS 2023-2024; hits=12; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_58ad0efc"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: segment OOS 2023-2024; hits=12; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_6332599c"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: segment OOS 2023-2024; hits=12; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_6332599c"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: segment OOS 2023-2024; hits=12; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_69ede240"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: segment OOS 2023-2024; hits=12; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_69ede240"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: segment OOS 2023-2024; hits=12; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_7258f152"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: segment OOS 2023-2024; hits=12; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_7258f152"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: segment OOS 2023-2024; hits=12; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_a23f4dde"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: segment OOS 2023-2024; hits=12; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_a23f4dde"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: segment OOS 2023-2024; hits=12; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_fb43fa16"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: segment OOS 2023-2024; hits=12; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_fb43fa16"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: segment OOS 2023-2024; hits=12; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "close_position__n5"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: segment OOS 2023-2024; hits=12; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "close_position__n5"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: segment OOS 2023-2024; hits=12; Manual review needed."
+      }
+    ]
+  },
+  "lesson_warmup_bfa2f238_8903ea8d": {
+    "id": "lesson_warmup_bfa2f238_8903ea8d",
+    "statement": "WARMUP: WF aggregate FAIL (12 hits)",
+    "domain": "lesson",
+    "confidence": 0.75,
+    "evidence": [
+      "autoresearch_4063f1c4",
+      "autoresearch_58ad0efc",
+      "autoresearch_6332599c",
+      "autoresearch_69ede240",
+      "autoresearch_7258f152",
+      "autoresearch_a23f4dde",
+      "autoresearch_fb43fa16",
+      "close_position__n5"
+    ],
+    "created": "2026-06-24",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "WARMUP",
+      "hit_count": 12,
+      "last_seen": "2026-06-28",
+      "detail": "WF OOS annual=-2.6%, positive=6/11",
+      "fix": "Walk-Forward OOS aggregate failed. Strategy does not generalize. Simplify factor construction, reduce lookback windows, or verify no data leakage in factor/timing builders."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "autoresearch_4063f1c4"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: WF aggregate FAIL; hits=12; Walk-Forward OOS aggregate failed. Strategy does not generalize. Simplify factor construction, reduce lookback windows, or verify no data leakage in factor/timing builders."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_4063f1c4"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: WF aggregate FAIL; hits=12; Walk-Forward OOS aggregate failed. Strategy does not generalize. Simplify factor construction, reduce lookback windows, or verify no data leakage in factor/timing builders."
+      },
+      {
+        "match": {
+          "name": "autoresearch_58ad0efc"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: WF aggregate FAIL; hits=12; Walk-Forward OOS aggregate failed. Strategy does not generalize. Simplify factor construction, reduce lookback windows, or verify no data leakage in factor/timing builders."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_58ad0efc"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: WF aggregate FAIL; hits=12; Walk-Forward OOS aggregate failed. Strategy does not generalize. Simplify factor construction, reduce lookback windows, or verify no data leakage in factor/timing builders."
+      },
+      {
+        "match": {
+          "name": "autoresearch_6332599c"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: WF aggregate FAIL; hits=12; Walk-Forward OOS aggregate failed. Strategy does not generalize. Simplify factor construction, reduce lookback windows, or verify no data leakage in factor/timing builders."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_6332599c"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: WF aggregate FAIL; hits=12; Walk-Forward OOS aggregate failed. Strategy does not generalize. Simplify factor construction, reduce lookback windows, or verify no data leakage in factor/timing builders."
+      },
+      {
+        "match": {
+          "name": "autoresearch_69ede240"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: WF aggregate FAIL; hits=12; Walk-Forward OOS aggregate failed. Strategy does not generalize. Simplify factor construction, reduce lookback windows, or verify no data leakage in factor/timing builders."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_69ede240"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: WF aggregate FAIL; hits=12; Walk-Forward OOS aggregate failed. Strategy does not generalize. Simplify factor construction, reduce lookback windows, or verify no data leakage in factor/timing builders."
+      },
+      {
+        "match": {
+          "name": "autoresearch_7258f152"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: WF aggregate FAIL; hits=12; Walk-Forward OOS aggregate failed. Strategy does not generalize. Simplify factor construction, reduce lookback windows, or verify no data leakage in factor/timing builders."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_7258f152"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: WF aggregate FAIL; hits=12; Walk-Forward OOS aggregate failed. Strategy does not generalize. Simplify factor construction, reduce lookback windows, or verify no data leakage in factor/timing builders."
+      },
+      {
+        "match": {
+          "name": "autoresearch_a23f4dde"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: WF aggregate FAIL; hits=12; Walk-Forward OOS aggregate failed. Strategy does not generalize. Simplify factor construction, reduce lookback windows, or verify no data leakage in factor/timing builders."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_a23f4dde"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: WF aggregate FAIL; hits=12; Walk-Forward OOS aggregate failed. Strategy does not generalize. Simplify factor construction, reduce lookback windows, or verify no data leakage in factor/timing builders."
+      },
+      {
+        "match": {
+          "name": "autoresearch_fb43fa16"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: WF aggregate FAIL; hits=12; Walk-Forward OOS aggregate failed. Strategy does not generalize. Simplify factor construction, reduce lookback windows, or verify no data leakage in factor/timing builders."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_fb43fa16"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: WF aggregate FAIL; hits=12; Walk-Forward OOS aggregate failed. Strategy does not generalize. Simplify factor construction, reduce lookback windows, or verify no data leakage in factor/timing builders."
+      },
+      {
+        "match": {
+          "name": "close_position__n5"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: WF aggregate FAIL; hits=12; Walk-Forward OOS aggregate failed. Strategy does not generalize. Simplify factor construction, reduce lookback windows, or verify no data leakage in factor/timing builders."
+      },
+      {
+        "match": {
+          "factor_fn_name": "close_position__n5"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: WF aggregate FAIL; hits=12; Walk-Forward OOS aggregate failed. Strategy does not generalize. Simplify factor construction, reduce lookback windows, or verify no data leakage in factor/timing builders."
+      }
+    ]
+  },
+  "lesson_wf_negative_window_873f973e_7b7e15c1": {
+    "id": "lesson_wf_negative_window_873f973e_7b7e15c1",
+    "statement": "WF_NEGATIVE_WINDOW: WF negative window 2020 (6 hits)",
+    "domain": "lesson",
+    "confidence": 0.75,
+    "evidence": [
+      "autoresearch_4063f1c4",
+      "autoresearch_58ad0efc",
+      "autoresearch_69ede240",
+      "autoresearch_7258f152",
+      "autoresearch_fb43fa16",
+      "close_position__n5"
+    ],
+    "created": "2026-06-24",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "WF_NEGATIVE_WINDOW",
+      "hit_count": 6,
+      "last_seen": "2026-06-28",
+      "detail": "OOS annual=-10.2% in 2020",
+      "fix": "Manual review needed."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "autoresearch_4063f1c4"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2020; hits=6; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_4063f1c4"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2020; hits=6; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_58ad0efc"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2020; hits=6; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_58ad0efc"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2020; hits=6; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_69ede240"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2020; hits=6; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_69ede240"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2020; hits=6; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_7258f152"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2020; hits=6; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_7258f152"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2020; hits=6; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_fb43fa16"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2020; hits=6; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_fb43fa16"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2020; hits=6; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "close_position__n5"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2020; hits=6; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "close_position__n5"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2020; hits=6; Manual review needed."
+      }
+    ]
+  },
+  "lesson_wf_negative_window_a16546e9_08e1989a": {
+    "id": "lesson_wf_negative_window_a16546e9_08e1989a",
+    "statement": "WF_NEGATIVE_WINDOW: WF negative window 2014 (3 hits)",
+    "domain": "lesson",
+    "confidence": 0.75,
+    "evidence": [
+      "autoresearch_4063f1c4",
+      "autoresearch_7258f152",
+      "autoresearch_fb43fa16"
+    ],
+    "created": "2026-06-24",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "WF_NEGATIVE_WINDOW",
+      "hit_count": 3,
+      "last_seen": "2026-06-24",
+      "detail": "OOS annual=-6.6% in 2014",
+      "fix": "Manual review needed."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "autoresearch_4063f1c4"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2014; hits=3; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_4063f1c4"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2014; hits=3; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_7258f152"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2014; hits=3; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_7258f152"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2014; hits=3; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_fb43fa16"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2014; hits=3; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_fb43fa16"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2014; hits=3; Manual review needed."
+      }
+    ]
+  },
+  "validated_8aa5bd58f9ff9bd9": {
+    "id": "validated_8aa5bd58f9ff9bd9",
+    "statement": "✗ autoresearch_4063f1c4 [phase3] sharpe=-0.10 annual=-2.6%",
+    "domain": "factor",
+    "confidence": 0.8,
+    "evidence": [
+      "8aa5bd58f9ff9bd9"
+    ],
+    "created": "2026-06-24",
+    "expires": "2026-12-21",
+    "depends_on": [],
+    "metrics": {
+      "wf_sharpe": -0.09532721125338686,
+      "annual": -0.02556325469535488,
+      "wf_maxdd": -0.8072755090316863
+    },
+    "gates": [
+      {
+        "match": {
+          "factor_fn_name": "factors.autoresearch_dsl.compute_dsl_factor",
+          "ast": "{'type': 'linear_combo', 'terms': [{'factor': 'alpha_013', 'params': {}, 'transforms': ['mad_clip', 'zscore', 'rank'], 'weight': 0.5}, {'factor': 'alpha_012', 'params': {}, 'transforms': ['mad_clip', 'zscore', 'rank'], 'weight': 0.5}], 'direction': 'positive', 'thesis': {'mechanism': '杂交: 内部人信号与资金流向确认：大股东净买入（holdertrade_net）降低信息 × 杂交: 内部人信号与资金流向确认：大股东净买入（holdertrade_net）', 'citation': 'autoresearch island search'}}"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "phase3 验证未过(✗ autoresearch_4063f1c4 [phase3] sharpe=-0.10 annual=-2.6%);180天后到期重测"
+      }
+    ]
+  },
+  "validated_251a1e3c65861e63": {
+    "id": "validated_251a1e3c65861e63",
+    "statement": "✗ autoresearch_fb43fa16 [phase3] sharpe=-0.10 annual=-2.6%",
+    "domain": "factor",
+    "confidence": 0.8,
+    "evidence": [
+      "251a1e3c65861e63"
+    ],
+    "created": "2026-06-24",
+    "expires": "2026-12-21",
+    "depends_on": [],
+    "metrics": {
+      "wf_sharpe": -0.09532721125338686,
+      "annual": -0.02556325469535488,
+      "wf_maxdd": -0.8072755090316863
+    },
+    "gates": [
+      {
+        "match": {
+          "factor_fn_name": "factors.autoresearch_dsl.compute_dsl_factor",
+          "ast": "{'type': 'linear_combo', 'terms': [{'factor': 'alpha_013', 'params': {}, 'transforms': ['mad_clip', 'zscore', 'rank'], 'weight': 0.5}, {'factor': 'alpha_012', 'params': {}, 'transforms': ['mad_clip', 'zscore', 'rank'], 'weight': 0.5}, {'factor': 'holdertrade_net', 'params': {'window': 199}, 'transforms': ['mad_clip', 'zscore', 'rank'], 'weight': 1.5}], 'direction': 'positive', 'thesis': {'mechanism': '杂交: 内部人信号与资金流向确认：大股东净买入（holdertrade_net）降低信息 × 内部人信号与资金流向确认：大股东净买入（holdertrade_net）降低信息', 'citation': 'autoresearch island search'}}"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "phase3 验证未过(✗ autoresearch_fb43fa16 [phase3] sharpe=-0.10 annual=-2.6%);180天后到期重测"
+      }
+    ]
+  },
+  "validated_d27a8a4a305e196d": {
+    "id": "validated_d27a8a4a305e196d",
+    "statement": "✗ autoresearch_a23f4dde [phase3] sharpe=0.48 annual=11.3%",
+    "domain": "factor",
+    "confidence": 0.8,
+    "evidence": [
+      "d27a8a4a305e196d"
+    ],
+    "created": "2026-06-24",
+    "expires": "2026-12-21",
+    "depends_on": [],
+    "metrics": {
+      "wf_sharpe": 0.48018632825143676,
+      "annual": 0.11341095280097636,
+      "wf_maxdd": -0.5940027214746448
+    },
+    "gates": [
+      {
+        "match": {
+          "factor_fn_name": "factors.autoresearch_dsl.compute_dsl_factor",
+          "ast": "{'type': 'linear_combo', 'terms': [{'factor': 'holdertrade_net', 'params': {'window': 120}, 'transforms': ['mad_clip', 'zscore', 'rank'], 'weight': 1.5}, {'factor': 'alpha_012', 'params': {}, 'transforms': ['mad_clip', 'zscore', 'rank', 'neg'], 'weight': 0.5}], 'direction': 'positive', 'thesis': {'mechanism': '内部人信号与资金流向确认：大股东净买入（holdertrade_net）降低信息不对称，alpha_012（价格与成交量的同向变动）确认短期资金流入，此类股票面临的不确定性下降、波动率风险降低，但市场往往反应不足，未来收益正向补偿。', 'citation': 'autoresearch island search'}}"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "phase3 验证未过(✗ autoresearch_a23f4dde [phase3] sharpe=0.48 annual=11.3%);180天后到期重测"
+      }
+    ]
+  },
+  "lesson_wf_negative_window_68d12504_104870db": {
+    "id": "lesson_wf_negative_window_68d12504_104870db",
+    "statement": "WF_NEGATIVE_WINDOW: WF negative window 2019 (7 hits)",
+    "domain": "lesson",
+    "confidence": 0.75,
+    "evidence": [
+      "autoresearch_6332599c",
+      "autoresearch_a23f4dde",
+      "close_position__n5"
+    ],
+    "created": "2026-06-24",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "WF_NEGATIVE_WINDOW",
+      "hit_count": 7,
+      "last_seen": "2026-06-28",
+      "detail": "OOS annual=-2.8% in 2019",
+      "fix": "Manual review needed."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "autoresearch_6332599c"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2019; hits=7; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_6332599c"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2019; hits=7; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "autoresearch_a23f4dde"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2019; hits=7; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_a23f4dde"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2019; hits=7; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "close_position__n5"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2019; hits=7; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "close_position__n5"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2019; hits=7; Manual review needed."
+      }
+    ]
+  },
+  "validated_fb2393d2a89c2117": {
+    "id": "validated_fb2393d2a89c2117",
+    "statement": "✗ autoresearch_69ede240 [phase3] sharpe=-0.19 annual=-4.5%",
+    "domain": "factor",
+    "confidence": 0.8,
+    "evidence": [
+      "fb2393d2a89c2117"
+    ],
+    "created": "2026-06-24",
+    "expires": "2026-12-21",
+    "depends_on": [],
+    "metrics": {
+      "wf_sharpe": -0.18600185892425725,
+      "annual": -0.04538441454604746,
+      "wf_maxdd": -0.7892130584594942
+    },
+    "gates": [
+      {
+        "match": {
+          "factor_fn_name": "factors.autoresearch_dsl.compute_dsl_factor",
+          "ast": "{'type': 'linear_combo', 'terms': [{'factor': 'holdertrade_net', 'params': {'window': 120}, 'transforms': ['mad_clip', 'zscore', 'rank'], 'weight': 1.5}, {'factor': 'alpha_012', 'params': {}, 'transforms': ['mad_clip', 'zscore', 'rank'], 'weight': 0.5}], 'direction': 'positive', 'thesis': {'mechanism': '内部人信号与资金流向确认：大股东净买入（holdertrade_net）降低信息不对称，alpha_012（价格与成交量的同向变动）确认短期资金流入，此类股票面临的不确定性下降、波动率风险降低，但市场往往反应不足，未来收益正向补偿。', 'citation': 'Seyhun (1986) 内部人交易预测能力；Chordia & Swaminathan (2000) 量价关系与收益预测；A股大股东增持后60日超额收益显著 (交易所统计)'}}"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "phase3 验证未过(✗ autoresearch_69ede240 [phase3] sharpe=-0.19 annual=-4.5%);180天后到期重测"
+      }
+    ]
+  },
+  "lesson_warmup_c6c97541_da60ace1": {
+    "id": "lesson_warmup_c6c97541_da60ace1",
+    "statement": "WARMUP: segment 压力 2010-2017 (2 hits)",
+    "domain": "lesson",
+    "confidence": 0.75,
+    "evidence": [
+      "autoresearch_69ede240",
+      "close_position__n5"
+    ],
+    "created": "2026-06-24",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "WARMUP",
+      "hit_count": 2,
+      "last_seen": "2026-06-28",
+      "detail": "Segment 压力 2010-2017 annual=-3.9%",
+      "fix": "Manual review needed."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "autoresearch_69ede240"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: segment 压力 2010-2017; hits=2; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_69ede240"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: segment 压力 2010-2017; hits=2; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "close_position__n5"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: segment 压力 2010-2017; hits=2; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "close_position__n5"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WARMUP: segment 压力 2010-2017; hits=2; Manual review needed."
+      }
+    ]
+  },
+  "lesson_wf_negative_window_19aa4c93_a30e535d": {
+    "id": "lesson_wf_negative_window_19aa4c93_a30e535d",
+    "statement": "WF_NEGATIVE_WINDOW: WF negative window 2016 (2 hits)",
+    "domain": "lesson",
+    "confidence": 0.75,
+    "evidence": [
+      "autoresearch_69ede240",
+      "close_position__n5"
+    ],
+    "created": "2026-06-24",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "WF_NEGATIVE_WINDOW",
+      "hit_count": 2,
+      "last_seen": "2026-06-28",
+      "detail": "OOS annual=-7.3% in 2016",
+      "fix": "Manual review needed."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "autoresearch_69ede240"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2016; hits=2; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_69ede240"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2016; hits=2; Manual review needed."
+      },
+      {
+        "match": {
+          "name": "close_position__n5"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2016; hits=2; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "close_position__n5"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2016; hits=2; Manual review needed."
+      }
+    ]
+  },
+  "lesson_wf_negative_window_ea98e81a_b4c4e7ee": {
+    "id": "lesson_wf_negative_window_ea98e81a_b4c4e7ee",
+    "statement": "WF_NEGATIVE_WINDOW: WF negative window 2024 (1 hits)",
+    "domain": "lesson",
+    "confidence": 0.75,
+    "evidence": [
+      "autoresearch_69ede240"
+    ],
+    "created": "2026-06-24",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "WF_NEGATIVE_WINDOW",
+      "hit_count": 1,
+      "last_seen": "2026-06-24",
+      "detail": "OOS annual=-6.6% in 2024",
+      "fix": "Manual review needed."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "autoresearch_69ede240"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2024; hits=1; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_69ede240"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2024; hits=1; Manual review needed."
+      }
+    ]
+  },
+  "validated_b47ebdb69d9e7ca3": {
+    "id": "validated_b47ebdb69d9e7ca3",
+    "statement": "✗ autoresearch_58ad0efc [phase3] sharpe=0.56 annual=14.5%",
+    "domain": "factor",
+    "confidence": 0.8,
+    "evidence": [
+      "b47ebdb69d9e7ca3"
+    ],
+    "created": "2026-06-28",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "wf_sharpe": 0.5560927184998434,
+      "annual": 0.14536841352584695,
+      "wf_maxdd": -0.41472348934483594
+    },
+    "gates": [
+      {
+        "match": {
+          "factor_fn_name": "factors.autoresearch_dsl.compute_dsl_factor",
+          "ast": "{'type': 'linear_combo', 'terms': [{'factor': 'momentum', 'params': {'window': 28}, 'transforms': ['mad_clip', 'zscore', 'rank'], 'weight': 0.7}, {'factor': 'volume_ratio', 'params': {'window': 5}, 'transforms': ['mad_clip', 'zscore', 'rank'], 'weight': 0.3}, {'factor': 'large_order_net_ratio', 'params': {'window': 37}, 'transforms': ['mad_clip', 'zscore', 'rank'], 'weight': -0.51}], 'direction': 'negative', 'thesis': {'mechanism': 'momentum 与 volume_ratio 的互补信号组合,用于受控自动研究初筛。', 'citation': 'autoresearch island search'}}"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "phase3 验证未过(✗ autoresearch_58ad0efc [phase3] sharpe=0.56 annual=14.5%);180天后到期重测"
+      }
+    ]
+  },
+  "validated_3c5493d489b8263f": {
+    "id": "validated_3c5493d489b8263f",
+    "statement": "✗ close_position__n5 [phase3] sharpe=-0.29 annual=-6.9%",
+    "domain": "factor",
+    "confidence": 0.8,
+    "evidence": [
+      "3c5493d489b8263f"
+    ],
+    "created": "2026-06-28",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "wf_sharpe": -0.28578369839966916,
+      "annual": -0.06894779415624991,
+      "wf_maxdd": -0.8461037613375255
+    },
+    "gates": [
+      {
+        "match": {
+          "factor_fn_name": "factors.ohlc.close_position",
+          "n": "5"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "phase3 验证未过(✗ close_position__n5 [phase3] sharpe=-0.29 annual=-6.9%);180天后到期重测"
+      }
+    ]
+  },
+  "validated_d17adfabb99eab96": {
+    "id": "validated_d17adfabb99eab96",
+    "statement": "✗ autoresearch_6332599c [phase3] sharpe=0.34 annual=8.0%",
+    "domain": "factor",
+    "confidence": 0.8,
+    "evidence": [
+      "d17adfabb99eab96"
+    ],
+    "created": "2026-06-28",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "wf_sharpe": 0.3372038438987097,
+      "annual": 0.08026218060817743,
+      "wf_maxdd": -0.639520763777075
+    },
+    "gates": [
+      {
+        "match": {
+          "factor_fn_name": "factors.autoresearch_dsl.compute_dsl_factor",
+          "ast": "{'type': 'linear_combo', 'terms': [{'factor': 'holder_count_chg', 'params': {'window': 80}, 'transforms': ['mad_clip', 'zscore', 'rank', 'regime_gate'], 'weight': 0.6}], 'direction': 'positive', 'neutralize': ['size'], 'transforms': ['error_feedback_correction'], 'execution': {'portfolio_size': 25, 'rebalance_freq': '40D', 'smoothing_window': 10}, 'thesis': {'mechanism': 'Co-evolved Evolved Strategy: 筹码低频吸筹集中度特征 + 10日平滑与40日低频调仓 + 误差修正反向传播反馈环', 'citation': 'Evolved in Joint Search + Prehoc Backpropagation'}}"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "phase3 验证未过(✗ autoresearch_6332599c [phase3] sharpe=0.34 annual=8.0%);180天后到期重测"
+      }
+    ]
+  },
+  "lesson_wf_negative_window_5b42bf0d_2b40bf41": {
+    "id": "lesson_wf_negative_window_5b42bf0d_2b40bf41",
+    "statement": "WF_NEGATIVE_WINDOW: WF negative window 2021 (5 hits)",
+    "domain": "lesson",
+    "confidence": 0.75,
+    "evidence": [
+      "autoresearch_6332599c"
+    ],
+    "created": "2026-06-28",
+    "expires": "2026-12-25",
+    "depends_on": [],
+    "metrics": {
+      "lesson_category": "WF_NEGATIVE_WINDOW",
+      "hit_count": 5,
+      "last_seen": "2026-06-28",
+      "detail": "OOS annual=-8.7% in 2021",
+      "fix": "Manual review needed."
+    },
+    "gates": [
+      {
+        "match": {
+          "name": "autoresearch_6332599c"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2021; hits=5; Manual review needed."
+      },
+      {
+        "match": {
+          "factor_fn_name": "autoresearch_6332599c"
+        },
+        "action": "DEPRIORITIZE",
+        "reason": "WF_NEGATIVE_WINDOW: WF negative window 2021; hits=5; Manual review needed."
+      }
+    ]
+  }
+}

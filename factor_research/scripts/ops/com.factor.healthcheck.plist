@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.factor.healthcheck</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/opt/homebrew/bin/python3</string>
+        <string>/Users/kiki/astcok/factor_research/scripts/ops/health_check.py</string>
+        <string>--notify</string>
+        <string>--obsidian</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/kiki/astcok/factor_research</string>
+
+    <!-- 每天 16:30 (收盘后 1.5h, 数据已更新) -->
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>16</integer>
+        <key>Minute</key>
+        <integer>30</integer>
+    </dict>
+
+    <!-- 工作日 -->
+    <key>Weekday</key>
+    <integer>0</integer>
+
+    <key>StandardOutPath</key>
+    <string>/tmp/com.factor.healthcheck.out</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/com.factor.healthcheck.err</string>
+
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>

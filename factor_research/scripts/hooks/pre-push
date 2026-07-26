@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Version-controlled pre-push enforcement point.
+#
+# The installed .git/hooks/pre-push shim delegates here.  Every push must pass
+# the repository's canonical verification entrypoint; this hook deliberately
+# has no project-specific skip environment variable.  Git's native
+# --no-verify remains an unavoidable client-side escape hatch.
+set -euo pipefail
+
+if ! repo_root="$(git rev-parse --show-toplevel 2>/dev/null)"; then
+    echo "[pre-push] ERROR: cannot resolve the Git worktree root; refusing to push." >&2
+    exit 2
+fi
+
+test_runner="$repo_root/factor_research/scripts/test_all.sh"
+if [ ! -f "$test_runner" ] || [ ! -r "$test_runner" ]; then
+    echo "[pre-push] ERROR: canonical verifier is missing or unreadable: $test_runner" >&2
+    exit 2
+fi
+
+echo "[pre-push] Running canonical verification: factor_research/scripts/test_all.sh" >&2
+cd "$repo_root"
+exec bash "$test_runner" </dev/null

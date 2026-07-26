@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.astcok.api</string>
+
+  <!-- 常驻 FastAPI 后端::8011;--reload 让代码改动自动生效(数据新鲜度由缓存版本键保证) -->
+  <key>ProgramArguments</key>
+  <array>
+    <string>/opt/homebrew/bin/python3</string>
+    <string>-m</string>
+    <string>uvicorn</string>
+    <string>api.main:app</string>
+    <string>--host</string>
+    <string>127.0.0.1</string>
+    <string>--port</string>
+    <string>8011</string>
+    <string>--reload</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/kiki/astcok/factor_research</string>
+
+  <key>RunAtLoad</key>
+  <true/>
+
+  <key>KeepAlive</key>
+  <true/>
+
+  <key>ThrottleInterval</key>
+  <integer>10</integer>
+
+  <key>StandardOutPath</key>
+  <string>/Users/kiki/astcok/factor_research/logs/api/launchd.out.log</string>
+
+  <key>StandardErrorPath</key>
+  <string>/Users/kiki/astcok/factor_research/logs/api/launchd.err.log</string>
+</dict>
+</plist>

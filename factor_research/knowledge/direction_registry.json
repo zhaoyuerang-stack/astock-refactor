@@ -1,0 +1,320 @@
+{
+  "_readme": [
+    "方向级研究教训登记簿(死路/弱方向/空白区)——人/强模型策展,git 跟踪,机器消费。",
+    "与 findings.json 分工:findings.json 由验证结果机器自长(单候选粒度);本文件承接",
+    "LESSONS/DECISIONS/research_ledger 的**方向级**结论(因子族/数据源粒度),此前只存在于",
+    "自然语言,生成器不消费,算力反复烧回死路。",
+    "证据门控:evidence 为空的条目会被 knowledge/directions.py 忽略并警告——禁止无证据编方向。",
+    "action 语义:SKIP=种子不生成+候选降权跳过 / DEPRIORITIZE=种子排尾+候选降权 /",
+    "BOOST=种子排头(算力倾斜) / NOTE=仅注入 LLM 播种 prompt,不产机械 gate。",
+    "expires 到期 → 条目自动失效 = 复活重测(参照 revival_condition);修改本文件请附证据指针。"
+  ],
+  "version": 1,
+  "entries": [
+    {
+      "id": "northbound-holder-flow-weak-longonly",
+      "direction": "北向/股东户数/资金流正交族做 top25 long-only 主腿",
+      "status": "weak",
+      "action": "DEPRIORITIZE",
+      "scope_factors": [
+        "northbound_accumulation",
+        "northbound_flow_strength",
+        "northbound_hold_level",
+        "holder_count_chg",
+        "holdertrade_net",
+        "large_order_net_ratio"
+      ],
+      "evidence": [
+        "research_ledger:run_id=e6e655401623899d(全市场 top25 非 real_alpha,与 illiquidity/size 簇相关 0.66-0.83)",
+        "auto-memory:project_orthogonal_too_weak(残差 IC 真正交但 ICIR~0.2,long-only 做不成 standalone 也加不动核心)"
+      ],
+      "revival_condition": "搜索基因组支持 top50-100 宽持仓或多空结构后重测(u300/u800 下独立 IC 反而走强 0.02→0.04,信息分散在横截面,top25 集中持仓吃不到)",
+      "created": "2026-07-02",
+      "expires": "2026-12-29",
+      "prompt_note": "北向/股东户数/大单资金流残差已证真正交但量级太弱(ICIR~0.2),top25 long-only 下做不成主腿;除非明确设计宽持仓/多空结构,否则不要再提纯此族因子当主信号(可作次要腿,权重<0.4)。"
+    },
+    {
+      "id": "momentum-fullmarket-standalone-null",
+      "direction": "等权全市场横截面动量单因子提纯",
+      "status": "falsified",
+      "action": "NOTE",
+      "scope_factors": [],
+      "evidence": [
+        "auto-memory:project_momentum_universe_dependent(等权全市场动量≈null,微盘反转洗掉;横截面动量分支可投侧均不显著,已关闭)"
+      ],
+      "revival_condition": "剔微盘的大中盘宇宙(~9%/t~1.5)进入可搜索宇宙后可重开",
+      "created": "2026-07-02",
+      "expires": "",
+      "prompt_note": "等权全市场横截面动量≈null(微盘反转洗掉),动量单因子提纯(一阶/残差/波动调整)在全市场宇宙已系统性证伪关闭;动量只作为组合构件与其他信息源搭配,不要再提『纯动量+参数微调』类候选。"
+    },
+    {
+      "id": "size-illiquidity-same-information",
+      "direction": "size 与 illiquidity/小盘代理互相组合(同信息算两遍)",
+      "status": "falsified",
+      "action": "NOTE",
+      "scope_factors": [],
+      "evidence": [
+        "reports/research/metasearch_findings_20260623.md(size-earnings 与 small-cap-size MI 距离 1.34 / illiquidity 1.56,同一微盘信息源不同投影)",
+        "DECISIONS.md:ADR-020(纯 Amihud 三代 DSR 全过,掺 size 反削弱:v1.3 混合 p=0.086 / size-earnings p=0.152 不过)"
+      ],
+      "revival_condition": "",
+      "created": "2026-07-02",
+      "expires": "",
+      "prompt_note": "size 与 illiquidity 是同一微盘信息源的不同投影(MI 高冗余);把 size 代理与流动性/小盘因子互相组合 = 同一信息算两遍、白涨 n_trials、DSR 多重检验会把混合版打下去。不要提这类组合。"
+    },
+    {
+      "id": "frontier-fundamental-family",
+      "direction": "信息地图空白区:基本面质量对(roe + gross_margin)单独 probe——两者均为真空信号",
+      "status": "falsified",
+      "action": "DEPRIORITIZE",
+      "scope_factors": [
+        "roe"
+      ],
+      "evidence": [
+        "reports/research/metasearch_findings_20260623.md(information_map:基本面族 net_profit_yoy/roe/bp_proxy 距价格族 MI 距离 2.8-2.9,为现有池最独立空白区之一——本条目原 BOOST 依据)",
+        "reports/research/metasearch_findings_20260713.md(round6 重跑确认 roe/net_profit_yoy/bp_proxy/gross_margin 从未被单独 probe,只测过其衍生运营质量比率)",
+        "reports/research/probe_round7_fundamental_roe.json(daily-round-7 单独 probe:原始 IC IS=-0.0053/OOS=-0.0190 全负但极弱;残差 IC IS=+0.0116→OOS=-0.0133 符号反转,不泛化)",
+        "reports/research/probe_round7_fundamental_gross_margin.json(gross_margin 独立复跑确认:原始 IC IS=-0.0021/OOS=-0.0151,残差 IC IS=+0.0031→OOS=-0.0138,量级与符号均在噪声区,searchable=False 不予提升;与 roe 同归质量对真空结论)"
+      ],
+      "revival_condition": "换非线性/分组(十分位而非线性 IC)或与估值/规模交互后重测;线性截面 IC 已两次(IS/OOS)方向不一致,纯线性单因子不要再提",
+      "created": "2026-07-02",
+      "expires": "2027-01-13",
+      "prompt_note": "2026-07-17 daily-round-7 更新:本条目原 BOOST『基本面族距价格池最远,应优先探』的判断已被 round7 单独 probe 部分推翻——roe 作为全市场月频 long-only 线性标准化因子,IS/OOS 残差 IC 符号反转(+0.0116→-0.0133),不是可用的独立线性信号,不要再提『roe 直接标准化』类候选。gross_margin(未接入搜索白名单,searchable=False)同批 probe 显示同样弱/符号不稳定模式(IS 残差 IC≈0.0031→OOS -0.0138),但因未过白名单证据门,不在本条目 scope_factors 内。net_profit_yoy/revenue_yoy(成长对)与 bp_proxy/ep_proxy(价值对)结果均不同于 roe/gross_margin(质量对,真空),四者已拆到 fundamental-raw-ratio-mixed-signals 条目按经济学分组记录(成长对稳定负向且正交;价值对 IS 弱/OOS 强、疑似2023-2024 价值 regime 共同贝塔),不适合与 roe/gross_margin 同归为 DEPRIORITIZE。"
+    },
+    {
+      "id": "fundamental-raw-ratio-mixed-signals",
+      "direction": "基本面原始比率族(成长对 net_profit_yoy/revenue_yoy,价值对 bp_proxy/ep_proxy)单独 probe——按经济学分组配对读数,不落入 falsified 或 boost 任一简单结论",
+      "status": "mixed",
+      "action": "NOTE",
+      "scope_factors": [
+        "net_profit_yoy",
+        "revenue_yoy",
+        "bp_proxy",
+        "ep_proxy"
+      ],
+      "evidence": [
+        "reports/research/probe_round7_fundamental_net_profit_yoy.json(成长对①:原始 IC IS=-0.0115/OOS=-0.0182/full=-0.0134,符号稳定负向,ICIR 0.22-0.25;残差 IC IS=-0.0085/OOS=-0.0154,正交保留率 78%,风格相关低)",
+        "reports/research/probe_round7_fundamental_revenue_yoy.json(成长对②:原始 IC IS=-0.0086/OOS=-0.0315/full=-0.0150,同符号稳定负向且 OOS 更负;残差 IC IS=-0.0030/OOS=-0.0289,正交保留率 68%,风格相关低 size=0.064/liquidity=0.045/momentum=-0.038——与 net_profit_yoy 同族同向,构成一致的『成长反转』读数而非孤立噪声)",
+        "reports/research/probe_round7_fundamental_bp_proxy.json(价值对①:原始 IC IS=0.0501,ICIR=0.29/OOS=0.0928,ICIR=0.99;残差 IC IS=0.0136,ICIR=0.08 极弱→OOS=0.0592,ICIR=0.59 很强,IS 弱 OOS 强不对称;liquidity 相关 -0.339 偏高)",
+        "reports/research/probe_round7_fundamental_ep_proxy.json(价值对②:原始 IC IS=0.0270,ICIR=0.31/OOS=0.0358,ICIR=0.22;残差 IC IS=0.0084,ICIR=0.10→OOS=0.0273,ICIR=0.20,同样 IS 弱 OOS 强;liquidity 相关 -0.242——与 bp_proxy 同方向同形态,两个独立价值口径在同一 OOS 窗口同步转强,更像 2023-2024 价值风格共同 regime 而非各自独立结构性 alpha)",
+        "strategy_versions.json:size-earnings/v1.0(2026-07-20 人工核对闭环 round7/8 needs_human①:台账 status=参考、nine_gate.passed_all=false、dsr_p=0.603 不显著、sharpe=0.48;其正 ic_mean=0.051 属 0.5*size60+0.5*npy 混合因子、由 size 腿主导——与 probe 的 NPY standalone 负 IC 并无矛盾,是两个不同测量对象;factors/fundamental.py 原『LIVE 实证』标注系过期夸大,已修正为『台账状态=参考』并附 probe 负 IC 指针)",
+        "reports/research/valuepair_crosscycle_check_20260720.json(2026-07-20 跨周期反例检验闭环 round8 needs_human②,口径与 round7/8 逐函数复用且 IS/OOS 复算逐位一致:bp/ep 分年残差 IC 七年符号完全同步(+,-,-,+,+,+,≈0);2019/2020 双双为负,round7/8 的『OOS 骤强』按年拆开几乎全部由 2023 单一年份贡献(bp 残差 IC +0.1116/ICIR 1.28,ep +0.0472/0.66),2024 已回落到≈0(bp +0.0020,ep +0.0056);流动性负相关七年恒在。按预登记判据落在『regime 共同贝塔怀疑被加强』侧,且比判据更尖锐——形态在 2024 年内已消退)"
+      ],
+      "revival_condition": "成长对(net_profit_yoy/revenue_yoy):符号疑点已核对关闭(2026-07-20,见 evidence 末条)——组合正贡献与 standalone 负 IC 不矛盾(混合因子 size 腿主导),文档标注已修正;负向读数真实且正交,是否作反向(负权重)候选须另立专项 probe(反向构造+审慎成本)取证后再议;价值对(bp_proxy/ep_proxy):跨周期反例检验已做(2026-07-20,见 evidence 末条)——2019/2020 残差 IC 双双为负、正读数几乎全由 2023 单年贡献且 2024 已消退,regime 共同贝塔怀疑被加强;复活条件收紧为:出现能解释『为何此后价值 regime 会持续』的结构性论点 + 新数据下 2023 以外年份独立复现同步为正,二者齐备前不要按『价值对接工厂』提案",
+      "created": "2026-07-17",
+      "expires": "2027-01-17",
+      "prompt_note": "daily-round-7(完整版,revenue_yoy/ep_proxy 补测后):基本面原始比率族按经济学分组读数——① 成长对(net_profit_yoy + revenue_yoy)原始与残差 IC 全程稳定为负、低风格相关(真正交,非 size/流动性伪装),两个独立成长口径方向一致,构成一致的『成长反转』读数;与 size_earnings v1.0 的表观矛盾已于 2026-07-20 核对关闭(台账正 IC 是 size 腿主导的混合因子读数,两者测的不是同一对象;台账状态=参考、DSR 不显著,fundamental.py 过期『LIVE 实证』标注已修正)——成长对负向读数真实且正交,若要利用须按反向(负权重)候选另行专项 probe,不要按正向提候选;② 价值对(bp_proxy + ep_proxy)均呈现『IS 残差弱(ICIR 0.08-0.10)、OOS 残差骤强(ICIR 0.20-0.59)』的同形态不对称,且都与 liquidity 负相关(-0.34/-0.24)——两个独立价值口径在同一 23 月 OOS 窗口(2023-2024)同步转强,更像一段 A 股价值风格占优 regime 的共同贝塔,而非各自独立的结构性正交 alpha,不要仅凭这次 OOS 数字宣称『bp_proxy/ep_proxy 已验证』——2026-07-20 跨周期反例检验(分年拆解 2018-2024)已落地:2019/2020 两口径残差 IC 双双为负,『OOS 骤强』几乎全由 2023 单一年份贡献且 2024 已回落≈0,七年符号完全同步=共同 regime 暴露读数,regime 共同贝塔怀疑被机械证据加强;除非出现结构性论点+非 2023 年份独立复现,不要提『价值对提纯/接工厂』类候选;③ 质量对(roe + gross_margin,见 frontier-fundamental-family 条目)均为真空——两者原始/残差 IC 全部接近零且符号不稳定,已判定为真正的零信号,不与本条目的成长对/价值对混为一谈。四者均只是 L0 证据,均未接入搜索白名单变更(net_profit_yoy/bp_proxy/revenue_yoy/ep_proxy 本就在 ALLOWED_FACTORS,本条目不改变其可搜索状态,只记录 standalone 体检发现)。"
+    },
+    {
+      "id": "earnings-event-sue-weak-size-exposed",
+      "direction": "业绩预告/快报事件源:全市场月频 long-only SUE 主腿",
+      "status": "weak",
+      "action": "NOTE",
+      "scope_factors": [],
+      "evidence": [
+        "reports/research/earnings_event_probe_round5_findings.md(sue residual IC IS/OOS/full=0.0043/0.0040/0.0035,留存93%,但 size corr=0.439 且月频样本54<工厂L0最少60)",
+        "reports/research/probe_round5_earnings_forecast_surprise.json(forecast-only residual OOS=-0.0060,IS→OOS翻负)"
+      ],
+      "revival_condition": "改为行业内同类比较、财报季事件窗口、或与基本面质量/估值交互后重探;不要在全市场月频 long-only 下只扫窗口/归一化微调。",
+      "created": "2026-07-06",
+      "expires": "2027-01-06",
+      "prompt_note": "业绩预告/快报事件源 PIT 可用,但全市场月频 long-only SUE 很弱且 size 暴露高;forecast-only 残差 OOS 翻负。除非引入行业内比较/财报季事件窗口/基本面交互,不要把 sue/forecast_surprise 作为主腿搜索白名单。"
+    },
+    {
+      "id": "expectation-gap-trailing-oos-collapse",
+      "direction": "隐含预期差(兑现口径):估值隐含增速 vs 已兑现 netprofit_yoy 的差/比",
+      "status": "falsified",
+      "action": "DEPRIORITIZE",
+      "scope_factors": [],
+      "evidence": [
+        "reports/research/probe_expectation_gap_20260712.md(全市场 probe:残差 IS ICIR 0.30 → OOS 归零/翻负,留存 −0%/7%;正交保留率 211-231%,真正交但不泛化)",
+        "reports/research/probe_expectation_gap_implied_growth_gap.json",
+        "reports/research/probe_expectation_gap_peg_inverse.json"
+      ],
+      "revival_condition": "湖内新增分析师一致预期/预期修正类数据源('预期'腿从已兑现的陈旧 yoy 换成真前瞻预期)后整族重测",
+      "created": "2026-07-12",
+      "expires": "2027-01-08",
+      "prompt_note": "估值(pe_ttm)隐含增速与已兑现增速(netprofit_yoy)作差/作比的『预期差』口径已 probe:正交性极好(残差比原始强)但 OOS(2023-2024)塌缩翻负——已兑现 yoy 是市场消化过的陈旧信息。不要再提『PE 隐含增速 vs 历史 yoy』类候选;湖内有真前瞻预期数据后才值得重开。"
+    },
+    {
+      "id": "expectation-gap-guidance-weak",
+      "direction": "隐含预期差(指引口径):业绩预告/快报指引 vs 估值隐含要求(guidance_gap)",
+      "status": "weak",
+      "action": "DEPRIORITIZE",
+      "scope_factors": [],
+      "evidence": [
+        "reports/research/probe_expectation_gap_20260712.md(唯一残差 OOS 不塌成员:留存 68%,但 OOS 残差 IC 0.0089/ICIR 0.14 落入 northbound-holder『真正交但太弱』量级带;原始形态 size 相关 0.44、正交保留率仅 66%)",
+        "reports/research/probe_expectation_gap_guidance_gap.json"
+      ],
+      "revival_condition": "backlog forecast-express 纯 SUE 口径独立 probe 显示强 OOS 后,重测其估值条件化变体(必须内建 size 中性化)",
+      "created": "2026-07-12",
+      "expires": "2027-01-08",
+      "prompt_note": "业绩指引相对估值要求的预期差(guidance_gap)残差流 OOS 不塌(留存 68%)但量级太弱(ICIR 0.14),且近半是大盘暴露的伪装(size 相关 0.44);不作主腿候选。若提基本面事件族,先走纯 SUE 口径再谈估值条件化。"
+    },
+    {
+      "id": "balancesheet-operational-quality-weak",
+      "direction": "资产负债表运营质量族:净占款议价权/应收强度改善/存货强度改善(存量结构全市场直接截面)",
+      "status": "weak",
+      "action": "DEPRIORITIZE",
+      "scope_factors": [],
+      "evidence": [
+        "reports/research/probe_fundamental_quality_20260712.md(全市场 probe:bargaining_power 正交保留率 17%=size/流动性伪装+残差 IC≈0;两 Δ 强度因子 IS 符号与设计假设相反且 OOS 塌缩/翻号,留存 9%/−49%)",
+        "reports/research/probe_fundamental_quality_bargaining_power.json",
+        "reports/research/probe_fundamental_quality_receivable_intensity_chg.json",
+        "reports/research/probe_fundamental_quality_inventory_intensity_chg.json"
+      ],
+      "revival_condition": "行业分类落湖(产业基本面 Phase 2:index_classify → data_lake/meta/industry.parquet)后,以行业内中性化/行业内 z-score 重新 probe——资负表占款/存货结构强行业性,全市场直接截面主要在比行业构成",
+      "created": "2026-07-12",
+      "expires": "2027-01-08",
+      "prompt_note": "资负表科目存量结构(议价权/应收/存货强度)全市场直接截面已 probe 阴性:议价权大半是 size/流动性伪装(正交保留率 17%,残差≈0);强度改善类 IS 符号与设计假设相反且 OOS 翻号。不要再提『资负表科目/总资产直接截面』类候选;有行业中性化再重开。"
+    },
+    {
+      "id": "price-channel-breakout-reversal-mirror",
+      "direction": "价格通道突破+量能确认(Donchian breakout family,机制假设=Hong-Stein 惯性延续)",
+      "status": "falsified",
+      "action": "NOTE",
+      "scope_factors": [],
+      "evidence": [
+        "reports/research/strong_ai_rounds.jsonl:round=1(2026-07-03,daily-round-1)——price_channel_breakout 与既有 price_position/short_reversal 反转因子相关 -0.54~-0.59,方向与惯性延续假设相反(更像超买回调);breakout_volume_confirm 被机械 discard",
+        "claude/daily-round-1 分支 commit 73cda770(factors/breakout.py + test_breakout_factors.py,未合并主线,代码只存在于该孤立分支)"
+      ],
+      "revival_condition": "换机制假设(承认其反转性质而非延续性质设计),或换持仓期/宇宙重新验证是否仍是既有反转簇的镜像",
+      "created": "2026-07-13",
+      "expires": "2027-01-13",
+      "prompt_note": "价格通道突破(Donchian/量能确认)已被 round-1 证伪:price_channel_breakout 是既有反转簇(price_position/short_reversal)的较弱镜像变体,非新正交方向,不要再提『价格突破+量能确认』类候选,除非明确换机制假设。"
+    },
+    {
+      "id": "broker-recommend-breadth-size-proxy",
+      "direction": "券商月度金股覆盖广度(analyst_recommend_breadth)作为分析师关注度信号",
+      "status": "falsified",
+      "action": "NOTE",
+      "scope_factors": [],
+      "evidence": [
+        "reports/research/strong_ai_rounds.jsonl:round=2(2026-07-04,daily-round-2)——analyst_recommend_breadth 实测 corr(size)=0.30~0.35(覆盖广度本质是规模代理),IS→OOS 全部翻负(留存 -61%~-129%)",
+        "claude/daily-round-2 分支 commit 7169e53b(factors/analyst_recommend.py,未合并主线)"
+      ],
+      "revival_condition": "先解决 size 暴露(强制行业/规模中性化)且验证 OOS 稳定性;真正信息量更高的 report_rc(逐条 EPS 预测修正)因积分墙硬配额未解除(见 TASKS.md)",
+      "created": "2026-07-13",
+      "expires": "2027-01-13",
+      "prompt_note": "券商月度金股覆盖广度是规模代理(corr size 0.30-0.35)且 IS→OOS 翻负,不要再提『分析师覆盖广度/金股上榜数』类候选;真正有信息量的 report_rc 逐条盈利预测修正因积分墙不可得(见 TASKS.md)。"
+    },
+    {
+      "id": "alpha101-standalone-longonly-falsified",
+      "direction": "Alpha101 价量公式族作 standalone long-only 主腿 / 与 size 复合加权 / 排除式否决器",
+      "status": "falsified",
+      "action": "NOTE",
+      "scope_factors": [],
+      "evidence": [
+        "LESSONS.md:§Alpha101 全量审计:32 因子完整证伪记录(2026-06-27)——top9 完整 9-Gate:Gate2 IC 全过(NW-ICIR 0.12-0.30/Win 66-82%)但 Gate5 全灭(Sh 0.26-0.38/DD -47~-63%);反向买底部 DD>95%;size 复合任意权重 Sharpe 单调递减;否决器边际仅 +0.00~0.03",
+        "factory/autoresearch/registry.py 词表策展注释(退化子项/秩相关≥0.98 换皮变体已剔,存活项带 probe 证据)"
+      ],
+      "revival_condition": "多空引擎/做空通道落地后重测(alpha 在双尾价差,A股 long-only 只能取一头,两端各自都烂);候选作为 DSL 复合成分因子(regime 适应度筛过,如 alpha_055 超跌成长反弹模式)不受本条约束",
+      "created": "2026-07-18",
+      "expires": "",
+      "prompt_note": "alpha101 族『IC 强』与『能赚钱』完全脱钩:截面 ICIR 0.4-0.9 但 long-only top25 回测全灭——alpha 在双尾价差,不能做空就不可变现;且高 IC=高换手=成本负反馈(年换手>15x 在 0.5% 双边成本下基本不可能净赚)。不要再提 alpha101 作 standalone 主腿、买底部反转、size 复合或否决器;作 DSL 复合成分(走 regime 适应度)不受此限。"
+    },
+    {
+      "id": "continuation-factors-fullmarket-negative-ic",
+      "direction": "全市场截面『强者恒强/追涨延续』类因子(动量/price_to_ma/成交热度正向)",
+      "status": "falsified",
+      "action": "NOTE",
+      "scope_factors": [],
+      "evidence": [
+        "LESSONS.md:§全因子 IC/ICIR 全景审计(2026-06-27)——30+ 因子全市场 2010-2026 Rank IC 扫描,所有动量/趋势因子 IC 为负:momentum_60d ICIR=-0.445、price_to_ma60 -0.493、amount.rank -0.840;全部正向 IC 因子皆逆向类(size=买小/illiq=买冷门/short_reversal=买刚跌)"
+      ],
+      "revival_condition": "剔微盘的大中盘宇宙(top500-1500)进入可搜索宇宙后重开(动量随市值单调增强是大盘现象,见 momentum-fullmarket-standalone-null)",
+      "created": "2026-07-18",
+      "expires": "2027-01-18",
+      "prompt_note": "A股全市场截面是反转市场:任何『强者恒强』假设(追涨/趋势延续/热度正向)类截面因子 IC 稳定为负;正 IC 方向全是逆向(买跌/买小/买冷门)。别再提顺势延续类截面候选。注意本条只针对截面选股;指数层时序趋势择时是另一回事(见 tsmom-trend-timing-overlay-not-alpha)。"
+    },
+    {
+      "id": "margin-family-no-second-alpha",
+      "direction": "两融资金面族(margin_balance_chg/margin_buy_ratio/short_balance)作独立母策略",
+      "status": "weak",
+      "action": "NOTE",
+      "scope_factors": [],
+      "evidence": [
+        "LESSONS.md:§策略/回测·两融资金面也不是第 2 母策略(2026-06)——干净 amount+2010 预热验证:margin NSGA review_corr<0.5 下 review=0;include-all audit 22 候选 registry_precheck=0;确定性 168 网格 hit_single=0,最佳仅 10.3%/-31.4%/corr 0.76"
+      ],
+      "revival_condition": "多空结构支持后重测,或与非价量信息源(行业内相对/事件窗)交互建构;数据在湖随取(capital/margin_all.parquet,2010-2026,634 万行,T+1 对齐)",
+      "created": "2026-07-18",
+      "expires": "2027-01-18",
+      "prompt_note": "两融余额/融资买入类因子已系统性搜过(NSGA+168 确定性网格+include-all audit 三路):弱且高度贴小盘/市场状态(corr 0.76)。数据虽在湖里,别再把两融当第二母策略方向重挖;最多组合次要腿/孵化观察。"
+    },
+    {
+      "id": "raw-fundamental-direct-cross-section-weak",
+      "direction": "原始财报字段(roe/net_profit_yoy/gross_margin/BPS)全市场直接截面 standalone(含配独立择时救回撤)",
+      "status": "weak",
+      "action": "NOTE",
+      "scope_factors": [],
+      "evidence": [
+        "LESSONS.md:§基本面因子在 A 股集体失效(2026-06-27)——net_profit_yoy ICIR=-0.206/roe -0.077/gross_margin≈0;bp_proxy 0.311 唯一有信号但与 size 高度共线",
+        "LESSONS.md:§策略/回测·fundamental/defensive 的高回撤是因子层结构性病,择时救不了(2026-06)——13 择时基因×9 候选=117 组合 0 过三道闸;回撤与大盘 regime 不同步,mkt_dd_stop 底部割肉",
+        "LESSONS.md:§策略/回测·原始 fundamental 不够强(1.10 三岛长跑 registry_precheck=0,弱 alpha 主要来自 fund_bp_value 且 corr 0.7-0.8)"
+      ],
+      "revival_condition": "行业内相对/时间分位/财务改善/财报季事件窗形态重构(行业分类落湖后优先行业内中性化);与 frontier-fundamental-family 并读——那条 BOOST 的是跨信息源交互形态,不是 raw 直接截面",
+      "created": "2026-07-18",
+      "expires": "2027-01-18",
+      "prompt_note": "原始财报字段直接全市场截面已三路证弱(IC≈0 或负、岛搜 0 命中、配 117 种独立择时救回撤全灭——价值陷阱与大盘 regime 不同步,择时救不了)。frontier-fundamental-family 的 BOOST 指『基本面×价量跨信息源交互/行业内相对/事件窗』;不要提 raw ROE/增速直接截面 standalone,也不要给 fundamental 配择时凑达标(定位=组合分散件)。"
+    },
+    {
+      "id": "binary-timing-overlay-rescue-mathematically-dead",
+      "direction": "给收益核心(小盘/流动性族)叠二值择时/regime_gate/vol-scaling overlay 凑 standalone 达标",
+      "status": "falsified",
+      "action": "NOTE",
+      "scope_factors": [],
+      "evidence": [
+        "LESSONS.md:§因子评估·small-cap-size 换手是结构性的,降换手救不动 DSR(2026-06-22)——换手 31.8x 根因=二值 MA16 whipsaw 整仓进出,调仓频率(20→40 天)/持仓缓冲(keep50/75)两个对症假设全失败",
+        "auto-memory:project_registry_gate_reality(smallcap_timing_diag/vol_overlay 定论:timing-OFF 回撤 -62% 死 G5 ↔ 二值择时 cost_decay 98% 死 G6,双重死结;连续曝险缩放 Calmar 中性≈0.38 近恒等式;核心 overlay 上限 Calmar 0.49<达标 0.75,且 MA16 单点甜点=过拟合签名)",
+        "LESSONS.md:§策略/回测·regime_gate 门控算子的牛熊非对称效应(2026-06)——熊市保护但牛市重拖累(82.5%→54.2%),Re-entry Lag+Whipsaw,生产端默认 regime_gated=False"
+      ],
+      "revival_condition": "换低换手新因子族(选股端解决,非 overlay 端),或组合层跨资产防御腿(定位=风险偏好选项非达标手段);任何新 overlay 主张必须先对同仓位 constant-mix 基准证明 Calmar 非中性",
+      "created": "2026-07-18",
+      "expires": "",
+      "prompt_note": "『因子不变+换择时 overlay』类候选已数学证死:二值择时 whipsaw 吃光成本(G6 死)、关掉择时回撤 -62%(G5 死)、连续曝险缩放 Calmar 中性(收益回撤同比缩放,近恒等式)——收益核心靠 overlay 过完整门不可达。不要再提择时参数微调/vol-target/regime gate 变体来救既有核心;救回撤的正路=换因子族或组合层。"
+    },
+    {
+      "id": "loser-veto-exclusion-structurally-dead",
+      "direction": "全截面『死亡层』排除式否决器(低动量+低波输家端)挂 top-N 宿主",
+      "status": "falsified",
+      "action": "NOTE",
+      "scope_factors": [],
+      "evidence": [
+        "LESSONS.md:§策略/回测·否决器与宿主的 alpha 来源相克会自杀(2026-06-12)——canonical 宿主(small-cap v2.0)Δ年化 IS -1.24%/OOS -2.36%/压力 -0.97% 全负且自付换手;动量宿主正交性复测 -1.7%~-6.6% 三窗口全负=结构性死亡非宿主错配",
+        "strategy_versions.json:loser_veto_reversal/v0.1-observe(已证伪退役,机制五件套保留、因子不启用)"
+      ],
+      "revival_condition": "排除式规则的价值必须先在『宿主已选中』的条件分布上重新度量为正(全截面 D1 负超额只是必要条件远非充分);否决器唯一合法评估口径=边际贡献协议(同引擎同成本、带/不带、只报 Δ)",
+      "created": "2026-07-18",
+      "expires": "",
+      "prompt_note": "『低动量+低波=死亡层』类排除否决器结构性死亡:top-N∩死亡层≈刚回撤的强势股,在 20 日反转主导的 A股恰好要反弹,排除=杀宿主自己的 alpha 来源。条件分布(选股后)≠无条件分布(全截面),分位解剖结论不能直接迁移成排除规则。不要再提全截面死亡层否决器;任何否决器主张必须走边际贡献协议评估。"
+    },
+    {
+      "id": "hk-longonly-additive-drag",
+      "direction": "港股 long-only 选股腿加入 A股组合(以低相关分散化为由)",
+      "status": "falsified",
+      "action": "NOTE",
+      "scope_factors": [],
+      "evidence": [
+        "LESSONS.md:§多元化的数学下限——候选 Sharpe/组合 Sharpe 比例(2026-06-07)——HK 最佳腿 sh 0.51-0.53、corr 低至 0.18,加入后组合 sh 1.89→1.54/1.55 全拖累;数学约束:candidate Sharpe<组合 Sharpe×0.5 必拖累(分子 mean 降幅>分母 vol 降幅)"
+      ],
+      "revival_condition": "long-short HK(去 beta 后 vol 减半、Sharpe 可近翻倍)/HK ETF 轮动/港股通套利等新引擎;或候选单体 Sharpe ≥ 当前组合 Sharpe×0.5",
+      "created": "2026-07-18",
+      "expires": "",
+      "prompt_note": "低相关≠有用:HK long-only 腿 corr 仅 0.18 依然把组合 Sharpe 拖低 0.33+。任何新腿主张先过 Sharpe 地板(≥当前组合 Sharpe 的一半),别拿『相关性低』当加入理由——candidate Sharpe 不够时 corr=0 也救不了(数学约束非经验观察)。"
+    },
+    {
+      "id": "tsmom-trend-timing-overlay-not-alpha",
+      "direction": "A股指数趋势择时(TSMOM)/Barroso vol-scaling 作为超额收益(alpha)候选",
+      "status": "weak",
+      "action": "NOTE",
+      "scope_factors": [],
+      "evidence": [
+        "auto-memory:project_tsmom_trend_timing(tsmom_path2.py+overlay_validation.py,8 个 A股指数 2011-2026:L/flat 超额补分红后≈+0.4%/年,Ledoit-Wolf p=0.198;趋势择时=慢熊方向凸性(捕获不对称 p=0.04 但 DSR~50+有效 N≈1 下脆弱)非崩溃保护;Barroso vol-scaling=机制性崩溃保护(2015 股灾 -17.9%→-7.2%)非收益(ΔSharpe p=0.64);空头腿不加分 p=0.91)"
+      ],
+      "revival_condition": "接国债期货(T/TF)+商品抬有效 N 后重测统计显著性(8 个 A股指数相关 0.8-0.95,N≈1 是结构性的,加权益指数/拉长历史无用)",
+      "created": "2026-07-18",
+      "expires": "2027-01-18",
+      "prompt_note": "趋势/时序动量择时不要当 alpha 候选提:超额收益补分红后≈0(p=0.198)。它是风控 overlay,且两个工具不可互替:趋势择时给慢熊方向凸性(非崩溃保护,2015 满仓撞进去),vol-scaling 给崩溃尾部保护(不加方向收益)。评估任何 overlay 必须对同仓位 constant-mix 基准(非 buy&hold,否则『回撤砍半』大半只是少仓位),主裁判用捕获不对称+CVaR 而非年化/Calmar。"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+# 数据缓存(大,可重新拉取/构建)
+factor_research/data/
+factor_research/data_full/
+factor_research/data_lake/
+
+# Python
+__pycache__/
+*.pyc
+*.profraw
+
+# JS / desktop build outputs (reinstall or rebuild)
+node_modules/
+dist/
+.vite/
+.runtime/
+
+# 系统
+.DS_Store
+
+# 回测产物(图/大 csv,可重新生成;保留 results/*.json 配置)
+factor_research/results/*.png
+factor_research/results/*.csv
+factor_research/reports/
+factor_research/signals/
+factor_research/logs/
+factor_research/paper/
+
+# Agent / code graph 本地状态
+.claude/
+.codegraph/
+.worktrees/
+
+# 本地 agent / IDE 运行状态
+.superpowers/
+.workbuddy/
+*.code-workspace
+/.agents/AGENTS.md
+# `.agents/` 不整目录忽略:自包含的项目 skill 可以是共享源码;
+# 本机 symlink/个人安装应写入 `.git/info/exclude`。
+
+# 原型渲染缓存与输出
+prototypes/**/.thumbnails/
+prototypes/**/.waveform-cache/
+prototypes/**/renders/
+prototypes/**/*.wav
+
+# 探索区默认留本地;复用脚本先迁到 scripts/research 或 scripts/ops
+factor_research/scratch/*
+!factor_research/scratch/MODULE_STATUS.md
+
+# 私有配置、凭证与运行时锁
+project.private.config.json
+desktop/stock-diagnosis-client/auth.json
+factor_research/.strategy_versions.json.lock
+
+# 研报/参考资料(二进制,不纳入,留磁盘)
+*.pdf
+
+# MCP 配置含 token,禁止提交
+.mcp.json
+
+# 每日分支体检报告的本地副本(正式产物在 origin/report/branch-status 分支)
+/BRANCH_REPORT.md
