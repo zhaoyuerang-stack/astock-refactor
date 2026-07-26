@@ -9,16 +9,14 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
+from scripts.ci.check_module_status import is_governed_module_dir
 from services.read.module_inventory import get_module_inventory, get_module_status
 
 
 def test_all_top_level_directories_have_module_status():
     inventory = get_module_inventory()
     modules = {item.module for item in inventory}
-    top_dirs = {
-        p.name for p in ROOT.iterdir()
-        if p.is_dir() and not p.name.startswith(".") and p.name != "__pycache__"
-    }
+    top_dirs = {p.name for p in ROOT.iterdir() if is_governed_module_dir(p)}
     assert top_dirs == modules
 
 
